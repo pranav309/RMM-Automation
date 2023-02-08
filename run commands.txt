@@ -1,0 +1,10 @@
+pytest -s -v --html=Reports\Waves\createWaveWithoutHost.html testCases/Wave/test_createWaveWithoutHost.py --browser firefox
+
+pytest -s -v --html=Reports\Waves\createWaveWithHost.html testCases/Wave/test_createWaveWithHost.py --browser firefox
+
+pytest -s -v --html=Reports\Waves\addNewHost.html testCases/Wave/test_addNewHost.py --browser firefox
+
+pytest -s -v --html=Reports\DRPolicy\createDRPolicy.html testCases/DRPolicy/test_createDRPolicy.py --browser firefox
+
+pytest -s -v --html=Reports\RetentionPolicy\createRetentionPolicy.html testCases/DRPolicy/test_createRetentionPolicy.py --browser firefox
+
