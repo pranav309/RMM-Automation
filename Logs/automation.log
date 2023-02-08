@@ -1,199 +1,65 @@
-01/31/23 05:/23:/00 PM: INFO: ********** Test_003_CreateWaveWithHost ********** :
-01/31/23 05:/23:/00 PM: INFO: ********** Opening Browser ********** :
-01/31/23 05:/23:/12 PM: INFO: ********** Browser Opened Successfully **********:
-01/31/23 05:/23:/32 PM: INFO: ********** Login Successful **********:
-01/31/23 05:/23:/32 PM: INFO: ********** Starting Create New Wave With Host Test **********:
-01/31/23 05:/23:/34 PM: INFO: ********** Created no. 1 wave with Target Type Autoprovision **********:
-01/31/23 05:/23:/46 PM: INFO: ********** Created no. 2 wave with Target Type Existing System **********:
-01/31/23 05:/23:/58 PM: INFO: ********** Created no. 3 wave with Target Type Capture **********:
-01/31/23 05:/24:/18 PM: INFO: ********** Create New Wave With Host Test Is Successful **********:
-01/31/23 05:/24:/32 PM: INFO: ********** Logout Successful **********:
-01/31/23 05:/24:/32 PM: INFO: ********** Browser Closed Successfully **********:
+02/08/23 04:/28:/50 PM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
+02/08/23 04:/28:/50 PM: INFO: ********** Opening Browser ********** :
+02/08/23 04:/29:/05 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 04:/29:/25 PM: INFO: ********** Login Successful **********:
+02/08/23 04:/29:/25 PM: INFO: ********** Starting Create New Wave Without Host Test **********:
+02/08/23 04:/29:/55 PM: INFO: ********** Create New Wave Without Host Test Is Successful **********:
+02/08/23 04:/30:/09 PM: INFO: ********** Logout Successful **********:
+02/08/23 04:/30:/10 PM: INFO: ********** Browser Closed Successfully ********** :
 
-02/01/23 11:/11:/21 AM: INFO: ********** Test_003_CreateWaveWithHost ********** :
-02/01/23 11:/11:/21 AM: INFO: ********** Opening Browser ********** :
-02/01/23 11:/11:/30 AM: INFO: ********** Browser Opened Successfully **********:
-02/01/23 11:/11:/51 AM: INFO: ********** Login Successful **********:
-02/01/23 11:/11:/51 AM: INFO: ********** Starting Create New Wave With Host Test **********:
-02/01/23 11:/11:/57 AM: INFO: ********** Created no. 1 wave with Target Type Autoprovision **********:
-02/01/23 11:/12:/12 AM: INFO: ********** Created no. 2 wave with Target Type Autoprovision **********:
-02/01/23 11:/12:/28 AM: INFO: ********** Created no. 3 wave with Target Type Autoprovision **********:
-02/01/23 11:/12:/43 AM: INFO: ********** Created no. 4 wave with Target Type Autoprovision **********:
-02/01/23 11:/12:/58 AM: INFO: ********** Created no. 5 wave with Target Type Autoprovision **********:
-02/01/23 11:/13:/14 AM: INFO: ********** Created no. 6 wave with Target Type Autoprovision **********:
-02/01/23 11:/13:/34 AM: INFO: ********** Create New Wave With Host Test Is Successful **********:
-02/01/23 11:/13:/47 AM: INFO: ********** Logout Successful **********:
-02/01/23 11:/13:/49 AM: INFO: ********** Browser Closed Successfully **********:
+02/08/23 04:/30:/25 PM: INFO: ********** Test_004_CreateWaveWithHost ********** :
+02/08/23 04:/30:/25 PM: INFO: ********** Opening Browser ********** :
+02/08/23 04:/30:/41 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 04:/31:/01 PM: INFO: ********** Login Successful **********:
+02/08/23 04:/31:/01 PM: INFO: ********** Starting Create New Wave With Host Test **********:
+02/08/23 04:/31:/22 PM: INFO: ********** Created no. 1 wave with Target Type Autoprovision **********:
+02/08/23 04:/31:/43 PM: INFO: ********** Created no. 2 wave with Target Type Autoprovision **********:
+02/08/23 04:/32:/04 PM: INFO: ********** Created no. 3 wave with Target Type Autoprovision **********:
+02/08/23 04:/32:/25 PM: INFO: ********** Created no. 4 wave with Target Type Autoprovision **********:
+02/08/23 04:/32:/46 PM: INFO: ********** Created no. 5 wave with Target Type Autoprovision **********:
+02/08/23 04:/33:/07 PM: INFO: ********** Created no. 6 wave with Target Type Autoprovision **********:
+02/08/23 04:/33:/17 PM: INFO: ********** Create New Wave With Host Test Is Successful **********:
+02/08/23 04:/33:/31 PM: INFO: ********** Logout Successful **********:
+02/08/23 04:/33:/32 PM: INFO: ********** Browser Closed Successfully **********:
 
-02/01/23 06:/15:/33 PM: INFO: ********** Test_007_AddHost ********** :
-02/01/23 06:/15:/33 PM: INFO: ********** Opening Browser ********** :
-02/01/23 06:/15:/42 PM: INFO: ********** Browser Opened Successfully **********:
-02/01/23 06:/16:/02 PM: INFO: ********** Login Successful **********:
-02/01/23 06:/16:/02 PM: INFO: ********** Starting Add New Host Test **********:
-02/01/23 06:/16:/40 PM: INFO: ********** Add New Host Test Is Successful **********:
-02/01/23 06:/16:/54 PM: INFO: ********** Logout Successful **********:
-02/01/23 06:/16:/57 PM: INFO: ********** Browser Closed Successfully **********:
+02/08/23 04:/34:/17 PM: INFO: ********** Test_005_AddHost ********** :
+02/08/23 04:/34:/17 PM: INFO: ********** Opening Browser ********** :
+02/08/23 04:/34:/32 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 04:/34:/52 PM: INFO: ********** Login Successful **********:
+02/08/23 04:/34:/52 PM: INFO: ********** Starting Add New Host Test **********:
+02/08/23 04:/35:/35 PM: INFO: ********** Add New Host Test Is Successful **********:
+02/08/23 04:/35:/49 PM: INFO: ********** Logout Successful **********:
+02/08/23 04:/35:/50 PM: INFO: ********** Browser Closed Successfully **********:
 
-02/02/23 07:/33:/20 PM: INFO: ********** Test_010_CreateDRPolicy ********** :
-02/02/23 07:/33:/20 PM: INFO: ********** Opening Browser ********** :
-02/02/23 07:/33:/34 PM: INFO: ********** Browser Opened Successfully **********:
-02/02/23 07:/33:/54 PM: INFO: ********** Login Successful **********:
-02/02/23 07:/33:/54 PM: INFO: ********** Starting Create New DRPolicy Test **********:
-02/02/23 07:/34:/22 PM: INFO: ********** Created no. 1 DR Policy with name demo11 **********:
-02/02/23 07:/34:/40 PM: INFO: ********** Created no. 2 DR Policy with name demo12 **********:
-02/02/23 07:/35:/03 PM: INFO: ********** Created no. 3 DR Policy with name demo21 **********:
-02/02/23 07:/35:/32 PM: INFO: ********** Created no. 4 DR Policy with name demo22 **********:
-02/02/23 07:/35:/48 PM: INFO: ********** Created no. 5 DR Policy with name demo4 **********:
-02/02/23 07:/35:/53 PM: INFO: ********** Create New DRPolicy Test Is Successful **********:
-02/02/23 07:/36:/07 PM: INFO: ********** Logout Successful **********:
-02/02/23 07:/36:/08 PM: INFO: ********** Browser Closed Successfully **********:
+02/08/23 05:/00:/00 PM: INFO: ********** Test_006_CreateDRPolicy ********** :
+02/08/23 05:/00:/00 PM: INFO: ********** Opening Browser ********** :
+02/08/23 05:/00:/19 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 05:/00:/39 PM: INFO: ********** Login Successful **********:
+02/08/23 05:/00:/39 PM: INFO: ********** Starting Create New DRPolicy Test **********:
+02/08/23 05:/01:/06 PM: INFO: ********** Created no. 1 DR Policy with name Demo **********:
+02/08/23 05:/01:/11 PM: INFO: ********** Create New DRPolicy Test Is Successful **********:
+02/08/23 05:/01:/25 PM: INFO: ********** Logout Successful **********:
+02/08/23 05:/01:/26 PM: INFO: ********** Browser Closed Successfully **********:
 
-02/03/23 12:/10:/38 PM: INFO: ********** Test_007_AddHost ********** :
-02/03/23 12:/10:/38 PM: INFO: ********** Opening Browser ********** :
-02/03/23 12:/10:/48 PM: INFO: ********** Browser Opened Successfully **********:
-02/03/23 12:/11:/11 PM: INFO: ********** Login Successful **********:
-02/03/23 12:/11:/11 PM: INFO: ********** Starting Add New Host Test **********:
-02/03/23 12:/11:/51 PM: INFO: ********** Add New Host Test Is Successful **********:
-02/03/23 12:/12:/04 PM: INFO: ********** Logout Successful **********:
-02/03/23 12:/12:/06 PM: INFO: ********** Browser Closed Successfully **********:
-
-02/07/23 06:/31:/24 PM: INFO: ********** Test_008_CreateRetentionPolicy ********** :
-02/07/23 06:/31:/24 PM: INFO: ********** Opening Browser ********** :
-02/07/23 06:/31:/36 PM: INFO: ********** Browser Opened Successfully **********:
-02/07/23 06:/31:/58 PM: INFO: ********** Login Successful **********:
-02/07/23 06:/31:/58 PM: INFO: ********** Starting Create New Retention Policy Test **********:
-02/07/23 06:/32:/58 PM: INFO: ********** Create New Retention Policy Test Is Successful **********:
-02/07/23 06:/33:/11 PM: INFO: ********** Logout Successful **********:
-02/07/23 06:/33:/13 PM: INFO: ********** Browser Closed Successfully **********:
-02/07/23 06:/37:/46 PM: INFO: ********** Test_008_CreateRetentionPolicy ********** :
-02/07/23 06:/37:/46 PM: INFO: ********** Opening Browser ********** :
-02/07/23 06:/37:/57 PM: INFO: ********** Browser Opened Successfully **********:
-02/07/23 06:/38:/17 PM: INFO: ********** Login Successful **********:
-02/07/23 06:/38:/17 PM: INFO: ********** Starting Create New Retention Policy Test **********:
-02/07/23 06:/39:/17 PM: INFO: ********** Create New Retention Policy Test Is Successful **********:
-02/07/23 06:/39:/30 PM: INFO: ********** Logout Successful **********:
-02/07/23 06:/39:/31 PM: INFO: ********** Browser Closed Successfully **********:
-02/07/23 06:/41:/07 PM: INFO: ********** Test_008_CreateRetentionPolicy ********** :
-02/07/23 06:/41:/07 PM: INFO: ********** Opening Browser ********** :
-02/07/23 06:/41:/19 PM: INFO: ********** Browser Opened Successfully **********:
-02/07/23 06:/41:/39 PM: INFO: ********** Login Successful **********:
-02/07/23 06:/41:/39 PM: INFO: ********** Starting Create New Retention Policy Test **********:
-02/07/23 06:/42:/38 PM: INFO: ********** Create New Retention Policy Test Is Successful **********:
-02/07/23 06:/42:/52 PM: INFO: ********** Logout Successful **********:
-02/07/23 06:/42:/53 PM: INFO: ********** Browser Closed Successfully **********:
-02/08/23 10:/46:/03 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 10:/46:/04 AM: INFO: ********** Opening Browser ********** :
-02/08/23 10:/46:/12 AM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 10:/46:/33 AM: INFO: ********** Login Successful **********:
-02/08/23 10:/46:/33 AM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 10:/47:/51 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 10:/47:/51 AM: INFO: ********** Opening Browser ********** :
-02/08/23 10:/48:/04 AM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 10:/48:/24 AM: INFO: ********** Login Successful **********:
-02/08/23 10:/48:/24 AM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 11:/03:/02 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 11:/03:/02 AM: INFO: ********** Opening Browser ********** :
-02/08/23 11:/03:/14 AM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 11:/03:/35 AM: INFO: ********** Login Successful **********:
-02/08/23 11:/03:/35 AM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 11:/30:/11 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 11:/30:/11 AM: INFO: ********** Opening Browser ********** :
-02/08/23 11:/30:/25 AM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 11:/30:/49 AM: INFO: ********** Login Successful **********:
-02/08/23 11:/30:/49 AM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 11:/33:/59 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 11:/33:/59 AM: INFO: ********** Opening Browser ********** :
-02/08/23 11:/34:/13 AM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 11:/34:/33 AM: INFO: ********** Login Successful **********:
-02/08/23 11:/34:/33 AM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 11:/38:/40 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 11:/38:/40 AM: INFO: ********** Opening Browser ********** :
-02/08/23 11:/39:/08 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 11:/39:/08 AM: INFO: ********** Opening Browser ********** :
-02/08/23 11:/39:/19 AM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 11:/39:/39 AM: INFO: ********** Login Successful **********:
-02/08/23 11:/39:/39 AM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 11:/47:/06 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 11:/47:/06 AM: INFO: ********** Opening Browser ********** :
-02/08/23 11:/47:/20 AM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 11:/47:/40 AM: INFO: ********** Login Successful **********:
-02/08/23 11:/47:/40 AM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 11:/49:/57 AM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 11:/49:/57 AM: INFO: ********** Opening Browser ********** :
-02/08/23 11:/50:/10 AM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 11:/50:/31 AM: INFO: ********** Login Successful **********:
-02/08/23 11:/50:/31 AM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 11:/51:/02 AM: INFO: ********** Create New Wave Without Host Test Is Successful **********:
-02/08/23 11:/51:/15 AM: INFO: ********** Logout Successful **********:
-02/08/23 11:/51:/16 AM: INFO: ********** Browser Closed Successfully ********** :
-02/08/23 12:/43:/31 PM: INFO: ********** Test_004_CreateWaveWithHost ********** :
-02/08/23 12:/43:/31 PM: INFO: ********** Opening Browser ********** :
-02/08/23 12:/43:/43 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 12:/44:/03 PM: INFO: ********** Login Successful **********:
-02/08/23 12:/44:/03 PM: INFO: ********** Starting Create New Wave With Host Test **********:
-02/08/23 12:/45:/23 PM: INFO: ********** Test_004_CreateWaveWithHost ********** :
-02/08/23 12:/45:/23 PM: INFO: ********** Opening Browser ********** :
-02/08/23 12:/45:/37 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 12:/45:/57 PM: INFO: ********** Login Successful **********:
-02/08/23 12:/45:/57 PM: INFO: ********** Starting Create New Wave With Host Test **********:
-02/08/23 12:/46:/14 PM: INFO: ********** Created no. 1 wave with Target Type Autoprovision **********:
-02/08/23 12:/47:/55 PM: INFO: ********** Test_004_CreateWaveWithHost ********** :
-02/08/23 12:/47:/55 PM: INFO: ********** Opening Browser ********** :
-02/08/23 12:/48:/08 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 12:/48:/29 PM: INFO: ********** Login Successful **********:
-02/08/23 12:/48:/29 PM: INFO: ********** Starting Create New Wave With Host Test **********:
-02/08/23 12:/48:/50 PM: INFO: ********** Created no. 1 wave with Target Type Autoprovision **********:
-02/08/23 12:/49:/12 PM: INFO: ********** Created no. 2 wave with Target Type Autoprovision **********:
-02/08/23 12:/49:/33 PM: INFO: ********** Created no. 3 wave with Target Type Autoprovision **********:
-02/08/23 12:/49:/54 PM: INFO: ********** Created no. 4 wave with Target Type Autoprovision **********:
-02/08/23 12:/50:/16 PM: INFO: ********** Created no. 5 wave with Target Type Autoprovision **********:
-02/08/23 12:/50:/37 PM: INFO: ********** Created no. 6 wave with Target Type Autoprovision **********:
-02/08/23 12:/50:/47 PM: INFO: ********** Create New Wave With Host Test Is Successful **********:
-02/08/23 12:/51:/01 PM: INFO: ********** Logout Successful **********:
-02/08/23 12:/51:/07 PM: INFO: ********** Browser Closed Successfully **********:
-02/08/23 12:/54:/29 PM: INFO: ********** Test_005_AddHost ********** :
-02/08/23 12:/54:/29 PM: INFO: ********** Opening Browser ********** :
-02/08/23 12:/54:/46 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 12:/55:/06 PM: INFO: ********** Login Successful **********:
-02/08/23 12:/55:/06 PM: INFO: ********** Starting Add New Host Test **********:
-02/08/23 12:/56:/14 PM: INFO: ********** Test_005_AddHost ********** :
-02/08/23 12:/56:/14 PM: INFO: ********** Opening Browser ********** :
-02/08/23 12:/56:/28 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 12:/56:/48 PM: INFO: ********** Login Successful **********:
-02/08/23 12:/56:/48 PM: INFO: ********** Starting Add New Host Test **********:
-02/08/23 12:/59:/13 PM: INFO: ********** Test_005_AddHost ********** :
-02/08/23 12:/59:/13 PM: INFO: ********** Opening Browser ********** :
-02/08/23 12:/59:/25 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 12:/59:/45 PM: INFO: ********** Login Successful **********:
-02/08/23 12:/59:/45 PM: INFO: ********** Starting Add New Host Test **********:
-02/08/23 01:/03:/18 PM: INFO: ********** Test_005_AddHost ********** :
-02/08/23 01:/03:/18 PM: INFO: ********** Opening Browser ********** :
-02/08/23 01:/03:/32 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 01:/03:/52 PM: INFO: ********** Login Successful **********:
-02/08/23 01:/03:/52 PM: INFO: ********** Starting Add New Host Test **********:
-02/08/23 01:/04:/36 PM: INFO: ********** Add New Host Test Is Successful **********:
-02/08/23 01:/04:/49 PM: INFO: ********** Logout Successful **********:
-02/08/23 01:/04:/50 PM: INFO: ********** Browser Closed Successfully **********:
-
-02/08/23 01:/13:/18 PM: INFO: ********** Test_003_CreateWaveWithoutHost ********** :
-02/08/23 01:/13:/18 PM: INFO: ********** Opening Browser ********** :
-02/08/23 01:/13:/33 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 01:/13:/53 PM: INFO: ********** Login Successful **********:
-02/08/23 01:/13:/53 PM: INFO: ********** Starting Create New Wave Without Host Test **********:
-02/08/23 01:/14:/25 PM: INFO: ********** Create New Wave Without Host Test Is Successful **********:
-02/08/23 01:/14:/38 PM: INFO: ********** Logout Successful **********:
-02/08/23 01:/14:/40 PM: INFO: ********** Browser Closed Successfully ********** :
-02/08/23 01:/15:/49 PM: INFO: ********** Test_004_CreateWaveWithHost ********** :
-02/08/23 01:/15:/49 PM: INFO: ********** Opening Browser ********** :
-02/08/23 01:/16:/04 PM: INFO: ********** Browser Opened Successfully **********:
-02/08/23 01:/16:/25 PM: INFO: ********** Login Successful **********:
-02/08/23 01:/16:/25 PM: INFO: ********** Starting Create New Wave With Host Test **********:
-02/08/23 01:/16:/46 PM: INFO: ********** Created no. 1 wave with Target Type Autoprovision **********:
-02/08/23 01:/17:/07 PM: INFO: ********** Created no. 2 wave with Target Type Autoprovision **********:
-02/08/23 01:/17:/28 PM: INFO: ********** Created no. 3 wave with Target Type Autoprovision **********:
-02/08/23 01:/17:/50 PM: INFO: ********** Created no. 4 wave with Target Type Autoprovision **********:
-02/08/23 01:/18:/11 PM: INFO: ********** Created no. 5 wave with Target Type Autoprovision **********:
-02/08/23 01:/18:/32 PM: INFO: ********** Created no. 6 wave with Target Type Autoprovision **********:
-02/08/23 01:/18:/42 PM: INFO: ********** Create New Wave With Host Test Is Successful **********:
-02/08/23 01:/18:/56 PM: INFO: ********** Logout Successful **********:
-02/08/23 01:/18:/57 PM: INFO: ********** Browser Closed Successfully **********:
+02/08/23 05:/04:/05 PM: INFO: ********** Test_006_CreateDRPolicy ********** :
+02/08/23 05:/04:/05 PM: INFO: ********** Opening Browser ********** :
+02/08/23 05:/04:/18 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 05:/04:/39 PM: INFO: ********** Login Successful **********:
+02/08/23 05:/04:/39 PM: INFO: ********** Starting Create New DRPolicy Test **********:
+02/08/23 05:/05:/06 PM: INFO: ********** Created no. 1 DR Policy with name demo11 **********:
+02/08/23 05:/05:/24 PM: INFO: ********** Created no. 2 DR Policy with name demo12 **********:
+02/08/23 05:/05:/47 PM: INFO: ********** Created no. 3 DR Policy with name demo21 **********:
+02/08/23 05:/06:/16 PM: INFO: ********** Created no. 4 DR Policy with name demo22 **********:
+02/08/23 05:/06:/38 PM: INFO: ********** Created no. 5 DR Policy with name demo31 **********:
+02/08/23 05:/06:/55 PM: INFO: ********** Created no. 6 DR Policy with name demo41 **********:
+02/08/23 05:/07:/00 PM: INFO: ********** Create New DRPolicy Test Is Successful **********:
+02/08/23 05:/07:/13 PM: INFO: ********** Logout Successful **********:
+02/08/23 05:/07:/14 PM: INFO: ********** Browser Closed Successfully **********:
+02/08/23 05:/17:/00 PM: INFO: ********** Test_008_CreateRetentionPolicy ********** :
+02/08/23 05:/17:/00 PM: INFO: ********** Opening Browser ********** :
+02/08/23 05:/17:/14 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 05:/17:/35 PM: INFO: ********** Login Successful **********:
+02/08/23 05:/17:/35 PM: INFO: ********** Starting Create New Retention Policy Test **********:
+02/08/23 05:/18:/34 PM: INFO: ********** Create New Retention Policy Test Is Successful **********:
+02/08/23 05:/18:/47 PM: INFO: ********** Logout Successful **********:
+02/08/23 05:/18:/48 PM: INFO: ********** Browser Closed Successfully **********:

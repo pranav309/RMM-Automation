@@ -2294,3 +2294,156 @@ console.warn: LoginRecipes: "Falling back to a synchronous message for: https://
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
 1675842536116	Marionette	INFO	Stopped listening on port 55442
 Dynamically enable window occlusion 1
+1675853628718	geckodriver	INFO	Listening on 127.0.0.1:62533
+1675853631921	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62534" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilessIzxC"
+1675853634668	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675853634694	Marionette	INFO	Listening on port 62550
+Read port: 62550
+WebDriver BiDi listening on ws://127.0.0.1:62534
+1675853635277	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilessIzxC\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:62534/devtools/browser/6c64f8b9-0a27-4ee5-93d3-116bfb933177
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675853746022	geckodriver	INFO	Listening on 127.0.0.1:62799
+1675853749124	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62800" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile9zFgXr"
+1675853752066	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675853752071	Marionette	INFO	Listening on port 62818
+Read port: 62818
+WebDriver BiDi listening on ws://127.0.0.1:62800
+1675853752371	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile9zFgXr\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:62800/devtools/browser/2e430f77-9dc5-4fc0-b523-712f1e79e99c
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675853842695	geckodriver	INFO	Listening on 127.0.0.1:63018
+1675853845752	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63019" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile9b1AFU"
+1675853846197	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675853846202	Marionette	INFO	Listening on port 63031
+Read port: 63031
+WebDriver BiDi listening on ws://127.0.0.1:63019
+1675853846958	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile9b1AFU\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63019/devtools/browser/b1597b46-c345-49d8-8f90-c7ce22c29994
+console.error: Region.sys.mjs: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 764))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 416))
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675853907782	Marionette	INFO	Stopped listening on port 63031
+Dynamically enable window occlusion 1
+[Parent 16140, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:777
+1675853921923	geckodriver	INFO	Listening on 127.0.0.1:63194
+1675853924994	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63195" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileglYykj"
+1675853925364	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675853925369	Marionette	INFO	Listening on port 63204
+Read port: 63204
+WebDriver BiDi listening on ws://127.0.0.1:63195
+1675853925639	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileglYykj\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63195/devtools/browser/1142ae24-dacc-4dbf-9933-9af8febcfb61
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675854009341	Marionette	INFO	Stopped listening on port 63204
+Dynamically enable window occlusion 1
+1675854017122	geckodriver	INFO	Listening on 127.0.0.1:63335
+1675854020183	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63336" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileYIf1Vf"
+1675854020716	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675854020720	Marionette	INFO	Listening on port 63345
+Read port: 63345
+WebDriver BiDi listening on ws://127.0.0.1:63336
+1675854020941	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileYIf1Vf\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63336/devtools/browser/de36785d-0437-4f95-be97-9c347f6ac38a
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675854211442	Marionette	INFO	Stopped listening on port 63345
+Dynamically enable window occlusion 1
+1675854245572	geckodriver	INFO	Listening on 127.0.0.1:63566
+1675854248641	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63567" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilePEkxa5"
+1675854249024	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675854249029	Marionette	INFO	Listening on port 63576
+Read port: 63576
+WebDriver BiDi listening on ws://127.0.0.1:63567
+1675854249217	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilePEkxa5\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63567/devtools/browser/e0455d91-23d9-413c-bbc7-1c035610002b
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675854349206	Marionette	INFO	Stopped listening on port 63576
+Dynamically enable window occlusion 1
+1675854391190	geckodriver	INFO	Listening on 127.0.0.1:63734
+1675854394240	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63735" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilet4Q1BJ"
+1675854394597	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675854394602	Marionette	INFO	Listening on port 63744
+Read port: 63744
+WebDriver BiDi listening on ws://127.0.0.1:63735
+1675854394772	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilet4Q1BJ\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63735/devtools/browser/3c291415-7e05-42e1-a0cc-c3d8ec2f9c19
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675854614212	geckodriver	INFO	Listening on 127.0.0.1:63977
+1675854617433	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63978" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile6UQURF"
+1675854619195	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675854619200	Marionette	INFO	Listening on port 63992
+Read port: 63992
+WebDriver BiDi listening on ws://127.0.0.1:63978
+1675854619441	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile6UQURF\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:63978/devtools/browser/51a41ec4-c6b9-405b-b2ba-53743a56a00f
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675854797101	Marionette	INFO	Stopped listening on port 63992
+Dynamically enable window occlusion 1
+1675855792591	geckodriver	INFO	Listening on 127.0.0.1:64583
+1675855795805	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64584" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilemaqX1P"
+1675855797511	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675855797515	Marionette	INFO	Listening on port 64591
+Read port: 64591
+WebDriver BiDi listening on ws://127.0.0.1:64584
+1675855797667	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilemaqX1P\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:64584/devtools/browser/f29c7915-3463-4d08-9d4e-56037d0d8db9
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675855885265	Marionette	INFO	Stopped listening on port 64591
+Dynamically enable window occlusion 1
+1675856040029	geckodriver	INFO	Listening on 127.0.0.1:64710
+1675856043084	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64711" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile5q9mPz"
+1675856043545	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675856043550	Marionette	INFO	Listening on port 64718
+Read port: 64718
+WebDriver BiDi listening on ws://127.0.0.1:64711
+1675856043715	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile5q9mPz\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:64711/devtools/browser/49408cd4-d937-47fe-ab8a-707c8e801017
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675856233907	Marionette	INFO	Stopped listening on port 64718
+Dynamically enable window occlusion 1
+1675856814939	geckodriver	INFO	Listening on 127.0.0.1:64914
+1675856818013	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64915" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileR0qYKg"
+1675856818494	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675856818499	Marionette	INFO	Listening on port 64923
+Read port: 64923
+WebDriver BiDi listening on ws://127.0.0.1:64915
+1675856818692	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileR0qYKg\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:64915/devtools/browser/d6637651-70af-48e1-b3de-0182055e2ff7
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+JavaScript error: resource://gre/modules/XULStore.jsm, line 58: Error: Can't find profile directory.
+JavaScript error: resource://gre/modules/XULStore.jsm, line 58: Error: Can't find profile directory.
+1675856927565	Marionette	INFO	Stopped listening on port 64923
+Dynamically enable window occlusion 1

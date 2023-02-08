@@ -7,7 +7,8 @@ from utilities.customLogger import LogGen
 
 
 class DRPolicy:
-    btn_addNew_xpath = "//*[@id='retention_add_retention']/span/i"
+    btn_addNew_xpath = "//*[@id='policies_dr_policy_create_policy_btn']/span/i"
+
     txt_name_id = "policyName"
     rd_schedule_xpath = "//*[@id='policies_dr_policy_create_dr_policy']/div/div/div/form/div[2]/div[2]/div[1]/div[1]/div/div/input"
     rd_frequency_xpath = "//*[@id='policies_dr_policy_create_dr_policy']/div/div/div/form/div[2]/div[2]/div[1]/div[2]/div/div/input"
@@ -54,7 +55,7 @@ class DRPolicy:
             self.driver.find_element(By.XPATH, self.btn_addNew_xpath).click()
             time.sleep(5)
             name = sheet.cell(row=r, column=1).value
-            startTime = str(sheet.cell(row=r, column=2).value)
+            startTime = sheet.cell(row=r, column=2).value
             email = sheet.cell(row=r, column=3).value
             note1 = sheet.cell(row=r, column=4).value
             note2 = sheet.cell(row=r, column=5).value
@@ -134,13 +135,6 @@ class DRPolicy:
             time.sleep(5)
             self.driver.find_element(By.ID, self.btn_create_id).click()
             self.logger.info("********** Created no. " + str(r - 1) + " DR Policy with name " + sheet.cell(row=r, column=1).value + " **********")
-
-    def setVal(self, tmp, val):
-        if tmp < 10:
-            x = appe
-            val.select_by_value(x)
-        else:
-            val.select_by_index(tmp)
 
     def startPolicy(self, vals):
         for i in vals:
