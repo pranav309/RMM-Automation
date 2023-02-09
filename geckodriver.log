@@ -2447,3 +2447,361 @@ JavaScript error: resource://gre/modules/XULStore.jsm, line 58: Error: Can't fin
 JavaScript error: resource://gre/modules/XULStore.jsm, line 58: Error: Can't find profile directory.
 1675856927565	Marionette	INFO	Stopped listening on port 64923
 Dynamically enable window occlusion 1
+1675862084680	geckodriver	INFO	Listening on 127.0.0.1:49649
+1675862090315	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49650" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilel7FwzW"
+1675862093432	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675862093461	Marionette	INFO	Listening on port 49662
+Read port: 49662
+WebDriver BiDi listening on ws://127.0.0.1:49650
+1675862094200	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilel7FwzW\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:49650/devtools/browser/9583bc9a-b601-42dd-a123-c79488aa2cea
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675862272704	geckodriver	INFO	Listening on 127.0.0.1:49910
+1675862556575	geckodriver	INFO	Listening on 127.0.0.1:49993
+1675862559661	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49994" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileWxt3mc"
+1675862562312	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675862562327	Marionette	INFO	Listening on port 50001
+Read port: 50001
+WebDriver BiDi listening on ws://127.0.0.1:49994
+1675862562839	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileWxt3mc\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:49994/devtools/browser/c452f84a-7d65-45e6-af7b-31c49ebe9968
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675862822022	Marionette	INFO	Stopped listening on port 50001
+Dynamically enable window occlusion 1
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+!!! error running onStopped callback: TypeError: callback is not a function
+1675862822200	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:229
+cf584b4b
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675862815750	Marionette	INFO	Stopped listening on port 50170
+Dynamically enable window occlusion 1
+1675862990085	geckodriver	INFO	Listening on 127.0.0.1:50476
+1675862993100	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50477" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilePGeFyN"
+1675862995328	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675862995349	Marionette	INFO	Listening on port 50489
+Read port: 50489
+WebDriver BiDi listening on ws://127.0.0.1:50477
+1675862995830	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilePGeFyN\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50477/devtools/browser/e0f701a1-43d7-4600-a068-1efb809ed48e
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675863139103	geckodriver	INFO	Listening on 127.0.0.1:50699
+1675863142157	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50700" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilexXsZs9"
+1675863143306	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675863143322	Marionette	INFO	Listening on port 50709
+Read port: 50709
+WebDriver BiDi listening on ws://127.0.0.1:50700
+1675863143901	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilexXsZs9\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50700/devtools/browser/c16bf42f-4736-4d7a-bfad-b57b88809a65
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675863280399	geckodriver	INFO	Listening on 127.0.0.1:50948
+1675863283429	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50949" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofiledNvDpC"
+1675863284784	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675863284803	Marionette	INFO	Listening on port 50960
+Read port: 50960
+WebDriver BiDi listening on ws://127.0.0.1:50949
+1675863285396	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofiledNvDpC\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50949/devtools/browser/456cc862-078a-4c7f-ae8e-de2fe3b01f5c
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675863329079	geckodriver	INFO	Listening on 127.0.0.1:51105
+1675863332163	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51106" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileYO9fRs"
+1675863334126	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675863334144	Marionette	INFO	Listening on port 51116
+Read port: 51116
+WebDriver BiDi listening on ws://127.0.0.1:51106
+1675863334675	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileYO9fRs\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51106/devtools/browser/33cdbd3a-8275-404e-bc4f-87994859d6fb
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+NetworkHelper.parseSecurityInfo threw an exception: Security state 0 has no known STATE_IS_* flags.
+console.error: "Security state 0 has no known STATE_IS_* flags."
+console.error: (new TypeError("parent is null", "resource://devtools/client/inspector/shared/style-change-tracker.js", 67))
+TypeError: parent is null: canMutationImpactCurrentStyles@resource://devtools/client/inspector/shared/style-change-tracker.js:67:24
+onMutations@resource://devtools/client/inspector/shared/style-change-tracker.js:84:41
+_emit@resource://devtools/shared/event-emitter.js:242:32
+emit@resource://devtools/shared/event-emitter.js:186:18
+emit@resource://devtools/shared/event-emitter.js:330:18
+getMutations@resource://devtools/client/fronts/walker.js:313:10
+
+console.error: "Error while calling actor 'pagestyle's method 'getLayout'" "node is null"
+console.error: (new TypeError("node is null", "resource://devtools/server/actors/page-style.js", 1007))
+console.error: (new Error("Protocol error (TypeError): node is null from: server0.conn0.windowGlobal6442450945/pagestyle23 (resource://devtools/server/actors/page-style.js:1007:5)", "resource://devtools/shared/protocol/Front.js", 383))
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'DevToolsFrame'
+1675865279893	Marionette	INFO	Stopped listening on port 51116
+Dynamically enable window occlusion 1
+age for: https://172.29.30.127."
+1675864352089	Marionette	INFO	Stopped listening on port 51423
+Dynamically enable window occlusion 1
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+!!! error running onStopped callback: TypeError: callback is not a function
+1675864352383	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:229
+observe()@resource://gre/modules/AsyncShutdown.jsm:572
+on.sys.mjs: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 416))
+JavaScript error: resource://activity-stream/lib/PlacesFeed.jsm, line 230: NS_ERROR_ILLEGAL_VALUE: Component returned failure code: 0x80070057 (NS_ERROR_ILLEGAL_VALUE) [nsINavBookmarksService.removeObserver]
+1675863839639	Marionette	INFO	Stopped listening on port 51746
+Dynamically enable window occlusion 1
+1675863839935	CDP	WARN	Failed to remove undefined (Could not parse path (undefined): NS_ERROR_FILE_UNRECOGNIZED_PATH)
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+console.error: (new TypeError("NetworkError: Network request failed", "resource://services-settings/Utils.jsm", 230))
+1675863864028	geckodriver	INFO	Listening on 127.0.0.1:51802
+1675863867052	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51803" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile25j60o"
+1675863869158	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675863869175	Marionette	INFO	Listening on port 51817
+Read port: 51817
+WebDriver BiDi listening on ws://127.0.0.1:51803
+1675863869806	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile25j60o\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51803/devtools/browser/f5a4af62-f4c1-422f-b09e-222aa1c35021
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675864344593	Marionette	INFO	Stopped listening on port 51817
+Dynamically enable window occlusion 1
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+!!! error running onStopped callback: TypeError: callback is not a function
+1675864344766	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:229
+bfcd2b00
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675864337365	Marionette	INFO	Stopped listening on port 52054
+Dynamically enable window occlusion 1
+ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "52404" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileIrTVl9"
+1675864144930	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675864144946	Marionette	INFO	Listening on port 52419
+Read port: 52419
+WebDriver BiDi listening on ws://127.0.0.1:52404
+1675864145725	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileIrTVl9\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:52404/devtools/browser/b62e3fc8-3328-46b4-9c83-ec717246ab5c
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675864212265	Marionette	WARN	TimedPromise timed out after 500 ms: stacktrace:
+TimedPromise/<@chrome://remote/content/marionette/sync.sys.mjs:219:24
+TimedPromise@chrome://remote/content/marionette/sync.sys.mjs:204:10
+interaction.flushEventLoop@chrome://remote/content/marionette/interaction.sys.mjs:425:10
+webdriverClickElement@chrome://remote/content/marionette/interaction.sys.mjs:173:31
+1675864252676	Marionette	INFO	Stopped listening on port 52419
+Dynamically enable window occlusion 1
+1675864613842	geckodriver	INFO	Listening on 127.0.0.1:53071
+1675864616898	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "53072" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileCdElLs"
+1675864618914	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675864618930	Marionette	INFO	Listening on port 53082
+Read port: 53082
+WebDriver BiDi listening on ws://127.0.0.1:53072
+1675864619453	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileCdElLs\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53072/devtools/browser/d50f1d3d-da03-40e8-b613-6e68e79178d6
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675865262816	Marionette	INFO	Stopped listening on port 53082
+Dynamically enable window occlusion 1
+ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "53516" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileKTnLWE"
+1675865038866	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675865038882	Marionette	INFO	Listening on port 53531
+Read port: 53531
+WebDriver BiDi listening on ws://127.0.0.1:53516
+1675865039457	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileKTnLWE\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53516/devtools/browser/7864c28b-fbe0-4381-8df0-356c63a8a728
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675865136026	Marionette	INFO	Stopped listening on port 53531
+Dynamically enable window occlusion 1
+[Parent 19476, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:777
+1675865158241	geckodriver	INFO	Listening on 127.0.0.1:53733
+1675865161163	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "53734" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileoeSQhz"
+1675865162634	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675865162650	Marionette	INFO	Listening on port 53743
+Read port: 53743
+WebDriver BiDi listening on ws://127.0.0.1:53734
+1675865163192	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileoeSQhz\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:53734/devtools/browser/2cf6031b-172f-484b-a0a4-797f7a656e5d
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675865252099	Marionette	INFO	Stopped listening on port 53743
+Dynamically enable window occlusion 1
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+!!! error running onStopped callback: TypeError: callback is not a function
+1675865252489	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:229
+observe()@resource://gre/modules/AsyncShutdown.jsm:572
+1675942893456	geckodriver	INFO	Listening on 127.0.0.1:50662
+1675942896654	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50663" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileqIvBtH"
+1675942899443	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675942899449	Marionette	INFO	Listening on port 50689
+Read port: 50689
+WebDriver BiDi listening on ws://127.0.0.1:50663
+1675942900337	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileqIvBtH\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50663/devtools/browser/db59f6eb-679d-41ff-a207-f86e2cb973c4
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675943207244	Marionette	INFO	Stopped listening on port 50689
+Dynamically enable window occlusion 1
+ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50988" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile7G9Zoh"
+1675943070622	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675943070627	Marionette	INFO	Listening on port 51004
+Read port: 51004
+WebDriver BiDi listening on ws://127.0.0.1:50988
+1675943070795	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile7G9Zoh\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:50988/devtools/browser/b11a69c3-0bd2-40aa-9aa7-0a3303954c52
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675943207244	Marionette	INFO	Stopped listening on port 51004
+Dynamically enable window occlusion 1
+1675943390057	geckodriver	INFO	Listening on 127.0.0.1:51394
+1675943393090	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51395" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileoHJ1HH"
+1675943394770	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675943394775	Marionette	INFO	Listening on port 51405
+Read port: 51405
+WebDriver BiDi listening on ws://127.0.0.1:51395
+1675943394928	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileoHJ1HH\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51395/devtools/browser/3774f08b-d425-4610-92ae-843fb6f75d49
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675944527966	Marionette	INFO	Stopped listening on port 51405
+Dynamically enable window occlusion 1
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+!!! error running onStopped callback: TypeError: callback is not a function
+1675944531376	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:229
+observe()@resource://gre/modules/AsyncShutdown.jsm:572
+ synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675944520806	Marionette	INFO	Stopped listening on port 51599
+Dynamically enable window occlusion 1
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+!!! error running onStopped callback: TypeError: callback is not a function
+1675944521847	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:229
+/gre/modules/Region.sys.mjs", 764))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 416))
+DevTools listening on ws://127.0.0.1:51993/devtools/browser/15ae614e-3f85-4674-84aa-30dd3ea2fbdc
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+[GFX1-]: Killing GPU process due to IPC reply timeout
+1675944505063	Marionette	INFO	Stopped listening on port 52001
+Dynamically enable window occlusion 1
+[Parent 19928, IPC I/O Parent] WARNING: pipe error: 232: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:583
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Parent 19928, Main Thread] WARNING: base::KillProcess refusing to terminate process handle 0: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:347
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+A content process crashed and MOZ_CRASHREPORTER_SHUTDOWN is set, shutting down
+1675944511434	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:229
+!!! error running onStopped callback: TypeError: callback is not a function
+[GFX1-]: shader-cache: Timed out before finishing loads
+[2023-02-09T12:08:33Z ERROR webrender_bindings::program_cache] shader-cache: Timed out before finishing loads
+e errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileL6iu6B\\search.json.mozlz4", (void 0)))
+console.error: Region.sys.mjs: "Error fetching region" (new AbortError("The operation was aborted. ", (void 0), 762))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.sys.mjs", 416))
+DevTools listening on ws://127.0.0.1:52702/devtools/browser/3c69c0ef-1509-418d-9f38-54ad7036dcdc
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675944463718	Marionette	INFO	Stopped listening on port 52722
+Dynamically enable window occlusion 1
+JavaScript error: chrome://remote/content/marionette/cert.sys.mjs, line 51: NS_ERROR_NOT_AVAILABLE: Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]
+!!! error running onStopped callback: TypeError: callback is not a function
+1675944464126	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x80040111 (NS_ERROR_NOT_AVAILABLE) [nsICertOverrideService.setDisableAllSecurityChecksAndLetAttackersInterceptMyData]"  nsresult: "0x80040111 (NS_ERROR_NOT_AVAILABLE)"  location: "JS frame :: chrome://remote/content/marionette/cert.sys.mjs :: allowAllCerts.disable :: line 51"  data: no] Stack trace: allowAllCerts.disable()@sys.mjs:51
+destroy()@sys.mjs:201
+deleteSession()@sys.mjs:142
+stop()@sys.mjs:229
+ea5df05e
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675944452614	Marionette	INFO	Stopped listening on port 53048
+Dynamically enable window occlusion 1
+[Parent 28944, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:777
+1675947184859	geckodriver	INFO	Listening on 127.0.0.1:55173
+1675947187921	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55174" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileAn1cvP"
+1675947190579	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675947190583	Marionette	INFO	Listening on port 55184
+Read port: 55184
+WebDriver BiDi listening on ws://127.0.0.1:55174
+1675947190818	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileAn1cvP\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55174/devtools/browser/726300c9-d987-4697-9e9d-c3f1e333db4c
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675947548868	Marionette	INFO	Stopped listening on port 55184
+Dynamically enable window occlusion 1
+ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55342" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilea2qENR"
+1675947304277	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675947304287	Marionette	INFO	Listening on port 55350
+Read port: 55350
+WebDriver BiDi listening on ws://127.0.0.1:55342
+1675947305169	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilea2qENR\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:55342/devtools/browser/d0735bd1-d154-41e5-983e-991b100a7efd
+console.error: Region.sys.mjs: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 764))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 416))
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675947402234	Marionette	INFO	Stopped listening on port 55350
+Dynamically enable window occlusion 1
+1675947423223	geckodriver	INFO	Listening on 127.0.0.1:55527
+1675947426267	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55528" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileL0WO2P"
+1675947426733	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1675947426737	Marionette	INFO	Listening on port 55539
+Read port: 55539
+WebDriver BiDi listening on ws://127.0.0.1:55528
+1675947426960	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileL0WO2P\\search.json.mozlz4", (void 0)))
+console.error: Region.sys.mjs: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 764))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 416))
+DevTools listening on ws://127.0.0.1:55528/devtools/browser/5199a777-9861-468f-8008-65086a731550
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1675947509442	Marionette	INFO	Stopped listening on port 55539
+Dynamically enable window occlusion 1
+!!! error running onStopped callback: TypeError: callback is not a function

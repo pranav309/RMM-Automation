@@ -4,7 +4,7 @@ import py
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from pageObjects.loginPage import LoginPage
-from pageObjects.retentionPolicy import RetentionPolicy
+from pageObjects.retentionPolicyPage import RetentionPolicy
 from selenium.webdriver.common.by import By
 
 

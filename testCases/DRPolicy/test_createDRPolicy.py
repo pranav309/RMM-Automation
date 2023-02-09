@@ -3,7 +3,7 @@ import time
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from pageObjects.loginPage import LoginPage
-from pageObjects.drPolicy import DRPolicy
+from pageObjects.drPolicyPage import DRPolicy
 from selenium.webdriver.common.by import By
 
 
@@ -34,7 +34,7 @@ class Test_006_CreateDRPolicy:
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Policies").click()
         self.dr = DRPolicy(self.driver)
-        path = "./TestData/createDRPolicy.xlsx"
+        path = "./TestData/tp.xlsx"
         self.dr.createDRPolicy(path)
         time.sleep(5)
         self.logger.info("********** Create New DRPolicy Test Is Successful **********")

@@ -3,7 +3,7 @@ import time
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from pageObjects.loginPage import LoginPage
-from pageObjects.drPolicy import DRPolicy
+from pageObjects.drPolicyPage import DRPolicy
 from selenium.webdriver.common.by import By
 
 

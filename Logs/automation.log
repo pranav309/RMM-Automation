@@ -55,6 +55,7 @@
 02/08/23 05:/07:/00 PM: INFO: ********** Create New DRPolicy Test Is Successful **********:
 02/08/23 05:/07:/13 PM: INFO: ********** Logout Successful **********:
 02/08/23 05:/07:/14 PM: INFO: ********** Browser Closed Successfully **********:
+
 02/08/23 05:/17:/00 PM: INFO: ********** Test_008_CreateRetentionPolicy ********** :
 02/08/23 05:/17:/00 PM: INFO: ********** Opening Browser ********** :
 02/08/23 05:/17:/14 PM: INFO: ********** Browser Opened Successfully **********:
@@ -63,3 +64,135 @@
 02/08/23 05:/18:/34 PM: INFO: ********** Create New Retention Policy Test Is Successful **********:
 02/08/23 05:/18:/47 PM: INFO: ********** Logout Successful **********:
 02/08/23 05:/18:/48 PM: INFO: ********** Browser Closed Successfully **********:
+02/08/23 06:/45:/04 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 06:/45:/04 PM: INFO: ********** Opening Browser ********** :
+02/08/23 06:/45:/19 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 06:/45:/39 PM: INFO: ********** Login Successful **********:
+02/08/23 06:/45:/39 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 06:/52:/49 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 06:/52:/49 PM: INFO: ********** Opening Browser ********** :
+02/08/23 06:/53:/07 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 06:/53:/27 PM: INFO: ********** Login Successful **********:
+02/08/23 06:/53:/27 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 06:/55:/07 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 06:/55:/07 PM: INFO: ********** Opening Browser ********** :
+02/08/23 06:/55:/22 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 06:/55:/42 PM: INFO: ********** Login Successful **********:
+02/08/23 06:/55:/42 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 07:/00:/02 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 07:/00:/02 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/00:/16 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/00:/36 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/00:/36 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 07:/02:/30 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 07:/02:/30 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/02:/44 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/03:/05 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/03:/05 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 07:/04:/50 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 07:/04:/50 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/05:/04 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/05:/40 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 07:/05:/40 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/05:/53 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/06:/14 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/06:/14 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 07:/10:/15 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 07:/10:/15 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/10:/32 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/10:/52 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/10:/52 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 07:/14:/37 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 07:/14:/37 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/14:/54 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/15:/14 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/15:/14 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 07:/16:/25 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 07:/16:/25 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/16:/41 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/17:/01 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/17:/01 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 07:/19:/15 PM: INFO: ********** Test_009_StartWave ********** :
+02/08/23 07:/19:/15 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/19:/31 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/19:/51 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/19:/51 PM: INFO: ********** Starting Start Wave Test **********:
+02/08/23 07:/20:/38 PM: INFO: ********** Add New Host Test Is Successful **********:
+02/08/23 07:/20:/52 PM: INFO: ********** Logout Successful **********:
+02/08/23 07:/20:/56 PM: INFO: ********** Browser Closed Successfully **********:
+02/08/23 07:/27:/07 PM: INFO: ********** Test_006_CreateDRPolicy ********** :
+02/08/23 07:/27:/07 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/27:/22 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/27:/43 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/27:/43 PM: INFO: ********** Starting Create New DRPolicy Test **********:
+02/08/23 07:/34:/12 PM: INFO: ********** Test_006_CreateDRPolicy ********** :
+02/08/23 07:/34:/13 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/34:/30 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/34:/51 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/34:/51 PM: INFO: ********** Starting Create New DRPolicy Test **********:
+02/08/23 07:/36:/10 PM: INFO: ********** Test_006_CreateDRPolicy ********** :
+02/08/23 07:/36:/10 PM: INFO: ********** Opening Browser ********** :
+02/08/23 07:/36:/26 PM: INFO: ********** Browser Opened Successfully **********:
+02/08/23 07:/36:/46 PM: INFO: ********** Login Successful **********:
+02/08/23 07:/36:/46 PM: INFO: ********** Starting Create New DRPolicy Test **********:
+02/09/23 05:/11:/48 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 05:/11:/48 PM: INFO: ********** Opening Browser ********** :
+02/09/23 05:/12:/03 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 05:/12:/23 PM: INFO: ********** Login Successful **********:
+02/09/23 05:/12:/23 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 05:/14:/33 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 05:/14:/33 PM: INFO: ********** Opening Browser ********** :
+02/09/23 05:/14:/46 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 05:/15:/08 PM: INFO: ********** Login Successful **********:
+02/09/23 05:/15:/08 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 05:/19:/59 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 05:/19:/59 PM: INFO: ********** Opening Browser ********** :
+02/09/23 05:/20:/11 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 05:/20:/31 PM: INFO: ********** Login Successful **********:
+02/09/23 05:/20:/31 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 05:/22:/01 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 05:/22:/01 PM: INFO: ********** Opening Browser ********** :
+02/09/23 05:/22:/13 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 05:/22:/33 PM: INFO: ********** Login Successful **********:
+02/09/23 05:/22:/33 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 05:/26:/31 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 05:/26:/31 PM: INFO: ********** Opening Browser ********** :
+02/09/23 05:/26:/53 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 05:/27:/13 PM: INFO: ********** Login Successful **********:
+02/09/23 05:/27:/13 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 05:/29:/30 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 05:/29:/30 PM: INFO: ********** Opening Browser ********** :
+02/09/23 05:/29:/49 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 05:/30:/11 PM: INFO: ********** Login Successful **********:
+02/09/23 05:/30:/11 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 05:/31:/36 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 05:/31:/36 PM: INFO: ********** Opening Browser ********** :
+02/09/23 05:/31:/51 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 05:/32:/12 PM: INFO: ********** Login Successful **********:
+02/09/23 05:/32:/12 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 05:/34:/00 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 05:/34:/00 PM: INFO: ********** Opening Browser ********** :
+02/09/23 05:/35:/07 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 05:/35:/28 PM: INFO: ********** Login Successful **********:
+02/09/23 05:/35:/28 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 06:/23:/18 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 06:/23:/18 PM: INFO: ********** Opening Browser ********** :
+02/09/23 06:/23:/31 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 06:/23:/51 PM: INFO: ********** Login Successful **********:
+02/09/23 06:/23:/51 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 06:/25:/11 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 06:/25:/11 PM: INFO: ********** Opening Browser ********** :
+02/09/23 06:/25:/24 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 06:/25:/45 PM: INFO: ********** Login Successful **********:
+02/09/23 06:/25:/45 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 06:/26:/28 PM: INFO: ********** Add Cloud User Test Is Successful **********:
+02/09/23 06:/26:/42 PM: INFO: ********** Logout Successful **********:
+02/09/23 06:/26:/43 PM: INFO: ********** Browser Closed Successfully **********:
+02/09/23 06:/27:/14 PM: INFO: ********** Test_009_AddCloudUser ********** :
+02/09/23 06:/27:/14 PM: INFO: ********** Opening Browser ********** :
+02/09/23 06:/27:/26 PM: INFO: ********** Browser Opened Successfully **********:
+02/09/23 06:/27:/46 PM: INFO: ********** Login Successful **********:
+02/09/23 06:/27:/46 PM: INFO: ********** Starting Add Cloud User Test **********:
+02/09/23 06:/28:/15 PM: INFO: ********** Add Cloud User Test Is Successful **********:
+02/09/23 06:/28:/29 PM: INFO: ********** Logout Successful **********:
+02/09/23 06:/28:/31 PM: INFO: ********** Browser Closed Successfully **********:
