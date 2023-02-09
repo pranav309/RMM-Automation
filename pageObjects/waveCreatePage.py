@@ -95,11 +95,6 @@ class WavePage:
                 self.driver.find_element(By.XPATH, self.btn_createWave_xpath).click()
                 time.sleep(3)
                 self.driver.find_element(By.XPATH, self.img_createNewWave_xpath).click()
-            # element = WebDriverWait(self.driver, 30).until(
-            #     EC.element_to_be_clickable((By.ID, self.lnk_createWave_id))
-            # )
-            # element.click()
-            # self.driver.find_element(By.XPATH, self.img_createNewWave_xpath).click()
             self.driver.find_element(By.ID, self.rd_waveWithHost_id).click()
             waveName = sheet.cell(row=r, column=1).value
             val = sheet.cell(row=r, column=2).value

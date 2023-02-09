@@ -126,8 +126,9 @@ class DRPolicy:
             elif periodicity == "Continuous":
                 self.driver.find_element(By.XPATH, self.rd_continuous_xpath).click()
 
-            self.driver.find_element(By.XPATH, self.txt_email_xpath).send_keys(email)
-            self.driver.find_element(By.XPATH, self.btn_add_xpath).click()
+            for i in email:
+                self.driver.find_element(By.XPATH, self.txt_email_xpath).send_keys(i)
+                self.driver.find_element(By.XPATH, self.btn_add_xpath).click()
             if note1:
                 self.driver.find_element(By.XPATH, self.chBox_failNote_xpath).click()
             if note2:
