@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utilities.customLogger import LogGen
 
 
 class WaveOperations:
@@ -25,23 +26,38 @@ class WaveOperations:
     btn_assignPolicy_id = "wave_detail_wave_policy_assign_policy_btn"
     btn_removePolicy_id = "wave_detail_wave_policy_remove_policy_btn"
 
+    logger = LogGen.loggen()
+
     def __init__(self, driver):
         self.driver = driver
 
     def startWave(self, waveNames):
         for i in waveNames:
+            time.sleep(5)
             self.driver.find_element(By.XPATH, '//*[@id="waves_'+i+'_wave_name"]').click()
             start = WebDriverWait(self.driver, 30).until(
                 EC.element_to_be_clickable((By.ID, self.btn_start_id))
             )
             start.click()
-            confirm = WebDriverWait(self.driver, 30).until(
-                EC.element_to_be_clickable((By.XPATH, self.btn_startConfirm_xpath))
-            )
-            confirm.click()
-            time.sleep(3)
-            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            # confirm = WebDriverWait(self.driver, 30).until(
+            #     EC.element_to_be_clickable((By.XPATH, self.btn_startConfirm_xpath))
+            # )
+            # confirm.click()
             time.sleep(5)
+            WebDriverWait(self.driver, 3600).until(
+                EC.element_to_be_clickable((By.ID, self.btn_start_id))
+            )
+            time.sleep(10)
+            totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+            for hostNo in range(1, totalHosts+1):
+                elem = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[6]/span/span/span'))
+                if elem == 0:
+                    self.logger.info("********** Host Number : "+str(hostNo)+", Sync Successful **********")
+                else:
+                    self.logger.info("********** Host Number : "+str(hostNo)+", Sync Failed **********")
+                time.sleep(5)
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def restartHost(self, val):
         self.driver.find_element(By.CSS_SELECTOR, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()

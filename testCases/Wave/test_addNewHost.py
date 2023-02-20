@@ -30,7 +30,7 @@ class Test_005_AddHost:
         self.logger.info("********** Starting Add New Host Test **********")
         path = "./TestData/addNewHost.xlsx"
         self.addHost = WavePage(self.driver)
-        self.addHost.addNewHost(path)
+        self.addHost.addHostToWaves(path)
         time.sleep(5)
         self.logger.info("********** Add New Host Test Is Successful **********")
         self.lp.clickOnLogout()

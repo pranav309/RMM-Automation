@@ -1,20 +1,20 @@
 import time
 
-from selenium.webdriver.common.by import By
+from pageObjects.waveCreatePage import WavePage
+from pageObjects.waveOperationsPage import WaveOperations
+from pageObjects.loginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.loginPage import LoginPage
-from pageObjects.configurationPage import Configuration
 
 
-class Test_010_AddCloudUser:
+class Test_011_CreateAndStartWave:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUsername()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()
 
-    def test_createWaveWithHost(self, setup):
-        self.logger.info("********** Test_010_AddCloudUser ********** ")
+    def test_createAndStartWave(self, setup):
+        self.logger.info("********** Test_011_CreateAndStartWave ********** ")
         self.logger.info("********** Opening Browser ********** ")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -28,16 +28,15 @@ class Test_010_AddCloudUser:
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
 
-        self.logger.info("********** Starting Add Cloud User Test **********")
-        time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Configuration").click()
-        time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Clouduser").click()
-        path = "./TestData/addCloudUser.xlsx"
-        self.addUser = Configuration(self.driver)
-        self.addUser.addNewCloudUser(path)
-        time.sleep(5)
-        self.logger.info("********** Add Cloud User Test Is Successful **********")
+        self.logger.info("********** Creating New Wave With Host **********")
+        path = "./TestData/createWaveWithHost.xlsx"
+        self.crtWave = WavePage(self.driver)
+        self.crtWave.createWaveWithHost(path)
+        self.logger.info("********** Successful Created New Wave With Host **********")
+        self.logger.info("********** Starting A Wave **********")
+        self.startWave = WaveOperations(self.driver)
+        self.startWave.startWave(["test"])
+        self.logger.info("********** Successful Started A Wave **********")
         self.lp.clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()

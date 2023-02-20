@@ -7,14 +7,14 @@ from pageObjects.loginPage import LoginPage
 from pageObjects.configurationPage import Configuration
 
 
-class Test_010_AddCloudUser:
+class Test_011_AddVCenter:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUsername()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()
 
     def test_createWaveWithHost(self, setup):
-        self.logger.info("********** Test_010_AddCloudUser ********** ")
+        self.logger.info("********** Test_011_AddVCenter ********** ")
         self.logger.info("********** Opening Browser ********** ")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -28,16 +28,16 @@ class Test_010_AddCloudUser:
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
 
-        self.logger.info("********** Starting Add Cloud User Test **********")
+        self.logger.info("********** Starting Add vCenter Test **********")
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Configuration").click()
         time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Clouduser").click()
-        path = "./TestData/addCloudUser.xlsx"
+        self.driver.find_element(By.LINK_TEXT, "vCenter").click()
+        path = "./TestData/addVcenter.xlsx"
         self.addUser = Configuration(self.driver)
-        self.addUser.addNewCloudUser(path)
+        self.addUser.addVCenter(path)
         time.sleep(5)
-        self.logger.info("********** Add Cloud User Test Is Successful **********")
+        self.logger.info("********** Add vCenter Test Is Successful **********")
         self.lp.clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()

@@ -24,7 +24,7 @@ class Test_001_Login:
         self.driver.maximize_window()
         time.sleep(10)
         act_title = self.driver.title
-        if act_title == "RMM - v7.4.3.10":
+        if act_title == "RMM - v7.4.3.19":
             self.driver.close()
             self.logger.info("******* Home Page Title Test Is Passes ******* ")
             assert True
@@ -48,7 +48,7 @@ class Test_001_Login:
         self.lp.clickOnLogin()
         time.sleep(10)
         act_title = self.driver.title
-        if act_title == "RMM - v7.4.3.10":
+        if act_title == "RMM - v7.4.3.19":
             self.driver.close()
             self.logger.info("************ Login Test Is Passed ************ ")
             assert True

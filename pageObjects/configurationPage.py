@@ -2,14 +2,12 @@ import time
 import openpyxl
 
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
 from utilities.customLogger import LogGen
 
 
 class Configuration:
-    # Common Data
+    # Common Data for Cloud Users
     btn_add_id = "conf_cu_add_btn"
     btn_edit_id = "conf_cu_edit_btn"
     btn_delete_id = "conf_cu_del_btn"
@@ -42,7 +40,7 @@ class Configuration:
     txt_IBMapiKey_id = "apikey"
 
     # CloudStack
-    txt_CSApiUrl_id= "cloudstack_apiUrl"
+    txt_CSApiUrl_id = "cloudstack_apiUrl"
     txt_CSApiKey_id = "cloudstack_apiKey"
     txt_CSSecretKey_id = "cloudstack_secretKey"
     txt_CSDomainId_id = "cloudstack_domainid"
@@ -80,6 +78,16 @@ class Configuration:
     txt_ZadaraApiUrl_id = "zadara_apirul"
     txt_ZadaraRegion_id = "zadara_region"
 
+    # VCenter data
+    txt_addVC_xpath = "//*[@id='conf_vc_add_btn']/span"
+    txt_VCName_id = "name"
+    txt_VCipAddress_id = "address"
+    txt_VCUserName_id = "username"
+    txt_VCPassword_id = "password"
+    txt_VCPort_id = "port"
+
+    logger = LogGen.loggen()
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -105,6 +113,8 @@ class Configuration:
                 self.driver.find_element(By.ID, self.txt_AWSAccessKey_id).send_keys(accessKey)
                 self.driver.find_element(By.ID, self.txt_AWSSecretAccessKey_id).send_keys(secretAccessKey)
 
+                self.logger.info("********** AWS Cloud User Is Added... **********")
+
             elif cloudProvider == "Azure":
                 subscriptionId = sheet.cell(row=r, column=5).value
                 tenantId = sheet.cell(row=r, column=6).value
@@ -121,6 +131,8 @@ class Configuration:
                 ct.select_by_visible_text(cloudType)
                 self.driver.find_element(By.XPATH, self.drp_AzureDataCentre_xpath).send_keys(dataCentre)
 
+                self.logger.info("********** Azure Cloud User Is Added... **********")
+
             elif cloudProvider == "Google":
                 fileUploadMethod = sheet.cell(row=r, column=11).value
                 filePath = sheet.cell(row=r, column=12).value
@@ -134,6 +146,8 @@ class Configuration:
                     self.driver.find_element(By.ID, self.txt_GGLPathOnRMM_id).send_keys(filePath)
                 self.driver.find_element(By.ID, self.txt_GGLProjectId_id).send_keys(projectId)
 
+                self.logger.info("********** Google Cloud User Is Added... **********")
+
             elif cloudProvider == "IBM Cloud VPC":
                 region = sheet.cell(row=r, column=14).value
                 apiKey = sheet.cell(row=r, column=15).value
@@ -141,6 +155,8 @@ class Configuration:
                 time.sleep(5)
                 self.driver.find_element(By.XPATH, self.drp_IBMRegion_xpath).send_keys(region)
                 self.driver.find_element(By.ID, self.txt_IBMapiKey_id).send_keys(apiKey)
+
+                self.logger.info("********** IBM Cloud VPC Cloud User Is Added... **********")
 
             elif cloudProvider == "CloudStack":
                 apiUrl = sheet.cell(row=r, column=16).value
@@ -154,6 +170,8 @@ class Configuration:
                 self.driver.find_element(By.ID, self.txt_CSApiKey_id).send_keys(apiKey)
                 self.driver.find_element(By.ID, self.txt_CSSecretKey_id).send_keys(secretKey)
                 self.driver.find_element(By.ID, self.txt_CSDomainId_id).send_keys(domainId)
+
+                self.logger.info("********** CloudStack Cloud User Is Added... **********")
 
             elif cloudProvider == "OCI":
                 userId = sheet.cell(row=r, column=20).value
@@ -194,6 +212,8 @@ class Configuration:
                     self.driver.find_element(By.XPATH, self.rd_OCICertFilePath_xpath).click()
                     self.driver.find_element(By.XPATH, self.txt_OCICertPathOnRMM_id).send_keys(certFilePath)
 
+                self.logger.info("********** OCI Cloud User Is Added... **********")
+
             elif cloudProvider == "Softlayer":
                 userName = sheet.cell(row=r, column=32).value
                 apiKey = sheet.cell(row=r, column=33).value
@@ -208,6 +228,8 @@ class Configuration:
                 if hourly:
                     self.driver.find_element(By.ID, self.chBox_SLHourly_id).click()
 
+                self.logger.info("********** Softlayer Cloud User Is Added... **********")
+
             elif cloudProvider == "Zadara":
                 accessKey = sheet.cell(row=r, column=37).value
                 secretAccessKey = sheet.cell(row=r, column=38).value
@@ -219,5 +241,27 @@ class Configuration:
                 self.driver.find_element(By.ID, self.txt_ZadaraApiUrl_id).send_keys(apiUrl)
                 self.driver.find_element(By.ID, self.txt_ZadaraRegion_id).send_keys(region)
 
+                self.logger.info("********** Zadara Cloud User Is Added... **********")
+
             time.sleep(5)
             self.driver.find_element(By.ID, self.btn_cancel_id).click()
+
+    def addVCenter(self, path):
+        workBook = openpyxl.load_workbook(path)
+        sheet = workBook.active
+        rows = sheet.max_row
+        for r in range(2, rows + 1):
+            name = sheet.cell(row=r, column=1).value
+            ipAddress = sheet.cell(row=r, column=2).value
+            userName = sheet.cell(row=r, column=3).value
+            password = sheet.cell(row=r, column=4).value
+            portNumber = sheet.cell(row=r, column=5).value
+
+            time.sleep(5)
+            self.driver.find_element(By.XPATH, self.txt_addVC_xpath).click()
+            self.driver.find_element(By.ID, self.txt_VCName_id).send_keys(name)
+            self.driver.find_element(By.ID, self.txt_VCipAddress_id).send_keys(ipAddress)
+            self.driver.find_element(By.ID, self.txt_VCUserName_id).send_keys(userName)
+            self.driver.find_element(By.ID, self.txt_VCPassword_id).send_keys(password)
+            self.driver.find_element(By.ID, self.txt_VCPort_id).send_keys(portNumber)
+            time.sleep(5)
