@@ -14,7 +14,6 @@ class WaveOperations:
     btn_stop_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_stop_replications']/span/i"
     btn_pause_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_pause_replications']/span/i"
     btn_add_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_add_machine']/span/i"
-    btn_failOver_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_drPolicyFailover']/span/i"
     btn_fallBack_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_drPolicyFallback']/span/i"
     btn_bulkEdit_xpath = "//*[@id='content']/article/div/div[2]/p-table/div/div[1]/div[1]/button[8]/span/i"
 
@@ -25,6 +24,15 @@ class WaveOperations:
     chBox_startNow_id = "wave_detail_wave_policy_start_now"
     btn_assignPolicy_id = "wave_detail_wave_policy_assign_policy_btn"
     btn_removePolicy_id = "wave_detail_wave_policy_remove_policy_btn"
+
+    # Failover
+    btn_failOver_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_drPolicyFailover']/span/i"
+    ch_testMode_id = "wave_detail_failover_testmode"
+    btn_failoverYes_id = "wave_detail_failover_yes_btn"
+
+    # Fallback
+    btn_fallBack_id = "wave_policy_wave_policy_wave_detail_drPolicyFallback"
+    btn_fallBackYes_id = "wave_detail_dr_fallback_yes_btn"
 
     logger = LogGen.loggen()
 
@@ -39,12 +47,8 @@ class WaveOperations:
                 EC.element_to_be_clickable((By.ID, self.btn_start_id))
             )
             start.click()
-            # confirm = WebDriverWait(self.driver, 30).until(
-            #     EC.element_to_be_clickable((By.XPATH, self.btn_startConfirm_xpath))
-            # )
-            # confirm.click()
             time.sleep(5)
-            WebDriverWait(self.driver, 3600).until(
+            WebDriverWait(self.driver, 18000).until(
                 EC.element_to_be_clickable((By.ID, self.btn_start_id))
             )
             time.sleep(10)
@@ -59,6 +63,33 @@ class WaveOperations:
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
+    def failoverHost(self, waveName, testMode):
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.btn_failOver_xpath).click()
+        time.sleep(5)
+        if testMode:
+            self.driver.find_element(By.ID, self.ch_testMode_id).click()
+        self.driver.find_element(By.ID, self.btn_failoverYes_id).click()
+        WebDriverWait(self.driver, 18000).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_fallBack_id))
+        )
+        self.driver.find_element(By.LINK_TEXT, "Waves")
+
+    def fallbackHost(self, waveName):
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.btn_fallBack_id).click()
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.btn_fallBackYes_id).click()
+        time.sleep(5)
+        WebDriverWait(self.driver, 18000).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_failOver_xpath))
+        )
+        self.driver.find_element(By.LINK_TEXT, "Waves")
+
     def restartHost(self, val):
         self.driver.find_element(By.CSS_SELECTOR, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
         self.driver.find_element(By.XPATH, self.btn_restart_xpath).click()
@@ -70,18 +101,6 @@ class WaveOperations:
     def pauseHost(self, val):
         self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
         self.driver.find_element(By.XPATH, self.btn_pause_xpath).click()
-
-    def failoverHost(self, val):
-        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
-        self.driver.find_element(By.XPATH, self.btn_failOver_xpath).click()
-
-    def fallbackHost(self, val):
-        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
-        self.driver.find_element(By.XPATH, self.btn_fallBack_xpath).click()
-
-    def bulkEditHosts(self, val):
-        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
-        self.driver.find_element(By.XPATH, self.btn_bulkEdit_xpath).click()
 
     def deleteHost(self, val):
         self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()

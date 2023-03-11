@@ -1,16 +1,75 @@
-02/20/23 11:/39:/33 AM: INFO: ********** Test_012_CreateAndBulkEditWave ********** :
-02/20/23 11:/39:/33 AM: INFO: ********** Opening Browser ********** :
-02/20/23 11:/39:/50 AM: INFO: ********** Browser Opened Successfully **********:
-02/20/23 11:/40:/10 AM: INFO: ********** Login Successful **********:
-02/20/23 11:/40:/10 AM: INFO: ********** Creating New Wave Without Host **********:
-02/20/23 11:/42:/45 AM: INFO: ********** Successful Created New Wave With Host **********:
-02/20/23 11:/43:/02 AM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-02/20/23 11:/43:/02 AM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-02/20/23 11:/43:/23 AM: INFO: ********** Starting A Wave **********:
-02/20/23 11:/48:/03 AM: INFO: ********** Host Number : 1, Sync Successful **********:
-02/20/23 11:/48:/08 AM: INFO: ********** Host Number : 2, Sync Failed **********:
-02/20/23 11:/48:/13 AM: INFO: ********** Host Number : 3, Sync Successful **********:
-02/20/23 11:/48:/18 AM: INFO: ********** Host Number : 4, Sync Failed **********:
-02/20/23 11:/48:/28 AM: INFO: ********** Successful Started A Wave **********:
-02/20/23 11:/48:/42 AM: INFO: ********** Logout Successful **********:
-02/20/23 11:/48:/45 AM: INFO: ********** Browser Closed Successfully **********:
+02/24/23 04:/24:/11 PM: INFO: ********** Test_013_CreateAndStartWave ********** :
+02/24/23 04:/24:/11 PM: INFO: ********** Opening Browser ********** :
+02/24/23 04:/24:/30 PM: INFO: ********** Browser Opened Successfully **********:
+02/24/23 04:/24:/50 PM: INFO: ********** Login Successful **********:
+02/24/23 04:/24:/50 PM: INFO: ********** Creating New Wave With Host **********:
+02/24/23 04:/27:/25 PM: INFO: ********** Successful Created New Wave With Host **********:
+02/24/23 04:/29:/05 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+02/24/23 04:/29:/26 PM: INFO: ********** Starting A Wave **********:
+02/24/23 06:/12:/00 PM: INFO: ********** Host Number : 1, Sync Failed **********:
+02/24/23 06:/12:/06 PM: INFO: ********** Host Number : 2, Sync Successful **********:
+02/24/23 06:/12:/11 PM: INFO: ********** Host Number : 3, Sync Successful **********:
+02/24/23 06:/12:/16 PM: INFO: ********** Host Number : 4, Sync Successful **********:
+02/24/23 06:/12:/27 PM: INFO: ********** Successful Started A Wave **********:
+02/24/23 06:/12:/41 PM: INFO: ********** Logout Successful **********:
+02/24/23 06:/12:/49 PM: INFO: ********** Browser Closed Successfully **********:
+
+03/01/23 06:/29:/50 PM: INFO: ********** Test_014_FailoverAndFallback ********** :
+03/01/23 06:/29:/50 PM: INFO: ********** Opening Browser ********** :
+03/01/23 06:/30:/02 PM: INFO: ********** Browser Opened Successfully **********:
+03/01/23 06:/30:/23 PM: INFO: ********** Login Successful **********:
+03/01/23 06:/30:/23 PM: INFO: ********** Creating New Wave With Host **********:
+03/01/23 06:/30:/31 PM: INFO: ********** Creating no. 2 wave with Target Type Autoprovision **********:
+03/01/23 06:/31:/04 PM: INFO: ********** Successful Created New Wave With Host **********:
+03/01/23 06:/31:/04 PM: INFO: ********** Setting Autoprovision For Wave **********:
+03/01/23 06:/32:/10 PM: INFO: ********** Successfully Set Autoprovision For Wave **********:
+03/01/23 06:/32:/10 PM: INFO: ********** Setting Sync Options For The Wave **********:
+03/01/23 06:/32:/10 PM: INFO: ********** Successfully Set Sync Options For The Wave **********:
+03/01/23 06:/32:/10 PM: INFO: ********** Assigning DR Policy To The Wave **********:
+03/01/23 06:/32:/45 PM: INFO: ********** Successfully Assigned DR Policy To The Wave **********:
+03/01/23 06:/32:/45 PM: INFO: ********** Starting A Wave **********:
+03/01/23 06:/33:/19 PM: INFO: ********** Host Number : 1, Sync Failed **********:
+03/01/23 06:/33:/30 PM: INFO: ********** Successful Started A Wave **********:
+03/01/23 06:/33:/30 PM: INFO: ********** Starting A Failover for Wave **********:
+
+03/11/23 03:/34:/45 PM: INFO: ********** Test_015_addOCIcu ********** :
+03/11/23 03:/34:/45 PM: INFO: ********** Opening Browser ********** :
+03/11/23 03:/34:/56 PM: INFO: ********** Browser Opened Successfully **********:
+03/11/23 03:/35:/16 PM: INFO: ********** Login Successful **********:
+03/11/23 03:/35:/16 PM: INFO: ********** Creating New Wave With Host **********:
+03/11/23 03:/35:/24 PM: INFO: ********** Creating no. 2 wave with Target Type Autoprovision **********:
+03/11/23 03:/35:/57 PM: INFO: ********** Successful Created New Wave With Host **********:
+03/11/23 03:/35:/57 PM: INFO: ********** Setting OCI Autoprovision For Wave **********:
+03/11/23 03:/36:/45 PM: INFO: ********** Successfully Set OCI Autoprovision For Wave **********:
+03/11/23 03:/36:/45 PM: INFO: ********** Setting Sync Options For The Wave **********:
+03/11/23 03:/39:/31 PM: INFO: ********** Test_015_addOCIcu ********** :
+03/11/23 03:/39:/31 PM: INFO: ********** Opening Browser ********** :
+03/11/23 03:/40:/22 PM: INFO: ********** Browser Opened Successfully **********:
+03/11/23 03:/40:/42 PM: INFO: ********** Login Successful **********:
+03/11/23 03:/40:/42 PM: INFO: ********** Creating New Wave With Host **********:
+03/11/23 03:/40:/51 PM: INFO: ********** Creating no. 2 wave with Target Type Autoprovision **********:
+03/11/23 03:/41:/24 PM: INFO: ********** Successful Created New Wave With Host **********:
+03/11/23 03:/41:/24 PM: INFO: ********** Setting OCI Autoprovision For Wave **********:
+03/11/23 03:/43:/23 PM: INFO: ********** Test_015_addOCIcu ********** :
+03/11/23 03:/43:/23 PM: INFO: ********** Opening Browser ********** :
+03/11/23 03:/43:/35 PM: INFO: ********** Browser Opened Successfully **********:
+03/11/23 03:/43:/55 PM: INFO: ********** Login Successful **********:
+03/11/23 03:/43:/55 PM: INFO: ********** Creating New Wave With Host **********:
+03/11/23 03:/44:/04 PM: INFO: ********** Creating no. 2 wave with Target Type Autoprovision **********:
+03/11/23 03:/44:/37 PM: INFO: ********** Successful Created New Wave With Host **********:
+03/11/23 03:/44:/37 PM: INFO: ********** Setting OCI Autoprovision For Wave **********:
+03/11/23 03:/47:/17 PM: INFO: ********** Test_015_addOCIcu ********** :
+03/11/23 03:/47:/17 PM: INFO: ********** Opening Browser ********** :
+03/11/23 03:/47:/27 PM: INFO: ********** Browser Opened Successfully **********:
+03/11/23 03:/47:/47 PM: INFO: ********** Login Successful **********:
+03/11/23 03:/47:/47 PM: INFO: ********** Creating New Wave With Host **********:
+03/11/23 03:/47:/56 PM: INFO: ********** Creating no. 2 wave with Target Type Autoprovision **********:
+03/11/23 03:/48:/28 PM: INFO: ********** Successful Created New Wave With Host **********:
+03/11/23 03:/48:/28 PM: INFO: ********** Setting OCI Autoprovision For Wave **********:
+03/11/23 03:/49:/21 PM: INFO: ********** Successfully Set OCI Autoprovision For Wave **********:
+03/11/23 03:/49:/21 PM: INFO: ********** Setting Sync Options For The Wave **********:
+03/11/23 03:/49:/43 PM: INFO: ********** Sync Option 'Verbose' is set **********:
+03/11/23 03:/49:/43 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
+03/11/23 03:/49:/53 PM: INFO: ********** Successfully Set Sync Options For The Wave **********:
+03/11/23 03:/50:/07 PM: INFO: ********** Logout Successful **********:
+03/11/23 03:/50:/08 PM: INFO: ********** Browser Closed Successfully **********:

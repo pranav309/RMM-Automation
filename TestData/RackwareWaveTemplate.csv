@@ -1,4 +1,0 @@
-Origin Name,Origin IP,Target Name,Target IP,Origin Username,Origin Password,Target Username,Target Password,Clonename,OS,Image Name,Shape,Network Interface,ssh only,cluster,vm folder,resource pool,datacenter,route,operation
-mylinux,10.0.0.1,mylinux-target,20.0.0.1,root,rackware,root,rackware,mylinux-image,,mylinux-image,,,,,,,,,
-mywindows,10.0.0.2,mywindows-target,20.0.0.2,root,rackware,root,rackware,mywindows-image,,mywindows-image,,,,,,,,,
-mylinux2,10.0.0.3,mylinux2-target,,root,,,,mylinux2-image,,mylinux2-image,,,,,,,,,
