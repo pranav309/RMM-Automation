@@ -1,5 +1,6 @@
 import time
 import openpyxl
+import keyboard
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -62,59 +63,37 @@ class SyncOptions:
     rd_deleteAllTargetFS_id = "wave_detail_edit_item_options_delete_all_target_fs"
     rd_keepTargetLayout_id = "wave_detail_edit_item_options_keep_target_layout"
     rd_cloudInit_id = "wave_detail_edit_item_options_cloud_init"
+    txt_eventScript_id = "wave_detail_edit_item_options_eventScript"
+    txt_eventScriptArgs_id = "wave_detail_edit_item_options_eventArgs"
+    txt_excludeFile_id = "wave_detail_edit_item_options_exclude"
+    txt_includeFile_id = "wave_detail_edit_item_options_include"
+    rd_uploadLocalFile_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[2]/div/div[2]/div[3]/div[1]/div[1]/div/div/input"
+    rd_filePathOnRmm_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[2]/div/div[2]/div[3]/div[1]/div[2]/div/div/input"
+    btn_uploadLocalFile_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[2]/div/div[2]/div[3]/div[2]/div/div/label"
+    txt_filePathOnRmm_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[2]/div/div[2]/div[3]/div[2]/input"
 
     # Bulk Edit Sync Options
-    btn_selectAll_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/thead/tr/th[1]/p-tableheadercheckbox/div/div[2]"
+    btn_selectAll_xpath = "//*[@id='content']/article/div/div[2]/p-table/div/div[2]/table/thead/tr/th[1]/p-tableheadercheckbox/div/div[2]"
     btn_bulkEdit_xpath = "//*[@id='content']/article/div/div[2]/p-table/div/div[1]/div[1]/button[8]/span/i"
     drp_goal_id = "wave_detail_bulk_edit_item_existing_capture_type"
-    ch_tngYes_id = "tng_yes"
-    ch_tngNo_id = "tng_no"
-    ch_verboseYes_id = "verbose_yes"
-    ch_verboseNo_id = "verbose_no"
-    ch_passwordLessYes_id = "ssh_yes"
-    ch_passwordLessNo_id = "ssh_no"
-    ch_AllowDirectFScopyYes_id = "allowDirectFscopy_yes"
-    ch_AllowDirectFScopyNo_id = "allowDirectFscopy_no"
-    ch_AllowFSDeletionYes_id = "allowFsDeletion_yes"
-    ch_AllowFSDeletionNo_id = "allowFsDeletion_no"
-    ch_NoTransferYes_id = "no_xfer_yes"
-    ch_NoTransferNo_id = "no_xfer_no"
-    ch_TransferCompressYes_id = "xferCompress_yes"
-    ch_TransferCompressNo_id = "xferCompress_no"
-    ch_NoTransferCompressYes_id = "no_xfer_compress_yes"
-    ch_NoTransferCompressNo_id = "no_xfer_compress_no"
-    ch_IgnoreMissingYes_id = "ignoreMissing_yes"
-    ch_IgnoreMissingNo_id = "ignoreMissing_no"
-    ch_NoInPlaceYes_id = "noInPlace_yes"
-    ch_NoInPlaceNo_id = "noInPlace_no"
-    ch_NoRebootYes_id = "noReboot_yes"
-    ch_NoRebootNo_id = "noReboot_no"
-    ch_IncludeSANYes_id = "include_san_yes"
-    ch_IncludeSANNo_id = "include_san_no"
-    ch_ExcludeSANYes_id = "exclude_san_yes"
-    ch_ExcludeSANNo_id = "exclude_san_no"
-    ch_OverrideRMMStorageCheckYes_id = "storage_override_yes"
-    ch_OverrideRMMStorageCheckNo_id = "storage_override_no"
-    ch_DeleteAllTargetFSYes_id = "delete_all_target_fs_yes"
-    ch_DeleteAllTargetFSNo_id = "delete_all_target_fs_no"
-    ch_KeepTargetLayoutYes_id = "keep_target_layout_yes"
-    ch_KeepTargetLayoutNo_id = "keep_target_layout_no"
-    ch_CloudInitYes_id = "cloud_init_yes"
-    ch_CloudInitNo_id = "cloud_init_no"
     btn_next_xpath = "//*[@id='main']/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[5]/div/button[2]"
     btn_modifyAll_xpath = "//*[@id='main']/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[5]/div/button[2]"
     btn_yes_id = "wave_policy_wave_policy_wave_detail_autoprov_not_conf_yes_btn"
 
-    # DR Policy
-    txt_drPolicy_xpath = "//*[@id='content']/article/div/div[2]/div[2]/div[3]/div[2]/div"
-    drp_selectDrPolicy_xpath = "//*[@id='wave_detail_wave_policy_dr_policy']/div/div[3]/span"
-    ch_startPolicyNow_id = "wave_detail_wave_policy_start_now"
-    btn_assignPolicy_id = "wave_detail_wave_policy_assign_policy_btn"
+    # AWS CU
+    txt_AWSVPCID_id = "wave_detail_cu_edit_aws_options_vpc_id"
+    txt_AWSSubnetID_id = "wave_detail_cu_edit_aws_options_subnet_id"
 
     # OCI Sync Options
     txt_OCIVCNName_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[3]/div/div[1]/div[3]/div/input"
     txt_OCISubnetName_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[3]/div/div[1]/div[4]/div/input"
     txt_OCIAVDomain_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[3]/div/div[1]/div[9]/div/input"
+
+    # Change Target Type
+    rd_autoprovision_id = "wave_detail_edit_item_provisioning_model_radio_0"
+    rd_existingSystem_id = "wave_detail_edit_item_provisioning_model_radio_1"
+    rd_capture_id = "wave_detail_edit_item_provisioning_model_radio_2"
+    txt_captureImage_xpath = "//*[@id='wave_detail_edit_item_clone_name']"
 
     logger = LogGen.loggen()
 
@@ -122,33 +101,36 @@ class SyncOptions:
         self.driver = driver
 
     def setAutoprovision(self, path):
+        time.sleep(5)
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
         time.sleep(5)
         for r in range(3, rows+1):
             waveName = sheet.cell(row=r, column=1).value
-            # CUType = sheet.cell(row=r, column=2).value
+            CUType = sheet.cell(row=r, column=2).value
             environment = sheet.cell(row=r, column=3).value
 
             self.driver.find_element(By.LINK_TEXT, waveName).click()
-            time.sleep(5)
+            time.sleep(10)
             self.driver.find_element(By.ID, self.txt_autoprovision_id).click()
             time.sleep(5)
             env = Select(self.driver.find_element(By.XPATH, self.txt_environment_xpath))
             env.select_by_visible_text(environment)
-            if environment == "VCenter":
+            time.sleep(5)
+            if CUType == "VCenter":
                 self.setVCenter(sheet, r)
-            elif environment == "OCI":
-                self.setOCI(sheet, r)
+            # elif CUType == "OCI":
+            #     self.setOCI(sheet, r)
 
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def setVCenter(self, sheet, r):
-        clusterName = sheet.cell(row=r, column=3).value
-        esxHost = sheet.cell(row=r, column=4).value
-        datastore = sheet.cell(row=r, column=5).value
+        time.sleep(5)
+        clusterName = sheet.cell(row=r, column=4).value
+        esxHost = sheet.cell(row=r, column=5).value
+        datastore = sheet.cell(row=r, column=6).value
 
         time.sleep(5)
         self.driver.find_element(By.XPATH, self.txt_clusterName_xpath).send_keys(clusterName)
@@ -165,14 +147,15 @@ class SyncOptions:
             self.setNICBulkEdit(sheet, r)
 
     def setNICEdit(self, sheet, r):
-        deviceName = sheet.cell(row=r, column=6).value
-        Type = sheet.cell(row=r, column=7).value
-        networkName = sheet.cell(row=r, column=8).value
-        ipType = sheet.cell(row=r, column=9).value
-        CIDR = sheet.cell(row=r, column=10).value
-        gateway = sheet.cell(row=r, column=11).value
-        DNS1 = sheet.cell(row=r, column=12).value
-        DNS2 = sheet.cell(row=r, column=13).value
+        time.sleep(5)
+        deviceName = sheet.cell(row=r, column=7).value
+        Type = sheet.cell(row=r, column=8).value
+        networkName = sheet.cell(row=r, column=9).value
+        ipType = sheet.cell(row=r, column=10).value
+        CIDR = sheet.cell(row=r, column=11).value
+        gateway = sheet.cell(row=r, column=12).value
+        DNS1 = sheet.cell(row=r, column=13).value
+        DNS2 = sheet.cell(row=r, column=14).value
 
         self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[8]/span/div/i[2]').click()
         time.sleep(5)
@@ -197,14 +180,15 @@ class SyncOptions:
         self.driver.find_element(By.ID, self.btn_modify_id).click()
 
     def setNICBulkEdit(self, sheet, r):
-        deviceName = sheet.cell(row=r, column=6).value
-        Type = sheet.cell(row=r, column=7).value
-        networkName = sheet.cell(row=r, column=8).value
-        ipType = sheet.cell(row=r, column=9).value
-        CIDR = sheet.cell(row=r, column=10).value
-        gateway = sheet.cell(row=r, column=11).value
-        DNS1 = sheet.cell(row=r, column=12).value
-        DNS2 = sheet.cell(row=r, column=13).value
+        time.sleep(5)
+        deviceName = sheet.cell(row=r, column=7).value
+        Type = sheet.cell(row=r, column=8).value
+        networkName = sheet.cell(row=r, column=9).value
+        ipType = sheet.cell(row=r, column=10).value
+        CIDR = sheet.cell(row=r, column=11).value
+        gateway = sheet.cell(row=r, column=12).value
+        DNS1 = sheet.cell(row=r, column=13).value
+        DNS2 = sheet.cell(row=r, column=14).value
 
         self.driver.find_element(By.XPATH, self.btn_selectAll_xpath).click()
         time.sleep(5)
@@ -234,6 +218,23 @@ class SyncOptions:
         time.sleep(3)
         self.driver.find_element(By.ID, self.btn_yes_id).click()
 
+    def setAWS(self, waveName, environment, VPCID, subnetID):
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.txt_autoprovision_id).click()
+        time.sleep(5)
+        env = Select(self.driver.find_element(By.XPATH, self.txt_environment_xpath))
+        time.sleep(5)
+        env.select_by_visible_text(environment)
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.txt_AWSVPCID_id).send_keys(VPCID)
+        self.driver.find_element(By.ID, self.txt_AWSSubnetID_id).send_keys(subnetID)
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.btn_applyChanges_id).click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
     def setOCI(self, waveName, environment, VCNName, SubnetName, AVDomain):
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -256,6 +257,7 @@ class SyncOptions:
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def setOCISync(self, VCNName, SubnetName, AVDomain):
+        time.sleep(5)
         self.driver.find_element(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[8]/span/div/i[2]').click()
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "OCI Options").click()
@@ -267,6 +269,7 @@ class SyncOptions:
         self.driver.find_element(By.ID, self.btn_modify_id).click()
 
     def setOCIBulkSync(self, VCNName, SubnetName, AVDomain):
+        time.sleep(5)
         self.driver.find_element(By.XPATH, self.btn_selectAll_xpath).click()
         time.sleep(5)
         self.driver.find_element(By.XPATH, self.btn_bulkEdit_xpath).click()
@@ -283,10 +286,20 @@ class SyncOptions:
         time.sleep(3)
         self.driver.find_element(By.ID, self.btn_yes_id).click()
 
+    # def setSO(self, path):
+    #     time.sleep(5)
+    #     waveName = sheet.cell(row=2)
+    #     totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+    #     if totalHosts == 1:
+    #         self.setSyncOptions(path)
+    #     else:
+    #         self.bulkEditOption(path)
+
     def setSyncOptions(self, path):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
+        tmp = "None"
         for r in range(3, rows+1):
             waveName = sheet.cell(row=r, column=1).value
             hostNumber = sheet.cell(row=r, column=2).value
@@ -307,14 +320,24 @@ class SyncOptions:
             deleteAllTargetFS = sheet.cell(row=r, column=16).value
             keepTargetLayout = sheet.cell(row=r, column=17).value
             cloudInit = sheet.cell(row=r, column=18).value
+            eventScript = sheet.cell(row=r, column=19).value
+            eventScriptArgs = sheet.cell(row=r, column=20).value
+            excludeFileSystem = sheet.cell(row=r, column=21).value
+            includeFileSystem = sheet.cell(row=r, column=22).value
+            filterFileOption = sheet.cell(row=r, column=23).value
+            filterFilePath = sheet.cell(row=r, column=24).value
 
             time.sleep(5)
-            self.driver.find_element(By.LINK_TEXT, waveName).click()
+            if tmp != waveName:
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, waveName).click()
             time.sleep(5)
             totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
             if totalHosts == 1:
                 self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[8]/span/div/i[2]').click()
             else:
+                time.sleep(5)
                 self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNumber)+']/td[8]/span/div/i[2]').click()
             time.sleep(5)
 
@@ -324,67 +347,97 @@ class SyncOptions:
             syncOption.click()
             time.sleep(5)
 
-            if tng:
+            if tng == "Yes":
                 self.driver.find_element(By.ID, self.rd_tng_id).click()
                 self.logger.info("********** Sync Option 'TNG' is set **********")
-            if verbose:
+            if verbose == "Yes":
                 self.driver.find_element(By.ID, self.rd_verbose_id).click()
                 self.logger.info("********** Sync Option 'Verbose' is set **********")
-            if directFScopy:
+            if directFScopy == "Yes":
                 self.driver.find_element(By.ID, self.rd_directFScopy_id).click()
                 self.logger.info("********** Sync Option 'Direct FScopy' is set **********")
-            if FSDeletion:
+            if FSDeletion == "Yes":
                 self.driver.find_element(By.ID, self.rd_FSDeletion_id).click()
                 self.logger.info("********** Sync Option 'FS Deletion' is set **********")
-            if NoTransfer:
+            if NoTransfer == "Yes":
                 self.driver.find_element(By.ID, self.rd_NoTransfer_id).click()
                 self.logger.info("********** Sync Option 'No Transfer' is set **********")
-            if transferCompress:
+            if transferCompress == "Yes":
                 self.driver.find_element(By.ID, self.rd_transferCompress_id).click()
                 self.logger.info("********** Sync Option 'Transfer Compress' is set **********")
-            if noTransferCompress:
+            if noTransferCompress == "Yes":
                 self.driver.find_element(By.ID, self.rd_noTransferCompress_id).click()
                 self.logger.info("********** Sync Option 'No Transfer Compress' is set **********")
-            if ignoreMissing:
+            if ignoreMissing == "Yes":
                 self.driver.find_element(By.ID, self.rd_ignoreMissing_id).click()
                 self.logger.info("********** Sync Option 'Ignore Missing' is set **********")
-            if noInPlace:
+            if noInPlace == "Yes":
                 self.driver.find_element(By.ID, self.rd_noInPlace_id).click()
                 self.logger.info("********** Sync Option 'No In Place' is set **********")
-            if noReboot:
+            if noReboot == "Yes":
                 self.driver.find_element(By.ID, self.rd_noReboot_id).click()
                 self.logger.info("********** Sync Option 'No Reboot' is set **********")
-            if includeSAN:
+            if includeSAN == "Yes":
                 self.driver.find_element(By.ID, self.rd_includeSAN_id).click()
                 self.logger.info("********** Sync Option 'Include SAN' is set **********")
-            if excludeSAN:
+            if excludeSAN == "Yes":
                 self.driver.find_element(By.ID, self.rd_excludeSAN_id).click()
                 self.logger.info("********** Sync Option 'Exclude SAN' is set **********")
-            if overrideRMMStorageCheck:
+            if overrideRMMStorageCheck == "Yes":
                 self.driver.find_element(By.ID, self.rd_overrideRMMStorageCheck_id).click()
                 self.logger.info("********** Sync Option 'Override RMM Storage' Check is set **********")
-            if deleteAllTargetFS:
+            if deleteAllTargetFS == "Yes":
                 self.driver.find_element(By.ID, self.rd_deleteAllTargetFS_id).click()
                 self.logger.info("********** Sync Option 'Delete All Target' FS is set **********")
-            if keepTargetLayout:
+            if keepTargetLayout == "Yes":
                 self.driver.find_element(By.ID, self.rd_keepTargetLayout_id).click()
                 self.logger.info("********** Sync Option 'Keep Target Layout' is set **********")
-            if cloudInit:
+            if cloudInit == "Yes":
                 self.driver.find_element(By.ID, self.rd_cloudInit_id).click()
                 self.logger.info("********** Sync Option 'Cloud Init' is set **********")
 
+            if eventScript != "NA":
+                self.driver.find_element(By.ID, self.txt_eventScript_id).clear()
+                self.driver.find_element(By.ID, self.txt_eventScript_id).send_keys(eventScript)
+
+            if eventScriptArgs != "NA":
+                self.driver.find_element(By.ID, self.txt_eventScriptArgs_id).clear()
+                self.driver.find_element(By.ID, self.txt_eventScriptArgs_id).send_keys(eventScriptArgs)
+
+            if excludeFileSystem != "NA":
+                self.driver.find_element(By.ID, self.txt_excludeFile_id).clear()
+                self.driver.find_element(By.ID, self.txt_excludeFile_id).send_keys(excludeFileSystem)
+
+            if includeFileSystem != "NA":
+                self.driver.find_element(By.ID, self.txt_includeFile_id).clear()
+                self.driver.find_element(By.ID, self.txt_includeFile_id).send_keys(includeFileSystem)
+
+            if filterFileOption != "NULL":
+                if filterFileOption == "Upload Local File":
+                    self.driver.find_element(By.XPATH, self.rd_uploadLocalFile_xpath).click()
+                    self.driver.find_element(By.XPATH, self.btn_uploadLocalFile_xpath).click()
+                    time.sleep(5)
+                    keyboard.write(filterFilePath)
+                    time.sleep(5)
+                    keyboard.send('enter')
+                elif filterFileOption == "File Path On RMM":
+                    self.driver.find_element(By.XPATH, self.rd_filePathOnRmm_xpath).click()
+                    self.driver.find_element(By.XPATH, self.txt_filePathOnRmm_xpath).send_keys(filterFilePath)
+
+            tmp = waveName
             time.sleep(5)
             self.driver.find_element(By.ID, self.btn_modify_id).click()
         time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def bulkEditOption(self, path):
+    def bulkEditSyncOption(self, path):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
         time.sleep(5)
         for r in range(2, rows+1):
             waveName = sheet.cell(row=r, column=1).value
-            # goal = sheet.cell(row=r, column=2).value
+            goal = sheet.cell(row=r, column=2).value
             tng = sheet.cell(row=r, column=3).value
             verbose = sheet.cell(row=r, column=4).value
             passwordLess = sheet.cell(row=r, column=5).value
@@ -404,128 +457,128 @@ class SyncOptions:
             cloudInit = sheet.cell(row=r, column=19).value
 
             self.driver.find_element(By.LINK_TEXT, waveName).click()
-            time.sleep(5)
+            time.sleep(10)
             self.driver.find_element(By.XPATH, self.btn_selectAll_xpath).click()
             time.sleep(5)
             self.driver.find_element(By.XPATH, self.btn_bulkEdit_xpath).click()
             time.sleep(5)
             if tng == "Yes":
-                self.driver.find_element(By.ID, self.ch_tngYes_id).click()
+                self.driver.find_element(By.ID, "tng_yes").click()
                 self.logger.info("********** Sync Option 'TNG' is set as yes **********")
             if tng == "No":
-                self.driver.find_element(By.ID, self.ch_tngNo_id).click()
+                self.driver.find_element(By.ID, "tng_no").click()
                 self.logger.info("********** Sync Option 'TNG' is set as no **********")
 
             if verbose == "Yes":
-                self.driver.find_element(By.ID, self.ch_verboseYes_id).click()
+                self.driver.find_element(By.ID, "verbose_yes").click()
                 self.logger.info("********** Sync Option 'Verbose' is set as yes **********")
             if verbose == "No":
-                self.driver.find_element(By.ID, self.ch_verboseNo_id).click()
+                self.driver.find_element(By.ID, "verbose_no").click()
                 self.logger.info("********** Sync Option 'Verbose' is set as no **********")
 
             if passwordLess == "Yes":
-                self.driver.find_element(By.ID, self.ch_passwordLessYes_id).click()
+                self.driver.find_element(By.ID, "ssh_yes").click()
                 self.logger.info("********** Sync Option 'Passwordless' is set as yes **********")
             if passwordLess == "No":
-                self.driver.find_element(By.ID, self.ch_passwordLessNo_id).click()
+                self.driver.find_element(By.ID, "ssh_no").click()
                 self.logger.info("********** Sync Option 'Passwordless' is set as no **********")
 
             if directFScopy == "Yes":
-                self.driver.find_element(By.ID, self.ch_AllowDirectFScopyYes_id).click()
+                self.driver.find_element(By.ID, "allowDirectFscopy_yes").click()
                 self.logger.info("********** Sync Option 'Allow Direct Fscopy' is set as yes **********")
             if directFScopy == "No":
-                self.driver.find_element(By.ID, self.ch_AllowDirectFScopyNo_id).click()
+                self.driver.find_element(By.ID, "allowDirectFscopy_no").click()
                 self.logger.info("********** Sync Option 'Allow Direct Fscopy' is set as no **********")
 
             if FSDeletion == "Yes":
-                self.driver.find_element(By.ID, self.ch_AllowFSDeletionYes_id).click()
+                self.driver.find_element(By.ID, "allowFsDeletion_yes").click()
                 self.logger.info("********** Sync Option 'Allow FS Deletion' is set as yes **********")
             if FSDeletion == "No":
-                self.driver.find_element(By.ID, self.ch_AllowFSDeletionNo_id).click()
+                self.driver.find_element(By.ID, "allowFsDeletion_no").click()
                 self.logger.info("********** Sync Option 'Allow FS Deletion' is set as no **********")
 
             if NoTransfer == "Yes":
-                self.driver.find_element(By.ID, self.ch_NoTransferYes_id).click()
+                self.driver.find_element(By.ID, "no_xfer_yes").click()
                 self.logger.info("********** Sync Option 'No Transfer' is set as yes **********")
             if NoTransfer == "No":
-                self.driver.find_element(By.ID, self.ch_NoTransferNo_id).click()
+                self.driver.find_element(By.ID, "no_xfer_no").click()
                 self.logger.info("********** Sync Option 'No Transfer' is set as no **********")
 
             if transferCompress == "Yes":
-                self.driver.find_element(By.ID, self.ch_TransferCompressYes_id).click()
+                self.driver.find_element(By.ID, "xferCompress_yes").click()
                 self.logger.info("********** Sync Option 'Transfer Compress' is set as yes **********")
             if transferCompress == "No":
-                self.driver.find_element(By.ID, self.ch_TransferCompressNo_id).click()
+                self.driver.find_element(By.ID, "xferCompress_no").click()
                 self.logger.info("********** Sync Option 'Transfer Compress' is set as no **********")
 
             if noTransferCompress == "Yes":
-                self.driver.find_element(By.ID, self.ch_NoTransferCompressYes_id).click()
+                self.driver.find_element(By.ID, "no_xfer_compress_yes").click()
                 self.logger.info("********** Sync Option 'No Transfer Compress' is set as yes **********")
             if noTransferCompress == "No":
-                self.driver.find_element(By.ID, self.ch_NoTransferCompressNo_id).click()
+                self.driver.find_element(By.ID, "no_xfer_compress_no").click()
                 self.logger.info("********** Sync Option 'No Transfer Compress' is set as no **********")
 
             if ignoreMissing == "Yes":
-                self.driver.find_element(By.ID, self.ch_IgnoreMissingYes_id).click()
+                self.driver.find_element(By.ID, "ignoreMissing_yes").click()
                 self.logger.info("********** Sync Option 'Ignore Missing' is set as yes **********")
             if ignoreMissing == "No":
-                self.driver.find_element(By.ID, self.ch_IgnoreMissingNo_id).click()
+                self.driver.find_element(By.ID, "ignoreMissing_no").click()
                 self.logger.info("********** Sync Option 'Ignore Missing' is set as no **********")
 
             if noInPlace == "Yes":
-                self.driver.find_element(By.ID, self.ch_NoInPlaceYes_id).click()
+                self.driver.find_element(By.ID, "noInPlace_yes").click()
                 self.logger.info("********** Sync Option 'No In Place' is set as yes **********")
             if noInPlace == "No":
-                self.driver.find_element(By.ID, self.ch_NoInPlaceNo_id).click()
+                self.driver.find_element(By.ID, "noInPlace_no").click()
                 self.logger.info("********** Sync Option 'No In Place' is set as no **********")
 
             if noReboot == "Yes":
-                self.driver.find_element(By.ID, self.ch_NoRebootYes_id).click()
+                self.driver.find_element(By.ID, "noReboot_yes").click()
                 self.logger.info("********** Sync Option 'No Reboot' is set as yes **********")
             if noReboot == "No":
-                self.driver.find_element(By.ID, self.ch_NoRebootNo_id).click()
+                self.driver.find_element(By.ID, "noReboot_no").click()
                 self.logger.info("********** Sync Option 'No Reboot' is set as no **********")
 
             if includeSAN == "Yes":
-                self.driver.find_element(By.ID, self.ch_IncludeSANYes_id).click()
+                self.driver.find_element(By.ID, "include_san_yes").click()
                 self.logger.info("********** Sync Option 'Include SAN' is set as yes **********")
             if includeSAN == "No":
-                self.driver.find_element(By.ID, self.ch_IncludeSANNo_id).click()
+                self.driver.find_element(By.ID, "include_san_no").click()
                 self.logger.info("********** Sync Option 'Include SAN' is set as no **********")
 
             if excludeSAN == "Yes":
-                self.driver.find_element(By.ID, self.ch_ExcludeSANYes_id).click()
+                self.driver.find_element(By.ID, "exclude_san_yes").click()
                 self.logger.info("********** Sync Option 'Exclude SAN' is set as yes **********")
             if excludeSAN == "No":
-                self.driver.find_element(By.ID, self.ch_ExcludeSANNo_id).click()
+                self.driver.find_element(By.ID, "exclude_san_no").click()
                 self.logger.info("********** Sync Option 'Exclude SAN' is set as no **********")
 
             if overrideRMMStorageCheck == "Yes":
-                self.driver.find_element(By.ID, self.ch_OverrideRMMStorageCheckYes_id).click()
+                self.driver.find_element(By.ID, "storage_override_yes").click()
                 self.logger.info("********** Sync Option 'Override RMM Storage Check' is set as yes **********")
             if overrideRMMStorageCheck == "No":
-                self.driver.find_element(By.ID, self.ch_OverrideRMMStorageCheckNo_id).click()
+                self.driver.find_element(By.ID, "storage_override_no").click()
                 self.logger.info("********** Sync Option 'Override RMM Storage Check' is set as no **********")
 
             if deleteAllTargetFS == "Yes":
-                self.driver.find_element(By.ID, self.ch_DeleteAllTargetFSYes_id).click()
+                self.driver.find_element(By.ID, "delete_all_target_fs_yes").click()
                 self.logger.info("********** Sync Option 'Delete All Target FS' is set as yes **********")
             if deleteAllTargetFS == "No":
-                self.driver.find_element(By.ID, self.ch_DeleteAllTargetFSNo_id).click()
+                self.driver.find_element(By.ID, "delete_all_target_fs_no").click()
                 self.logger.info("********** Sync Option 'Delete All Target FS' is set as no **********")
 
             if keepTargetLayout == "Yes":
-                self.driver.find_element(By.ID, self.ch_KeepTargetLayoutYes_id).click()
+                self.driver.find_element(By.ID, "keep_target_layout_yes").click()
                 self.logger.info("********** Sync Option 'Keep Target Layout' is set as yes **********")
             if keepTargetLayout == "No":
-                self.driver.find_element(By.ID, self.ch_KeepTargetLayoutNo_id).click()
+                self.driver.find_element(By.ID, "keep_target_layout_no").click()
                 self.logger.info("********** Sync Option 'Keep Target Layout' is set as no **********")
 
             if cloudInit == "Yes":
-                self.driver.find_element(By.ID, self.ch_CloudInitYes_id).click()
+                self.driver.find_element(By.ID, "cloud_init_yes").click()
                 self.logger.info("********** Sync Option 'Cloud Init' is set as yes **********")
             if cloudInit == "No":
-                self.driver.find_element(By.ID, self.ch_CloudInitNo_id).click()
+                self.driver.find_element(By.ID, "cloud_init_no").click()
                 self.logger.info("********** Sync Option 'Cloud Init' is set as no **********")
 
             time.sleep(5)
@@ -537,19 +590,40 @@ class SyncOptions:
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def assignDRPolicy(self, waveName, policyNumber, startPolicy):
-        time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, waveName).click()
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, self.txt_drPolicy_xpath).click()
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, self.drp_selectDrPolicy_xpath).click()
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(policyNumber)+']/span').click()
-        time.sleep(5)
-        if startPolicy:
-            self.driver.find_element(By.ID, self.ch_startPolicyNow_id).click()
-        time.sleep(3)
-        self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
-        time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+    def changeTargetType(self, path):
+        workBook = openpyxl.load_workbook(path)
+        sheet = workBook.active
+        rows = sheet.max_row
+        tmp = "none"
+        for r in range(2, rows+1):
+            waveName = sheet.cell(row=r, column=1).value
+            hostNumber = sheet.cell(row=r, column=2).value
+            targetType = sheet.cell(row=r, column=3).value
+            imageName = sheet.cell(row=r, column=4).value
+
+            if tmp != waveName:
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+                time.sleep(5)
+                if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+                    self.driver.find_element(By.LINK_TEXT, "DR").click()
+                    time.sleep(5)
+                    self.driver.find_element(By.LINK_TEXT, "Waves").click()
+                    time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, waveName).click()
+            time.sleep(10)
+            # totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+            # for hostNo in range(1, totalHosts+1):
+            self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNumber)+']/td[8]/span/div/i[2]').click()
+            time.sleep(5)
+            if targetType == "Autoprovision":
+                self.driver.find_element(By.ID, self.rd_autoprovision_id).click()
+            if targetType == "Existing System":
+                self.driver.find_element(By.ID, self.rd_existingSystem_id).click()
+            if targetType == "Capture":
+                self.driver.find_element(By.ID, self.rd_capture_id).click()
+                self.driver.find_element(By.XPATH, self.txt_captureImage_xpath).send_keys(imageName)
+            time.sleep(5)
+            self.driver.find_element(By.ID, self.btn_modify_id).click()
+            self.logger.info("********** Successfully Changed Target Type For Host Number : " + str(hostNumber) + " **********")
+            tmp = waveName

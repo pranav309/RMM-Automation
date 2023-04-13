@@ -3,7 +3,7 @@ import time
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from pageObjects.loginPage import LoginPage
-from pageObjects.waveOperationsPage import WaveOperations
+from pageObjects.waveOperations import WaveOperations
 
 
 class Test_009_StartWave:

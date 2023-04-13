@@ -1,8 +1,8 @@
 import time
 
 from selenium.webdriver.common.by import By
-from pageObjects.waveCreatePage import WavePage
-from pageObjects.waveOperationsPage import WaveOperations
+from pageObjects.wavePage import WavePage
+from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
 from pageObjects.waveEdit import SyncOptions
 from utilities.readProperties import ReadConfig

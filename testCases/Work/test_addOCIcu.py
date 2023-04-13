@@ -1,8 +1,8 @@
 import time
 
 from selenium.webdriver.common.by import By
-from pageObjects.waveCreatePage import WavePage
-from pageObjects.waveOperationsPage import WaveOperations
+from pageObjects.wavePage import WavePage
+from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
 from pageObjects.waveEdit import SyncOptions
 from utilities.readProperties import ReadConfig
@@ -46,11 +46,11 @@ class Test_015_addOCIcu:
         self.setSync.setSyncOptions(path2)
         self.logger.info("********** Successfully Set Sync Options For The Wave **********")
 
-        # self.logger.info("********** Starting A Wave **********")
-        # self.driver.find_element(By.LINK_TEXT, "Waves").click()
-        # self.startWave = WaveOperations(self.driver)
-        # self.startWave.startWave(["OCI Trial"])
-        # self.logger.info("********** Successful Started A Wave **********")
+        self.logger.info("********** Starting A Wave **********")
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        self.startWave = WaveOperations(self.driver)
+        self.startWave.startWave(["OCI Trial"])
+        self.logger.info("********** Successful Started A Wave **********")
 
         self.lp.clickOnLogout()
         self.logger.info("********** Logout Successful **********")

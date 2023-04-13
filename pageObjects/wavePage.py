@@ -66,9 +66,11 @@ class WavePage:
         self.driver = driver
 
     def createWaveWithoutHost(self, path):
+        time.sleep(5)
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
+        tmp = "None"
         for r in range(3, rows+1):
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
@@ -76,65 +78,67 @@ class WavePage:
             passthrough = sheet.cell(row=r, column=2).value
             time.sleep(5)
 
-            count = Select(self.driver.find_element(By.XPATH, self.drp_count_xpath))
-            count.select_by_visible_text("100")
-
-            if len(self.driver.find_elements(By.LINK_TEXT, waveName)) != 0:
+            if tmp == waveName:
                 continue
             else:
+                if len(self.driver.find_elements(By.LINK_TEXT, waveName)) != 0:
+                    continue
+                else:
+                    if len(self.driver.find_elements(By.XPATH, self.img_createWave_xpath)) != 0:
+                        self.driver.find_element(By.XPATH, self.img_createWave_xpath).click()
+                    else:
+                        self.driver.find_element(By.XPATH, self.btn_createWave_xpath).click()
+                        time.sleep(3)
+                        self.driver.find_element(By.XPATH, self.img_createNewWave_xpath).click()
+                    self.driver.find_element(By.ID, self.txt_waveName_id).send_keys(waveName)
+                    if not passthrough:
+                        self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
+                    time.sleep(3)
+                    self.driver.find_element(By.ID, self.btn_create_id).click()
+                    time.sleep(5)
+                    # if len(sheet.cell(row=r, column=3).value) != 0:
+                    #     self.driver.find_element(By.LINK_TEXT, waveName).click()
+                    #     time.sleep(5)
+                    #     self.addHostToWave(sheet, r)
+                    #     time.sleep(5)
+            tmp = waveName
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def createWaveWithHost(self, path):
+        time.sleep(5)
+        workBook = openpyxl.load_workbook(path)
+        sheet = workBook.active
+        rows = sheet.max_row
+
+        for r in range(3, rows+1):
+            waveName = sheet.cell(row=r, column=1).value
+            passthrough = sheet.cell(row=r, column=2).value
+
+            if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
                 if len(self.driver.find_elements(By.XPATH, self.img_createWave_xpath)) != 0:
                     self.driver.find_element(By.XPATH, self.img_createWave_xpath).click()
                 else:
+                    time.sleep(5)
                     self.driver.find_element(By.XPATH, self.btn_createWave_xpath).click()
                     time.sleep(3)
                     self.driver.find_element(By.XPATH, self.img_createNewWave_xpath).click()
+                self.logger.info("********** Creating no. " + str(r - 2) + " wave with Target Type " + sheet.cell(row=r,column=3).value + " **********")
+                self.driver.find_element(By.ID, self.rd_waveWithHost_id).click()
+
                 self.driver.find_element(By.ID, self.txt_waveName_id).send_keys(waveName)
                 if not passthrough:
                     self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
                 time.sleep(3)
+                self.enterData(sheet, r)
                 self.driver.find_element(By.ID, self.btn_create_id).click()
                 time.sleep(5)
-                if len(sheet.cell(row=r, column=3).value) != 0:
-                    self.driver.find_element(By.LINK_TEXT, waveName).click()
-                    time.sleep(5)
-                    self.addHostToWave(sheet, r)
-                    time.sleep(5)
-
-    def createWaveWithHost(self, path):
-        workBook = openpyxl.load_workbook(path)
-        sheet = workBook.active
-        rows = sheet.max_row
-
-        for r in range(3, rows+1):
-            if len(self.driver.find_elements(By.XPATH, self.img_createWave_xpath)) != 0:
-                self.driver.find_element(By.XPATH, self.img_createWave_xpath).click()
-            else:
-                time.sleep(5)
-                self.driver.find_element(By.XPATH, self.btn_createWave_xpath).click()
-                time.sleep(3)
-                self.driver.find_element(By.XPATH, self.img_createNewWave_xpath).click()
-            self.logger.info("********** Creating no. " + str(r - 1) + " wave with Target Type " + sheet.cell(row=r,column=3).value + " **********")
-            self.driver.find_element(By.ID, self.rd_waveWithHost_id).click()
-
-            waveName = sheet.cell(row=r, column=1).value
-            passthrough = sheet.cell(row=r, column=2).value
-
-            self.driver.find_element(By.ID, self.txt_waveName_id).send_keys(waveName)
-            if not passthrough:
-                self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
-            time.sleep(3)
-            self.enterData(sheet, r)
-            self.driver.find_element(By.ID, self.btn_create_id).click()
-            time.sleep(5)
-            self.driver.find_element(By.LINK_TEXT, "Waves").click()
-
-        time.sleep(10)
 
     def addHostToWaves(self, path):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
         for r in range(3, rows + 1):
+            time.sleep(5)
             waveName = sheet.cell(row=r, column=1).value
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -145,15 +149,23 @@ class WavePage:
             self.driver.find_element(By.ID, self.btn_createHost_id).click()
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
-            time.sleep(5)
 
-    def addHostToWave(self, sheet, row):
+    def addHostToWave(self, path):
+        workBook = openpyxl.load_workbook(path)
+        sheet = workBook.active
         rows = sheet.max_row
-        for r in range(row, rows+1):
+        tmp = "None"
+        for r in range(4, rows+1):
             time.sleep(5)
+            waveName = sheet.cell(row=r, column=1).value
+            if tmp != waveName:
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, waveName).click()
             addHost = WebDriverWait(self.driver, 30).until(
                 EC.element_to_be_clickable((By.ID, self.btn_addHost_id))
             )
+            time.sleep(5)
             addHost.click()
             self.enterData(sheet, r)
             time.sleep(5)
@@ -161,6 +173,8 @@ class WavePage:
             time.sleep(3)
             if type(sheet.cell(row=r+1, column=3).value) == "NoneType":
                 return
+            tmp = waveName
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def enterData(self, sheet, r):
         time.sleep(5)
@@ -241,9 +255,8 @@ class WavePage:
             self.driver.find_element(By.ID, self.txt_imageName_id).clear()
             self.driver.find_element(By.ID, self.txt_imageName_id).send_keys(targetImageName)
 
-        time.sleep(5)
-
     def selectSyncType(self, DNS_IP, friendlyName, sourceUserPassword, targetUsername):
+        time.sleep(5)
         self.driver.find_element(By.ID, self.txt_targetDNSIP_id).send_keys(DNS_IP)
         self.driver.find_element(By.ID, self.txt_targetFriendlyName_id).clear()
         self.driver.find_element(By.ID, self.txt_targetFriendlyName_id).send_keys(friendlyName)

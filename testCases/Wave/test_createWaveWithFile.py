@@ -1,7 +1,7 @@
 import time
 import py
 
-from pageObjects.waveCreatePage import WavePage
+from pageObjects.wavePage import WavePage
 from pageObjects.loginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen

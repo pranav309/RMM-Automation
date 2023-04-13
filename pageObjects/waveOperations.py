@@ -25,15 +25,6 @@ class WaveOperations:
     btn_assignPolicy_id = "wave_detail_wave_policy_assign_policy_btn"
     btn_removePolicy_id = "wave_detail_wave_policy_remove_policy_btn"
 
-    # Failover
-    btn_failOver_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_drPolicyFailover']/span/i"
-    ch_testMode_id = "wave_detail_failover_testmode"
-    btn_failoverYes_id = "wave_detail_failover_yes_btn"
-
-    # Fallback
-    btn_fallBack_id = "wave_policy_wave_policy_wave_detail_drPolicyFallback"
-    btn_fallBackYes_id = "wave_detail_dr_fallback_yes_btn"
-
     logger = LogGen.loggen()
 
     def __init__(self, driver):
@@ -42,53 +33,74 @@ class WaveOperations:
     def startWave(self, waveNames):
         for i in waveNames:
             time.sleep(5)
-            self.driver.find_element(By.XPATH, '//*[@id="waves_'+i+'_wave_name"]').click()
-            start = WebDriverWait(self.driver, 30).until(
-                EC.element_to_be_clickable((By.ID, self.btn_start_id))
-            )
-            start.click()
+            # self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
             time.sleep(5)
-            WebDriverWait(self.driver, 18000).until(
-                EC.element_to_be_clickable((By.ID, self.btn_start_id))
-            )
+            if len(self.driver.find_elements(By.LINK_TEXT, i)) == 0:
+                self.driver.find_element(By.LINK_TEXT, "DR").click()
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+                time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, i).click()
+            time.sleep(5)
+            # self.driver.find_element(By.XPATH, '//*[@id="waves_'+i+'_wave_name"]').click()
+            # start = WebDriverWait(self.driver, 30).until(
+            #     EC.element_to_be_clickable((By.ID, self.btn_start_id))
+            # )
+            # start.click()
+            self.logger.info("********** Starting Hosts In Wave : " + i + " **********")
             time.sleep(10)
             totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
-            for hostNo in range(1, totalHosts+1):
-                elem = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[6]/span/span/span'))
-                if elem == 0:
-                    self.logger.info("********** Host Number : "+str(hostNo)+", Sync Successful **********")
-                else:
-                    self.logger.info("********** Host Number : "+str(hostNo)+", Sync Failed **********")
+            for hostNo in range(1, totalHosts + 1):
                 time.sleep(5)
+                self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[1]/p-tablecheckbox/div/div[2]').click()
+                time.sleep(5)
+                self.driver.find_element(By.ID, self.btn_start_id).click()
+                time.sleep(5)
+                WebDriverWait(self.driver, 6000).until(
+                    EC.element_to_be_clickable((By.ID, self.btn_start_id))
+                )
+                time.sleep(5)
+                elem = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/span'))
+                if elem == 0:
+                    self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Successful **********")
+                else:
+                    self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Failed **********")
+                    exit()
+                self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[1]/p-tablecheckbox/div/div[2]/span').click()
+
+            self.logger.info("********** Successfully Synced All Hosts In Wave : " + i + " **********")
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def failoverHost(self, waveName, testMode):
+    def startWaveAndVerify(self, waveName):
         time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+            self.driver.find_element(By.LINK_TEXT, "DR").click()
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, waveName).click()
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, self.btn_failOver_xpath).click()
-        time.sleep(5)
-        if testMode:
-            self.driver.find_element(By.ID, self.ch_testMode_id).click()
-        self.driver.find_element(By.ID, self.btn_failoverYes_id).click()
-        WebDriverWait(self.driver, 18000).until(
-            EC.element_to_be_clickable((By.XPATH, self.btn_fallBack_id))
+        start = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.ID, self.btn_start_id))
         )
-        self.driver.find_element(By.LINK_TEXT, "Waves")
-
-    def fallbackHost(self, waveName):
-        time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, waveName).click()
-        time.sleep(5)
-        self.driver.find_element(By.ID, self.btn_fallBack_id).click()
-        time.sleep(5)
-        self.driver.find_element(By.ID, self.btn_fallBackYes_id).click()
-        time.sleep(5)
+        start.click()
+        time.sleep(120)
         WebDriverWait(self.driver, 18000).until(
-            EC.element_to_be_clickable((By.XPATH, self.btn_failOver_xpath))
+            EC.element_to_be_clickable((By.ID, self.btn_start_id))
         )
-        self.driver.find_element(By.LINK_TEXT, "Waves")
+        totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+        for hostNo in range(1, totalHosts + 1):
+            elem = len(self.driver.find_elements(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/span'))
+            if elem == 0:
+                self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Successful **********")
+            else:
+                self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Failed **********")
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Replication").click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def restartHost(self, val):
         self.driver.find_element(By.CSS_SELECTOR, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
@@ -107,10 +119,20 @@ class WaveOperations:
         self.driver.find_element(By.XPATH, self.btn_delete_xpath).click()
 
     def setParallelCount(self, waveName, val):
-        self.driver.find_element(By.XPATH, '//*[@id="waves_' + waveName + '_wave_name"]').click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+            self.driver.find_element(By.LINK_TEXT, "DR").click()
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
         time.sleep(5)
         pc = Select(self.driver.find_element(By.ID, self.drp_parallelPolicy_id))
         pc.select_by_visible_text(val)
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
         time.sleep(5)
 
     def assignPolicy(self, waveName, policyNumber, val):

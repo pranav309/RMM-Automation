@@ -3,7 +3,7 @@ import time
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from pageObjects.loginPage import LoginPage
-from pageObjects.waveCreatePage import WavePage
+from pageObjects.wavePage import WavePage
 
 
 class Test_005_AddHost:

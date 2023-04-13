@@ -1,21 +1,22 @@
 import time
 
-from pageObjects.waveCreatePage import WavePage
-from pageObjects.waveOperationsPage import WaveOperations
+from selenium.webdriver.common.by import By
+from pageObjects.wavePage import WavePage
+from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
 from pageObjects.waveEdit import SyncOptions
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
 
-class Test_013_CreateAndStartWave:
+class Test_016_addAWScu:
     baseURL = ReadConfig.getApplicationURL()
     username = ReadConfig.getUsername()
     password = ReadConfig.getPassword()
     logger = LogGen.loggen()
 
-    def test_createWindowsWave(self, setup):
-        self.logger.info("********** Test_013_CreateAndStartWave ********** ")
+    def test_createAndStartWave(self, setup):
+        self.logger.info("********** Test_016_addAWScu ********** ")
         self.logger.info("********** Opening Browser ********** ")
         self.driver = setup
         self.driver.get(self.baseURL)
@@ -30,19 +31,27 @@ class Test_013_CreateAndStartWave:
         self.logger.info("********** Login Successful **********")
 
         self.logger.info("********** Creating New Wave With Host **********")
-        path1 = "./TestData/createWaveWithHost.xlsx"
+        path = "./TestData/createWaveWithHost.xlsx"
         self.crtWave = WavePage(self.driver)
-        self.crtWave.createWaveWithoutHost(path1)
+        self.crtWave.createWaveWithHost(path)
         self.logger.info("********** Successful Created New Wave With Host **********")
+
         self.setSync = SyncOptions(self.driver)
-        path2 = "./TestData/setAutoprovisionAndNIC.xlsx"
-        self.setSync.setAutoprovision(path2)
-        path3 = "./TestData/bulkEditOptions.xlsx"
-        self.setSync.bulkEditOption(path3)
+        self.logger.info("********** Setting AWS Autoprovision For Wave **********")
+        self.setSync.setAWS("AWS Trial", "AWSuser", "vpc-1608d373", "subnet-45a15a32")
+        self.logger.info("********** Successfully Set AWS Autoprovision For Wave **********")
+
+        self.logger.info("********** Setting Sync Options For The Wave **********")
+        path2 = "./TestData/editSyncOptions.xlsx"
+        self.setSync.setSyncOptions(path2)
+        self.logger.info("********** Successfully Set Sync Options For The Wave **********")
+
         self.logger.info("********** Starting A Wave **********")
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
         self.startWave = WaveOperations(self.driver)
-        self.startWave.startWave(["Windows AP Automation"])
+        self.startWave.startWave(["AWS Trial"])
         self.logger.info("********** Successful Started A Wave **********")
+
         self.lp.clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()

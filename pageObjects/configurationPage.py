@@ -86,15 +86,34 @@ class Configuration:
     txt_VCPassword_id = "password"
     txt_VCPort_id = "port"
 
+    # Organization
+    btn_addAdminOrg_xpath = "//*[@id='content']/div/article/div/div[2]/div[2]/tree-root/tree-viewport/div/div/tree-node-collection/div/tree-node/div/tree-node-wrapper/div[1]/div/span/i[1]"
+    btn_addAdminUser_xpath = "//*[@id='content']/div/article/div/div[2]/div[2]/tree-root/tree-viewport/div/div/tree-node-collection/div/tree-node/div/tree-node-wrapper/div[1]/div/span/i[2]"
+    btn_editAdminOrg_xpath = "//*[@id='content']/div/article/div/div[2]/div[2]/tree-root/tree-viewport/div/div/tree-node-collection/div/tree-node/div/tree-node-wrapper/div[1]/div/span/i[3]"
+
+
     logger = LogGen.loggen()
 
     def __init__(self, driver):
         self.driver = driver
 
+    # def addOrganization(self, path):
+    #     workBook = openpyxl.load_workbook(path)
+    #     sheet = workBook.active
+    #     rows = sheet.max_row
+    #
+    #     self.driver.find_element(By.LINK_TEXT, "Configuration").click()
+    #     time.sleep(5)
+    #     self.driver.find_element(By.LINK_TEXT, "Organization").click()
+    #
+    #     for r in range(3, rows + 1):
+
+
     def addNewCloudUser(self, path):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
+
         for r in range(3, rows+1):
             time.sleep(5)
             self.driver.find_element(By.ID, self.btn_add_id).click()

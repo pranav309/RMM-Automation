@@ -4,6 +4,8 @@ import openpyxl
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from utilities.customLogger import LogGen
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class DRPolicy:
@@ -41,6 +43,25 @@ class DRPolicy:
     # Once
     btn_startDate_xpath = "//*[@id='policies_dr_policy_create_dr_policy']/div/div/div/form/div[2]/div[3]/div/p-calendar/span/button/span[1]"
 
+    # Add DR Policy To Wave
+    txt_drPolicy_xpath = "//*[@id='content']/article/div/div[2]/div[2]/div[3]/div[2]/div"
+    drp_selectDrPolicy_xpath = "//*[@id='wave_detail_wave_policy_dr_policy']/div/div[3]/span"
+    ch_startPolicyNow_id = "wave_detail_wave_policy_start_now"
+    btn_assignPolicy_id = "wave_detail_wave_policy_assign_policy_btn"
+    btn_start_id = "wave_policy_wave_policy_wave_detail_start_replications"
+    btn_pause_id = "wave_policy_wave_policy_wave_detail_pause_replications"
+
+    # Failover
+    btn_failOver_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_drPolicyFailover']/span/i"
+    btn_failOver_id = "wave_policy_wave_policy_wave_detail_drPolicyFailover"
+    ch_testMode_id = "wave_detail_failover_testmode"
+    btn_failoverYes_id = "wave_detail_failover_yes_btn"
+    btn_endDRFailoverOK_xpath = "//*[@id='policies_dr_policy_stop_failover_test']/div/div/div/div/div[3]/div/button[2]"
+
+    # Fallback
+    btn_fallBack_id = "wave_policy_wave_policy_wave_detail_drPolicyFallback"
+    btn_fallBackYes_id = "wave_detail_dr_fallback_yes_btn"
+
     logger = LogGen.loggen()
 
     def __init__(self, driver):
@@ -50,6 +71,10 @@ class DRPolicy:
         workbook = openpyxl.load_workbook(path)
         sheet = workbook.active
         rows = sheet.max_row
+
+        self.driver.find_element(By.LINK_TEXT, "DR").click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Policies").click()
         for r in range(2, rows+1):
             time.sleep(5)
             self.driver.find_element(By.XPATH, self.btn_addNew_xpath).click()
@@ -126,9 +151,9 @@ class DRPolicy:
             elif periodicity == "Continuous":
                 self.driver.find_element(By.XPATH, self.rd_continuous_xpath).click()
 
-            for i in email:
-                self.driver.find_element(By.XPATH, self.txt_email_xpath).send_keys(i)
-                self.driver.find_element(By.XPATH, self.btn_add_xpath).click()
+            self.driver.find_element(By.XPATH, self.txt_email_xpath).send_keys(email)
+            self.driver.find_element(By.XPATH, self.btn_add_xpath).click()
+
             if note1:
                 self.driver.find_element(By.XPATH, self.chBox_failNote_xpath).click()
             if note2:
@@ -136,10 +161,128 @@ class DRPolicy:
             time.sleep(5)
             self.driver.find_element(By.ID, self.btn_create_id).click()
             self.logger.info("********** Created no. " + str(r - 1) + " DR Policy with name " + sheet.cell(row=r, column=1).value + " **********")
-
-    def startPolicy(self, vals):
-        for i in vals:
-            time.sleep(5)
-            self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[9]/span/i[1]')
-            self.driver.find_element(By.XPATH, self.btn_resume_xpath).click()
         time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Replication").click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def addDRPolicyToWave(self, waveName, policyNumber, startPolicy):
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.txt_drPolicy_xpath).click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.drp_selectDrPolicy_xpath).click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(policyNumber)+']/span').click()
+        time.sleep(5)
+        if startPolicy:
+            self.driver.find_element(By.ID, self.ch_startPolicyNow_id).click()
+        time.sleep(3)
+        self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def resumePolicyAndVerifySyncs(self, policyNumbers, waveName):
+        for i in policyNumbers:
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Policies").click()
+            time.sleep(5)
+            self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[9]/span/i[1]').click()
+            time.sleep(5)
+            self.driver.find_element(By.XPATH, self.btn_resume_xpath).click()
+            # time.sleep(5)
+            # self.driver.find_element(By.LINK_TEXT, "DR").click()
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, waveName).click()
+            time.sleep(5)
+            WebDriverWait(self.driver, 120).until(
+                EC.element_to_be_clickable((By.ID, self.btn_pause_id))
+            )
+            time.sleep(300)
+            self.logger.info("********** Pausing DR Policy **********")
+            self.pauseDRPolicy(policyNumbers)
+            self.logger.info("********** Successfully Paused DR Policy **********")
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, waveName).click()
+            time.sleep(5)
+            WebDriverWait(self.driver, 18000).until(
+                EC.element_to_be_clickable((By.ID, self.btn_start_id))
+            )
+            totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+            for hostNo in range(1, totalHosts+1):
+                elem = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[6]/span/span/span'))
+                if elem == 0:
+                    self.logger.info("********** Host Number : "+str(hostNo)+", Sync Successful **********")
+                else:
+                    self.logger.info("********** Host Number : "+str(hostNo)+", Sync Failed **********")
+                time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
+
+    def failoverHost(self, waveName, testMode, policyNumbers):
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+            self.driver.find_element(By.LINK_TEXT, "DR").click()
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(10)
+        self.driver.find_element(By.ID, self.btn_failOver_id).click()
+        time.sleep(5)
+        if testMode:
+            self.driver.find_element(By.ID, self.ch_testMode_id).click()
+        self.driver.find_element(By.ID, self.btn_failoverYes_id).click()
+        time.sleep(10)
+        WebDriverWait(self.driver, 300).until(
+            EC.text_to_be_present_in_element((By.XPATH, "//*[@id='content']/article/div/div[2]/div[1]/div[1]/div[2]"), "Failed Over")
+        )
+        time.sleep(5)
+        totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+        for hostNo in range(1, totalHosts + 1):
+            elem = len(self.driver.find_elements(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/span'))
+            if elem == 0:
+                self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Successful **********")
+            else:
+                self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Failed **********")
+            time.sleep(5)
+        self.logger.info("********** Pausing DR Policy **********")
+        self.pauseDRPolicy(policyNumbers)
+        self.logger.info("********** Successfully Paused DR Policy **********")
+        self.driver.find_element(By.LINK_TEXT, "Waves")
+
+    def fallbackHost(self, waveName):
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.btn_fallBack_id).click()
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.btn_fallBackYes_id).click()
+        time.sleep(5)
+        WebDriverWait(self.driver, 18000).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_failOver_xpath))
+        )
+        self.driver.find_element(By.LINK_TEXT, "Waves")
+
+    def pauseDRPolicy(self, policyNumbers):
+        for i in policyNumbers:
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Policies").click()
+            time.sleep(5)
+            self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[9]/span/i[1]').click()
+            time.sleep(5)
+            if len(self.driver.find_elements(By.XPATH, self.btn_endDRFailoverOK_xpath)) != 0:
+                time.sleep(5)
+                self.driver.find_element(By.XPATH, self.btn_endDRFailoverOK_xpath).click()
+            time.sleep(10)
+            WebDriverWait(self.driver, 18000).until(
+                EC.text_to_be_present_in_element((By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[2]/span/span'), "Paused")
+            )
+            time.sleep(5)
