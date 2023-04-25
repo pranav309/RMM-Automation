@@ -3,6 +3,8 @@ import openpyxl
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from utilities.customLogger import LogGen
 
 
@@ -79,12 +81,13 @@ class Configuration:
     txt_ZadaraRegion_id = "zadara_region"
 
     # VCenter data
-    txt_addVC_xpath = "//*[@id='conf_vc_add_btn']/span"
+    btn_createVC_xpath = "//*[@id='conf_vc_add_btn']/span"
     txt_VCName_id = "name"
     txt_VCipAddress_id = "address"
     txt_VCUserName_id = "username"
     txt_VCPassword_id = "password"
     txt_VCPort_id = "port"
+    btn_addVC_id = "conf_vc_vc_add_modal_submit_btn"
 
     # Organization
     btn_addAdminOrg_xpath = "//*[@id='content']/div/article/div/div[2]/div[2]/tree-root/tree-viewport/div/div/tree-node-collection/div/tree-node/div/tree-node-wrapper/div[1]/div/span/i[1]"
@@ -107,7 +110,6 @@ class Configuration:
     #     self.driver.find_element(By.LINK_TEXT, "Organization").click()
     #
     #     for r in range(3, rows + 1):
-
 
     def addNewCloudUser(self, path):
         workBook = openpyxl.load_workbook(path)
@@ -269,18 +271,33 @@ class Configuration:
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
-        for r in range(2, rows + 1):
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Configuration").click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "vCenter").click()
+
+        for r in range(3, rows + 1):
             name = sheet.cell(row=r, column=1).value
             ipAddress = sheet.cell(row=r, column=2).value
             userName = sheet.cell(row=r, column=3).value
             password = sheet.cell(row=r, column=4).value
             portNumber = sheet.cell(row=r, column=5).value
 
+            element = WebDriverWait(self.driver, 30).until(
+                    EC.element_to_be_clickable((By.XPATH, self.btn_createVC_xpath))
+            )
+            element.click()
             time.sleep(5)
-            self.driver.find_element(By.XPATH, self.txt_addVC_xpath).click()
             self.driver.find_element(By.ID, self.txt_VCName_id).send_keys(name)
             self.driver.find_element(By.ID, self.txt_VCipAddress_id).send_keys(ipAddress)
             self.driver.find_element(By.ID, self.txt_VCUserName_id).send_keys(userName)
             self.driver.find_element(By.ID, self.txt_VCPassword_id).send_keys(password)
-            self.driver.find_element(By.ID, self.txt_VCPort_id).send_keys(portNumber)
+            if portNumber != "NA":
+                self.driver.find_element(By.ID, self.txt_VCPort_id).send_keys(portNumber)
             time.sleep(5)
+            self.driver.find_element(By.ID, self.btn_addVC_id).click()
+            time.sleep(5)
+
+        self.driver.find_element(By.LINK_TEXT, "Replication").click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()

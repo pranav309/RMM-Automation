@@ -1,4 +1,5 @@
 import time
+import paramiko
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
@@ -42,11 +43,6 @@ class WaveOperations:
                 time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, i).click()
             time.sleep(5)
-            # self.driver.find_element(By.XPATH, '//*[@id="waves_'+i+'_wave_name"]').click()
-            # start = WebDriverWait(self.driver, 30).until(
-            #     EC.element_to_be_clickable((By.ID, self.btn_start_id))
-            # )
-            # start.click()
             self.logger.info("********** Starting Hosts In Wave : " + i + " **********")
             time.sleep(10)
             totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
@@ -73,10 +69,12 @@ class WaveOperations:
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def startWaveAndVerify(self, waveName):
+        flag = 0
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
         time.sleep(5)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+            flag += 1
             self.driver.find_element(By.LINK_TEXT, "DR").click()
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -98,8 +96,26 @@ class WaveOperations:
             else:
                 self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Failed **********")
             time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Replication").click()
-        time.sleep(5)
+            syncType = ""
+            for r in range(1, 6):
+                if len(self.driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[5]/span/span[' + str(r) + ']/span')) != 0:
+                    syncType = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[5]/span/span[' + str(r) + ']/span').text
+                    break
+            sourceName = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
+            targetName = ""
+            if len(self.driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[4]/span')) != 0:
+                targetName = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[4]/span').text
+            if syncType == "Host Sync":
+                self.deleteSR(sourceName, targetName)
+            elif syncType == "Capture" or syncType == "Stage 1":
+                self.deleteSR(sourceName, str(sourceName)+"-IMAGE")
+            elif syncType == "Stage 1 & 2":
+                self.deleteSR(sourceName, str(sourceName)+"-IMAGE")
+                self.deleteSR(str(sourceName)+"-IMAGE", targetName)
+            time.sleep(5)
+        if flag == 1:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def restartHost(self, val):
@@ -165,3 +181,17 @@ class WaveOperations:
                 self.driver.find_element(By.ID, self.chBox_startNow_id).click()
             self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
         time.sleep(5)
+
+    def deleteSR(self, source, target):
+        vm_ip = "172.29.30.127"
+        vm_username = "root"
+        vm_password = "rackware"
+
+        ssh = paramiko.SSHClient()
+        ssh.load_system_host_keys()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(vm_ip,
+                    username=vm_username,
+                    password=vm_password,
+                    look_for_keys=False)
+        ssh.exec_command("rw ic srd "+str(source)+" --target "+str(target))

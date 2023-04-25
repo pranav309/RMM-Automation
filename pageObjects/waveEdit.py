@@ -79,6 +79,8 @@ class SyncOptions:
     btn_next_xpath = "//*[@id='main']/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[5]/div/button[2]"
     btn_modifyAll_xpath = "//*[@id='main']/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[5]/div/button[2]"
     btn_yes_id = "wave_policy_wave_policy_wave_detail_autoprov_not_conf_yes_btn"
+    txt_blkExcludeFile_id = "wave_detail_bulk_edit_item_options_exclude"
+    txt_blkIncludeFile_id = "wave_detail_bulk_edit_item_options_include"
 
     # AWS CU
     txt_AWSVPCID_id = "wave_detail_cu_edit_aws_options_vpc_id"
@@ -94,6 +96,22 @@ class SyncOptions:
     rd_existingSystem_id = "wave_detail_edit_item_provisioning_model_radio_1"
     rd_capture_id = "wave_detail_edit_item_provisioning_model_radio_2"
     txt_captureImage_xpath = "//*[@id='wave_detail_edit_item_clone_name']"
+    rd_directSync_id = "wave_detail_edit_item_existing_capture_type_0"
+    rd_stage12_id = "wave_detail_edit_item_existing_capture_type_1"
+    rd_stage1_id = "wave_detail_edit_item_existing_capture_type_2"
+    rd_stage2_id = "wave_detail_edit_item_existing_capture_type_3"
+    txt_imageName_id = "wave_detail_edit_item_clone_name"
+    ch_passthrough_id = "wave_detail_edit_item_options_sshonly_target"
+    txt_targetIP_id = "wave_detail_edit_item_target_dns_ip"
+    txt_friendlyName_id = "wave_detail_edit_item_target_friendlyname"
+    txt_userName_id = "wave_detail_edit_item_target_username"
+
+    # Change Datastore
+    txt_editDatastore_xpath = "//*[@id='target_vcenter_datastore']/div/input"
+
+    # Move hosts
+    drp_selectWave_xpath = "//*[@id='wave_policy_wave_policy_wave_detail_move_item']/div/div/div/div[2]/div/div/select"
+    btn_moveMachine_id = "wave_detail_move_item_move_machine_btn"
 
     logger = LogGen.loggen()
 
@@ -286,15 +304,6 @@ class SyncOptions:
         time.sleep(3)
         self.driver.find_element(By.ID, self.btn_yes_id).click()
 
-    # def setSO(self, path):
-    #     time.sleep(5)
-    #     waveName = sheet.cell(row=2)
-    #     totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
-    #     if totalHosts == 1:
-    #         self.setSyncOptions(path)
-    #     else:
-    #         self.bulkEditOption(path)
-
     def setSyncOptions(self, path):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
@@ -437,7 +446,7 @@ class SyncOptions:
         time.sleep(5)
         for r in range(2, rows+1):
             waveName = sheet.cell(row=r, column=1).value
-            goal = sheet.cell(row=r, column=2).value
+            hosts = sheet.cell(row=r, column=2).value
             tng = sheet.cell(row=r, column=3).value
             verbose = sheet.cell(row=r, column=4).value
             passwordLess = sheet.cell(row=r, column=5).value
@@ -455,10 +464,20 @@ class SyncOptions:
             deleteAllTargetFS = sheet.cell(row=r, column=17).value
             keepTargetLayout = sheet.cell(row=r, column=18).value
             cloudInit = sheet.cell(row=r, column=19).value
+            excludeFile = sheet.cell(row=r, column=20).value
+            includeFile = sheet.cell(row=r, column=21).value
 
-            self.driver.find_element(By.LINK_TEXT, waveName).click()
-            time.sleep(10)
-            self.driver.find_element(By.XPATH, self.btn_selectAll_xpath).click()
+            ele = WebDriverWait(self.driver, 30).until(
+                EC.element_to_be_clickable((By.LINK_TEXT, waveName))
+            )
+            ele.click()
+            time.sleep(5)
+            if type(hosts) != str:
+                self.driver.find_element(By.XPATH, self.btn_selectAll_xpath).click()
+            else:
+                res = tuple(map(int, hosts.split(', ')))
+                for i in res:
+                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/p-tablecheckbox/div/div[2]').click()
             time.sleep(5)
             self.driver.find_element(By.XPATH, self.btn_bulkEdit_xpath).click()
             time.sleep(5)
@@ -581,6 +600,14 @@ class SyncOptions:
                 self.driver.find_element(By.ID, "cloud_init_no").click()
                 self.logger.info("********** Sync Option 'Cloud Init' is set as no **********")
 
+            if excludeFile != "NA":
+                self.driver.find_element(By.ID, self.txt_blkExcludeFile_id).clear()
+                self.driver.find_element(By.ID, self.txt_blkExcludeFile_id).send_keys(excludeFile)
+
+            if includeFile != "NA":
+                self.driver.find_element(By.ID, self.txt_blkIncludeFile_id).clear()
+                self.driver.find_element(By.ID, self.txt_blkIncludeFile_id).send_keys(includeFile)
+
             time.sleep(5)
             self.driver.find_element(By.XPATH, self.btn_next_xpath).click()
             time.sleep(5)
@@ -590,16 +617,169 @@ class SyncOptions:
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def changeTargetType(self, path):
+    def changeBulkEditOption(self, waveName, option, yesOrNo):
+        ele = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, waveName))
+        )
+        ele.click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.btn_selectAll_xpath).click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.btn_bulkEdit_xpath).click()
+        time.sleep(5)
+        if option == "TNG":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "tng_yes").click()
+                self.logger.info("********** Sync Option 'TNG' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "tng_no").click()
+                self.logger.info("********** Sync Option 'TNG' is set as no **********")
+
+        elif option == "Verbose":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "verbose_yes").click()
+                self.logger.info("********** Sync Option 'Verbose' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "verbose_no").click()
+                self.logger.info("********** Sync Option 'Verbose' is set as no **********")
+
+        elif option == "Passwordless":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "ssh_yes").click()
+                self.logger.info("********** Sync Option 'Passwordless' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "ssh_no").click()
+                self.logger.info("********** Sync Option 'Passwordless' is set as no **********")
+
+        elif option == "Allow Direct Fscopy":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "allowDirectFscopy_yes").click()
+                self.logger.info("********** Sync Option 'Allow Direct Fscopy' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "allowDirectFscopy_no").click()
+                self.logger.info("********** Sync Option 'Allow Direct Fscopy' is set as no **********")
+
+        elif option == "Allow FS Deletion":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "allowFsDeletion_yes").click()
+                self.logger.info("********** Sync Option 'Allow FS Deletion' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "allowFsDeletion_no").click()
+                self.logger.info("********** Sync Option 'Allow FS Deletion' is set as no **********")
+
+        elif option == "No Transfer":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "no_xfer_yes").click()
+                self.logger.info("********** Sync Option 'No Transfer' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "no_xfer_no").click()
+                self.logger.info("********** Sync Option 'No Transfer' is set as no **********")
+
+        elif option == "Transfer Compress":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "xferCompress_yes").click()
+                self.logger.info("********** Sync Option 'Transfer Compress' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "xferCompress_no").click()
+                self.logger.info("********** Sync Option 'Transfer Compress' is set as no **********")
+
+        elif option == "No Transfer Compress":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "no_xfer_compress_yes").click()
+                self.logger.info("********** Sync Option 'No Transfer Compress' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "no_xfer_compress_no").click()
+                self.logger.info("********** Sync Option 'No Transfer Compress' is set as no **********")
+
+        elif option == "Ignore Missing":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "ignoreMissing_yes").click()
+                self.logger.info("********** Sync Option 'Ignore Missing' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "ignoreMissing_no").click()
+                self.logger.info("********** Sync Option 'Ignore Missing' is set as no **********")
+
+        elif option == "No In Place":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "noInPlace_yes").click()
+                self.logger.info("********** Sync Option 'No In Place' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "noInPlace_no").click()
+                self.logger.info("********** Sync Option 'No In Place' is set as no **********")
+
+        elif option == "No Reboot":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "noReboot_yes").click()
+                self.logger.info("********** Sync Option 'No Reboot' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "noReboot_no").click()
+                self.logger.info("********** Sync Option 'No Reboot' is set as no **********")
+
+        elif option == "Include SAN":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "include_san_yes").click()
+                self.logger.info("********** Sync Option 'Include SAN' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "include_san_no").click()
+                self.logger.info("********** Sync Option 'Include SAN' is set as no **********")
+
+        elif option == "Exclude SAN":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "exclude_san_yes").click()
+                self.logger.info("********** Sync Option 'Exclude SAN' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "exclude_san_no").click()
+                self.logger.info("********** Sync Option 'Exclude SAN' is set as no **********")
+
+        elif option == "Override RMM Storage Check":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "storage_override_yes").click()
+                self.logger.info("********** Sync Option 'Override RMM Storage Check' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "storage_override_no").click()
+                self.logger.info("********** Sync Option 'Override RMM Storage Check' is set as no **********")
+
+        elif option == "Delete All Target FS":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "delete_all_target_fs_yes").click()
+                self.logger.info("********** Sync Option 'Delete All Target FS' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "delete_all_target_fs_no").click()
+                self.logger.info("********** Sync Option 'Delete All Target FS' is set as no **********")
+
+        elif option == "Keep Target Layout":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "keep_target_layout_yes").click()
+                self.logger.info("********** Sync Option 'Keep Target Layout' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "keep_target_layout_no").click()
+                self.logger.info("********** Sync Option 'Keep Target Layout' is set as no **********")
+
+        elif option == "Cloud Init":
+            if yesOrNo == "Yes":
+                self.driver.find_element(By.ID, "cloud_init_yes").click()
+                self.logger.info("********** Sync Option 'Cloud Init' is set as yes **********")
+            if yesOrNo == "No":
+                self.driver.find_element(By.ID, "cloud_init_no").click()
+                self.logger.info("********** Sync Option 'Cloud Init' is set as no **********")
+
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.btn_next_xpath).click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.btn_modifyAll_xpath).click()
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.btn_yes_id).click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def changeTargetType(self, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
-        rows = sheet.max_row
         tmp = "none"
-        for r in range(2, rows+1):
+        for r in range(start, end+1):
             waveName = sheet.cell(row=r, column=1).value
             hostNumber = sheet.cell(row=r, column=2).value
             targetType = sheet.cell(row=r, column=3).value
-            imageName = sheet.cell(row=r, column=4).value
 
             if tmp != waveName:
                 time.sleep(5)
@@ -612,18 +792,129 @@ class SyncOptions:
                     time.sleep(5)
                 self.driver.find_element(By.LINK_TEXT, waveName).click()
             time.sleep(10)
-            # totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
-            # for hostNo in range(1, totalHosts+1):
             self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNumber)+']/td[8]/span/div/i[2]').click()
             time.sleep(5)
+
             if targetType == "Autoprovision":
                 self.driver.find_element(By.ID, self.rd_autoprovision_id).click()
-            if targetType == "Existing System":
+
+            elif targetType == "Existing System":
+                imageName = sheet.cell(row=r, column=4).value
+                syncType = sheet.cell(row=r, column=5).value
+                passthrough = sheet.cell(row=r, column=6).value
+                targetIP = sheet.cell(row=r, column=7).value
+                friendlyName = sheet.cell(row=r, column=8).value
+                userName = sheet.cell(row=r, column=9).value
+
                 self.driver.find_element(By.ID, self.rd_existingSystem_id).click()
+                time.sleep(5)
+                if syncType == "Direct Sync":
+                    self.driver.find_element(By.ID, self.rd_directSync_id).click()
+                    time.sleep(5)
+                    tmp = self.driver.find_element(By.ID, self.ch_passthrough_id).is_selected()
+                    if passthrough and not tmp:
+                        self.driver.find_element(By.ID, self.ch_passthrough_id).click()
+                    elif not passthrough and tmp:
+                        self.driver.find_element(By.ID, self.ch_passthrough_id).click()
+                    self.driver.find_element(By.ID, self.txt_targetIP_id).clear()
+                    self.driver.find_element(By.ID, self.txt_targetIP_id).send_keys(targetIP)
+                    self.driver.find_element(By.ID, self.txt_friendlyName_id).clear()
+                    self.driver.find_element(By.ID, self.txt_friendlyName_id).send_keys(friendlyName)
+
+                elif syncType == "Stage 1 & 2" or syncType == "Stage 2":
+                    if syncType == "Stage 1 & 2":
+                        self.driver.find_element(By.ID, self.rd_stage12_id).click()
+                    elif syncType == "Stage 2":
+                        self.driver.find_element(By.ID, self.rd_stage2_id).click()
+                    time.sleep(5)
+                    self.driver.find_element(By.ID, self.txt_imageName_id).clear()
+                    self.driver.find_element(By.ID, self.txt_imageName_id).send_keys(imageName)
+                    time.sleep(5)
+                    tmp = self.driver.find_element(By.ID, self.ch_passthrough_id).is_selected()
+                    if passthrough and not tmp:
+                        self.driver.find_element(By.ID, self.ch_passthrough_id).click()
+                    elif not passthrough and tmp:
+                        self.driver.find_element(By.ID, self.ch_passthrough_id).click()
+                    self.driver.find_element(By.ID, self.txt_targetIP_id).clear()
+                    self.driver.find_element(By.ID, self.txt_targetIP_id).send_keys(targetIP)
+                    self.driver.find_element(By.ID, self.txt_friendlyName_id).clear()
+                    self.driver.find_element(By.ID, self.txt_friendlyName_id).send_keys(friendlyName)
+
+                elif syncType == "Stage 1":
+                    self.driver.find_element(By.ID, self.rd_stage1_id).click()
+                    time.sleep(5)
+                    self.driver.find_element(By.ID, self.txt_imageName_id).clear()
+                    self.driver.find_element(By.ID, self.txt_imageName_id).send_keys(imageName)
+
+                self.driver.find_element(By.ID, self.txt_userName_id).clear()
+                self.driver.find_element(By.ID, self.txt_userName_id).send_keys(userName)
+                time.sleep(5)
+
             if targetType == "Capture":
+                imageName = sheet.cell(row=r, column=4).value
                 self.driver.find_element(By.ID, self.rd_capture_id).click()
+                self.driver.find_element(By.XPATH, self.txt_captureImage_xpath).clear()
                 self.driver.find_element(By.XPATH, self.txt_captureImage_xpath).send_keys(imageName)
+
             time.sleep(5)
             self.driver.find_element(By.ID, self.btn_modify_id).click()
             self.logger.info("********** Successfully Changed Target Type For Host Number : " + str(hostNumber) + " **********")
             tmp = waveName
+
+    def setSync(self, syncType):
+        time.sleep(5)
+        if syncType == "Direct Sync":
+            self.driver.find_element(By.ID, self.rd_directSync_id).click()
+        elif syncType == "Stage 1 & 2":
+            self.driver.find_element(By.ID, self.rd_directSync_id).click()
+        elif syncType == "Stage 1":
+            self.driver.find_element(By.ID, self.rd_directSync_id).click()
+        elif syncType == "Stage 2":
+            self.driver.find_element(By.ID, self.rd_directSync_id).click()
+        time.sleep(5)
+
+    def changeDatastore(self, waveName, datastore):
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+            self.driver.find_element(By.LINK_TEXT, "DR").click()
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+        for hostNo in range(1, totalHosts + 1):
+            if totalHosts == 1:
+                self.driver.find_element(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[8]/span/div/i[2]').click()
+            else:
+                time.sleep(5)
+                self.driver.find_element(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[8]/span/div/i[2]').click()
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "vCenter Options").click()
+            time.sleep(5)
+            self.driver.find_element(By.XPATH, self.txt_editDatastore_xpath).clear()
+            self.driver.find_element(By.XPATH, self.txt_editDatastore_xpath).send_keys(datastore)
+            time.sleep(5)
+            self.driver.find_element(By.ID, self.btn_modify_id).click()
+            self.logger.info("********** Successfully Changes Datastore for Host Number : " + str(hostNo) + " **********")
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def moveHosts(self, source, hosts, target):
+        ele = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, source))
+        )
+        ele.click()
+        time.sleep(5)
+        res = tuple(map(int, hosts.split(', ')))
+        for h in res:
+            time.sleep(5)
+            self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(h)+']/td[8]/span/div/i[3]').click()
+            time.sleep(5)
+            env = Select(self.driver.find_element(By.XPATH, self.drp_selectWave_xpath))
+            env.select_by_visible_text(target)
+            time.sleep(5)
+            self.driver.find_element(By.ID, self.btn_moveMachine_id).click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()

@@ -1,5 +1,6 @@
 import time
 import openpyxl
+import keyboard
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -14,14 +15,13 @@ class WavePage:
     img_createWave_xpath = "//*[@id='waves_add_machine']/div[1]/div/img"
     btn_createWave_xpath = "//*[@id='waves_add_wave']/span/i"
     img_createNewWave_xpath = "//*[@id='waves_create_wave_add_machine']/div/img"
+    img_uploadCSV_xpath = "//*[@id='dropzone_modal_page']/div/div[1]/img"
 
     lnk_createWave_id = "waves_add_wave"
     rd_waveWithHost_id = "create_wave_type_1"
 
-    img_uploadImage_xpath = "/html/body/app-root/app-main-layout/div/app-waves/create-wave-modal/div/div/div/div[" \
-                            "2]/div[2]/div[1]/div/div[1]/img"
-    img_uplaod_xpath = "/html/body/app-root/app-main-layout/div/app-waves/create-wave-modal/div/div/div/div[2]/div[" \
-                       "2]/div[1]/div/div[1]"
+    img_uploadImage_xpath = "/html/body/app-root/app-main-layout/div/app-waves/create-wave-modal/div/div/div/div[2]/div[2]/div[1]/div/div[1]/img"
+    img_uplaod_xpath = "/html/body/app-root/app-main-layout/div/app-waves/create-wave-modal/div/div/div/div[2]/div[2]/div[1]/div/div[1]"
 
     txt_waveName_id = "wave_name"
     chBox_passthrough_id = "wave_dashboard_add_machine_passthrough"
@@ -65,25 +65,16 @@ class WavePage:
     def __init__(self, driver):
         self.driver = driver
 
-    def createWaveWithoutHost(self, path):
+    def createWaveWithoutHost(self, waveNames, passthrough):
         time.sleep(5)
-        workBook = openpyxl.load_workbook(path)
-        sheet = workBook.active
-        rows = sheet.max_row
         tmp = "None"
-        for r in range(3, rows+1):
+        res = tuple(map(str, waveNames.split(', ')))
+        for waveName in res:
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
-
-            waveName = sheet.cell(row=r, column=1).value
-            passthrough = sheet.cell(row=r, column=2).value
             time.sleep(5)
 
-            if tmp == waveName:
-                continue
-            else:
-                if len(self.driver.find_elements(By.LINK_TEXT, waveName)) != 0:
-                    continue
-                else:
+            if tmp != waveName:
+                if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
                     if len(self.driver.find_elements(By.XPATH, self.img_createWave_xpath)) != 0:
                         self.driver.find_element(By.XPATH, self.img_createWave_xpath).click()
                     else:
@@ -96,12 +87,21 @@ class WavePage:
                     time.sleep(3)
                     self.driver.find_element(By.ID, self.btn_create_id).click()
                     time.sleep(5)
-                    # if len(sheet.cell(row=r, column=3).value) != 0:
-                    #     self.driver.find_element(By.LINK_TEXT, waveName).click()
-                    #     time.sleep(5)
-                    #     self.addHostToWave(sheet, r)
-                    #     time.sleep(5)
             tmp = waveName
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def createWaveWithFile(self, path):
+        btn = WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_createWave_xpath))
+        )
+        btn.click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.img_uploadCSV_xpath).click()
+        time.sleep(5)
+        keyboard.write(path)
+        time.sleep(5)
+        keyboard.send('enter')
+        time.sleep(10)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def createWaveWithHost(self, path):
@@ -283,36 +283,3 @@ class WavePage:
     def searchWave(self, waveName):
         self.driver.find_element(By.XPATH, self.txt_search_xpath).send_keys(waveName)
         time.sleep(5)
-
-    def createWaveWithFile(self, path):
-        # wait = WebDriverWait(self.driver, 30)
-        # ele = self.driver.find_element(By.ID, self.lnk_createWave_id)
-        # element = wait.until(EC.element_to_be_clickable(ele))
-        # element.click()
-
-        element = WebDriverWait(self.driver, 30).until(
-            EC.element_to_be_clickable((By.ID, self.lnk_createWave_id))
-        )
-        element.click()
-
-        time.sleep(10)
-        # element1 = WebDriverWait(self.driver, 30).until(
-        #     EC.element_to_be_clickable((By.XPATH, '//*[@id="dropzone_modal_page"]/div/div[1]/img')))
-        # element1.send_keys(path)
-        # upload_file = self.driver.find_element(By.XPATH, '//*[@id="dropzone_modal_page"]/div/div[1]/img')
-        # self.driver.execute_script("document.getElementById('dropzone_modal_page').fetch('uploads/' + encodeURIComponent(upload_file.name), {method:'PUT',body:data});", upload_file)
-        # self.driver.execute_script("let data = document.getElementById('dropzone_modal_page').files[0]; let entry = document.getElementById('dropzone_modal_page').files[0]; fetch('uploads/' + encodeURIComponent(entry.class), {method:'PUT',body:data}); alert('your file has been uploaded');location.reload();")
-
-        self.driver.choose_file("#dropzone_modal_page", path)
-
-        time.sleep(10)
-        # img = self.driver.find_element(By.XPATH, '//*[@id="dropzone_modal_page"]/div/div[1]/img')
-        # time.sleep(5)
-        # action = ActionChains(self.driver)
-        # action.move_to_element(img)
-        # action.click(img)
-        # time.sleep(5)
-        # action.key_down(Keys.CONTROL).send_keys("xvv").key_up(Keys.CONTROL).perform()
-        # time.sleep(5)
-        # action.key_down(Keys.ENTER).key_up(Keys.ENTER).perform()
-        # time.sleep(5)

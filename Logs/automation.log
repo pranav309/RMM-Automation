@@ -1,529 +1,168 @@
-02/24/23 04:/24:/11 PM: INFO: ********** Test_013_CreateAndStartWave ********** :
-02/24/23 04:/24:/11 PM: INFO: ********** Opening Browser ********** :
-02/24/23 04:/24:/30 PM: INFO: ********** Browser Opened Successfully **********:
-02/24/23 04:/24:/50 PM: INFO: ********** Login Successful **********:
-02/24/23 04:/24:/50 PM: INFO: ********** Creating New Wave With Host **********:
-02/24/23 04:/27:/25 PM: INFO: ********** Successful Created New Wave With Host **********:
-02/24/23 04:/29:/05 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-02/24/23 04:/29:/26 PM: INFO: ********** Starting A Wave **********:
-02/24/23 06:/12:/00 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-02/24/23 06:/12:/06 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-02/24/23 06:/12:/11 PM: INFO: ********** Host Number : 3, Sync Successful **********:
-02/24/23 06:/12:/16 PM: INFO: ********** Host Number : 4, Sync Successful **********:
-02/24/23 06:/12:/27 PM: INFO: ********** Successful Started A Wave **********:
-02/24/23 06:/12:/41 PM: INFO: ********** Logout Successful **********:
-02/24/23 06:/12:/49 PM: INFO: ********** Browser Closed Successfully **********:
+04/25/23 11:/25:/51 AM: INFO: ********** Test_019_SecondFlow ********** :
+04/25/23 11:/25:/51 AM: INFO: ********** Opening Browser ********** :
+04/25/23 11:/26:/16 AM: INFO: ********** Browser Opened Successfully **********
+:
+04/25/23 11:/26:/16 AM: INFO: ********** Logging In **********:
+04/25/23 11:/26:/27 AM: INFO: ********** Login Successful **********
+:
+04/25/23 11:/26:/27 AM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+04/25/23 11:/26:/57 AM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+:
+04/25/23 11:/26:/57 AM: INFO: ********** Starting TestCase 2: Add New vCenter **********:
+04/25/23 11:/27:/33 AM: INFO: ********** Successfully Executed TestCase: Add New vCenter **********
+:
+04/25/23 11:/27:/33 AM: INFO: ********** Starting TestCase 3: Set Autoprovision For The Wave **********:
+04/25/23 11:/29:/12 AM: INFO: ********** Successfully Executed TestCase: Set Autoprovision For The Wave **********
+:
+04/25/23 11:/29:/12 AM: INFO: ********** Starting TestCase 4: Bulk Edit Sync Options For Wave **********:
+04/25/23 11:/29:/33 AM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+04/25/23 11:/29:/33 AM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+04/25/23 11:/29:/34 AM: INFO: ********** Sync Option 'No Transfer' is set as yes **********:
+04/25/23 11:/30:/12 AM: INFO: ********** Sync Option 'Transfer Compress' is set as yes **********:
+04/25/23 11:/30:/33 AM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options For Wave **********
+:
+04/25/23 11:/30:/33 AM: INFO: ********** Starting TestCase 5 & 6: Edit Sync Options For Linux Wave **********:
+04/25/23 11:/31:/47 AM: INFO: ********** Successfully Executed TestCase: Edit Sync Options For Linux Wave **********
+:
+04/25/23 11:/31:/47 AM: INFO: ********** Starting TestCase 7: Change Datastore For All Waves **********:
+04/25/23 11:/32:/19 AM: INFO: ********** Successfully Changes Datastore for Host Number : 1 **********:
+04/25/23 11:/32:/40 AM: INFO: ********** Successfully Changes Datastore for Host Number : 2 **********:
+04/25/23 11:/33:/01 AM: INFO: ********** Successfully Changes Datastore for Host Number : 3 **********:
+04/25/23 11:/33:/22 AM: INFO: ********** Successfully Changes Datastore for Host Number : 4 **********:
+04/25/23 11:/33:/27 AM: INFO: ********** Successfully Executed TestCase: Change Datastore For All Waves **********
+:
+04/25/23 11:/33:/27 AM: INFO: ********** Starting TestCase 8: Bulk Edit Sync Options For Windows Hosts **********:
+04/25/23 11:/34:/10 AM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options For Windows Hosts **********
+:
+04/25/23 11:/34:/10 AM: INFO: ********** Starting TestCase 9.1: Set Parallel Count **********:
+04/25/23 11:/34:/36 AM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+:
+04/25/23 11:/34:/36 AM: INFO: ********** Starting TestCase 9.2: Start & Verify A Wave **********:
+04/25/23 11:/49:/31 AM: INFO: ********** Host Number : 1, Sync Successful **********:
+04/25/23 11:/49:/36 AM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 11:/49:/38 AM: INFO: Authentication (password) successful!:
+04/25/23 11:/49:/44 AM: INFO: ********** Host Number : 2, Sync Successful **********:
+04/25/23 11:/49:/49 AM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 11:/49:/51 AM: INFO: Authentication (password) successful!:
+04/25/23 11:/49:/56 AM: INFO: ********** Host Number : 3, Sync Successful **********:
+04/25/23 11:/50:/02 AM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 11:/50:/03 AM: INFO: Authentication (password) successful!:
+04/25/23 11:/50:/09 AM: INFO: ********** Host Number : 4, Sync Successful **********:
+04/25/23 11:/50:/15 AM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 11:/50:/16 AM: INFO: Authentication (password) successful!:
+04/25/23 11:/50:/22 AM: INFO: ********** Successfully Executed TestCase: Start & Verify A Wave **********
+:
+04/25/23 11:/50:/22 AM: INFO: ********** Starting TestCase 10: Changing Sync Options for A Wave **********:
+04/25/23 11:/50:/40 AM: INFO: ********** Sync Option 'No Transfer' is set as no **********:
+04/25/23 11:/51:/01 AM: INFO: ********** Successfully Executed TestCase: Changed Sync Options for A Wave **********
+:
+04/25/23 11:/51:/01 AM: INFO: ********** Starting TestCase 11: Start & Verify A Wave Again **********:
+04/25/23 12:/46:/58 PM: INFO: ********** Host Number : 1, Sync Successful **********:
+04/25/23 12:/47:/03 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 12:/47:/05 PM: INFO: Authentication (password) successful!:
+04/25/23 12:/47:/11 PM: INFO: ********** Host Number : 2, Sync Successful **********:
+04/25/23 12:/47:/16 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 12:/47:/17 PM: INFO: Authentication (password) successful!:
+04/25/23 12:/47:/23 PM: INFO: ********** Host Number : 3, Sync Successful **********:
+04/25/23 12:/47:/29 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 12:/47:/30 PM: INFO: Authentication (password) successful!:
+04/25/23 12:/47:/36 PM: INFO: ********** Host Number : 4, Sync Successful **********:
+04/25/23 12:/47:/41 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 12:/47:/43 PM: INFO: Authentication (password) successful!:
+04/25/23 12:/47:/49 PM: INFO: ********** Successfully Executed TestCase: Start & Verify A Wave Again **********
+:
+04/25/23 12:/47:/49 PM: INFO: ********** Starting TestCase 12: Create Another Wave Without Hosts **********:
+04/25/23 12:/48:/11 PM: INFO: ********** Successfully Executed TestCase: Create Another Wave Without Hosts **********
+:
+04/25/23 12:/48:/11 PM: INFO: ********** Starting TestCase 13: Move Hosts From One Wave To Another Wave **********:
+04/25/23 12:/48:/54 PM: INFO: ********** Successfully Executed TestCase: Move Hosts From One Wave To Another Wave **********
+:
+04/25/23 12:/48:/54 PM: INFO: ********** Starting TestCase 14.1: Changing Target Type Of Linux Hosts Wave **********:
+04/25/23 12:/49:/26 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
+04/25/23 12:/49:/47 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
+04/25/23 12:/49:/47 PM: INFO: ********** Successfully Executed TestCase: Changed Target Type Of Linux Hosts Wave **********
+:
+04/25/23 12:/49:/47 PM: INFO: ********** Starting TestCase 14.2: Set Parallel Count **********:
+04/25/23 12:/50:/13 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+:
+04/25/23 12:/50:/13 PM: INFO: ********** Starting TestCase 14.3: Start & Verify A Wave Again **********:
+04/25/23 12:/52:/26 PM: INFO: ********** Host Number : 1, Sync Successful **********:
+04/25/23 12:/52:/31 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 12:/52:/33 PM: INFO: Authentication (password) successful!:
+04/25/23 12:/52:/38 PM: INFO: ********** Host Number : 2, Sync Successful **********:
+04/25/23 12:/52:/44 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 12:/52:/45 PM: INFO: Authentication (password) successful!:
+04/25/23 12:/52:/51 PM: INFO: ********** Successfully Executed TestCase: Start & Verify A Wave Again **********
+:
+04/25/23 12:/52:/51 PM: INFO: ********** Starting TestCase 15.1: Change Target Type Of Windows Hosts Wave **********:
+04/25/23 12:/53:/44 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
+04/25/23 12:/54:/26 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
+04/25/23 12:/54:/26 PM: INFO: ********** Successfully Executed TestCase: Change Target Type Of Windows Hosts Wave **********
+:
+04/25/23 12:/54:/26 PM: INFO: ********** Starting TestCase 15.2: Start & Verify A Wave Again **********:
+04/25/23 01:/31:/12 PM: INFO: ********** Host Number : 1, Sync Successful **********:
+04/25/23 01:/31:/18 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 01:/31:/19 PM: INFO: Authentication (password) successful!:
+04/25/23 01:/31:/20 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 01:/31:/22 PM: INFO: Authentication (password) successful!:
+04/25/23 01:/31:/28 PM: INFO: ********** Host Number : 2, Sync Successful **********:
+04/25/23 01:/31:/33 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 01:/31:/35 PM: INFO: Authentication (password) successful!:
+04/25/23 01:/31:/36 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 01:/31:/37 PM: INFO: Authentication (password) successful!:
+04/25/23 01:/31:/44 PM: INFO: ********** Successfully Executed TestCase: Start & Verify A Wave Again **********
+:
+04/25/23 01:/31:/44 PM: INFO: ********** Starting TestCase 16.1: Create New DRPolicy **********:
+04/25/23 01:/32:/06 PM: INFO: ********** Created no. 1 DR Policy with name SecondFlowWin **********:
+04/25/23 01:/32:/33 PM: INFO: ********** Created no. 2 DR Policy with name SecondFlowLin **********:
+04/25/23 01:/32:/38 PM: INFO: ********** Successfully Executed TestCase: Create New DRPolicy **********
+:
+04/25/23 02:/02:/23 PM: INFO: ********** Starting TestCase 16.2, 17 & 18: Add DRPolicy To Wave **********:
+04/25/23 02:/02:/58 PM: INFO: ********** Policy : SecondFlowWin, Added To The Wave : Second Flow **********:
+04/25/23 02:/05:/09 PM: INFO: ********** Policy : SecondFlowWin, Is In Active State **********:
+04/25/23 02:/05:/49 PM: INFO: ********** Policy : SecondFlowLin, Added To The Wave : Second Flow 1 **********:
+04/25/23 02:/08:/00 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+04/25/23 02:/08:/06 PM: INFO: ********** Successfully Executed TestCase: Add DRPolicy To Wave **********
+:
+04/25/23 02:/08:/06 PM: INFO: ********** Starting TestCase 19.1: Pause DR Policy For Windows **********:
+04/25/23 02:/08:/21 PM: INFO: ********** Policy : SecondFlowWin, Is In Active State **********:
+04/25/23 02:/08:/21 PM: INFO: ********** Pausing The DR Policy **********:
+04/25/23 02:/08:/31 PM: INFO: ********** Policy : SecondFlowWin, Is In Paused State **********:
+04/25/23 02:/08:/31 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy For Windows **********
+:
+04/25/23 02:/08:/31 PM: INFO: ********** Starting TestCase 19.2: Perform Failover Windows Hosts **********:
+04/25/23 02:/09:/13 PM: INFO: ********** Host Number : 1, Sync Successful **********:
+04/25/23 02:/09:/18 PM: INFO: ********** Host Number : 2, Sync Successful **********:
+04/25/23 02:/09:/23 PM: INFO: ********** Pausing DR Policy **********:
+04/25/23 02:/09:/33 PM: INFO: ********** Policy : SecondFlowWin, Is In Failed Over State **********:
+04/25/23 02:/09:/33 PM: INFO: ********** Pausing The DR Policy **********:
+04/25/23 02:/09:/43 PM: INFO: ********** Policy : SecondFlowWin, Is In Paused State **********:
+04/25/23 02:/09:/43 PM: INFO: ********** Successfully Paused DR Policy **********:
+04/25/23 02:/09:/49 PM: INFO: ********** Successfully Executed TestCase: Perform Failover Windows Hosts **********
+:
+04/25/23 02:/09:/49 PM: INFO: ********** Starting TestCase 20.1: Pause DR Policy For Linux **********:
+04/25/23 02:/10:/05 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+04/25/23 02:/10:/05 PM: INFO: ********** Pausing The DR Policy **********:
+04/25/23 02:/10:/15 PM: INFO: ********** Policy : SecondFlowLin, Is In Paused State **********:
+04/25/23 02:/10:/15 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy For Linux **********
+:
+04/25/23 02:/10:/15 PM: INFO: ********** Starting TestCase 20.2: Change Target Type Of Wave **********:
+04/25/23 02:/11:/03 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
+04/25/23 02:/11:/39 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
+04/25/23 02:/11:/39 PM: INFO: ********** Successfully Executed TestCase: Change Target Type Of Wave **********
+:
+04/25/23 02:/11:/39 PM: INFO: ********** Starting TestCase 20.3: Resume DRPolicy And Verify Sync **********:
+04/25/23 02:/17:/11 PM: INFO: ********** Pausing DR Policy **********:
+04/25/23 02:/17:/21 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+04/25/23 02:/17:/21 PM: INFO: ********** Pausing The DR Policy **********:
+04/25/23 02:/17:/31 PM: INFO: ********** Policy : SecondFlowLin, Is In Paused State **********:
+04/25/23 02:/17:/31 PM: INFO: ********** Successfully Paused DR Policy **********:
+04/25/23 02:/17:/42 PM: INFO: ********** Host Number : 1, Sync Successful **********:
+04/25/23 02:/17:/47 PM: INFO: ********** Host Number : 2, Sync Successful **********:
+04/25/23 02:/17:/58 PM: INFO: ********** Successfully Executed TestCase: Resume DRPolicy And Verify Sync **********
+:
+04/25/23 02:/18:/11 PM: INFO: ********** Logout Successful **********:
+04/25/23 02:/18:/20 PM: INFO: ********** Browser Closed Successfully **********:
 
-03/01/23 06:/29:/50 PM: INFO: ********** Test_014_FailoverAndFallback ********** :
-03/01/23 06:/29:/50 PM: INFO: ********** Opening Browser ********** :
-03/01/23 06:/30:/02 PM: INFO: ********** Browser Opened Successfully **********:
-03/01/23 06:/30:/23 PM: INFO: ********** Login Successful **********:
-03/01/23 06:/30:/23 PM: INFO: ********** Creating New Wave With Host **********:
-03/01/23 06:/30:/31 PM: INFO: ********** Creating no. 2 wave with Target Type Autoprovision **********:
-03/01/23 06:/31:/04 PM: INFO: ********** Successful Created New Wave With Host **********:
-03/01/23 06:/31:/04 PM: INFO: ********** Setting Autoprovision For Wave **********:
-03/01/23 06:/32:/10 PM: INFO: ********** Successfully Set Autoprovision For Wave **********:
-03/01/23 06:/32:/10 PM: INFO: ********** Setting Sync Options For The Wave **********:
-03/01/23 06:/32:/10 PM: INFO: ********** Successfully Set Sync Options For The Wave **********:
-03/01/23 06:/32:/10 PM: INFO: ********** Assigning DR Policy To The Wave **********:
-03/01/23 06:/32:/45 PM: INFO: ********** Successfully Assigned DR Policy To The Wave **********:
-03/01/23 06:/32:/45 PM: INFO: ********** Starting A Wave **********:
-03/01/23 06:/33:/19 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-03/01/23 06:/33:/30 PM: INFO: ********** Successful Started A Wave **********:
-03/01/23 06:/33:/30 PM: INFO: ********** Starting A Failover for Wave **********:
 
-03/11/23 03:/47:/17 PM: INFO: ********** Test_015_addOCIcu ********** :
-03/11/23 03:/47:/17 PM: INFO: ********** Opening Browser ********** :
-03/11/23 03:/47:/27 PM: INFO: ********** Browser Opened Successfully **********:
-03/11/23 03:/47:/47 PM: INFO: ********** Login Successful **********:
-03/11/23 03:/47:/47 PM: INFO: ********** Creating New Wave With Host **********:
-03/11/23 03:/47:/56 PM: INFO: ********** Creating no. 2 wave with Target Type Autoprovision **********:
-03/11/23 03:/48:/28 PM: INFO: ********** Successful Created New Wave With Host **********:
-03/11/23 03:/48:/28 PM: INFO: ********** Setting OCI Autoprovision For Wave **********:
-03/11/23 03:/49:/21 PM: INFO: ********** Successfully Set OCI Autoprovision For Wave **********:
-03/11/23 03:/49:/21 PM: INFO: ********** Setting Sync Options For The Wave **********:
-03/11/23 03:/49:/43 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-03/11/23 03:/49:/43 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-03/11/23 03:/49:/53 PM: INFO: ********** Successfully Set Sync Options For The Wave **********:
-03/11/23 03:/50:/07 PM: INFO: ********** Logout Successful **********:
-03/11/23 03:/50:/08 PM: INFO: ********** Browser Closed Successfully **********:
 
-03/14/23 05:/47:/21 PM: INFO: ********** Test_016_addAWScu ********** :
-03/14/23 05:/47:/21 PM: INFO: ********** Opening Browser ********** :
-03/14/23 05:/47:/39 PM: INFO: ********** Browser Opened Successfully **********:
-03/14/23 05:/48:/00 PM: INFO: ********** Login Successful **********:
-03/14/23 05:/48:/00 PM: INFO: ********** Creating New Wave With Host **********:
-03/14/23 05:/48:/08 PM: INFO: ********** Creating no. 2 wave with Target Type Autoprovision **********:
-03/14/23 05:/48:/41 PM: INFO: ********** Successful Created New Wave With Host **********:
-03/14/23 05:/48:/41 PM: INFO: ********** Setting AWS Autoprovision For Wave **********:
-03/14/23 05:/49:/17 PM: INFO: ********** Successfully Set AWS Autoprovision For Wave **********:
-03/14/23 05:/49:/17 PM: INFO: ********** Setting Sync Options For The Wave **********:
-03/14/23 05:/49:/40 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-03/14/23 05:/49:/40 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-03/14/23 05:/49:/51 PM: INFO: ********** Successfully Set Sync Options For The Wave **********:
-03/14/23 05:/49:/51 PM: INFO: ********** Starting A Wave **********:
-03/14/23 06:/00:/10 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-03/14/23 06:/00:/20 PM: INFO: ********** Successful Started A Wave **********:
-03/14/23 06:/00:/34 PM: INFO: ********** Logout Successful **********:
-03/14/23 06:/00:/38 PM: INFO: ********** Browser Closed Successfully **********:
-
-03/22/23 02:/18:/16 PM: INFO: ********** Test_013_CreateAndStartWave ********** :
-03/22/23 02:/18:/16 PM: INFO: ********** Opening Browser ********** :
-03/22/23 02:/18:/26 PM: INFO: ********** Browser Opened Successfully **********:
-03/22/23 02:/18:/46 PM: INFO: ********** Login Successful **********:
-03/22/23 02:/18:/46 PM: INFO: ********** Creating New Wave With Host **********:
-03/22/23 02:/19:/47 PM: INFO: ********** Successful Created New Wave With Host **********:
-03/22/23 02:/20:/08 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-03/22/23 02:/20:/08 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-03/22/23 02:/21:/41 PM: INFO: ********** Starting A Wave **********:
-03/22/23 02:/59:/51 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-03/22/23 03:/00:/02 PM: INFO: ********** Successful Started A Wave **********:
-03/22/23 03:/00:/15 PM: INFO: ********** Logout Successful **********:
-03/22/23 03:/00:/20 PM: INFO: ********** Browser Closed Successfully **********:
-
-03/22/23 03:/22:/26 PM: INFO: ********** Test_013_CreateAndStartWave ********** :
-03/22/23 03:/22:/26 PM: INFO: ********** Opening Browser ********** :
-03/22/23 03:/22:/37 PM: INFO: ********** Browser Opened Successfully **********:
-03/22/23 03:/22:/57 PM: INFO: ********** Login Successful **********:
-03/22/23 03:/22:/57 PM: INFO: ********** Creating New Wave With Host **********:
-03/22/23 03:/24:/03 PM: INFO: ********** Successful Created New Wave With Host **********:
-03/22/23 03:/24:/24 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-03/22/23 03:/24:/24 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-03/22/23 03:/25:/56 PM: INFO: ********** Starting A Wave **********:
-03/22/23 03:/26:/18 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-03/22/23 03:/26:/28 PM: INFO: ********** Successful Started A Wave **********:
-03/22/23 03:/26:/42 PM: INFO: ********** Logout Successful **********:
-03/22/23 03:/26:/43 PM: INFO: ********** Browser Closed Successfully **********:
-
-03/27/23 06:/16:/00 PM: INFO: ********** Test_013_CreateAndStartWave ********** :
-03/27/23 06:/16:/00 PM: INFO: ********** Opening Browser ********** :
-03/27/23 06:/16:/17 PM: INFO: ********** Browser Opened Successfully **********:
-03/27/23 06:/16:/37 PM: INFO: ********** Login Successful **********:
-03/27/23 06:/17:/03 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-03/27/23 06:/17:/04 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-03/27/23 06:/17:/30 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-03/27/23 06:/17:/31 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-03/27/23 06:/19:/15 PM: INFO: ********** Starting A Wave **********:
-03/27/23 06:/19:/21 PM: INFO: ********** Wave : Event Script Trial 1, Started Successful **********:
-03/27/23 06:/19:/43 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-03/27/23 06:/19:/48 PM: INFO: ********** Host Number : 2, Sync Failed **********:
-03/27/23 06:/19:/58 PM: INFO: ********** Successful Started A Wave **********:
-03/27/23 06:/20:/12 PM: INFO: ********** Logout Successful **********:
-03/27/23 06:/20:/14 PM: INFO: ********** Browser Closed Successfully **********:
-
-03/27/23 06:/30:/44 PM: INFO: ********** Test_013_CreateAndStartWave ********** :
-03/27/23 06:/30:/44 PM: INFO: ********** Opening Browser ********** :
-03/27/23 06:/30:/54 PM: INFO: ********** Browser Opened Successfully **********:
-03/27/23 06:/31:/14 PM: INFO: ********** Login Successful **********:
-03/27/23 06:/31:/14 PM: INFO: ********** Creating New Wave With Host **********:
-03/27/23 06:/32:/43 PM: INFO: ********** Successful Created New Wave With Host **********:
-03/27/23 06:/33:/10 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-03/27/23 06:/33:/10 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-03/27/23 06:/33:/36 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-03/27/23 06:/33:/36 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-03/27/23 06:/40:/24 PM: INFO: ********** Starting A Wave **********:
-03/27/23 06:/40:/33 PM: INFO: ********** Wave : Event Script Trial 1, Started Successful **********:
-03/27/23 06:/41:/25 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-03/27/23 06:/41:/30 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-03/27/23 06:/41:/41 PM: INFO: ********** Successful Started A Wave **********:
-03/27/23 06:/20:/12 PM: INFO: ********** Logout Successful **********:
-03/27/23 06:/20:/14 PM: INFO: ********** Browser Closed Successfully **********:
-
-04/05/23 05:/34:/02 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/05/23 05:/34:/02 PM: INFO: ********** Opening Browser ********** :
-04/05/23 05:/34:/16 PM: INFO: ********** Browser Opened Successfully **********:
-04/05/23 05:/34:/16 PM: INFO: ********** Logging In **********:
-04/05/23 05:/34:/36 PM: INFO: ********** Login Successful **********:
-04/05/23 05:/34:/36 PM: INFO: ********** Creating New Wave With Host **********:
-04/05/23 05:/34:/50 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/05/23 05:/35:/07 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/05/23 05:/35:/07 PM: INFO: ********** Adding New Host In The Wave **********:
-04/05/23 05:/36:/11 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/05/23 05:/36:/25 PM: INFO: ********** Logout Successful **********:
-04/05/23 05:/36:/26 PM: INFO: ********** Browser Closed Successfully **********:
-
-04/10/23 12:/06:/14 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 12:/06:/14 PM: INFO: ********** Opening Browser ********** :
-04/10/23 12:/07:/52 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 12:/07:/52 PM: INFO: ********** Logging In **********:
-04/10/23 12:/08:/13 PM: INFO: ********** Login Successful **********:
-04/10/23 12:/08:/13 PM: INFO: ********** Creating New Wave With Host **********:
-04/10/23 12:/08:/26 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/10/23 12:/08:/44 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/10/23 12:/08:/44 PM: INFO: ********** Adding New Host In The Wave **********:
-04/10/23 12:/09:/25 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/10/23 12:/09:/25 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/10/23 12:/09:/51 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/10/23 12:/09:/52 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/10/23 12:/10:/13 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/10/23 12:/10:/13 PM: INFO: ********** Setting Autoprovision For The Wave **********:
-04/10/23 12:/11:/51 PM: INFO: ********** Successfully Set Autoprovision For The Wave **********:
-04/10/23 12:/11:/51 PM: INFO: ********** Starting A Wave **********:
-04/10/23 12:/12:/07 PM: INFO: ********** Starting Hosts In Wave : First Flow **********:
-04/10/23 12:/25:/36 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/10/23 01:/04:/57 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/10/23 01:/04:/58 PM: INFO: ********** Successfully Synced All Hosts In Wave : First Flow **********:
-04/10/23 01:/05:/03 PM: INFO: ********** Successful Started A Wave **********:
-04/10/23 01:/05:/03 PM: INFO: ********** Creating New DRPolicy **********:
-04/10/23 01:/05:/23 PM: INFO: ********** Created no. 1 DR Policy with name FirstFlowDR **********:
-04/10/23 01:/05:/28 PM: INFO: ********** Successfully Created New DRPolicy **********:
-04/10/23 01:/05:/28 PM: INFO: ********** Adding DRPolicy To Wave **********:
-04/10/23 01:/20:/58 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 01:/20:/58 PM: INFO: ********** Opening Browser ********** :
-04/10/23 01:/22:/22 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 01:/22:/22 PM: INFO: ********** Logging In **********:
-04/10/23 01:/22:/43 PM: INFO: ********** Login Successful **********:
-04/10/23 01:/22:/43 PM: INFO: ********** Creating New DRPolicy **********:
-04/10/23 01:/25:/26 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 01:/25:/26 PM: INFO: ********** Opening Browser ********** :
-04/10/23 01:/27:/55 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 01:/27:/55 PM: INFO: ********** Opening Browser ********** :
-04/10/23 01:/29:/10 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 01:/29:/10 PM: INFO: ********** Logging In **********:
-04/10/23 01:/29:/30 PM: INFO: ********** Login Successful **********:
-04/10/23 01:/29:/30 PM: INFO: ********** Creating New DRPolicy **********:
-04/10/23 01:/29:/53 PM: INFO: ********** Created no. 1 DR Policy with name FirstFlowDR **********:
-04/10/23 01:/30:/08 PM: INFO: ********** Successfully Created New DRPolicy **********:
-04/10/23 01:/30:/08 PM: INFO: ********** Adding DRPolicy To Wave **********:
-04/10/23 01:/31:/01 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 01:/31:/01 PM: INFO: ********** Opening Browser ********** :
-04/10/23 01:/32:/25 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 01:/32:/25 PM: INFO: ********** Logging In **********:
-04/10/23 01:/32:/45 PM: INFO: ********** Login Successful **********:
-04/10/23 01:/32:/45 PM: INFO: ********** Adding DRPolicy To Wave **********:
-04/10/23 01:/37:/05 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 01:/37:/05 PM: INFO: ********** Opening Browser ********** :
-04/10/23 01:/37:/26 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 01:/37:/26 PM: INFO: ********** Logging In **********:
-04/10/23 01:/37:/46 PM: INFO: ********** Login Successful **********:
-04/10/23 01:/37:/46 PM: INFO: ********** Adding DRPolicy To Wave **********:
-04/10/23 01:/39:/01 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 01:/39:/01 PM: INFO: ********** Opening Browser ********** :
-04/10/23 01:/39:/20 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 01:/39:/20 PM: INFO: ********** Logging In **********:
-04/10/23 01:/39:/40 PM: INFO: ********** Login Successful **********:
-04/10/23 01:/39:/40 PM: INFO: ********** Adding DRPolicy To Wave **********:
-04/10/23 01:/40:/15 PM: INFO: ********** Successfully Added DRPolicy To Wave **********:
-04/10/23 01:/40:/15 PM: INFO: ********** Resuming DRPolicy And Verifying Sync **********:
-04/10/23 01:/44:/04 PM: INFO: ********** Pausing DR Policy **********:
-04/10/23 01:/47:/22 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/10/23 01:/54:/43 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 01:/54:/43 PM: INFO: ********** Opening Browser ********** :
-04/10/23 01:/54:/53 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 01:/54:/53 PM: INFO: ********** Logging In **********:
-04/10/23 01:/55:/14 PM: INFO: ********** Login Successful **********:
-04/10/23 01:/55:/14 PM: INFO: ********** Resuming DRPolicy And Verifying Sync **********:
-04/10/23 02:/04:/50 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 02:/04:/50 PM: INFO: ********** Opening Browser ********** :
-04/10/23 02:/05:/05 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 02:/05:/05 PM: INFO: ********** Logging In **********:
-04/10/23 02:/05:/25 PM: INFO: ********** Login Successful **********:
-04/10/23 02:/05:/25 PM: INFO: ********** Setting Parallel Count **********:
-04/10/23 02:/07:/43 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 02:/07:/43 PM: INFO: ********** Opening Browser ********** :
-04/10/23 02:/07:/55 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 02:/07:/55 PM: INFO: ********** Logging In **********:
-04/10/23 02:/08:/16 PM: INFO: ********** Login Successful **********:
-04/10/23 02:/08:/16 PM: INFO: ********** Setting Parallel Count **********:
-04/10/23 02:/08:/48 PM: INFO: ********** Successfully Set Parallel Count **********:
-04/10/23 02:/08:/48 PM: INFO: ********** Resuming DRPolicy And Verifying Sync **********:
-04/10/23 02:/10:/00 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 02:/10:/00 PM: INFO: ********** Opening Browser ********** :
-04/10/23 02:/10:/13 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 02:/10:/13 PM: INFO: ********** Logging In **********:
-04/10/23 02:/10:/34 PM: INFO: ********** Login Successful **********:
-04/10/23 02:/10:/34 PM: INFO: ********** Resuming DRPolicy And Verifying Sync **********:
-04/10/23 02:/26:/42 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 02:/26:/42 PM: INFO: ********** Opening Browser ********** :
-04/10/23 02:/27:/00 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 02:/27:/00 PM: INFO: ********** Logging In **********:
-04/10/23 02:/27:/21 PM: INFO: ********** Login Successful **********:
-04/10/23 02:/27:/21 PM: INFO: ********** Resuming DRPolicy And Verifying Sync **********:
-04/10/23 02:/33:/04 PM: INFO: ********** Pausing DR Policy **********:
-04/10/23 02:/42:/22 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/10/23 02:/42:/33 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-04/10/23 02:/42:/38 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/10/23 02:/42:/49 PM: INFO: ********** Successfully Resumed DRPolicy And Verified Sync **********:
-04/10/23 02:/42:/49 PM: INFO: ********** Changing Target Type Of Wave **********:
-04/10/23 02:/43:/31 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
-04/10/23 02:/43:/53 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
-04/10/23 02:/43:/53 PM: INFO: ********** Successfully Changed Target Type Of Wave **********:
-04/10/23 02:/43:/53 PM: INFO: ********** Starting A Wave Again **********:
-04/10/23 02:/44:/10 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-04/10/23 02:/44:/15 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/10/23 02:/44:/21 PM: INFO: ********** Successful Started A Wave **********:
-04/10/23 02:/44:/21 PM: INFO: ********** Starting A Wave Again **********:
-04/10/23 02:/44:/38 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-04/10/23 02:/44:/43 PM: INFO: ********** Host Number : 2, Sync Failed **********:
-04/10/23 02:/44:/49 PM: INFO: ********** Successful Started A Wave **********:
-04/10/23 02:/44:/49 PM: INFO: ********** Performing Failover **********:
-04/10/23 02:/47:/27 PM: INFO: ********** Pausing DR Policy **********:
-04/10/23 02:/48:/04 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/10/23 05:/40:/49 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 05:/40:/49 PM: INFO: ********** Opening Browser ********** :
-04/10/23 05:/41:/06 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 05:/41:/06 PM: INFO: ********** Logging In **********:
-04/10/23 05:/41:/29 PM: INFO: ********** Login Successful **********:
-04/10/23 05:/41:/29 PM: INFO: ********** Creating New Wave With Host **********:
-04/10/23 05:/41:/45 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/10/23 05:/42:/03 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/10/23 05:/42:/03 PM: INFO: ********** Adding New Host In The Wave **********:
-04/10/23 05:/42:/41 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/10/23 05:/42:/41 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/10/23 05:/43:/08 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/10/23 05:/43:/09 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/10/23 05:/43:/30 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/10/23 05:/43:/30 PM: INFO: ********** Setting Autoprovision For The Wave **********:
-04/10/23 05:/45:/10 PM: INFO: ********** Successfully Set Autoprovision For The Wave **********:
-04/10/23 05:/45:/10 PM: INFO: ********** Starting A Wave **********:
-04/10/23 05:/45:/25 PM: INFO: ********** Starting Hosts In Wave : First Flow **********:
-04/10/23 05:/49:/45 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 05:/49:/45 PM: INFO: ********** Opening Browser ********** :
-04/10/23 05:/49:/56 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 05:/49:/56 PM: INFO: ********** Logging In **********:
-04/10/23 05:/50:/16 PM: INFO: ********** Login Successful **********:
-04/10/23 05:/50:/16 PM: INFO: ********** Creating New Wave With Host **********:
-04/10/23 05:/50:/30 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/10/23 05:/50:/47 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/10/23 05:/50:/47 PM: INFO: ********** Adding New Host In The Wave **********:
-04/10/23 05:/51:/23 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/10/23 05:/51:/23 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/10/23 05:/51:/49 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/10/23 05:/51:/50 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/10/23 05:/52:/11 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/10/23 05:/52:/11 PM: INFO: ********** Setting Autoprovision For The Wave **********:
-04/10/23 05:/53:/49 PM: INFO: ********** Successfully Set Autoprovision For The Wave **********:
-04/10/23 05:/53:/49 PM: INFO: ********** Setting Parallel Count **********:
-
-04/10/23 06:/08:/37 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 06:/08:/37 PM: INFO: ********** Opening Browser ********** :
-04/10/23 06:/08:/48 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 06:/08:/48 PM: INFO: ********** Logging In **********:
-04/10/23 06:/09:/08 PM: INFO: ********** Login Successful **********:
-04/10/23 06:/09:/08 PM: INFO: ********** Creating New Wave With Host **********:
-04/10/23 06:/09:/21 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/10/23 06:/09:/39 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/10/23 06:/09:/39 PM: INFO: ********** Adding New Host In The Wave **********:
-04/10/23 06:/10:/16 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/10/23 06:/10:/16 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/10/23 06:/10:/42 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/10/23 06:/10:/42 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/10/23 06:/11:/03 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/10/23 06:/11:/03 PM: INFO: ********** Setting Autoprovision For The Wave **********:
-04/10/23 06:/12:/41 PM: INFO: ********** Successfully Set Autoprovision For The Wave **********:
-04/10/23 06:/12:/41 PM: INFO: ********** Setting Parallel Count **********:
-
-04/10/23 06:/15:/57 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/10/23 06:/15:/57 PM: INFO: ********** Opening Browser ********** :
-04/10/23 06:/16:/11 PM: INFO: ********** Browser Opened Successfully **********:
-04/10/23 06:/16:/11 PM: INFO: ********** Logging In **********:
-04/10/23 06:/16:/31 PM: INFO: ********** Login Successful **********:
-04/10/23 06:/16:/31 PM: INFO: ********** Creating New Wave With Host **********:
-04/10/23 06:/16:/44 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/10/23 06:/17:/02 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/10/23 06:/17:/02 PM: INFO: ********** Adding New Host In The Wave **********:
-04/10/23 06:/17:/39 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/10/23 06:/17:/39 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/10/23 06:/18:/05 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/10/23 06:/18:/06 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/10/23 06:/18:/27 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/10/23 06:/18:/27 PM: INFO: ********** Setting Autoprovision For The Wave **********:
-04/10/23 06:/20:/05 PM: INFO: ********** Successfully Set Autoprovision For The Wave **********:
-04/10/23 06:/20:/05 PM: INFO: ********** Setting Parallel Count **********:
-04/10/23 06:/20:/31 PM: INFO: ********** Successfully Set Parallel Count **********:
-04/10/23 06:/20:/31 PM: INFO: ********** Starting A Wave **********:
-04/10/23 06:/20:/47 PM: INFO: ********** Starting Hosts In Wave : First Flow **********:
-04/10/23 06:/34:/12 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/10/23 07:/14:/24 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/10/23 07:/14:/25 PM: INFO: ********** Successfully Synced All Hosts In Wave : First Flow **********:
-04/10/23 07:/14:/30 PM: INFO: ********** Successful Started A Wave **********:
-04/10/23 07:/14:/30 PM: INFO: ********** Creating New DRPolicy **********:
-04/10/23 07:/14:/52 PM: INFO: ********** Created no. 1 DR Policy with name FirstFlowDR **********:
-04/10/23 07:/15:/08 PM: INFO: ********** Successfully Created New DRPolicy **********:
-04/10/23 07:/15:/08 PM: INFO: ********** Adding DRPolicy To Wave **********:
-04/10/23 07:/15:/43 PM: INFO: ********** Successfully Added DRPolicy To Wave **********:
-04/10/23 07:/15:/43 PM: INFO: ********** Resuming DRPolicy And Verifying Sync **********:
-04/10/23 07:/21:/14 PM: INFO: ********** Pausing DR Policy **********:
-04/10/23 07:/31:/11 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/10/23 07:/31:/23 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/10/23 07:/31:/29 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/10/23 07:/31:/40 PM: INFO: ********** Successfully Resumed DRPolicy And Verified Sync **********:
-04/10/23 07:/31:/40 PM: INFO: ********** Changing Target Type Of Wave **********:
-04/10/23 07:/39:/46 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
-04/10/23 07:/40:/07 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
-04/10/23 07:/40:/07 PM: INFO: ********** Successfully Changed Target Type Of Wave **********:
-04/10/23 07:/40:/07 PM: INFO: ********** Starting A Wave Again **********:
-04/10/23 07:/40:/23 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/10/23 07:/40:/28 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/10/23 07:/40:/34 PM: INFO: ********** Successful Started A Wave **********:
-04/10/23 07:/40:/34 PM: INFO: ********** Starting A Wave Again **********:
-04/10/23 07:/41:/01 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-04/10/23 07:/41:/06 PM: INFO: ********** Host Number : 2, Sync Failed **********:
-04/10/23 07:/41:/11 PM: INFO: ********** Successful Started A Wave **********:
-04/10/23 07:/41:/11 PM: INFO: ********** Performing Failover **********:
-04/11/23 10:/58:/27 AM: INFO: ********** Test_014_FirstFlow ********** :
-04/11/23 10:/58:/27 AM: INFO: ********** Opening Browser ********** :
-04/11/23 10:/58:/41 AM: INFO: ********** Browser Opened Successfully **********:
-04/11/23 10:/58:/41 AM: INFO: ********** Logging In **********:
-04/11/23 10:/59:/04 AM: INFO: ********** Login Successful **********:
-04/11/23 10:/59:/04 AM: INFO: ********** Setting Separate Sync Options For Wave **********:
-04/11/23 10:/59:/44 AM: INFO: ********** Sync Option 'Verbose' is set **********:
-04/11/23 10:/59:/44 AM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-04/11/23 12:/04:/08 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/11/23 12:/04:/08 PM: INFO: ********** Opening Browser ********** :
-04/11/23 12:/04:/24 PM: INFO: ********** Browser Opened Successfully **********:
-04/11/23 12:/04:/24 PM: INFO: ********** Logging In **********:
-04/11/23 12:/04:/45 PM: INFO: ********** Login Successful **********:
-04/11/23 12:/04:/45 PM: INFO: ********** Setting Separate Sync Options For Wave **********:
-04/11/23 12:/05:/19 PM: INFO: ********** Sync Option 'Verbose' is set **********:
-04/11/23 12:/05:/19 PM: INFO: ********** Sync Option 'Direct FScopy' is set **********:
-04/11/23 12:/05:/48 PM: INFO: ********** Successful Set Separate Sync Options For Wave **********:
-04/11/23 12:/06:/01 PM: INFO: ********** Logout Successful **********:
-04/11/23 12:/06:/05 PM: INFO: ********** Browser Closed Successfully **********:
-
-04/11/23 12:/18:/09 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/11/23 12:/18:/09 PM: INFO: ********** Opening Browser ********** :
-04/11/23 12:/18:/27 PM: INFO: ********** Browser Opened Successfully **********:
-04/11/23 12:/18:/27 PM: INFO: ********** Logging In **********:
-04/11/23 12:/18:/47 PM: INFO: ********** Login Successful **********:
-04/11/23 12:/18:/47 PM: INFO: ********** Creating New Wave With Host **********:
-04/11/23 12:/19:/01 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/11/23 12:/19:/20 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/11/23 12:/19:/20 PM: INFO: ********** Adding New Host In The Wave **********:
-04/11/23 12:/20:/01 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/11/23 12:/20:/01 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/11/23 12:/20:/27 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/11/23 12:/20:/27 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/11/23 12:/20:/49 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/11/23 12:/20:/49 PM: INFO: ********** Setting Separate Sync Options For Wave **********:
-04/11/23 12:/25:/31 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/11/23 12:/25:/31 PM: INFO: ********** Opening Browser ********** :
-04/11/23 12:/25:/46 PM: INFO: ********** Browser Opened Successfully **********:
-04/11/23 12:/25:/46 PM: INFO: ********** Logging In **********:
-04/11/23 12:/26:/07 PM: INFO: ********** Login Successful **********:
-04/11/23 12:/26:/07 PM: INFO: ********** Creating New Wave With Host **********:
-04/11/23 12:/26:/20 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/11/23 12:/26:/39 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/11/23 12:/26:/39 PM: INFO: ********** Adding New Host In The Wave **********:
-04/11/23 12:/27:/16 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/11/23 12:/27:/16 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/11/23 12:/27:/42 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/11/23 12:/27:/42 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/11/23 12:/28:/03 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/11/23 12:/28:/03 PM: INFO: ********** Setting Separate Sync Options For Wave **********:
-04/11/23 12:/28:/57 PM: INFO: ********** Successful Set Separate Sync Options For Wave **********:
-04/11/23 12:/28:/57 PM: INFO: ********** Setting Autoprovision For The Wave **********:
-04/11/23 12:/30:/35 PM: INFO: ********** Successfully Set Autoprovision For The Wave **********:
-04/11/23 12:/30:/35 PM: INFO: ********** Setting Parallel Count **********:
-04/11/23 12:/31:/01 PM: INFO: ********** Successfully Set Parallel Count **********:
-04/11/23 12:/31:/01 PM: INFO: ********** Starting A Wave **********:
-04/11/23 12:/31:/17 PM: INFO: ********** Starting Hosts In Wave : First Flow **********:
-04/11/23 12:/44:/25 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/11/23 01:/25:/06 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/11/23 01:/25:/07 PM: INFO: ********** Successfully Synced All Hosts In Wave : First Flow **********:
-04/11/23 01:/25:/12 PM: INFO: ********** Successful Started A Wave **********:
-04/11/23 01:/25:/12 PM: INFO: ********** Creating New DRPolicy **********:
-04/11/23 01:/25:/35 PM: INFO: ********** Created no. 1 DR Policy with name FirstFlowDR **********:
-04/11/23 01:/25:/50 PM: INFO: ********** Successfully Created New DRPolicy **********:
-04/11/23 01:/25:/50 PM: INFO: ********** Adding DRPolicy To Wave **********:
-04/11/23 01:/26:/25 PM: INFO: ********** Successfully Added DRPolicy To Wave **********:
-04/11/23 01:/26:/25 PM: INFO: ********** Resuming DRPolicy And Verifying Sync **********:
-04/11/23 01:/32:/13 PM: INFO: ********** Pausing DR Policy **********:
-04/11/23 01:/42:/01 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/11/23 01:/42:/12 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/11/23 01:/42:/17 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/11/23 01:/42:/27 PM: INFO: ********** Successfully Resumed DRPolicy And Verified Sync **********:
-04/11/23 01:/42:/27 PM: INFO: ********** Changing Target Type Of Wave **********:
-04/11/23 01:/43:/12 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
-04/11/23 01:/43:/33 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
-04/11/23 01:/43:/33 PM: INFO: ********** Successfully Changed Target Type Of Wave **********:
-04/11/23 01:/43:/33 PM: INFO: ********** Starting A Wave Again **********:
-04/11/23 01:/45:/45 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/11/23 01:/45:/50 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/11/23 01:/46:/01 PM: INFO: ********** Successful Started A Wave **********:
-04/11/23 01:/46:/01 PM: INFO: ********** Starting A Wave Again **********:
-04/11/23 01:/48:/24 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-04/11/23 01:/49:/22 PM: INFO: ********** Host Number : 2, Sync Failed **********:
-04/11/23 01:/49:/33 PM: INFO: ********** Successful Started A Wave **********:
-04/11/23 01:/49:/33 PM: INFO: ********** Performing Failover **********:
-
-04/11/23 02:/17:/20 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/11/23 02:/17:/20 PM: INFO: ********** Opening Browser ********** :
-04/11/23 02:/17:/35 PM: INFO: ********** Browser Opened Successfully **********:
-04/11/23 02:/17:/35 PM: INFO: ********** Logging In **********:
-04/11/23 02:/17:/56 PM: INFO: ********** Login Successful **********:
-04/11/23 02:/17:/56 PM: INFO: ********** Creating New Wave With Host **********:
-04/11/23 02:/18:/10 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/11/23 02:/18:/28 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/11/23 02:/18:/28 PM: INFO: ********** Adding New Host In The Wave **********:
-04/11/23 02:/19:/06 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/11/23 02:/19:/06 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/11/23 02:/19:/32 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/11/23 02:/19:/33 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/11/23 02:/19:/54 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/11/23 02:/19:/54 PM: INFO: ********** Setting Separate Sync Options For Wave **********:
-04/11/23 02:/20:/47 PM: INFO: ********** Successful Set Separate Sync Options For Wave **********:
-04/11/23 02:/20:/47 PM: INFO: ********** Setting Autoprovision For The Wave **********:
-04/11/23 02:/22:/25 PM: INFO: ********** Successfully Set Autoprovision For The Wave **********:
-04/11/23 02:/22:/25 PM: INFO: ********** Setting Parallel Count **********:
-04/11/23 02:/22:/51 PM: INFO: ********** Successfully Set Parallel Count **********:
-04/11/23 02:/22:/51 PM: INFO: ********** Starting A Wave **********:
-04/11/23 02:/23:/07 PM: INFO: ********** Starting Hosts In Wave : First Flow **********:
-04/11/23 02:/24:/15 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-04/11/23 02:/26:/34 PM: INFO: ********** Test_014_FirstFlow ********** :
-04/11/23 02:/26:/34 PM: INFO: ********** Opening Browser ********** :
-04/11/23 02:/26:/50 PM: INFO: ********** Browser Opened Successfully **********:
-04/11/23 02:/26:/50 PM: INFO: ********** Logging In **********:
-04/11/23 02:/27:/10 PM: INFO: ********** Login Successful **********:
-04/11/23 02:/27:/10 PM: INFO: ********** Creating New Wave With Host **********:
-04/11/23 02:/27:/24 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-04/11/23 02:/27:/42 PM: INFO: ********** Successful Created New Wave With Host **********:
-04/11/23 02:/27:/42 PM: INFO: ********** Adding New Host In The Wave **********:
-04/11/23 02:/28:/19 PM: INFO: ********** Successful Added New Host In The Wave **********:
-04/11/23 02:/28:/19 PM: INFO: ********** Bulk Editing Sync Options For Wave **********:
-04/11/23 02:/28:/45 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/11/23 02:/28:/45 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/11/23 02:/29:/06 PM: INFO: ********** Successful Bulk Edited Sync Options For Wave **********:
-04/11/23 02:/29:/06 PM: INFO: ********** Setting Separate Sync Options For Wave **********:
-04/11/23 02:/29:/59 PM: INFO: ********** Successful Set Separate Sync Options For Wave **********:
-04/11/23 02:/29:/59 PM: INFO: ********** Setting Autoprovision For The Wave **********:
-04/11/23 02:/31:/38 PM: INFO: ********** Successfully Set Autoprovision For The Wave **********:
-04/11/23 02:/31:/38 PM: INFO: ********** Setting Parallel Count **********:
-04/11/23 02:/32:/04 PM: INFO: ********** Successfully Set Parallel Count **********:
-04/11/23 02:/32:/04 PM: INFO: ********** Starting A Wave **********:
-04/11/23 02:/32:/20 PM: INFO: ********** Starting Hosts In Wave : First Flow **********:
-04/11/23 02:/45:/18 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/11/23 03:/25:/32 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/11/23 03:/25:/32 PM: INFO: ********** Successfully Synced All Hosts In Wave : First Flow **********:
-04/11/23 03:/25:/37 PM: INFO: ********** Successful Started A Wave **********:
-04/11/23 03:/25:/37 PM: INFO: ********** Creating New DRPolicy **********:
-04/11/23 03:/26:/01 PM: INFO: ********** Created no. 1 DR Policy with name FirstFlowDR **********:
-04/11/23 03:/26:/18 PM: INFO: ********** Successfully Created New DRPolicy **********:
-04/11/23 03:/26:/18 PM: INFO: ********** Adding DRPolicy To Wave **********:
-04/11/23 03:/26:/53 PM: INFO: ********** Successfully Added DRPolicy To Wave **********:
-04/11/23 03:/26:/53 PM: INFO: ********** Resuming DRPolicy And Verifying Sync **********:
-04/11/23 03:/33:/14 PM: INFO: ********** Pausing DR Policy **********:
-04/11/23 03:/43:/32 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/11/23 03:/43:/43 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/11/23 03:/43:/48 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/11/23 03:/43:/59 PM: INFO: ********** Successfully Resumed DRPolicy And Verified Sync **********:
-04/11/23 03:/43:/59 PM: INFO: ********** Changing Target Type Of Wave **********:
-04/11/23 03:/44:/41 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
-04/11/23 03:/45:/02 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
-04/11/23 03:/45:/02 PM: INFO: ********** Successfully Changed Target Type Of Wave **********:
-04/11/23 03:/45:/02 PM: INFO: ********** Starting A Wave Again **********:
-04/11/23 03:/47:/14 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/11/23 03:/47:/19 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/11/23 03:/47:/30 PM: INFO: ********** Successful Started A Wave **********:
-04/11/23 03:/47:/30 PM: INFO: ********** Starting A Wave Again **********:
-04/11/23 03:/49:/53 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-04/11/23 03:/49:/58 PM: INFO: ********** Host Number : 2, Sync Failed **********:
-04/11/23 03:/50:/09 PM: INFO: ********** Successful Started A Wave **********:
-04/11/23 03:/50:/09 PM: INFO: ********** Performing Failover **********:
-04/11/23 03:/51:/01 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/11/23 03:/51:/06 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/11/23 03:/51:/11 PM: INFO: ********** Pausing DR Policy **********:
-04/11/23 03:/52:/16 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/11/23 03:/52:/16 PM: INFO: ********** Successful Performed Failover **********:
-04/11/23 03:/52:/29 PM: INFO: ********** Logout Successful **********:
-04/11/23 03:/52:/39 PM: INFO: ********** Browser Closed Successfully **********:

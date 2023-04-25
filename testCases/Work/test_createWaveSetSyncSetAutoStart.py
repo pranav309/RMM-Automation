@@ -15,7 +15,7 @@ class Test_013_CreateAndStartWave:
     logger = LogGen.loggen()
 
     def test_createWindowsWave(self, setup):
-        self.logger.info("********** Test_013_CreateAndStartWave ********** ")
+        self.logger.info("********** Test_017_CreateAndStartWave ********** ")
         self.logger.info("********** Opening Browser ********** ")
         self.driver = setup
         self.driver.get(self.baseURL)

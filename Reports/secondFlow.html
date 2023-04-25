@@ -240,8 +240,8 @@ function filter_table(elem) {
     not_found_message.hidden = !all_rows_hidden;
 }
 </script>
-    <h1>trial.html</h1>
-    <p>Report generated on 25-Apr-2023 at 10:16:27 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <h1>secondFlow.html</h1>
+    <p>Report generated on 25-Apr-2023 at 14:18:20 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -263,7 +263,7 @@ function filter_table(elem) {
         <td>Tester</td>
         <td>Pranav Pawar</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 161.47 seconds. </p>
+    <p>1 tests ran in 1006.50 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -278,10 +278,54 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">testCases/Work/test_trial.py::Test_019_SecondFlow::test_createWindowsWave</td>
-          <td class="col-duration">109.19</td>
+          <td class="col-name">testCases/Work/test_secondFlow.py::Test_019_SecondFlow::test_createWindowsWave</td>
+          <td class="col-duration">987.61</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:drPolicyPage.py:193 ********** Policy : trial, Added To The Wave : z **********
-[32mINFO    [0m root:drPolicyPage.py:213 ********** Policy : trial, Is In Active State **********<br/></div></td></tr></tbody></table></body></html>
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:test_secondFlow.py:136 ********** Starting TestCase 16.2, 17 &amp; 18: Add DRPolicy To Wave **********
+[32mINFO    [0m root:drPolicyPage.py:198 ********** Policy : SecondFlowWin, Added To The Wave : Second Flow **********
+[32mINFO    [0m root:drPolicyPage.py:219 ********** Policy : SecondFlowWin, Is In Active State **********
+[32mINFO    [0m root:drPolicyPage.py:198 ********** Policy : SecondFlowLin, Added To The Wave : Second Flow 1 **********
+[32mINFO    [0m root:drPolicyPage.py:219 ********** Policy : SecondFlowLin, Is In Active State **********
+[32mINFO    [0m root:test_secondFlow.py:139 ********** Successfully Executed TestCase: Add DRPolicy To Wave **********
+
+[32mINFO    [0m root:test_secondFlow.py:141 ********** Starting TestCase 19.1: Pause DR Policy For Windows **********
+[32mINFO    [0m root:drPolicyPage.py:338 ********** Policy : SecondFlowWin, Is In Active State **********
+[32mINFO    [0m root:drPolicyPage.py:339 ********** Pausing The DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:351 ********** Policy : SecondFlowWin, Is In Paused State **********
+[32mINFO    [0m root:test_secondFlow.py:143 ********** Successfully Executed TestCase: Pause DR Policy For Windows **********
+
+[32mINFO    [0m root:test_secondFlow.py:145 ********** Starting TestCase 19.2: Perform Failover Windows Hosts **********
+[32mINFO    [0m root:drPolicyPage.py:295 ********** Host Number : 1, Sync Successful **********
+[32mINFO    [0m root:drPolicyPage.py:295 ********** Host Number : 2, Sync Successful **********
+[32mINFO    [0m root:drPolicyPage.py:299 ********** Pausing DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:338 ********** Policy : SecondFlowWin, Is In Failed Over State **********
+[32mINFO    [0m root:drPolicyPage.py:339 ********** Pausing The DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:351 ********** Policy : SecondFlowWin, Is In Paused State **********
+[32mINFO    [0m root:drPolicyPage.py:303 ********** Successfully Paused DR Policy **********
+[32mINFO    [0m root:test_secondFlow.py:147 ********** Successfully Executed TestCase: Perform Failover Windows Hosts **********
+
+[32mINFO    [0m root:test_secondFlow.py:149 ********** Starting TestCase 20.1: Pause DR Policy For Linux **********
+[32mINFO    [0m root:drPolicyPage.py:338 ********** Policy : SecondFlowLin, Is In Active State **********
+[32mINFO    [0m root:drPolicyPage.py:339 ********** Pausing The DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:351 ********** Policy : SecondFlowLin, Is In Paused State **********
+[32mINFO    [0m root:test_secondFlow.py:151 ********** Successfully Executed TestCase: Pause DR Policy For Linux **********
+
+[32mINFO    [0m root:test_secondFlow.py:153 ********** Starting TestCase 20.2: Change Target Type Of Wave **********
+[32mINFO    [0m root:waveEdit.py:861 ********** Successfully Changed Target Type For Host Number : 1 **********
+[32mINFO    [0m root:waveEdit.py:861 ********** Successfully Changed Target Type For Host Number : 2 **********
+[32mINFO    [0m root:test_secondFlow.py:155 ********** Successfully Executed TestCase: Change Target Type Of Wave **********
+
+[32mINFO    [0m root:test_secondFlow.py:157 ********** Starting TestCase 20.3: Resume DRPolicy And Verify Sync **********
+[32mINFO    [0m root:drPolicyPage.py:248 ********** Pausing DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:338 ********** Policy : SecondFlowLin, Is In Active State **********
+[32mINFO    [0m root:drPolicyPage.py:339 ********** Pausing The DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:351 ********** Policy : SecondFlowLin, Is In Paused State **********
+[32mINFO    [0m root:drPolicyPage.py:250 ********** Successfully Paused DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:262 ********** Host Number : 1, Sync Successful **********
+[32mINFO    [0m root:drPolicyPage.py:262 ********** Host Number : 2, Sync Successful **********
+[32mINFO    [0m root:test_secondFlow.py:159 ********** Successfully Executed TestCase: Resume DRPolicy And Verify Sync **********
+
+[32mINFO    [0m root:test_secondFlow.py:162 ********** Logout Successful **********
+[32mINFO    [0m root:test_secondFlow.py:164 ********** Browser Closed Successfully **********<br/></div></td></tr></tbody></table></body></html>
