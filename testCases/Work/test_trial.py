@@ -1,5 +1,6 @@
 import time
 
+from selenium.webdriver.common.by import By
 from pageObjects.wavePage import WavePage
 from pageObjects.configurationPage import Configuration
 from pageObjects.waveOperations import WaveOperations
@@ -29,12 +30,12 @@ class Test_019_SecondFlow:
 
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
+
         self.lp.setUserName(self.username)
         self.lp.setPassword(self.password)
         self.lp.clickOnLogin()
-        time.sleep(20)
 
-        self.dr.addDRPolicyToWave("z", "trial", True)
+        self.details.checkHosts("tp", "psp-MyLin1-src, psp-MyWin1-src, psp-MyLin-src")
 
         self.lp.clickOnLogout()
         self.driver.close()

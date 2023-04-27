@@ -63,6 +63,10 @@ class DRPolicy:
     btn_fallBack_id = "wave_policy_wave_policy_wave_detail_drPolicyFallback"
     btn_fallBackYes_id = "wave_detail_dr_fallback_yes_btn"
 
+    # Pop-up Banners
+    pop_createDrPolicy_xpath = '//*[@id="policies_dr_policy_create_dr_policy"]/div/div/div/form/div[1]/h4'
+    pop_policyAssignment_xpath = '//*[@id="wave_policy_wave_policy_wave_detail_wave_policy_info"]/div[1]/div/div/div[1]/h4'
+
     logger = LogGen.loggen()
 
     def __init__(self, driver):
@@ -82,90 +86,94 @@ class DRPolicy:
             time.sleep(5)
             self.driver.find_element(By.XPATH, self.btn_addNew_xpath).click()
             time.sleep(5)
-            name = sheet.cell(row=r, column=1).value
-            startTime = sheet.cell(row=r, column=2).value
-            email = sheet.cell(row=r, column=3).value
-            note1 = sheet.cell(row=r, column=4).value
-            note2 = sheet.cell(row=r, column=5).value
-            periodicity = sheet.cell(row=r, column=6).value
+            if len(self.driver.find_elements(By.XPATH, self.pop_createDrPolicy_xpath)) != 0:
+                self.logger.info("********** Create New DR Policy Pop-up Banner Is Opened **********")
+                name = sheet.cell(row=r, column=1).value
+                startTime = sheet.cell(row=r, column=2).value
+                email = sheet.cell(row=r, column=3).value
+                note1 = sheet.cell(row=r, column=4).value
+                note2 = sheet.cell(row=r, column=5).value
+                periodicity = sheet.cell(row=r, column=6).value
 
-            self.driver.find_element(By.ID, self.txt_name_id).send_keys(name)
+                self.driver.find_element(By.ID, self.txt_name_id).send_keys(name)
 
-            if periodicity == "By Schedule":
-                text = sheet.cell(row=r, column=7).value
-                hrs = sheet.cell(row=r, column=8).value
-                mins = sheet.cell(row=r, column=9).value
-                day = sheet.cell(row=r, column=10).value
+                if periodicity == "By Schedule":
+                    text = sheet.cell(row=r, column=7).value
+                    hrs = sheet.cell(row=r, column=8).value
+                    mins = sheet.cell(row=r, column=9).value
+                    day = sheet.cell(row=r, column=10).value
 
-                self.driver.find_element(By.XPATH, self.rd_schedule_xpath).click()
-                dailyWeekly = Select(self.driver.find_element(By.XPATH, self.drp_dw_xpath))
-                hour = Select(self.driver.find_element(By.XPATH, self.drp_hr_xpath))
-                minute = Select(self.driver.find_element(By.XPATH, self.drp_min_xpath))
+                    self.driver.find_element(By.XPATH, self.rd_schedule_xpath).click()
+                    dailyWeekly = Select(self.driver.find_element(By.XPATH, self.drp_dw_xpath))
+                    hour = Select(self.driver.find_element(By.XPATH, self.drp_hr_xpath))
+                    minute = Select(self.driver.find_element(By.XPATH, self.drp_min_xpath))
 
-                dailyWeekly.select_by_visible_text(text)
-                if text == "Weekly":
-                    weekDay = Select(self.driver.find_element(By.XPATH, self.drp_wkDay_xpath))
-                    weekDay.select_by_visible_text(day)
-                hour.select_by_index(hrs)
-                minute.select_by_index(mins)
+                    dailyWeekly.select_by_visible_text(text)
+                    if text == "Weekly":
+                        weekDay = Select(self.driver.find_element(By.XPATH, self.drp_wkDay_xpath))
+                        weekDay.select_by_visible_text(day)
+                    hour.select_by_index(hrs)
+                    minute.select_by_index(mins)
 
-            elif periodicity == "By Frequency":
-                mh = sheet.cell(row=r, column=11).value
-                due = sheet.cell(row=r, column=12).value
-                fhr = sheet.cell(row=r, column=13).value
-                fmn = sheet.cell(row=r, column=14).value
-                thr = sheet.cell(row=r, column=15).value
-                tmn = sheet.cell(row=r, column=16).value
+                elif periodicity == "By Frequency":
+                    mh = sheet.cell(row=r, column=11).value
+                    due = sheet.cell(row=r, column=12).value
+                    fhr = sheet.cell(row=r, column=13).value
+                    fmn = sheet.cell(row=r, column=14).value
+                    thr = sheet.cell(row=r, column=15).value
+                    tmn = sheet.cell(row=r, column=16).value
 
-                self.driver.find_element(By.XPATH, self.rd_frequency_xpath).click()
-                minHr = Select(self.driver.find_element(By.XPATH, self.drp_minHr_xpath))
-                minHr.select_by_visible_text(mh)
-                time.sleep(5)
-                if mh == "Minutes":
-                    duration = Select(self.driver.find_element(By.ID, self.drp_durationMin_id))
-                else:
-                    duration = Select(self.driver.find_element(By.ID, self.drp_durationHr_id))
-                if mh == "Hours":
-                    duration.select_by_index(due-1)
+                    self.driver.find_element(By.XPATH, self.rd_frequency_xpath).click()
+                    minHr = Select(self.driver.find_element(By.XPATH, self.drp_minHr_xpath))
+                    minHr.select_by_visible_text(mh)
                     time.sleep(5)
-                elif mh == "Minutes" and due == 5:
-                    duration.select_by_index(0)
-                elif mh == "Minutes" and due > 5:
-                    duration.select_by_visible_text(str(due))
-                if fhr != "NA":
-                    fromHr = Select(self.driver.find_element(By.ID, self.drp_fromHr_id))
-                    fromHr.select_by_index(fhr+1)
-                if fmn != "NA":
-                    fromMin = Select(self.driver.find_element(By.ID, self.drp_fromMin_id))
-                    fromMin.select_by_index(fmn+1)
-                if thr != "NA":
-                    toHr = Select(self.driver.find_element(By.ID, self.drp_toHr_id))
-                    toHr.select_by_index(thr+1)
-                if tmn != "NA":
-                    toMin = Select(self.driver.find_element(By.ID, self.drp_toMin_id))
-                    toMin.select_by_index(tmn+1)
+                    if mh == "Minutes":
+                        duration = Select(self.driver.find_element(By.ID, self.drp_durationMin_id))
+                    else:
+                        duration = Select(self.driver.find_element(By.ID, self.drp_durationHr_id))
+                    if mh == "Hours":
+                        duration.select_by_index(due-1)
+                        time.sleep(5)
+                    elif mh == "Minutes" and due == 5:
+                        duration.select_by_index(0)
+                    elif mh == "Minutes" and due > 5:
+                        duration.select_by_visible_text(str(due))
+                    if fhr != "NA":
+                        fromHr = Select(self.driver.find_element(By.ID, self.drp_fromHr_id))
+                        fromHr.select_by_index(fhr+1)
+                    if fmn != "NA":
+                        fromMin = Select(self.driver.find_element(By.ID, self.drp_fromMin_id))
+                        fromMin.select_by_index(fmn+1)
+                    if thr != "NA":
+                        toHr = Select(self.driver.find_element(By.ID, self.drp_toHr_id))
+                        toHr.select_by_index(thr+1)
+                    if tmn != "NA":
+                        toMin = Select(self.driver.find_element(By.ID, self.drp_toMin_id))
+                        toMin.select_by_index(tmn+1)
 
-            elif periodicity == "Once":
-                self.driver.find_element(By.XPATH, self.rd_once_xpath).click()
-                self.driver.find_element(By.XPATH, self.txt_start_xpath).click()
-                self.driver.find_element(By.XPATH, self.btn_clear_xpath).click()
-                self.driver.find_element(By.XPATH, self.txt_start_xpath).send_keys(startTime)
+                elif periodicity == "Once":
+                    self.driver.find_element(By.XPATH, self.rd_once_xpath).click()
+                    self.driver.find_element(By.XPATH, self.txt_start_xpath).click()
+                    self.driver.find_element(By.XPATH, self.btn_clear_xpath).click()
+                    self.driver.find_element(By.XPATH, self.txt_start_xpath).send_keys(startTime)
+                    time.sleep(5)
+                    self.driver.find_element(By.XPATH, self.btn_startDate_xpath).click()
+
+                elif periodicity == "Continuous":
+                    self.driver.find_element(By.XPATH, self.rd_continuous_xpath).click()
+
+                self.driver.find_element(By.XPATH, self.txt_email_xpath).send_keys(email)
+                self.driver.find_element(By.XPATH, self.btn_add_xpath).click()
+
+                if note1:
+                    self.driver.find_element(By.XPATH, self.chBox_failNote_xpath).click()
+                if note2:
+                    self.driver.find_element(By.XPATH, self.chBox_completeNote_xpath).click()
                 time.sleep(5)
-                self.driver.find_element(By.XPATH, self.btn_startDate_xpath).click()
-
-            elif periodicity == "Continuous":
-                self.driver.find_element(By.XPATH, self.rd_continuous_xpath).click()
-
-            self.driver.find_element(By.XPATH, self.txt_email_xpath).send_keys(email)
-            self.driver.find_element(By.XPATH, self.btn_add_xpath).click()
-
-            if note1:
-                self.driver.find_element(By.XPATH, self.chBox_failNote_xpath).click()
-            if note2:
-                self.driver.find_element(By.XPATH, self.chBox_completeNote_xpath).click()
-            time.sleep(5)
-            self.driver.find_element(By.ID, self.btn_create_id).click()
-            self.logger.info("********** Created no. " + str(r - 1) + " DR Policy with name " + sheet.cell(row=r, column=1).value + " **********")
+                self.driver.find_element(By.ID, self.btn_create_id).click()
+                self.logger.info("********** Created no. " + str(r - 1) + " DR Policy with name " + sheet.cell(row=r, column=1).value + " **********")
+        else:
+            self.logger.info("********** Create New DR Policy Pop-up Banner Is Not Opened **********")
         # time.sleep(5)
         # self.driver.find_element(By.LINK_TEXT, "Replication").click()
         time.sleep(5)
@@ -174,32 +182,40 @@ class DRPolicy:
     def addDRPolicyToWave(self, waveName, drPolicyName, startPolicy):
         time.sleep(5)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-            if (len(self.driver.find_elements(By.LINK_TEXT, "Policies"))) == 0:
-                self.driver.find_element(By.LINK_TEXT, "DR").click()
-            elif (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
+            if (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
                 self.driver.find_element(By.LINK_TEXT, "Replication").click()
-            time.sleep(5)
-            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+                self.driver.find_element(By.LINK_TEXT, "DR").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, waveName).click()
         time.sleep(5)
         self.driver.find_element(By.XPATH, self.txt_drPolicy_xpath).click()
         time.sleep(5)
-        self.driver.find_element(By.XPATH, self.drp_selectDrPolicy_xpath).click()
-        time.sleep(5)
-        # self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(policyNumber)+']/span').click()
-        self.driver.find_element(By.CSS_SELECTOR, "li[aria-label="+drPolicyName+"]").click()
-        time.sleep(5)
-        if startPolicy:
-            self.driver.find_element(By.ID, self.ch_startPolicyNow_id).click()
-        time.sleep(3)
-        self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
-        time.sleep(5)
-        self.logger.info("********** Policy : "+drPolicyName+", Added To The Wave : "+waveName+" **********")
-        time.sleep(120)
-        self.checkDrPolicyState(drPolicyName)
-        self.driver.find_element(By.LINK_TEXT, "Replication").click()
-        time.sleep(5)
+        if len(self.driver.find_elements(By.XPATH, self.pop_policyAssignment_xpath)) != 0:
+            self.logger.info("********** Policy Assignment Pop-up Banner Is Opened For Wave, " + str(waveName) + " **********")
+
+            self.driver.find_element(By.XPATH, self.drp_selectDrPolicy_xpath).click()
+            time.sleep(5)
+            # self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(policyNumber)+']/span').click()
+            self.driver.find_element(By.CSS_SELECTOR, "li[aria-label="+drPolicyName+"]").click()
+            time.sleep(5)
+            if startPolicy:
+                self.driver.find_element(By.ID, self.ch_startPolicyNow_id).click()
+            time.sleep(3)
+            self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
+            time.sleep(5)
+            self.logger.info("********** Policy : "+drPolicyName+", Added To The Wave : "+waveName+" **********")
+            time.sleep(120)
+            self.checkDrPolicyState(drPolicyName)
+        else:
+            self.logger.info("********** Policy Assignment Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
+        if len(self.driver.find_elements(By.LINK_TEXT, "Summary")) == 0:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def checkDrPolicyState(self, policyName):

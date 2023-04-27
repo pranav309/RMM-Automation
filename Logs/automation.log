@@ -166,3 +166,64 @@
 
 
 
+04/25/23 06:/36:/09 PM: INFO: ********** Start Status of Wave Name : z,:
+04/25/23 06:/36:/09 PM: INFO: Wave Started
+z:
+04/25/23 06:/42:/14 PM: INFO: ********** Host Number : 1, Sync Successful **********:
+04/25/23 06:/42:/20 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 06:/42:/22 PM: INFO: Authentication (password) successful!:
+04/25/23 06:/48:/23 PM: INFO: ********** Start Status of Wave Name : z,:
+04/25/23 06:/48:/23 PM: INFO: Wave Started
+z:
+04/25/23 06:/50:/23 PM: INFO: ********** Host Number : 1, Sync Failed **********:
+04/25/23 06:/50:/23 PM: INFO: ********** Failed Due To, **********
+:
+04/25/23 06:/50:/34 PM: INFO: RSP_CMD_ACCEPTED  STATUS_INFO
+Accepted command 'host sync '
+
+jobid file: /var/log/rackware/by-jobid/0000000000035ce4.log
+RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_EXAMINING_HOST  STATUS_INFO
+Syncing psp-MyLinZ-src1: Examining psp-MyLinZ-src1
+RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_DETERMINING_TARGET_OS  STATUS_INFO
+Syncing psp-MyLinZ-src1: Checking OS on psp-MyLinZ-tgt1
+RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_HOST_EXAMINED  STATUS_INFO
+Syncing psp-MyLinZ-src1: psp-MyLinZ-src1 examined
+RSP_SYNC_ERROR  SYNC_ERROR_DETERMINE_BOOTED_OS  STATUS_ERROR
+Details: SSH connection (root@172.29.30.108) failed
+jobid file: /var/log/rackware/by-jobid/0000000000035ce4.log:
+04/25/23 06:/50:/40 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+04/25/23 06:/50:/42 PM: INFO: Authentication (password) successful!:
+
+
+
+04/26/23 12:/55:/19 PM: INFO: ********** Login Successful **********:
+04/26/23 12:/55:/19 PM: INFO: ********** Starting TestCase 2: Add New vCenter **********:
+04/26/23 12:/55:/49 PM: INFO: ********** VCenter Add Status **********:
+04/26/23 12:/55:/49 PM: INFO: Failed to Add Vcenter
+VCENTER_ERROR_NAME_IN_USE:
+04/26/23 12:/55:/55 PM: INFO: ********** Successfully Executed TestCase: Add New vCenter **********
+:
+04/26/23 12:/56:/08 PM: INFO: ********** Logout Successful **********:
+04/26/23 01:/03:/20 PM: INFO: ********** Login Successful **********:
+04/26/23 01:/03:/20 PM: INFO: ********** Starting TestCase 2: Add New vCenter **********:
+04/26/23 01:/03:/51 PM: INFO: ********** VCenter Add Status **********:
+04/26/23 01:/03:/51 PM: INFO: Submitted add Vcenter hcm_vc:
+04/26/23 01:/03:/56 PM: INFO: ********** Successfully Executed TestCase: Add New vCenter **********
+:
+
+
+04/26/23 06:/18:/56 PM: INFO: ********** Login Successful **********:
+04/26/23 06:/19:/06 PM: INFO: ********** The Wave Status For The Wave : tp, Is Idle:
+04/26/23 06:/19:/06 PM: INFO: ********** The Successful Sync Count For The Wave : tp, Is 4 **********:
+04/26/23 06:/19:/31 PM: INFO: ********** Logout Successful **********:
+
+04/26/23 06:/34:/31 PM: INFO: ********** Login Successful **********:
+04/26/23 06:/34:/41 PM: INFO: ********** The Host psp-MyLin1-src Is Present In The Wave : tp **********:
+04/26/23 06:/34:/41 PM: INFO: ********** The Host psp-MyWin1-src Is Present In The Wave : tp **********:
+04/26/23 06:/34:/55 PM: INFO: ********** Logout Successful **********:
+
+04/26/23 06:/36:/03 PM: INFO: ********** Login Successful **********:
+04/26/23 06:/36:/14 PM: INFO: ********** The Host psp-MyLin1-src Is Present In The Wave : tp **********:
+04/26/23 06:/36:/14 PM: INFO: ********** The Host psp-MyWin1-src Is Present In The Wave : tp **********:
+04/26/23 06:/36:/14 PM: INFO: ********** The Host psp-MyLin-src Is Not Present In The Wave : tp **********:
+04/26/23 06:/36:/27 PM: INFO: ********** Logout Successful **********:

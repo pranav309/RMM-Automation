@@ -10,6 +10,7 @@ from utilities.customLogger import LogGen
 class WaveDetails:
 
     txt_systemsDetails_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[2]/td/item-details/div/div/p-tabview/div/ul/li[2]/a/span"
+    txt_waveStatus_xpath = '//*[@id="content"]/article/div/div[2]/div[1]/div[1]/div[2]'
 
     TNGVersion1 = ""
 
@@ -20,12 +21,15 @@ class WaveDetails:
 
     def verifySyncDetails(self, waveName):
         time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Waves").click()
-        time.sleep(5)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-            self.driver.find_element(By.LINK_TEXT, "DR").click()
-            time.sleep(5)
-            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            if (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
+                self.driver.find_element(By.LINK_TEXT, "Replication").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+                self.driver.find_element(By.LINK_TEXT, "DR").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, waveName).click()
         time.sleep(5)
@@ -97,3 +101,64 @@ class WaveDetails:
             self.logger.info("********** Both TNG Versions From RMM GUI And Command Prompt Are Same **********")
         else:
             self.logger.info("********** Both TNG Versions From RMM GUI And Command Prompt Are Not Same **********")
+
+    def checkWaveState(self, waveName):
+        flag = 0
+        time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+            if (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
+                self.driver.find_element(By.LINK_TEXT, "Replication").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+                self.driver.find_element(By.LINK_TEXT, "DR").click()
+                flag += 1
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        waveStatus = self.driver.find_element(By.XPATH, self.txt_waveStatus_xpath).text
+        self.logger.info("********** The Wave Status For The Wave : " + waveName + ", Is " + waveStatus)
+        successCount = 0
+        totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+        for hostNo in range(1, totalHosts + 1):
+            if totalHosts == 1:
+                elem = len(self.driver.find_elements(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/span'))
+            else:
+                elem = len(self.driver.find_elements(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/span'))
+            if elem == 0:
+                successCount += 1
+        self.logger.info("********** The Successful Sync Count For The Wave : " + waveName + ", Is " + str(successCount) + " **********")
+        if flag == 1:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def checkHosts(self, waveName, hostNames):
+        time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+            if (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
+                self.driver.find_element(By.LINK_TEXT, "Replication").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+                self.driver.find_element(By.LINK_TEXT, "DR").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+        res = tuple(map(str, hostNames.split(', ')))
+        for hostName in res:
+            for hostNo in range(1, totalHosts + 1):
+                if totalHosts == 1:
+                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/span').text
+                else:
+                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[3]/span/span').text
+                if hostName == tmp:
+                    self.logger.info("********** The Host "+hostName+" Is Present In The Wave : "+waveName+" **********")
+                    break
+                elif hostNo == totalHosts:
+                    self.logger.info("********** The Host " + hostName + " Is Not Present In The Wave : " + waveName + " **********")

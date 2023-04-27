@@ -4,7 +4,6 @@ import keyboard
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support.select import Select
 from selenium.webdriver.support import expected_conditions as EC
 from utilities.customLogger import LogGen
 
@@ -81,13 +80,25 @@ class WavePage:
                         self.driver.find_element(By.XPATH, self.btn_createWave_xpath).click()
                         time.sleep(3)
                         self.driver.find_element(By.XPATH, self.img_createNewWave_xpath).click()
-                    self.driver.find_element(By.ID, self.txt_waveName_id).send_keys(waveName)
-                    if not passthrough:
-                        self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
-                    time.sleep(3)
-                    self.driver.find_element(By.ID, self.btn_create_id).click()
                     time.sleep(5)
+                    if len(self.driver.find_elements(By.XPATH, '//*[@id="main"]/app-waves/add-machine/div/div/div/form/div[1]/h4')) != 0:
+                        self.logger.info("********** Create Wave Pop-up Banner Is Opened For Wave, "+str(waveName)+" **********")
+                        self.driver.find_element(By.ID, self.txt_waveName_id).send_keys(waveName)
+                        if not passthrough:
+                            self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
+                        time.sleep(3)
+                        self.driver.find_element(By.ID, self.btn_create_id).click()
+                        time.sleep(2)
+                        note = self.driver.find_element(By.XPATH, '/html/body/app-root/simple-notifications/div/simple-notification/div').text
+                        self.logger.info("********** Create Status of Wave Name : " + waveName + ",")
+                        self.logger.info(note, "\n")
+                        time.sleep(5)
+                    else:
+                        self.logger.info("********** Create Wave Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
             tmp = waveName
+        if len(self.driver.find_elements(By.LINK_TEXT, "Summary")) == 0:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def createWaveWithFile(self, path):
@@ -96,12 +107,19 @@ class WavePage:
         )
         btn.click()
         time.sleep(5)
-        self.driver.find_element(By.XPATH, self.img_uploadCSV_xpath).click()
-        time.sleep(5)
-        keyboard.write(path)
-        time.sleep(5)
-        keyboard.send('enter')
-        time.sleep(10)
+        if len(self.driver.find_elements(By.XPATH,'//*[@id="main"]/app-waves/create-wave-modal/div/div/div/div[1]/h4')) != 0:
+            self.logger.info("********** Create New Wave Pop-up Banner Is Opened **********")
+            self.driver.find_element(By.XPATH, self.img_uploadCSV_xpath).click()
+            time.sleep(5)
+            keyboard.write(path)
+            time.sleep(5)
+            keyboard.send('enter')
+            time.sleep(10)
+        else:
+            self.logger.info("********** Create New Wave Pop-up Banner Is Not Opened **********")
+        if len(self.driver.find_elements(By.LINK_TEXT, "Summary")) == 0:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def createWaveWithHost(self, path):
@@ -122,16 +140,26 @@ class WavePage:
                     self.driver.find_element(By.XPATH, self.btn_createWave_xpath).click()
                     time.sleep(3)
                     self.driver.find_element(By.XPATH, self.img_createNewWave_xpath).click()
-                self.logger.info("********** Creating no. " + str(r - 2) + " wave with Target Type " + sheet.cell(row=r,column=3).value + " **********")
-                self.driver.find_element(By.ID, self.rd_waveWithHost_id).click()
-
-                self.driver.find_element(By.ID, self.txt_waveName_id).send_keys(waveName)
-                if not passthrough:
-                    self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
-                time.sleep(3)
-                self.enterData(sheet, r)
-                self.driver.find_element(By.ID, self.btn_create_id).click()
                 time.sleep(5)
+                if len(self.driver.find_elements(By.XPATH,'//*[@id="main"]/app-waves/add-machine/div/div/div/form/div[1]/h4')) != 0:
+                    self.logger.info("********** Create Wave Pop-up Banner Is Opened For Wave, " + str(waveName) + " **********")
+                    self.logger.info("********** Creating no. " + str(r - 2) + " wave with Target Type " + sheet.cell(row=r,column=3).value + " **********")
+                    self.driver.find_element(By.ID, self.rd_waveWithHost_id).click()
+
+                    self.driver.find_element(By.ID, self.txt_waveName_id).send_keys(waveName)
+                    if not passthrough:
+                        self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
+                    time.sleep(3)
+                    self.enterData(sheet, r)
+                    self.driver.find_element(By.ID, self.btn_create_id).click()
+                    time.sleep(5)
+                else:
+                    self.logger.info("********** Create Wave Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
+
+        if len(self.driver.find_elements(By.LINK_TEXT, "Summary")) == 0:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def addHostToWaves(self, path):
         workBook = openpyxl.load_workbook(path)

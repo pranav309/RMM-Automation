@@ -26,6 +26,8 @@ class WaveOperations:
     btn_assignPolicy_id = "wave_detail_wave_policy_assign_policy_btn"
     btn_removePolicy_id = "wave_detail_wave_policy_remove_policy_btn"
 
+    txt_verifyPolicyAss_xpath = '//*[@id="wave_policy_wave_policy_wave_detail_wave_policy_info"]/div[1]/div/div/div[1]/h4'
+
     logger = LogGen.loggen()
 
     def __init__(self, driver):
@@ -71,30 +73,56 @@ class WaveOperations:
     def startWaveAndVerify(self, waveName):
         flag = 0
         time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Waves").click()
-        time.sleep(5)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-            flag += 1
-            self.driver.find_element(By.LINK_TEXT, "DR").click()
-            time.sleep(5)
-            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            if (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
+                self.driver.find_element(By.LINK_TEXT, "Replication").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
+                self.driver.find_element(By.LINK_TEXT, "DR").click()
+                flag += 1
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, waveName).click()
         start = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable((By.ID, self.btn_start_id))
         )
         start.click()
+        time.sleep(5)
+        note = self.driver.find_element(By.XPATH, '/html/body/app-root/simple-notifications/div/simple-notification/div').text
+        self.logger.info("********** Start Status of Wave Name : " + waveName + ",")
+        self.logger.info(note, "\n")
         time.sleep(120)
         WebDriverWait(self.driver, 18000).until(
             EC.element_to_be_clickable((By.ID, self.btn_start_id))
         )
+        successCount = 0
         totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
         for hostNo in range(1, totalHosts + 1):
-            elem = len(self.driver.find_elements(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/span'))
+            if totalHosts == 1:
+                elem = len(self.driver.find_elements(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/span'))
+            else:
+                elem = len(self.driver.find_elements(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/span'))
             if elem == 0:
                 self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Successful **********")
+                successCount += 1
             else:
                 self.logger.info("********** Host Number : " + str(hostNo) + ", Sync Failed **********")
+                self.logger.info("********** Failed Due To, **********\n")
+                if totalHosts == 1:
+                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/a/i').click()
+                    time.sleep(5)
+                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/jobid-popover/span/i').click()
+                    time.sleep(5)
+                    details = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/jobid-popover/ngb-popover-window/div[2]/div/textarea').text
+                else:
+                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/a/i').click()
+                    time.sleep(5)
+                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/jobid-popover/span/i').click()
+                    time.sleep(5)
+                    details = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/jobid-popover/ngb-popover-window/div[2]/div/textarea').text
+                self.logger.info(details, "\n")
             time.sleep(5)
             syncType = ""
             for r in range(1, 6):
@@ -118,22 +146,6 @@ class WaveOperations:
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def restartHost(self, val):
-        self.driver.find_element(By.CSS_SELECTOR, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
-        self.driver.find_element(By.XPATH, self.btn_restart_xpath).click()
-
-    def stopHost(self, val):
-        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
-        self.driver.find_element(By.XPATH, self.btn_stop_xpath).click()
-
-    def pauseHost(self, val):
-        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
-        self.driver.find_element(By.XPATH, self.btn_pause_xpath).click()
-
-    def deleteHost(self, val):
-        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
-        self.driver.find_element(By.XPATH, self.btn_delete_xpath).click()
-
     def setParallelCount(self, waveName, val):
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -152,34 +164,60 @@ class WaveOperations:
         time.sleep(5)
 
     def assignPolicy(self, waveName, policyNumber, val):
-        self.driver.find_element(By.XPATH, '//*[@id="waves_' + waveName + '_wave_name"]').click()
+        if len(self.driver.find_element(By.LINK_TEXT, waveName)) == 0:
+            if len(self.driver.find_element(By.LINK_TEXT, "Summary")) == 0:
+                self.driver.find_element(By.LINK_TEXT, "Replication").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+                time.sleep(5)
+                if len(self.driver.find_element(By.LINK_TEXT, waveName)) == 0:
+                    self.driver.find_element(By.LINK_TEXT, "DR").click()
+                    time.sleep(5)
+                    self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
         time.sleep(5)
         self.driver.find_element(By.XPATH, self.txt_drPolicy_xpath).click()
         time.sleep(5)
-        self.driver.find_element(By.XPATH, self.drp_drPolicy_xpath).click()
-        self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(policyNumber)+']').click()
-        if val:
-            self.driver.find_element(By.ID, self.chBox_startNow_id).click()
-        self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
-        time.sleep(5)
-
-    def changePolicy(self, waveName, policyNumber, val):
-        self.driver.find_element(By.LINK_TEXT, "DR").click()
-        time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Waves").click()
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, '//*[@id="waves_' + waveName + '_wave_name"]').click()
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, '//*[@id="wave_policy_wave_policy_wave_detail_drPolicy"]/span').click()
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, self.drp_drPolicy_xpath).click()
-        self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li[' + str(policyNumber) + ']').click()
-        if policyNumber == 1:
-            self.driver.find_element(By.ID, self.btn_removePolicy_id).click()
-        else:
+        if len(self.driver.find_elements(By.XPATH, self.txt_verifyPolicyAss_xpath)) != 0:
+            self.logger.info("********** Policy Assignment Pop-up Banner Is Opened For Wave, " + str(waveName) + " **********")
+            self.driver.find_element(By.XPATH, self.drp_drPolicy_xpath).click()
+            self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(policyNumber)+']').click()
             if val:
                 self.driver.find_element(By.ID, self.chBox_startNow_id).click()
             self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
+        else:
+            self.logger.info("********** Policy Assignment Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
+        time.sleep(5)
+
+    def changePolicy(self, waveName, policyNumber, val):
+        if len(self.driver.find_element(By.LINK_TEXT, waveName)) == 0:
+            if len(self.driver.find_element(By.LINK_TEXT, "Summary")) == 0:
+                self.driver.find_element(By.LINK_TEXT, "Replication").click()
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, "Waves").click()
+                time.sleep(5)
+                if len(self.driver.find_element(By.LINK_TEXT, waveName)) == 0:
+                    self.driver.find_element(By.LINK_TEXT, "DR").click()
+                    time.sleep(5)
+                    self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, '//*[@id="wave_policy_wave_policy_wave_detail_drPolicy"]/span').click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.XPATH, self.txt_verifyPolicyAss_xpath)) != 0:
+            self.logger.info("********** Policy Assignment Pop-up Banner Is Opened For Wave, " + str(waveName) + " **********")
+            self.driver.find_element(By.XPATH, self.drp_drPolicy_xpath).click()
+            self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li[' + str(policyNumber) + ']').click()
+            if policyNumber == 1:
+                self.driver.find_element(By.ID, self.btn_removePolicy_id).click()
+            else:
+                if val:
+                    self.driver.find_element(By.ID, self.chBox_startNow_id).click()
+                self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
+        else:
+            self.logger.info("********** Policy Assignment Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
         time.sleep(5)
 
     def deleteSR(self, source, target):
@@ -195,3 +233,19 @@ class WaveOperations:
                     password=vm_password,
                     look_for_keys=False)
         ssh.exec_command("rw ic srd "+str(source)+" --target "+str(target))
+
+    def restartHost(self, val):
+        self.driver.find_element(By.CSS_SELECTOR, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
+        self.driver.find_element(By.XPATH, self.btn_restart_xpath).click()
+
+    def stopHost(self, val):
+        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
+        self.driver.find_element(By.XPATH, self.btn_stop_xpath).click()
+
+    def pauseHost(self, val):
+        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
+        self.driver.find_element(By.XPATH, self.btn_pause_xpath).click()
+
+    def deleteHost(self, val):
+        self.driver.find_element(By.XPATH, "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[" + str(val) + "]/td[1]/p-tablecheckbox/div/div[2]").click()
+        self.driver.find_element(By.XPATH, self.btn_delete_xpath).click()

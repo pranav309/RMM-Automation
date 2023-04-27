@@ -88,12 +88,13 @@ class Configuration:
     txt_VCPassword_id = "password"
     txt_VCPort_id = "port"
     btn_addVC_id = "conf_vc_vc_add_modal_submit_btn"
+    txt_verifyVCenterPop_xpath = '//*[@id="conf_vc_add_vc_modal_btn"]/div/div/div/form/div[1]/h4'
+    not_addVC_xpath = '/html/body/app-root/simple-notifications/div/simple-notification[2]/div'
 
     # Organization
     btn_addAdminOrg_xpath = "//*[@id='content']/div/article/div/div[2]/div[2]/tree-root/tree-viewport/div/div/tree-node-collection/div/tree-node/div/tree-node-wrapper/div[1]/div/span/i[1]"
     btn_addAdminUser_xpath = "//*[@id='content']/div/article/div/div[2]/div[2]/tree-root/tree-viewport/div/div/tree-node-collection/div/tree-node/div/tree-node-wrapper/div[1]/div/span/i[2]"
     btn_editAdminOrg_xpath = "//*[@id='content']/div/article/div/div[2]/div[2]/tree-root/tree-viewport/div/div/tree-node-collection/div/tree-node/div/tree-node-wrapper/div[1]/div/span/i[3]"
-
 
     logger = LogGen.loggen()
 
@@ -288,16 +289,37 @@ class Configuration:
             )
             element.click()
             time.sleep(5)
-            self.driver.find_element(By.ID, self.txt_VCName_id).send_keys(name)
-            self.driver.find_element(By.ID, self.txt_VCipAddress_id).send_keys(ipAddress)
-            self.driver.find_element(By.ID, self.txt_VCUserName_id).send_keys(userName)
-            self.driver.find_element(By.ID, self.txt_VCPassword_id).send_keys(password)
-            if portNumber != "NA":
-                self.driver.find_element(By.ID, self.txt_VCPort_id).send_keys(portNumber)
+            if len(self.driver.find_elements(By.XPATH, self.txt_verifyVCenterPop_xpath)) != 0:
+                self.logger.info("********** Add vCenter Pop-up Banner Is Opened For "+str(name)+" vCenter **********")
+                self.driver.find_element(By.ID, self.txt_VCName_id).send_keys(name)
+                self.driver.find_element(By.ID, self.txt_VCipAddress_id).send_keys(ipAddress)
+                self.driver.find_element(By.ID, self.txt_VCUserName_id).send_keys(userName)
+                self.driver.find_element(By.ID, self.txt_VCPassword_id).send_keys(password)
+                if portNumber != "NA":
+                    self.driver.find_element(By.ID, self.txt_VCPort_id).send_keys(portNumber)
+                time.sleep(5)
+                self.driver.find_element(By.ID, self.btn_addVC_id).click()
+                time.sleep(5)
+                self.verify(name)
+            else:
+                self.logger.info("********** Add vCenter Pop-up Banner Is Not Opened For "+str(name)+" vCenter **********")
+        if len(self.driver.find_elements(By.LINK_TEXT, "Waves")) == 0:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
-            self.driver.find_element(By.ID, self.btn_addVC_id).click()
-            time.sleep(5)
-
-        self.driver.find_element(By.LINK_TEXT, "Replication").click()
-        time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def verify(self, name):
+        note = self.driver.find_element(By.XPATH, self.not_addVC_xpath).text
+        self.logger.info(note + "\n")
+        res = tuple(map(str, note.split(' ')))
+        if res[0] != "Failed":
+            totalUser = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr'))
+            if totalUser == 1:
+                if name == self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span[1]').text:
+                    self.logger.info("********** vCenter Added Successfully **********")
+            else:
+                for i in range(1, totalUser+1):
+                    if name == self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[2]/span[1]').text:
+                        self.logger.info("********** Successfully Added vCenter **********")
+                        break
+        time.sleep(5)

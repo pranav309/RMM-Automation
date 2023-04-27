@@ -1,5 +1,3 @@
-import time
-
 from pageObjects.wavePage import WavePage
 from pageObjects.configurationPage import Configuration
 from pageObjects.waveOperations import WaveOperations
@@ -37,7 +35,6 @@ class Test_019_SecondFlow:
         self.lp.setUserName(self.username)
         self.lp.setPassword(self.password)
         self.lp.clickOnLogin()
-        time.sleep(10)
         self.logger.info("********** Login Successful **********\n")
 
         self.logger.info("********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********")
@@ -83,26 +80,42 @@ class Test_019_SecondFlow:
         self.startWave.startWaveAndVerify("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave **********\n")
 
+        self.logger.info("********** Starting TestCase 9.3: Check Wave Status **********")
+        # Wave name i.e. to be started
+        self.details.checkWaveState("Second Flow")
+        self.logger.info("********** Successfully Executed TestCase: Check Wave Status **********\n")
+
         self.logger.info("********** Starting TestCase 10: Changing Sync Options for A Wave **********")
         # Wave name, Sync option i.e. to be changed, Yes or No
         # Sync Options : TNG, Verbose, Passwordless, Allow Direct Fscopy, Allow FS Deletion, No Transfer, Transfer Compress, No Transfer Compress, Ignore Missing, No In Place, No Reboot, Include SAN, Exclude SAN, Override RMM Storage Check, Delete All Target FS, Keep Target Layout, Cloud Init
         self.setSync.changeBulkEditOption("Second Flow", "No Transfer", "No")
         self.logger.info("********** Successfully Executed TestCase: Changed Sync Options for A Wave **********\n")
 
-        self.logger.info("********** Starting TestCase 11: Start & Verify A Wave Again **********")
+        self.logger.info("********** Starting TestCase 11.1: Start & Verify A Wave Again **********")
         # Wave name i.e. to be started
         self.startWave.startWaveAndVerify("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave Again **********\n")
+
+        self.logger.info("********** Starting TestCase 11.2: Check Wave Status **********")
+        # Wave name i.e. to be started
+        self.details.checkWaveState("Second Flow")
+        self.logger.info("********** Successfully Executed TestCase: Check Wave Status **********\n")
 
         self.logger.info("********** Starting TestCase 12: Create Another Wave Without Hosts **********")
         # Wave name i.e. to be created, passthrough option check
         self.crtWave.createWaveWithoutHost("Second Flow 1", True)
         self.logger.info("********** Successfully Executed TestCase: Create Another Wave Without Hosts **********\n")
 
-        self.logger.info("********** Starting TestCase 13: Move Hosts From One Wave To Another Wave **********")
+        self.logger.info("********** Starting TestCase 13.1: Move Hosts From One Wave To Another Wave **********")
         # Source wave name, Host Numbers which are to be moved, Target wave name
         # Please enter host numbers in decreasing order...
         self.setSync.moveHosts("Second Flow", "2, 1", "Second Flow 1")
+        self.logger.info("********** Successfully Executed TestCase: Move Hosts From One Wave To Another Wave **********\n")
+
+        self.logger.info("********** Starting TestCase 13.2: Check Available Hosts **********")
+        # Source wave name, Host Numbers which are to be moved, Target wave name
+        # Please enter host numbers in decreasing order...
+        self.details.checkHosts("Second Flow 1", "psp-MyLinSecondFlow-src1, psp-MyLinSecondFlow-src2")
         self.logger.info("********** Successfully Executed TestCase: Move Hosts From One Wave To Another Wave **********\n")
 
         self.logger.info("********** Starting TestCase 14.1: Changing Target Type Of Linux Hosts Wave **********")
