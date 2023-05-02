@@ -3,7 +3,7 @@ import time
 from pageObjects.wavePage import WavePage
 from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
-from pageObjects.waveEdit import SyncOptions
+from pageObjects.waveEdit import WaveEdit
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
@@ -34,7 +34,7 @@ class Test_013_CreateAndStartWave:
         self.crtWave = WavePage(self.driver)
         self.crtWave.createWaveWithoutHost(path1)
         self.logger.info("********** Successful Created New Wave With Host **********")
-        self.setSync = SyncOptions(self.driver)
+        self.setSync = WaveEdit(self.driver)
         path3 = "./TestData/editSyncOptions.xlsx"
         self.setSync.setSyncOptions(path3)
         path2 = "./TestData/setAutoprovisionAndNIC.xlsx"

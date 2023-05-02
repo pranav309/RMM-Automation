@@ -2,7 +2,7 @@ import time
 
 from pageObjects.wavePage import WavePage
 from pageObjects.waveOperations import WaveOperations
-from pageObjects.waveEdit import SyncOptions
+from pageObjects.waveEdit import WaveEdit
 from pageObjects.loginPage import LoginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
@@ -35,7 +35,7 @@ class Test_012_CreateAndBulkEditWave:
         self.crtWave.createWaveWithoutHost(path)
         self.logger.info("********** Successful Created New Wave Without Host **********")
         path = "./TestData/bulkEditOptions.xlsx"
-        self.syncOpt = SyncOptions(self.driver)
+        self.syncOpt = WaveEdit(self.driver)
         self.syncOpt.bulkEditOption(path)
         self.logger.info("********** Starting A Wave **********")
         self.startWave = WaveOperations(self.driver)

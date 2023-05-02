@@ -2,7 +2,7 @@ from pageObjects.wavePage import WavePage
 from pageObjects.configurationPage import Configuration
 from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
-from pageObjects.waveEdit import SyncOptions
+from pageObjects.waveEdit import WaveEdit
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from pageObjects.drPolicyPage import DRPolicy
@@ -18,12 +18,12 @@ class Test_019_SecondFlow:
     def test_createWindowsWave(self, setup):
         self.driver = setup
         self.lp = LoginPage(self.driver)
-        self.crtWave = WavePage(self.driver)
-        self.config = Configuration(self.driver)
-        self.startWave = WaveOperations(self.driver)
+        self.wp = WavePage(self.driver)
+        self.conf = Configuration(self.driver)
+        self.wo = WaveOperations(self.driver)
         self.dr = DRPolicy(self.driver)
-        self.setSync = SyncOptions(self.driver)
-        self.details = WaveDetails(self.driver)
+        self.we = WaveEdit(self.driver)
+        self.wd = WaveDetails(self.driver)
 
         self.logger.info("********** Test_019_SecondFlow ********** ")
         self.logger.info("********** Opening Browser ********** ")
@@ -39,106 +39,106 @@ class Test_019_SecondFlow:
 
         self.logger.info("********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********")
         path1 = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\secondFlow\Second Flow.csv"
-        self.crtWave.createWaveWithFile(path1)
+        self.wp.createWaveWithFile(path1)
         self.logger.info("********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********\n")
 
         self.logger.info("********** Starting TestCase 2: Add New vCenter **********")
         path2 = "./TestData/secondFlow/addVcenter.xlsx"
-        self.config.addVCenter(path2)
+        self.conf.addVCenter(path2)
         self.logger.info("********** Successfully Executed TestCase: Add New vCenter **********\n")
 
         self.logger.info("********** Starting TestCase 3: Set Autoprovision For The Wave **********")
         path3 = "./TestData/secondFlow/setAutoprovisionAndNIC.xlsx"
-        self.setSync.setAutoprovision(path3)
+        self.we.setAutoprovision(path3)
         self.logger.info("********** Successfully Executed TestCase: Set Autoprovision For The Wave **********\n")
 
         self.logger.info("********** Starting TestCase 4: Bulk Edit Sync Options For Wave **********")
         path4 = "./TestData/secondFlow/bulkEditOptions.xlsx"
-        self.setSync.bulkEditSyncOption(path4)
+        self.we.bulkEditSyncOption(path4)
         self.logger.info("********** Successfully Executed TestCase: Bulk Edit Sync Options For Wave **********\n")
 
         self.logger.info("********** Starting TestCase 5 & 6: Edit Sync Options For Linux Wave **********")
         path5 = "./TestData/secondFlow/editSyncOptions.xlsx"
-        self.setSync.setSyncOptions(path5)
+        self.we.setSyncOptions(path5)
         self.logger.info("********** Successfully Executed TestCase: Edit Sync Options For Linux Wave **********\n")
 
         self.logger.info("********** Starting TestCase 7: Change Datastore For All Waves **********")
-        self.setSync.changeDatastore("Second Flow", "esx09-datastore2")
+        self.we.changeDatastore("Second Flow", "esx09-datastore2")
         self.logger.info("********** Successfully Executed TestCase: Change Datastore For All Waves **********\n")
 
         self.logger.info("********** Starting TestCase 8: Bulk Edit Sync Options For Windows Hosts **********")
         path6 = "./TestData/secondFlow/bulkEditOptionsWindows.xlsx"
-        self.setSync.bulkEditSyncOption(path6)
+        self.we.bulkEditSyncOption(path6)
         self.logger.info("********** Successfully Executed TestCase: Bulk Edit Sync Options For Windows Hosts **********\n")
 
         self.logger.info("********** Starting TestCase 9.1: Set Parallel Count **********")
-        self.startWave.setParallelCount("Second Flow", "4")
+        self.wo.setParallelCount("Second Flow", "4")
         self.logger.info("********** Successfully Executed TestCase: Set Parallel Count **********\n")
 
         self.logger.info("********** Starting TestCase 9.2: Start & Verify A Wave **********")
         # Wave name i.e. to be started
-        self.startWave.startWaveAndVerify("Second Flow")
+        self.wo.startWaveAndVerify("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave **********\n")
 
         self.logger.info("********** Starting TestCase 9.3: Check Wave Status **********")
         # Wave name i.e. to be started
-        self.details.checkWaveState("Second Flow")
+        self.wd.checkWaveState("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Check Wave Status **********\n")
 
         self.logger.info("********** Starting TestCase 10: Changing Sync Options for A Wave **********")
         # Wave name, Sync option i.e. to be changed, Yes or No
         # Sync Options : TNG, Verbose, Passwordless, Allow Direct Fscopy, Allow FS Deletion, No Transfer, Transfer Compress, No Transfer Compress, Ignore Missing, No In Place, No Reboot, Include SAN, Exclude SAN, Override RMM Storage Check, Delete All Target FS, Keep Target Layout, Cloud Init
-        self.setSync.changeBulkEditOption("Second Flow", "No Transfer", "No")
+        self.we.changeBulkEditOption("Second Flow", "No Transfer", "No")
         self.logger.info("********** Successfully Executed TestCase: Changed Sync Options for A Wave **********\n")
 
         self.logger.info("********** Starting TestCase 11.1: Start & Verify A Wave Again **********")
         # Wave name i.e. to be started
-        self.startWave.startWaveAndVerify("Second Flow")
+        self.wo.startWaveAndVerify("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave Again **********\n")
 
         self.logger.info("********** Starting TestCase 11.2: Check Wave Status **********")
         # Wave name i.e. to be started
-        self.details.checkWaveState("Second Flow")
+        self.wd.checkWaveState("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Check Wave Status **********\n")
 
         self.logger.info("********** Starting TestCase 12: Create Another Wave Without Hosts **********")
         # Wave name i.e. to be created, passthrough option check
-        self.crtWave.createWaveWithoutHost("Second Flow 1", True)
+        self.wp.createWaveWithoutHost("Second Flow 1", True)
         self.logger.info("********** Successfully Executed TestCase: Create Another Wave Without Hosts **********\n")
 
         self.logger.info("********** Starting TestCase 13.1: Move Hosts From One Wave To Another Wave **********")
         # Source wave name, Host Numbers which are to be moved, Target wave name
         # Please enter host numbers in decreasing order...
-        self.setSync.moveHosts("Second Flow", "2, 1", "Second Flow 1")
+        self.we.moveHosts("Second Flow", "2, 1", "Second Flow 1")
         self.logger.info("********** Successfully Executed TestCase: Move Hosts From One Wave To Another Wave **********\n")
 
         self.logger.info("********** Starting TestCase 13.2: Check Available Hosts **********")
         # Source wave name, Host Numbers which are to be moved, Target wave name
         # Please enter host numbers in decreasing order...
-        self.details.checkHosts("Second Flow 1", "psp-MyLinSecondFlow-src1, psp-MyLinSecondFlow-src2")
+        self.wd.checkHosts("Second Flow 1", "psp-MyLinSecondFlow-src1, psp-MyLinSecondFlow-src2")
         self.logger.info("********** Successfully Executed TestCase: Move Hosts From One Wave To Another Wave **********\n")
 
         self.logger.info("********** Starting TestCase 14.1: Changing Target Type Of Linux Hosts Wave **********")
         path7 = "./TestData/secondFlow/changeTargetType.xlsx"
-        self.setSync.changeTargetType(path7, 2, 3)
+        self.we.changeTargetType(path7, 2, 3)
         self.logger.info("********** Successfully Executed TestCase: Changed Target Type Of Linux Hosts Wave **********\n")
 
         self.logger.info("********** Starting TestCase 14.2: Set Parallel Count **********")
-        self.startWave.setParallelCount("Second Flow 1", "2")
+        self.wo.setParallelCount("Second Flow 1", "2")
         self.logger.info("********** Successfully Executed TestCase: Set Parallel Count **********\n")
 
         self.logger.info("********** Starting TestCase 14.3: Start & Verify A Wave Again **********")
         # Wave name i.e. to be started
-        self.startWave.startWaveAndVerify("Second Flow 1")
+        self.wo.startWaveAndVerify("Second Flow 1")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave Again **********\n")
 
         self.logger.info("********** Starting TestCase 15.1: Change Target Type Of Windows Hosts Wave **********")
-        self.setSync.changeTargetType(path7, 4, 5)
+        self.we.changeTargetType(path7, 4, 5)
         self.logger.info("********** Successfully Executed TestCase: Change Target Type Of Windows Hosts Wave **********\n")
 
         self.logger.info("********** Starting TestCase 15.2: Start & Verify A Wave Again **********")
         # Wave name i.e. to be started
-        self.startWave.startWaveAndVerify("Second Flow")
+        self.wo.startWaveAndVerify("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave Again **********\n")
 
         self.logger.info("********** Starting TestCase 16.1: Create New DRPolicy **********")
@@ -164,7 +164,7 @@ class Test_019_SecondFlow:
         self.logger.info("********** Successfully Executed TestCase: Pause DR Policy For Linux **********\n")
 
         self.logger.info("********** Starting TestCase 20.2: Change Target Type Of Wave **********")
-        self.setSync.changeTargetType(path7, 6, 7)
+        self.we.changeTargetType(path7, 6, 7)
         self.logger.info("********** Successfully Executed TestCase: Change Target Type Of Wave **********\n")
 
         self.logger.info("********** Starting TestCase 20.3: Resume DRPolicy And Verify Sync **********")

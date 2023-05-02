@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from pageObjects.wavePage import WavePage
 from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
-from pageObjects.waveEdit import SyncOptions
+from pageObjects.waveEdit import WaveEdit
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
@@ -36,7 +36,7 @@ class Test_016_addAWScu:
         self.crtWave.createWaveWithHost(path)
         self.logger.info("********** Successful Created New Wave With Host **********")
 
-        self.setSync = SyncOptions(self.driver)
+        self.setSync = WaveEdit(self.driver)
         self.logger.info("********** Setting AWS Autoprovision For Wave **********")
         self.setSync.setAWS("AWS Trial", "AWSuser", "vpc-1608d373", "subnet-45a15a32")
         self.logger.info("********** Successfully Set AWS Autoprovision For Wave **********")

@@ -15303,3 +15303,111 @@ console.warn: LoginRecipes: "Falling back to a synchronous message for: https://
 console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
 1682514387624	Marionette	INFO	Stopped listening on port 64888
 Dynamically enable window occlusion 1
+1682588394781	geckodriver	INFO	Listening on 127.0.0.1:54854
+1682588397835	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54855" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileRq2uRM"
+1682588443927	geckodriver	INFO	Listening on 127.0.0.1:54898
+1682588446956	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "54899" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileyMnIUL"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1682588447649	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1682588447654	Marionette	INFO	Listening on port 54911
+Read port: 54911
+WebDriver BiDi listening on ws://127.0.0.1:54899
+1682588448256	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileyMnIUL\\search.json.mozlz4", (void 0)))
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:54899/devtools/browser/573ae665-e915-4f28-987c-4c4f29edd60a
+console.error: (new TypeError("linkMap is undefined", "resource://gre/modules/NewTabUtils.sys.mjs", 2019))
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1682588550189	Marionette	INFO	Stopped listening on port 54911
+Dynamically enable window occlusion 1
+[Parent 8700, IPC I/O Parent] WARNING: DuplicateHandle failed for handle 0 in TransferHandles: file /builds/worker/checkouts/gecko/ipc/chromium/src/chrome/common/ipc_channel_win.cc:777
+1682588696749	geckodriver	INFO	Listening on 127.0.0.1:55115
+1682588699783	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55116" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilevokVXM"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1682588700497	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1682588700505	Marionette	INFO	Listening on port 55125
+Read port: 55125
+WebDriver BiDi listening on ws://127.0.0.1:55116
+1682588700805	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofilevokVXM\\search.json.mozlz4", (void 0)))
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:55116/devtools/browser/b5a0cd40-54a0-4750-bef0-8f6fc8fb1cdb
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1682588795664	Marionette	INFO	Stopped listening on port 55125
+Dynamically enable window occlusion 1
+1682588829483	geckodriver	INFO	Listening on 127.0.0.1:55304
+1682588832542	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55305" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileMeIyu9"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1682588833205	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1682588833213	Marionette	INFO	Listening on port 55316
+Read port: 55316
+WebDriver BiDi listening on ws://127.0.0.1:55305
+1682588833513	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileMeIyu9\\search.json.mozlz4", (void 0)))
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:55305/devtools/browser/e90eed53-18c8-43e4-8873-0e72551f2653
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 488))
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1682589064858	Marionette	INFO	Stopped listening on port 55316
+Dynamically enable window occlusion 1
+ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55533" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileVQBStJ"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1682589002046	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1682589002055	Marionette	INFO	Listening on port 55542
+Read port: 55542
+WebDriver BiDi listening on ws://127.0.0.1:55533
+1682589002428	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileVQBStJ\\search.json.mozlz4", (void 0)))
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:55533/devtools/browser/9dda8150-6373-47f6-ae2c-253eebb5eba6
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1682589372256	Marionette	INFO	Stopped listening on port 55542
+Dynamically enable window occlusion 1
+ng command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "55777" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile0RKqPq"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1682589169928	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1682589169940	Marionette	INFO	Listening on port 55792
+Read port: 55792
+WebDriver BiDi listening on ws://127.0.0.1:55777
+1682589170239	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofile0RKqPq\\search.json.mozlz4", (void 0)))
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:55777/devtools/browser/d1652ccb-ff81-458a-a8f7-6bb30866a4a5
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1682589367997	Marionette	INFO	Stopped listening on port 55792
+Dynamically enable window occlusion 1
+1682589415649	geckodriver	INFO	Listening on 127.0.0.1:56158
+1682589418698	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "56159" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileKQgrCp"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1682589420151	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1682589420159	Marionette	INFO	Listening on port 56168
+Read port: 56168
+WebDriver BiDi listening on ws://127.0.0.1:56159
+1682589420475	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\PRANAV~1\\AppData\\Local\\Temp\\rust_mozprofileKQgrCp\\search.json.mozlz4", (void 0)))
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+console.error: Region.sys.mjs: "Error fetching region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 762))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("TIMEOUT", "resource://gre/modules/Region.sys.mjs", 414))
+DevTools listening on ws://127.0.0.1:56159/devtools/browser/a7d66f79-3750-4b01-a2cf-3d334136aed1
+console.error: (new TypeError("this._searchProviderInfo is null", "resource:///modules/SearchSERPTelemetry.sys.mjs", 488))
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://172.29.30.127."
+1682589494076	Marionette	INFO	Stopped listening on port 56168
+Dynamically enable window occlusion 1

@@ -83,4 +83,8 @@ import paramiko
 #
 # # loginSSH()
 # deleteSR("psp-MyWinSecondFlow-src2-IMAGE", "psp-MyWinSecondFlow-tgt2")
-
+tng = ""
+for i in range(1, 5):
+    tng += "Hello Buddy"
+    print(tng)
+    time.sleep(2)

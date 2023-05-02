@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 from pageObjects.wavePage import WavePage
 from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
-from pageObjects.waveEdit import SyncOptions
+from pageObjects.waveEdit import WaveEdit
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
@@ -35,7 +35,7 @@ class Test_014_FailoverAndFallback:
         self.crtWave = WavePage(self.driver)
         self.crtWave.createWaveWithHost(path)
         self.logger.info("********** Successful Created New Wave With Host **********")
-        self.setSync = SyncOptions(self.driver)
+        self.setSync = WaveEdit(self.driver)
         self.logger.info("********** Setting Autoprovision For Wave **********")
         path1 = "./TestData/setAutoprovisionAndNIC.xlsx"
         self.setSync.setAutoprovision(path1)

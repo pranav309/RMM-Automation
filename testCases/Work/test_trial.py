@@ -5,11 +5,12 @@ from pageObjects.wavePage import WavePage
 from pageObjects.configurationPage import Configuration
 from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
-from pageObjects.waveEdit import SyncOptions
+from pageObjects.waveEdit import WaveEdit
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from pageObjects.drPolicyPage import DRPolicy
 from pageObjects.waveDetails import WaveDetails
+from pageObjects.tp import TP
 
 
 class Test_019_SecondFlow:
@@ -25,8 +26,9 @@ class Test_019_SecondFlow:
         self.config = Configuration(self.driver)
         self.startWave = WaveOperations(self.driver)
         self.dr = DRPolicy(self.driver)
-        self.setSync = SyncOptions(self.driver)
+        self.setSync = WaveEdit(self.driver)
         self.details = WaveDetails(self.driver)
+        self.tp = TP(self.driver)
 
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
@@ -35,7 +37,7 @@ class Test_019_SecondFlow:
         self.lp.setPassword(self.password)
         self.lp.clickOnLogin()
 
-        self.details.checkHosts("tp", "psp-MyLin1-src, psp-MyWin1-src, psp-MyLin-src")
+        self.tp.selectCheck("z")
 
         self.lp.clickOnLogout()
         self.driver.close()

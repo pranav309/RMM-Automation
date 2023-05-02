@@ -3,7 +3,7 @@ import time
 from pageObjects.wavePage import WavePage
 from pageObjects.waveOperations import WaveOperations
 from pageObjects.loginPage import LoginPage
-from pageObjects.waveEdit import SyncOptions
+from pageObjects.waveEdit import WaveEdit
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 from selenium.webdriver.common.by import By
@@ -23,7 +23,7 @@ class Test_018_FirstFlow:
         self.crtWave = WavePage(self.driver)
         self.startWave = WaveOperations(self.driver)
         self.dr = DRPolicy(self.driver)
-        self.setSync = SyncOptions(self.driver)
+        self.setSync = WaveEdit(self.driver)
         self.details = WaveDetails(self.driver)
 
         self.logger.info("********** Test_018_FirstFlow ********** ")
