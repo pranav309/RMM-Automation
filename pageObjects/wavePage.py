@@ -215,13 +215,13 @@ class WavePage:
         for r in range(3, rows + 1):
             waveName = sheet.cell(row=r, column=1).value
             hostName = sheet.cell(row=r, column=5).value
-            flag = 0
             time.sleep(5)
             val = self.openWave(waveName)
             if val == 2:
                 return
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, waveName).click()
+            time.sleep(5)
             if len(self.driver.find_elements(By.XPATH, self.pop_waveOpen_xpath)) != 0:
                 self.logger.info("********** " + str(waveName) + " Was Opened **********")
                 addHost = WebDriverWait(self.driver, 30).until(
@@ -244,7 +244,7 @@ class WavePage:
             else:
                 self.logger.info("********** " + str(waveName) + " Was Not Opened **********")
             time.sleep(5)
-            if flag == 1:
+            if val == 1:
                 self.driver.find_element(By.LINK_TEXT, "Replication").click()
                 time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -254,25 +254,16 @@ class WavePage:
         sheet = workBook.active
         rows = sheet.max_row
         tmp = "None"
-        flag = 0
         for r in range(4, rows+1):
             time.sleep(5)
             waveName = sheet.cell(row=r, column=1).value
             hostName = sheet.cell(row=r, column=5).value
             if tmp != waveName:
-                if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-                    if (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
-                        self.driver.find_element(By.LINK_TEXT, "Replication").click()
-                        time.sleep(5)
-                    self.driver.find_element(By.LINK_TEXT, "Waves").click()
-                    time.sleep(5)
-                    if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-                        self.driver.find_element(By.LINK_TEXT, "DR").click()
-                        flag += 1
-                        time.sleep(5)
-                        self.driver.find_element(By.LINK_TEXT, "Waves").click()
-                        time.sleep(5)
+                val = self.openWave(waveName)
+                if val == 2:
+                    return
             self.driver.find_element(By.LINK_TEXT, waveName).click()
+            time.sleep(5)
             if len(self.driver.find_elements(By.XPATH, self.pop_waveOpen_xpath)) != 0:
                 self.logger.info("********** " + str(waveName) + " Was Opened **********")
                 addHost = WebDriverWait(self.driver, 30).until(
@@ -299,7 +290,7 @@ class WavePage:
             else:
                 self.logger.info("********** " + str(waveName) + " Was Not Opened **********")
             tmp = waveName
-        if flag == 1:
+        if len(self.driver.find_element(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -394,21 +385,12 @@ class WavePage:
             self.driver.find_element(By.ID, self.txt_targetUserName_id).send_keys(targetUsername)
 
     def deleteWave(self, waveName):
-        flag = 0
         time.sleep(5)
-        if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-            if (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
-                self.driver.find_element(By.LINK_TEXT, "Replication").click()
-                time.sleep(5)
-            self.driver.find_element(By.LINK_TEXT, "Waves").click()
-            time.sleep(5)
-            if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-                self.driver.find_element(By.LINK_TEXT, "DR").click()
-                flag += 1
-                time.sleep(5)
-                self.driver.find_element(By.LINK_TEXT, "Waves").click()
-                time.sleep(5)
-        self.driver.find_element(By.ID, "waves_"+waveName+"_wave_actions").click()
+        val = self.openWave(waveName)
+        if val == 2:
+            return
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
         time.sleep(5)
         if len(self.driver.find_elements(By.XPATH, self.pop_delete_xpath)) != 0:
             self.logger.info("********** Delete Wave Pop-up Banner Was Opened For Wave, " + str(waveName) + " **********")
@@ -420,7 +402,7 @@ class WavePage:
         else:
             self.logger.info("********** Delete Wave Pop-up Banner Was Not Opened For Wave, " + str(waveName) + " **********")
         time.sleep(5)
-        if flag == 1:
+        if val == 1:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -485,7 +467,7 @@ class WavePage:
             if count > totalWaves:
                 self.logger.info("********** "+waveName+" Was Not Found In Replication Waves **********")
 
-    def searchHost(self, hostName, waveName):
+    def searchHost(self, waveName, hostName):
         totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
         for hostNo in range(1, totalHosts + 1):
             if totalHosts == 1:
