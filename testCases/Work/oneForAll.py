@@ -45,13 +45,37 @@ class Test_000_OneForAll:
         self.lp.clickOnLogin()
         self.logger.info("********** Login Successful **********\n")
 
-        path = r"/TestData/allInOne/allInOne.xlsx"
+        path = "./TestData/OneForAll/oneForAll.xlsx"
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
 
-        for r in range(3, rows+1):
+        count = 1
+        for r in range(2, rows+1):
             operation = sheet.cell(row=r, column=1).value.lower()
-            if operation.find("add") != -1 and operation.find("wave") != -1:
+            if operation.find("add") != -1 and operation.find("wave") != -1 and operation.find("without") != -1:
+                waveName = sheet.cell(row=r, column=3).value
+                passthrough = sheet.cell(row=r, column=4).value
+                self.logger.info("********** Starting TestCase "+str(count)+": Create New Wave With Upload .csv File Method **********")
+                self.wp.createWaveWithoutHost(waveName, passthrough)
+                self.logger.info("********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********\n")
+                count += 1
+
+            elif operation.find("add") != -1 and operation.find("wave") != -1 and operation.find("file") != -1:
                 filePath = sheet.cell(row=r, column=2).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Create New Wave With Upload .csv File Method **********")
+                self.wp.createWaveWithFile(filePath)
+                self.logger.info("********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********\n")
+                count += 1
+
+            elif operation.find("add") != -1 and operation.find("wave") != -1:
+                filePath = sheet.cell(row=r, column=2).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Create New Wave With Upload .csv File Method **********")
                 self.wp.createWaveWithHost(filePath)
+                self.logger.info("********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********\n")
+                count += 1
+
+        self.lp.clickOnLogout()
+        self.logger.info("********** Logout Successful **********")
+        self.driver.close()
+        self.logger.info("********** Browser Closed Successfully **********")

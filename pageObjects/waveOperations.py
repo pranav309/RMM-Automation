@@ -24,7 +24,7 @@ class WaveOperations:
     drp_parallelPolicy_id = "wave_policy_wave_policy_wave_detail_parallelSyncCount"
     chBox_startNow_id = "wave_detail_wave_policy_start_now"
     btn_assignPolicy_id = "wave_detail_wave_policy_assign_policy_btn"
-    btn_canclePolicy_id = "wave_detail_wave_policy_cancel_btn"
+    btn_cancelPolicy_id = "wave_detail_wave_policy_cancel_btn"
     btn_removePolicy_id = "wave_detail_wave_policy_remove_policy_btn"
     btn_deleteHost_id = "wave_detail_delete_item_delete_btn"
 
@@ -44,7 +44,7 @@ class WaveOperations:
         time.sleep(5)
         flag = 0
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-            if (len(self.driver.find_elements(By.LINK_TEXT, "Summary"))) == 0:
+            if self.driver.find_element(By.LINK_TEXT, "Policies").is_displayed():
                 self.driver.find_element(By.LINK_TEXT, "Replication").click()
                 time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -221,7 +221,7 @@ class WaveOperations:
                         count += 1
                     if count == totalPolicies+1:
                         self.logger.info("********** There Is No DR Policy Available With Name : "+policyName+"**********")
-                        self.driver.find_element(By.ID, self.btn_canclePolicy_id).click()
+                        self.driver.find_element(By.ID, self.btn_cancelPolicy_id).click()
                     else:
                         self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(count)+']').click()
                         if startNow:
@@ -265,7 +265,8 @@ class WaveOperations:
             self.logger.info("********** Policy Assignment Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
         time.sleep(5)
 
-    def deleteSR(self, source, target):
+    @staticmethod
+    def deleteSR(source, target):
         vm_ip = "172.29.30.127"
         vm_username = "root"
         vm_password = "rackware"

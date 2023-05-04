@@ -82,7 +82,8 @@ class Test_019_SecondFlow:
 
         self.logger.info("********** Starting TestCase 9.3: Check Wave Status **********")
         # Wave name i.e. to be started
-        self.wd.checkWaveState("Second Flow")
+        self.wd.checkWaveStatus("Second Flow")
+        self.wd.totalSuccessfulSyncs("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Check Wave Status **********\n")
 
         self.logger.info("********** Starting TestCase 10: Changing Sync Options for A Wave **********")
@@ -98,7 +99,8 @@ class Test_019_SecondFlow:
 
         self.logger.info("********** Starting TestCase 11.2: Check Wave Status **********")
         # Wave name i.e. to be started
-        self.wd.checkWaveState("Second Flow")
+        self.wd.checkWaveStatus("Second Flow")
+        self.wd.totalSuccessfulSyncs("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Check Wave Status **********\n")
 
         self.logger.info("********** Starting TestCase 12: Create Another Wave Without Hosts **********")

@@ -1,236 +1,36 @@
-04/25/23 11:/25:/51 AM: INFO: ********** Test_019_SecondFlow ********** :
-04/25/23 11:/25:/51 AM: INFO: ********** Opening Browser ********** :
-04/25/23 11:/26:/16 AM: INFO: ********** Browser Opened Successfully **********
+05/04/23 07:/42:/17 PM: INFO: ********** Test_019_SecondFlow ********** :
+05/04/23 07:/42:/17 PM: INFO: ********** Opening Browser ********** :
+05/04/23 07:/42:/30 PM: INFO: ********** Browser Opened Successfully **********
 :
-04/25/23 11:/26:/16 AM: INFO: ********** Logging In **********:
-04/25/23 11:/26:/27 AM: INFO: ********** Login Successful **********
+05/04/23 07:/42:/30 PM: INFO: ********** Logging In **********:
+05/04/23 07:/42:/38 PM: INFO: ********** Login Successful **********:
+05/04/23 07:/42:/38 PM: INFO: ********** Login Successful **********
 :
-04/25/23 11:/26:/27 AM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
-04/25/23 11:/26:/57 AM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+05/04/23 07:/42:/38 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+05/04/23 07:/43:/02 PM: INFO: ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow 1 **********:
+05/04/23 07:/43:/02 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
+05/04/23 07:/43:/20 PM: INFO: ********** Create New Wave Status of Wave : First Flow 1,:
+05/04/23 07:/43:/20 PM: INFO: Added machine 172.29.31.111 to wave
+First Flow 1
 :
-04/25/23 11:/26:/57 AM: INFO: ********** Starting TestCase 2: Add New vCenter **********:
-04/25/23 11:/27:/33 AM: INFO: ********** Successfully Executed TestCase: Add New vCenter **********
+05/04/23 07:/43:/20 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
 :
-04/25/23 11:/27:/33 AM: INFO: ********** Starting TestCase 3: Set Autoprovision For The Wave **********:
-04/25/23 11:/29:/12 AM: INFO: ********** Successfully Executed TestCase: Set Autoprovision For The Wave **********
+05/04/23 07:/43:/20 PM: INFO: ********** Starting TestCase 2: Create New Wave With Upload .csv File Method **********:
+05/04/23 07:/43:/39 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened For Wave, First Wave 2 **********:
+05/04/23 07:/43:/44 PM: INFO: ********** Create New Wave Status of Wave : First Wave 2,:
+05/04/23 07:/43:/44 PM: INFO: Wave Added
+First Wave 2
 :
-04/25/23 11:/29:/12 AM: INFO: ********** Starting TestCase 4: Bulk Edit Sync Options For Wave **********:
-04/25/23 11:/29:/33 AM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
-04/25/23 11:/29:/33 AM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
-04/25/23 11:/29:/34 AM: INFO: ********** Sync Option 'No Transfer' is set as yes **********:
-04/25/23 11:/30:/12 AM: INFO: ********** Sync Option 'Transfer Compress' is set as yes **********:
-04/25/23 11:/30:/33 AM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options For Wave **********
+05/04/23 07:/43:/50 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
 :
-04/25/23 11:/30:/33 AM: INFO: ********** Starting TestCase 5 & 6: Edit Sync Options For Linux Wave **********:
-04/25/23 11:/31:/47 AM: INFO: ********** Successfully Executed TestCase: Edit Sync Options For Linux Wave **********
+05/04/23 07:/43:/50 PM: INFO: ********** Starting TestCase 3: Create New Wave With Upload .csv File Method **********:
+05/04/23 07:/44:/00 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
+05/04/23 07:/44:/23 PM: INFO: ********** Create Status of Wave Name, :
+05/04/23 07:/44:/23 PM: INFO: Wave Add
+First Flow 3 successfully added.
 :
-04/25/23 11:/31:/47 AM: INFO: ********** Starting TestCase 7: Change Datastore For All Waves **********:
-04/25/23 11:/32:/19 AM: INFO: ********** Successfully Changes Datastore for Host Number : 1 **********:
-04/25/23 11:/32:/40 AM: INFO: ********** Successfully Changes Datastore for Host Number : 2 **********:
-04/25/23 11:/33:/01 AM: INFO: ********** Successfully Changes Datastore for Host Number : 3 **********:
-04/25/23 11:/33:/22 AM: INFO: ********** Successfully Changes Datastore for Host Number : 4 **********:
-04/25/23 11:/33:/27 AM: INFO: ********** Successfully Executed TestCase: Change Datastore For All Waves **********
+05/04/23 07:/44:/24 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
 :
-04/25/23 11:/33:/27 AM: INFO: ********** Starting TestCase 8: Bulk Edit Sync Options For Windows Hosts **********:
-04/25/23 11:/34:/10 AM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options For Windows Hosts **********
-:
-04/25/23 11:/34:/10 AM: INFO: ********** Starting TestCase 9.1: Set Parallel Count **********:
-04/25/23 11:/34:/36 AM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
-:
-04/25/23 11:/34:/36 AM: INFO: ********** Starting TestCase 9.2: Start & Verify A Wave **********:
-04/25/23 11:/49:/31 AM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/25/23 11:/49:/36 AM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 11:/49:/38 AM: INFO: Authentication (password) successful!:
-04/25/23 11:/49:/44 AM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/25/23 11:/49:/49 AM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 11:/49:/51 AM: INFO: Authentication (password) successful!:
-04/25/23 11:/49:/56 AM: INFO: ********** Host Number : 3, Sync Successful **********:
-04/25/23 11:/50:/02 AM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 11:/50:/03 AM: INFO: Authentication (password) successful!:
-04/25/23 11:/50:/09 AM: INFO: ********** Host Number : 4, Sync Successful **********:
-04/25/23 11:/50:/15 AM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 11:/50:/16 AM: INFO: Authentication (password) successful!:
-04/25/23 11:/50:/22 AM: INFO: ********** Successfully Executed TestCase: Start & Verify A Wave **********
-:
-04/25/23 11:/50:/22 AM: INFO: ********** Starting TestCase 10: Changing Sync Options for A Wave **********:
-04/25/23 11:/50:/40 AM: INFO: ********** Sync Option 'No Transfer' is set as no **********:
-04/25/23 11:/51:/01 AM: INFO: ********** Successfully Executed TestCase: Changed Sync Options for A Wave **********
-:
-04/25/23 11:/51:/01 AM: INFO: ********** Starting TestCase 11: Start & Verify A Wave Again **********:
-04/25/23 12:/46:/58 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/25/23 12:/47:/03 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 12:/47:/05 PM: INFO: Authentication (password) successful!:
-04/25/23 12:/47:/11 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/25/23 12:/47:/16 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 12:/47:/17 PM: INFO: Authentication (password) successful!:
-04/25/23 12:/47:/23 PM: INFO: ********** Host Number : 3, Sync Successful **********:
-04/25/23 12:/47:/29 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 12:/47:/30 PM: INFO: Authentication (password) successful!:
-04/25/23 12:/47:/36 PM: INFO: ********** Host Number : 4, Sync Successful **********:
-04/25/23 12:/47:/41 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 12:/47:/43 PM: INFO: Authentication (password) successful!:
-04/25/23 12:/47:/49 PM: INFO: ********** Successfully Executed TestCase: Start & Verify A Wave Again **********
-:
-04/25/23 12:/47:/49 PM: INFO: ********** Starting TestCase 12: Create Another Wave Without Hosts **********:
-04/25/23 12:/48:/11 PM: INFO: ********** Successfully Executed TestCase: Create Another Wave Without Hosts **********
-:
-04/25/23 12:/48:/11 PM: INFO: ********** Starting TestCase 13: Move Hosts From One Wave To Another Wave **********:
-04/25/23 12:/48:/54 PM: INFO: ********** Successfully Executed TestCase: Move Hosts From One Wave To Another Wave **********
-:
-04/25/23 12:/48:/54 PM: INFO: ********** Starting TestCase 14.1: Changing Target Type Of Linux Hosts Wave **********:
-04/25/23 12:/49:/26 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
-04/25/23 12:/49:/47 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
-04/25/23 12:/49:/47 PM: INFO: ********** Successfully Executed TestCase: Changed Target Type Of Linux Hosts Wave **********
-:
-04/25/23 12:/49:/47 PM: INFO: ********** Starting TestCase 14.2: Set Parallel Count **********:
-04/25/23 12:/50:/13 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
-:
-04/25/23 12:/50:/13 PM: INFO: ********** Starting TestCase 14.3: Start & Verify A Wave Again **********:
-04/25/23 12:/52:/26 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/25/23 12:/52:/31 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 12:/52:/33 PM: INFO: Authentication (password) successful!:
-04/25/23 12:/52:/38 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/25/23 12:/52:/44 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 12:/52:/45 PM: INFO: Authentication (password) successful!:
-04/25/23 12:/52:/51 PM: INFO: ********** Successfully Executed TestCase: Start & Verify A Wave Again **********
-:
-04/25/23 12:/52:/51 PM: INFO: ********** Starting TestCase 15.1: Change Target Type Of Windows Hosts Wave **********:
-04/25/23 12:/53:/44 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
-04/25/23 12:/54:/26 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
-04/25/23 12:/54:/26 PM: INFO: ********** Successfully Executed TestCase: Change Target Type Of Windows Hosts Wave **********
-:
-04/25/23 12:/54:/26 PM: INFO: ********** Starting TestCase 15.2: Start & Verify A Wave Again **********:
-04/25/23 01:/31:/12 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/25/23 01:/31:/18 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 01:/31:/19 PM: INFO: Authentication (password) successful!:
-04/25/23 01:/31:/20 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 01:/31:/22 PM: INFO: Authentication (password) successful!:
-04/25/23 01:/31:/28 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/25/23 01:/31:/33 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 01:/31:/35 PM: INFO: Authentication (password) successful!:
-04/25/23 01:/31:/36 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 01:/31:/37 PM: INFO: Authentication (password) successful!:
-04/25/23 01:/31:/44 PM: INFO: ********** Successfully Executed TestCase: Start & Verify A Wave Again **********
-:
-04/25/23 01:/31:/44 PM: INFO: ********** Starting TestCase 16.1: Create New DRPolicy **********:
-04/25/23 01:/32:/06 PM: INFO: ********** Created no. 1 DR Policy with name SecondFlowWin **********:
-04/25/23 01:/32:/33 PM: INFO: ********** Created no. 2 DR Policy with name SecondFlowLin **********:
-04/25/23 01:/32:/38 PM: INFO: ********** Successfully Executed TestCase: Create New DRPolicy **********
-:
-04/25/23 02:/02:/23 PM: INFO: ********** Starting TestCase 16.2, 17 & 18: Add DRPolicy To Wave **********:
-04/25/23 02:/02:/58 PM: INFO: ********** Policy : SecondFlowWin, Added To The Wave : Second Flow **********:
-04/25/23 02:/05:/09 PM: INFO: ********** Policy : SecondFlowWin, Is In Active State **********:
-04/25/23 02:/05:/49 PM: INFO: ********** Policy : SecondFlowLin, Added To The Wave : Second Flow 1 **********:
-04/25/23 02:/08:/00 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
-04/25/23 02:/08:/06 PM: INFO: ********** Successfully Executed TestCase: Add DRPolicy To Wave **********
-:
-04/25/23 02:/08:/06 PM: INFO: ********** Starting TestCase 19.1: Pause DR Policy For Windows **********:
-04/25/23 02:/08:/21 PM: INFO: ********** Policy : SecondFlowWin, Is In Active State **********:
-04/25/23 02:/08:/21 PM: INFO: ********** Pausing The DR Policy **********:
-04/25/23 02:/08:/31 PM: INFO: ********** Policy : SecondFlowWin, Is In Paused State **********:
-04/25/23 02:/08:/31 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy For Windows **********
-:
-04/25/23 02:/08:/31 PM: INFO: ********** Starting TestCase 19.2: Perform Failover Windows Hosts **********:
-04/25/23 02:/09:/13 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/25/23 02:/09:/18 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/25/23 02:/09:/23 PM: INFO: ********** Pausing DR Policy **********:
-04/25/23 02:/09:/33 PM: INFO: ********** Policy : SecondFlowWin, Is In Failed Over State **********:
-04/25/23 02:/09:/33 PM: INFO: ********** Pausing The DR Policy **********:
-04/25/23 02:/09:/43 PM: INFO: ********** Policy : SecondFlowWin, Is In Paused State **********:
-04/25/23 02:/09:/43 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/25/23 02:/09:/49 PM: INFO: ********** Successfully Executed TestCase: Perform Failover Windows Hosts **********
-:
-04/25/23 02:/09:/49 PM: INFO: ********** Starting TestCase 20.1: Pause DR Policy For Linux **********:
-04/25/23 02:/10:/05 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
-04/25/23 02:/10:/05 PM: INFO: ********** Pausing The DR Policy **********:
-04/25/23 02:/10:/15 PM: INFO: ********** Policy : SecondFlowLin, Is In Paused State **********:
-04/25/23 02:/10:/15 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy For Linux **********
-:
-04/25/23 02:/10:/15 PM: INFO: ********** Starting TestCase 20.2: Change Target Type Of Wave **********:
-04/25/23 02:/11:/03 PM: INFO: ********** Successfully Changed Target Type For Host Number : 1 **********:
-04/25/23 02:/11:/39 PM: INFO: ********** Successfully Changed Target Type For Host Number : 2 **********:
-04/25/23 02:/11:/39 PM: INFO: ********** Successfully Executed TestCase: Change Target Type Of Wave **********
-:
-04/25/23 02:/11:/39 PM: INFO: ********** Starting TestCase 20.3: Resume DRPolicy And Verify Sync **********:
-04/25/23 02:/17:/11 PM: INFO: ********** Pausing DR Policy **********:
-04/25/23 02:/17:/21 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
-04/25/23 02:/17:/21 PM: INFO: ********** Pausing The DR Policy **********:
-04/25/23 02:/17:/31 PM: INFO: ********** Policy : SecondFlowLin, Is In Paused State **********:
-04/25/23 02:/17:/31 PM: INFO: ********** Successfully Paused DR Policy **********:
-04/25/23 02:/17:/42 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/25/23 02:/17:/47 PM: INFO: ********** Host Number : 2, Sync Successful **********:
-04/25/23 02:/17:/58 PM: INFO: ********** Successfully Executed TestCase: Resume DRPolicy And Verify Sync **********
-:
-04/25/23 02:/18:/11 PM: INFO: ********** Logout Successful **********:
-04/25/23 02:/18:/20 PM: INFO: ********** Browser Closed Successfully **********:
-
-
-
-04/25/23 06:/36:/09 PM: INFO: ********** Start Status of Wave Name : z,:
-04/25/23 06:/36:/09 PM: INFO: Wave Started
-z:
-04/25/23 06:/42:/14 PM: INFO: ********** Host Number : 1, Sync Successful **********:
-04/25/23 06:/42:/20 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 06:/42:/22 PM: INFO: Authentication (password) successful!:
-04/25/23 06:/48:/23 PM: INFO: ********** Start Status of Wave Name : z,:
-04/25/23 06:/48:/23 PM: INFO: Wave Started
-z:
-04/25/23 06:/50:/23 PM: INFO: ********** Host Number : 1, Sync Failed **********:
-04/25/23 06:/50:/23 PM: INFO: ********** Failed Due To, **********
-:
-04/25/23 06:/50:/34 PM: INFO: RSP_CMD_ACCEPTED  STATUS_INFO
-Accepted command 'host sync '
-
-jobid file: /var/log/rackware/by-jobid/0000000000035ce4.log
-RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_EXAMINING_HOST  STATUS_INFO
-Syncing psp-MyLinZ-src1: Examining psp-MyLinZ-src1
-RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_DETERMINING_TARGET_OS  STATUS_INFO
-Syncing psp-MyLinZ-src1: Checking OS on psp-MyLinZ-tgt1
-RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_HOST_EXAMINED  STATUS_INFO
-Syncing psp-MyLinZ-src1: psp-MyLinZ-src1 examined
-RSP_SYNC_ERROR  SYNC_ERROR_DETERMINE_BOOTED_OS  STATUS_ERROR
-Details: SSH connection (root@172.29.30.108) failed
-jobid file: /var/log/rackware/by-jobid/0000000000035ce4.log:
-04/25/23 06:/50:/40 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
-04/25/23 06:/50:/42 PM: INFO: Authentication (password) successful!:
-
-
-
-04/26/23 12:/55:/19 PM: INFO: ********** Login Successful **********:
-04/26/23 12:/55:/19 PM: INFO: ********** Starting TestCase 2: Add New vCenter **********:
-04/26/23 12:/55:/49 PM: INFO: ********** VCenter Add Status **********:
-04/26/23 12:/55:/49 PM: INFO: Failed to Add Vcenter
-VCENTER_ERROR_NAME_IN_USE:
-04/26/23 12:/55:/55 PM: INFO: ********** Successfully Executed TestCase: Add New vCenter **********
-:
-04/26/23 12:/56:/08 PM: INFO: ********** Logout Successful **********:
-04/26/23 01:/03:/20 PM: INFO: ********** Login Successful **********:
-04/26/23 01:/03:/20 PM: INFO: ********** Starting TestCase 2: Add New vCenter **********:
-04/26/23 01:/03:/51 PM: INFO: ********** VCenter Add Status **********:
-04/26/23 01:/03:/51 PM: INFO: Submitted add Vcenter hcm_vc:
-04/26/23 01:/03:/56 PM: INFO: ********** Successfully Executed TestCase: Add New vCenter **********
-:
-
-
-04/26/23 06:/18:/56 PM: INFO: ********** Login Successful **********:
-04/26/23 06:/19:/06 PM: INFO: ********** The Wave Status For The Wave : tp, Is Idle:
-04/26/23 06:/19:/06 PM: INFO: ********** The Successful Sync Count For The Wave : tp, Is 4 **********:
-04/26/23 06:/19:/31 PM: INFO: ********** Logout Successful **********:
-
-04/26/23 06:/34:/31 PM: INFO: ********** Login Successful **********:
-04/26/23 06:/34:/41 PM: INFO: ********** The Host psp-MyLin1-src Is Present In The Wave : tp **********:
-04/26/23 06:/34:/41 PM: INFO: ********** The Host psp-MyWin1-src Is Present In The Wave : tp **********:
-04/26/23 06:/34:/55 PM: INFO: ********** Logout Successful **********:
-
-04/26/23 06:/36:/03 PM: INFO: ********** Login Successful **********:
-04/26/23 06:/36:/14 PM: INFO: ********** The Host psp-MyLin1-src Is Present In The Wave : tp **********:
-04/26/23 06:/36:/14 PM: INFO: ********** The Host psp-MyWin1-src Is Present In The Wave : tp **********:
-04/26/23 06:/36:/14 PM: INFO: ********** The Host psp-MyLin-src Is Not Present In The Wave : tp **********:
-04/26/23 06:/36:/27 PM: INFO: ********** Logout Successful **********:
-04/27/23 03:/11:/22 PM: INFO: ********** Login Successful **********:
-04/27/23 03:/15:/34 PM: INFO: ********** Login Successful **********:
-04/27/23 03:/17:/49 PM: INFO: ********** Login Failed **********:
-04/27/23 03:/20:/44 PM: INFO: ********** Login Successful **********:
-04/27/23 03:/23:/22 PM: INFO: ********** Login Successful **********:
-04/27/23 03:/27:/33 PM: INFO: ********** Login Successful **********:
-04/27/23 03:/28:/14 PM: INFO: ********** Logout Successful **********:
+05/04/23 07:/44:/37 PM: INFO: ********** Logout Successful **********:
+05/04/23 07:/44:/37 PM: INFO: ********** Logout Successful **********:
+05/04/23 07:/44:/39 PM: INFO: ********** Browser Closed Successfully **********:

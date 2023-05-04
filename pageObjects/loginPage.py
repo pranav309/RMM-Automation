@@ -3,6 +3,8 @@ import keyboard
 
 from selenium.webdriver.common.by import By
 from utilities.customLogger import LogGen
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class LoginPage:
@@ -24,15 +26,17 @@ class LoginPage:
         self.driver.find_element(By.ID, self.txt_password_id).send_keys(password)
 
     def clickOnLogin(self):
+        userName = self.driver.find_element(By.ID, self.txt_username_id)
+        password = self.driver.find_element(By.ID, self.txt_password_id)
         self.driver.find_element(By.ID, self.btn_login_id).click()
-        time.sleep(10)
+        WebDriverWait(self.driver, 30).until(
+            EC.element_to_be_clickable((By.LINK_TEXT, "Waves"))
+        )
         if len(self.driver.find_elements(By.LINK_TEXT, "Waves")) == 0:
             self.logger.info("********** Login Failed **********")
             time.sleep(2)
             # note = self.driver.find_element(By.XPATH,'/html/body/app-root/simple-notifications/div/simple-notification/div').text
             # self.logger.info(note)
-            userName = self.driver.find_element(By.ID, self.txt_username_id)
-            password = self.driver.find_element(By.ID, self.txt_password_id)
             if userName.get_attribute("value") == "" and password.get_attribute("value") == "":
                 self.logger.info("********** Username & Password Both Fields Are Empty **********")
             elif userName.get_attribute("value") == "":
