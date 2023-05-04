@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test Report</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function find_all(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sort_column(elem) {
+    toggle_sort_states(elem);
+    var colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    var key;
+    if (elem.classList.contains('numeric')) {
+        key = key_num;
+    } else if (elem.classList.contains('result')) {
+        key = key_result;
+    } else {
+        key = key_alpha;
+    }
+    sort_table(elem, key(colIndex));
+}
+
+function show_all_extras() {
+    find_all('.col-result').forEach(show_extras);
+}
+
+function hide_all_extras() {
+    find_all('.col-result').forEach(hide_extras);
+}
+
+function show_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.remove("collapsed");
+    expandcollapse.classList.remove("expander");
+    expandcollapse.classList.add("collapser");
+}
+
+function hide_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.add("collapsed");
+    expandcollapse.classList.remove("collapser");
+    expandcollapse.classList.add("expander");
+}
+
+function show_filters() {
+    var filter_items = document.getElementsByClassName('filter');
+    for (var i = 0; i < filter_items.length; i++)
+        filter_items[i].hidden = false;
+}
+
+function add_collapse() {
+    // Add links for show/hide all
+    var resulttable = find('table#results-table');
+    var showhideall = document.createElement("p");
+    showhideall.innerHTML = '<a href="javascript:show_all_extras()">Show all details</a> / ' +
+                            '<a href="javascript:hide_all_extras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    find_all('.col-result').forEach(function(elem) {
+        var collapsed = get_query_parameter('collapsed') || 'Passed';
+        var extras = elem.parentNode.nextElementSibling;
+        var expandcollapse = document.createElement("span");
+        if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add("collapsed");
+            expandcollapse.classList.add("expander");
+        } else {
+            expandcollapse.classList.add("collapser");
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener("click", function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains("collapsed")) {
+                show_extras(event.currentTarget);
+            } else {
+                hide_extras(event.currentTarget);
+            }
+        });
+    })
+}
+
+function get_query_parameter(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () {
+    reset_sort_headers();
+
+    add_collapse();
+
+    show_filters();
+
+    sort_column(find('.initial-sort'));
+
+    find_all('.sortable').forEach(function(elem) {
+        elem.addEventListener("click",
+                              function(event) {
+                                  sort_column(elem);
+                              }, false)
+    });
+
+};
+
+function sort_table(clicked, key_func) {
+    var rows = find_all('.results-table-row');
+    var reversed = !clicked.classList.contains('asc');
+    var sorted_rows = sort(rows, key_func, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    var thead = document.getElementById("results-table-head");
+    document.getElementById('results-table').remove();
+    var parent = document.createElement("table");
+    parent.id = "results-table";
+    parent.appendChild(thead);
+    sorted_rows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName("BODY")[0].appendChild(parent);
+}
+
+function sort(items, key_func, reversed) {
+    var sort_array = items.map(function(item, i) {
+        return [key_func(item), i];
+    });
+
+    sort_array.sort(function(a, b) {
+        var key_a = a[0];
+        var key_b = b[0];
+
+        if (key_a == key_b) return 0;
+
+        if (reversed) {
+            return (key_a < key_b ? 1 : -1);
+        } else {
+            return (key_a > key_b ? 1 : -1);
+        }
+    });
+
+    return sort_array.map(function(item) {
+        var index = item[1];
+        return items[index];
+    });
+}
+
+function key_alpha(col_index) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[col_index].firstChild.data.toLowerCase();
+    };
+}
+
+function key_num(col_index) {
+    return function(elem) {
+        return parseFloat(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function key_result(col_index) {
+    return function(elem) {
+        var strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+                       'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function reset_sort_headers() {
+    find_all('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    find_all('.sortable').forEach(function(elem) {
+        var icon = document.createElement("div");
+        icon.className = "sort-icon";
+        icon.textContent = "vvv";
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove("desc", "active");
+        elem.classList.add("asc", "inactive");
+    });
+}
+
+function toggle_sort_states(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        reset_sort_headers();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function is_all_rows_hidden(value) {
+  return value.hidden == false;
+}
+
+function filter_table(elem) {
+    var outcome_att = "data-test-result";
+    var outcome = elem.getAttribute(outcome_att);
+    class_outcome = outcome + " results-table-row";
+    var outcome_rows = document.getElementsByClassName(class_outcome);
+
+    for(var i = 0; i < outcome_rows.length; i++){
+        outcome_rows[i].hidden = !elem.checked;
+    }
+
+    var rows = find_all('.results-table-row').filter(is_all_rows_hidden);
+    var all_rows_hidden = rows.length == 0 ? true : false;
+    var not_found_message = document.getElementById("not-found-message");
+    not_found_message.hidden = !all_rows_hidden;
+}
+</script>
+    <h1>oneFoeAll.html</h1>
+    <p>Report generated on 04-May-2023 at 19:00:33 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>Module Name</td>
+        <td>First Flow Automation</td></tr>
+      <tr>
+        <td>Packages</td>
+        <td>{&apos;pytest&apos;: &apos;7.2.1&apos;, &apos;pluggy&apos;: &apos;1.0.0&apos;}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>Windows-10-10.0.19045-SP0</td></tr>
+      <tr>
+        <td>Project Name</td>
+        <td>RMM Product</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.11.1</td></tr>
+      <tr>
+        <td>Tester</td>
+        <td>Pranav Pawar</td></tr></table>
+    <h2>Summary</h2>
+    <p>1 tests ran in 35.21 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable numeric" col="duration">Duration</th>
+          <th>Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="failed results-table-row">
+        <tr>
+          <td class="col-result">Failed</td>
+          <td class="col-name">testCases/Work/oneForAll.py::Test_000_OneForAll::test_allInOne</td>
+          <td class="col-duration">24.04</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log">self = &lt;testCases.Work.oneForAll.Test_000_OneForAll object at 0x000001AF3FCBA490&gt;<br/>setup = &lt;selenium.webdriver.firefox.webdriver.WebDriver (session=&quot;316fb959-40a4-4f21-9235-dca3af3cc4d0&quot;)&gt;<br/><br/>    def test_allInOne(self, setup):<br/>        self.driver = setup<br/>        self.lp = LoginPage(self.driver)<br/>        self.wp = WavePage(self.driver)<br/>        self.wo = WaveOperations(self.driver)<br/>        self.we = WaveEdit(self.driver)<br/>        self.wd = WaveDetails(self.driver)<br/>        self.rp = RetentionPolicy(self.driver)<br/>        self.dr = DRPolicy(self.driver)<br/>        self.conf = Configuration(self.driver)<br/>    <br/>        self.logger.info(&quot;********** Test_019_SecondFlow ********** &quot;)<br/>        self.logger.info(&quot;********** Opening Browser ********** &quot;)<br/>        self.driver.get(self.baseURL)<br/>        self.driver.maximize_window()<br/>        self.logger.info(&quot;********** Browser Opened Successfully **********\n&quot;)<br/>    <br/>        self.logger.info(&quot;********** Logging In **********&quot;)<br/>        self.lp.setUserName(self.username)<br/>        self.lp.setPassword(self.password)<br/>        self.lp.clickOnLogin()<br/>        self.logger.info(&quot;********** Login Successful **********\n&quot;)<br/>    <br/>        path = &quot;./TestData/OneForAll/oneForAll.xlsx&quot;<br/>        workBook = openpyxl.load_workbook(path)<br/>        sheet = workBook.active<br/>        rows = sheet.max_row<br/>    <br/>        for r in range(3, rows+1):<br/>            operation = sheet.cell(row=r, column=1).value.lower()<br/>            if operation.find(&quot;add&quot;) != -1 and operation.find(&quot;wave&quot;) != -1:<br/>                filePath = sheet.cell(row=r, column=2).value<br/>                print(filePath + &quot;\n&quot;)<br/>&gt;               self.wp.createWaveWithHost(filePath)<br/><br/>testCases\Work\oneForAll.py:58: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>pageObjects\wavePage.py:165: in createWaveWithHost<br/>    workBook = openpyxl.load_workbook(path)<br/>..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\reader\excel.py:344: in load_workbook<br/>    reader = ExcelReader(filename, read_only, keep_vba,<br/>..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\reader\excel.py:123: in __init__<br/>    self.archive = _validate_archive(fn)<br/>..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\openpyxl\reader\excel.py:95: in _validate_archive<br/>    archive = ZipFile(filename, &#x27;r&#x27;)<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;zipfile.ZipFile [closed]&gt;, file = &#x27;C:\\Users\\Pranav Pawar\\PycharmProjects\\RMM_DataDriven\\TestData\\allInOne\\createWaveWithHost.xlsx&#x27;, mode = &#x27;r&#x27;, compression = 0<br/>allowZip64 = True, compresslevel = None<br/><br/>    def __init__(self, file, mode=&quot;r&quot;, compression=ZIP_STORED, allowZip64=True,<br/>                 compresslevel=None, *, strict_timestamps=True, metadata_encoding=None):<br/>        &quot;&quot;&quot;Open the ZIP file with mode read &#x27;r&#x27;, write &#x27;w&#x27;, exclusive create &#x27;x&#x27;,<br/>        or append &#x27;a&#x27;.&quot;&quot;&quot;<br/>        if mode not in (&#x27;r&#x27;, &#x27;w&#x27;, &#x27;x&#x27;, &#x27;a&#x27;):<br/>            raise ValueError(&quot;ZipFile requires mode &#x27;r&#x27;, &#x27;w&#x27;, &#x27;x&#x27;, or &#x27;a&#x27;&quot;)<br/>    <br/>        _check_compression(compression)<br/>    <br/>        self._allowZip64 = allowZip64<br/>        self._didModify = False<br/>        self.debug = 0  # Level of printing: 0 through 3<br/>        self.NameToInfo = {}    # Find file info given name<br/>        self.filelist = []      # List of ZipInfo instances for archive<br/>        self.compression = compression  # Method of compression<br/>        self.compresslevel = compresslevel<br/>        self.mode = mode<br/>        self.pwd = None<br/>        self._comment = b&#x27;&#x27;<br/>        self._strict_timestamps = strict_timestamps<br/>        self.metadata_encoding = metadata_encoding<br/>    <br/>        # Check that we don&#x27;t try to write with nonconforming codecs<br/>        if self.metadata_encoding and mode != &#x27;r&#x27;:<br/>            raise ValueError(<br/>                &quot;metadata_encoding is only supported for reading files&quot;)<br/>    <br/>        # Check if we were passed a file-like object<br/>        if isinstance(file, os.PathLike):<br/>            file = os.fspath(file)<br/>        if isinstance(file, str):<br/>            # No, it&#x27;s a filename<br/>            self._filePassed = 0<br/>            self.filename = file<br/>            modeDict = {&#x27;r&#x27; : &#x27;rb&#x27;, &#x27;w&#x27;: &#x27;w+b&#x27;, &#x27;x&#x27;: &#x27;x+b&#x27;, &#x27;a&#x27; : &#x27;r+b&#x27;,<br/>                        &#x27;r+b&#x27;: &#x27;w+b&#x27;, &#x27;w+b&#x27;: &#x27;wb&#x27;, &#x27;x+b&#x27;: &#x27;xb&#x27;}<br/>            filemode = modeDict[mode]<br/>            while True:<br/>                try:<br/>&gt;                   self.fp = io.open(file, filemode)<br/><span class="error">E                   FileNotFoundError: [Errno 2] No such file or directory: &#x27;C:\\Users\\Pranav Pawar\\PycharmProjects\\RMM_DataDriven\\TestData\\allInOne\\createWaveWithHost.xlsx&#x27;</span><br/><br/>..\..\AppData\Local\Programs\Python\Python311\Lib\zipfile.py:1281: FileNotFoundError<br/> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:oneForAll.py:36 ********** Test_019_SecondFlow ********** 
+[32mINFO    [0m root:oneForAll.py:37 ********** Opening Browser ********** 
+[32mINFO    [0m root:oneForAll.py:40 ********** Browser Opened Successfully **********
+
+[32mINFO    [0m root:oneForAll.py:42 ********** Logging In **********
+[32mINFO    [0m root:loginPage.py:48 ********** Login Successful **********
+[32mINFO    [0m root:oneForAll.py:46 ********** Login Successful **********<br/></div></td></tr></tbody></table></body></html>
