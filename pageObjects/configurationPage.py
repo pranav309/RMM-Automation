@@ -124,7 +124,7 @@ class Configuration:
             name = sheet.cell(row=r, column=1).value
             cloudProvider = sheet.cell(row=r, column=2).value
 
-            if len(self.driver.find_element(By.XPATH, self.pop_addCloudUser_xpath)) != 0:
+            if len(self.driver.find_elements(By.XPATH, self.pop_addCloudUser_xpath)) != 0:
                 self.logger.info("********** Pop-up Banner For Add Clouduser Was Opened **********")
 
                 self.driver.find_element(By.ID, self.txt_name_id).send_keys(name)
@@ -278,7 +278,7 @@ class Configuration:
 
     def findClouduser(self, userName):
         flag = 0
-        totalCU = len(self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr'))
+        totalCU = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr'))
         for i in range(1, totalCU+1):
             tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[2]/span[1]').text
             if tmp == userName:

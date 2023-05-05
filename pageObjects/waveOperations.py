@@ -40,7 +40,7 @@ class WaveOperations:
     def __init__(self, driver):
         self.driver = driver
 
-    def openWave(self, waveName):
+    def findWave(self, waveName):
         time.sleep(5)
         flag = 0
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
@@ -55,14 +55,14 @@ class WaveOperations:
                 time.sleep(5)
                 self.driver.find_element(By.LINK_TEXT, "Waves").click()
                 time.sleep(5)
-                if len(self.driver.find_element(By.LINK_TEXT, waveName)) == 0:
+                if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
                     flag += 1
                     self.logger.info("********** Wave : " + waveName + " Is Not Present **********")
         return flag
 
     def startWave(self, waveNames):
         for waveName in waveNames:
-            val = self.openWave(waveName)
+            val = self.findWave(waveName)
             if val == 2:
                 return
             self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -109,7 +109,7 @@ class WaveOperations:
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def startWaveAndVerify(self, waveName):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -179,7 +179,7 @@ class WaveOperations:
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def setParallelCount(self, waveName, parallelCount):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -196,54 +196,8 @@ class WaveOperations:
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def assignPolicy(self, waveName, policyName, startNow):
-        val = self.openWave(waveName)
-        if val == 2:
-            return
-        self.driver.find_element(By.LINK_TEXT, waveName).click()
-        time.sleep(5)
-        if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
-            self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
-            self.driver.find_element(By.XPATH, self.txt_drPolicy_xpath).click()
-            time.sleep(5)
-            if len(self.driver.find_elements(By.XPATH, self.txt_verifyPolicyAss_xpath)) != 0:
-                self.logger.info("********** Policy Assignment Pop-up Banner Was Opened For Wave, " + str(waveName) + " **********")
-                self.driver.find_element(By.XPATH, self.drp_drPolicy_xpath).click()
-                totalPolicies = len(self.driver.find_elements(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li'))
-                if totalPolicies == 1:
-                    self.logger.info("********** There Is No DR Policy Available **********")
-                else:
-                    count = 2
-                    for p in range(2, totalPolicies+1):
-                        tmp = self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(p)+']/span').text
-                        if tmp == policyName:
-                            break
-                        count += 1
-                    if count == totalPolicies+1:
-                        self.logger.info("********** There Is No DR Policy Available With Name : "+policyName+"**********")
-                        self.driver.find_element(By.ID, self.btn_cancelPolicy_id).click()
-                    else:
-                        self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li['+str(count)+']').click()
-                        if startNow:
-                            self.driver.find_element(By.ID, self.chBox_startNow_id).click()
-                            time.sleep(5)
-                        self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
-                        time.sleep(5)
-                        note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
-                        self.logger.info("********** Assign DR Policy To Wave Status : " + waveName + "," + policyName + ",")
-                        self.logger.info(note + "\n")
-            else:
-                self.logger.info("********** Policy Assignment Pop-up Banner Was Not Opened For Wave, " + str(waveName) + " **********")
-        else:
-            self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
-        time.sleep(5)
-        if val == 1:
-            self.driver.find_element(By.LINK_TEXT, "Replication").click()
-            time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Waves").click()
-
-    def changePolicy(self, waveName, policyNumber, startNow):
-        val = self.openWave(waveName)
+    def changePolicy(self, waveName, policyName, startNow):
+        val = self.findWave(waveName)
         if val == 2:
             return
         time.sleep(5)
@@ -254,13 +208,33 @@ class WaveOperations:
         if len(self.driver.find_elements(By.XPATH, self.txt_verifyPolicyAss_xpath)) != 0:
             self.logger.info("********** Policy Assignment Pop-up Banner Is Opened For Wave, " + str(waveName) + " **********")
             self.driver.find_element(By.XPATH, self.drp_drPolicy_xpath).click()
-            self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li[' + str(policyNumber) + ']').click()
-            if policyNumber == 1:
+            time.sleep(5)
+            totalPolicies = len(self.driver.find_elements(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li'))
+            if policyName == "No Policy":
                 self.driver.find_element(By.ID, self.btn_removePolicy_id).click()
+            elif totalPolicies == 1:
+                self.logger.info("********** There Is No DR Policy Available **********")
             else:
-                if startNow:
-                    self.driver.find_element(By.ID, self.chBox_startNow_id).click()
-                self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
+                count = 2
+                for p in range(2, totalPolicies + 1):
+                    tmp = self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li[' + str(p) + ']/span').text
+                    if tmp == policyName:
+                        break
+                    count += 1
+                if count == totalPolicies + 1:
+                    self.logger.info("********** There Is No DR Policy Available With Name : " + policyName + "**********")
+                    self.driver.find_element(By.ID, self.btn_cancelPolicy_id).click()
+                else:
+                    self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li[' + str(count) + ']').click()
+                    if startNow:
+                        self.driver.find_element(By.ID, self.chBox_startNow_id).click()
+                        time.sleep(5)
+                    self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
+            time.sleep(3)
+            if len(self.driver.find_elements(By.XPATH, self.pop_successful_xpath)) != 0:
+                note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+                self.logger.info("********** Assign DR Policy " + policyName + " To Wave " + waveName + ", Status : ")
+                self.logger.info(note + "\n")
         else:
             self.logger.info("********** Policy Assignment Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
         time.sleep(5)
@@ -281,7 +255,7 @@ class WaveOperations:
         ssh.exec_command("rw ic srd "+str(source)+" --target "+str(target))
 
     def stopWave(self, waveName):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -301,7 +275,7 @@ class WaveOperations:
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def pauseWave(self, waveName):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -321,7 +295,7 @@ class WaveOperations:
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def restartWave(self, waveName):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -341,7 +315,7 @@ class WaveOperations:
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def deleteHost(self, waveName, hostNames):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -379,6 +353,7 @@ class WaveOperations:
     def hostDeleteState(self, hostName):
         time.sleep(5)
         self.driver.find_element(By.ID, self.btn_deleteHost_id).click()
+        time.sleep(3)
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
         self.logger.info("********** Delete Status For Host : " + hostName + ",")
         self.logger.info(note + "\n")

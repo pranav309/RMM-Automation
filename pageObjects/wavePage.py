@@ -71,7 +71,7 @@ class WavePage:
     def __init__(self, driver):
         self.driver = driver
 
-    def openWave(self, waveName):
+    def findWave(self, waveName):
         flag = 0
         time.sleep(5)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
@@ -216,7 +216,7 @@ class WavePage:
             waveName = sheet.cell(row=r, column=1).value
             hostName = sheet.cell(row=r, column=5).value
             time.sleep(5)
-            val = self.openWave(waveName)
+            val = self.findWave(waveName)
             if val == 2:
                 return
             time.sleep(5)
@@ -259,7 +259,7 @@ class WavePage:
             waveName = sheet.cell(row=r, column=1).value
             hostName = sheet.cell(row=r, column=5).value
             if tmp != waveName:
-                val = self.openWave(waveName)
+                val = self.findWave(waveName)
                 if val == 2:
                     return
             self.driver.find_element(By.LINK_TEXT, waveName).click()
@@ -386,7 +386,7 @@ class WavePage:
 
     def deleteWave(self, waveName):
         time.sleep(5)
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         time.sleep(5)

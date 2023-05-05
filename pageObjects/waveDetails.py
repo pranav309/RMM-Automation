@@ -24,7 +24,7 @@ class WaveDetails:
     def __init__(self, driver):
         self.driver = driver
 
-    def openWave(self, waveName):
+    def findWave(self, waveName):
         time.sleep(5)
         flag = 0
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
@@ -46,7 +46,7 @@ class WaveDetails:
 
     def verifySyncDetails(self, waveName):
         time.sleep(5)
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         time.sleep(5)
@@ -144,7 +144,7 @@ class WaveDetails:
         return TNGVersion2
 
     def checkWaveStatus(self, waveName):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         time.sleep(5)
@@ -152,7 +152,7 @@ class WaveDetails:
         self.logger.info("********** The Wave Status For The Wave : " + waveName + ", Is " + status + " **********")
 
     def totalSuccessfulSyncs(self, waveName):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         time.sleep(5)
@@ -178,7 +178,7 @@ class WaveDetails:
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def checkHosts(self, waveName, hostNames):
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         time.sleep(5)

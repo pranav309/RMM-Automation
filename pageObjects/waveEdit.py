@@ -137,7 +137,7 @@ class WaveEdit:
     def __init__(self, driver):
         self.driver = driver
 
-    def openWave(self, waveName):
+    def findWave(self, waveName):
         time.sleep(5)
         flag = 0
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
@@ -152,7 +152,7 @@ class WaveEdit:
                 time.sleep(5)
                 self.driver.find_element(By.LINK_TEXT, "Waves").click()
                 time.sleep(5)
-                if len(self.driver.find_element(By.LINK_TEXT, waveName)) == 0:
+                if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
                     flag += 1
                     self.logger.info("********** Wave : " + waveName + " Is Not Present **********")
         return flag
@@ -168,7 +168,7 @@ class WaveEdit:
             CUType = sheet.cell(row=r, column=2).value
             environment = sheet.cell(row=r, column=3).value
 
-            val = self.openWave(waveName)
+            val = self.findWave(waveName)
             if val == 2:
                 return
             time.sleep(5)
@@ -190,7 +190,7 @@ class WaveEdit:
             else:
                 self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
         time.sleep(5)
-        if len(self.driver.find_element(By.LINK_TEXT, "Summary")) == 0:
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -232,15 +232,15 @@ class WaveEdit:
 
         self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[8]/span/div/i[2]').click()
         time.sleep(5)
-        if len(self.driver.find_element(By.XPATH, self.pop_edit_xpath)) != 0:
+        if len(self.driver.find_elements(By.XPATH, self.pop_edit_xpath)) != 0:
             self.logger.info("********** Edit Host Pop-Up Banner Was Opened For Wave : "+waveName+" **********")
             self.driver.find_element(By.LINK_TEXT, "vCenter Options").click()
             time.sleep(5)
-            if len(self.driver.find_element(By.XPATH, self.pop_vCenter_xpath)) != 0:
+            if len(self.driver.find_elements(By.XPATH, self.pop_vCenter_xpath)) != 0:
                 self.logger.info("********** vCenter Option Pop-Up Banner Was Opened For Wave : "+waveName+" **********")
                 self.driver.find_element(By.XPATH, self.btn_NICAdd_xpath).click()
                 time.sleep(5)
-                if len(self.driver.find_element(By.XPATH, self.pop_addNIC_xpath)) != 0:
+                if len(self.driver.find_elements(By.XPATH, self.pop_addNIC_xpath)) != 0:
                     self.logger.info("********** Add NIC Pop-Up Banner Was Opened For Wave : " + waveName + " **********")
                     self.driver.find_element(By.XPATH, self.btn_NICAdd_xpath).click()
                     if ipType == "DHCP":
@@ -257,7 +257,7 @@ class WaveEdit:
                     time.sleep(5)
                     self.driver.find_element(By.ID, self.btn_save_id).click()
                     time.sleep(5)
-                    if len(self.driver.find_element(By.XPATH, self.var_addNIC_xpath)) != 0:
+                    if len(self.driver.find_elements(By.XPATH, self.var_addNIC_xpath)) != 0:
                         self.logger.info("********** NIC Added Successfully For Wave : " + waveName + " **********")
                     else:
                         self.logger.info("********** Failed To Add NIC For Wave : " + waveName + " **********")
@@ -337,7 +337,7 @@ class WaveEdit:
 
     def setAWS(self, waveName, environment, vpcID, subnetID):
         time.sleep(5)
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         time.sleep(5)
@@ -359,7 +359,7 @@ class WaveEdit:
 
     def setOCI(self, waveName, environment, VCNName, SubnetName, AVDomain):
         time.sleep(5)
-        val = self.openWave(waveName)
+        val = self.findWave(waveName)
         if val == 2:
             return
         time.sleep(5)
@@ -447,10 +447,9 @@ class WaveEdit:
 
             time.sleep(5)
             if tmp != waveName:
-                if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-                    val = self.openWave(waveName)
-                    if val == 2:
-                        return
+                val = self.findWave(waveName)
+                if val == 2:
+                    return
                 time.sleep(5)
                 self.driver.find_element(By.LINK_TEXT, waveName).click()
                 time.sleep(5)
@@ -582,7 +581,7 @@ class WaveEdit:
             tmp = waveName
             time.sleep(5)
         time.sleep(5)
-        if len(self.driver.find_element(By.LINK_TEXT, "Summary")) == 0:
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -616,7 +615,7 @@ class WaveEdit:
             includeFile = sheet.cell(row=r, column=21).value
 
             if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-                val = self.openWave(waveName)
+                val = self.findWave(waveName)
                 if val == 2:
                     return
                 time.sleep(5)
@@ -633,7 +632,7 @@ class WaveEdit:
             if type(hostNames) != str:
                 self.driver.find_element(By.XPATH, self.btn_selectAll_xpath).click()
             else:
-                res = tuple(map(int, hostNames.split(', ')))
+                res = tuple(map(str, hostNames.split(', ')))
                 totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
                 for hostName in res:
                     count = 1
@@ -796,14 +795,14 @@ class WaveEdit:
             else:
                 self.logger.info("********** Wave Bulk Edit Sync Options Pop-up Banner Is Not Opened For Wave, " + waveName + " **********")
         time.sleep(5)
-        if len(self.driver.find_element(By.LINK_TEXT, "Summary")) == 0:
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def changeBulkEditOption(self, waveName, option, yesOrNo):
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-            val = self.openWave(waveName)
+            val = self.findWave(waveName)
             if val == 2:
                 return
             time.sleep(5)
@@ -973,7 +972,7 @@ class WaveEdit:
         else:
             self.logger.info("********** Wave " + waveName + " Was Not Opened **********")
         time.sleep(5)
-        if len(self.driver.find_element(By.LINK_TEXT, "Summary")) == 0:
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -990,7 +989,7 @@ class WaveEdit:
             if tmp != waveName:
                 time.sleep(5)
                 if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-                    val = self.openWave(waveName)
+                    val = self.findWave(waveName)
                     if val == 2:
                         return
                     time.sleep(5)
@@ -1088,17 +1087,16 @@ class WaveEdit:
                 self.logger.info("********** Wave System Options Pop-up Banner Is Not Opened For Wave, " + waveName + " **********")
             tmp = waveName
         time.sleep(5)
-        if len(self.driver.find_element(By.LINK_TEXT, "Summary")) == 0:
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
     def changeDatastore(self, waveName, datastore):
-        if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-            val = self.openWave(waveName)
-            if val == 2:
-                return
-            time.sleep(5)
+        val = self.findWave(waveName)
+        if val == 2:
+            return
+        time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, waveName).click()
         time.sleep(5)
         if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
@@ -1131,52 +1129,58 @@ class WaveEdit:
             time.sleep(5)
         else:
             self.logger.info("********** Wave " + waveName + " Was Not Opened **********")
-        if len(self.driver.find_element(By.LINK_TEXT, "Summary")) == 0:
+        if val == 1:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def moveHosts(self, sourceWave, hostNames, targetWave):
-        time.sleep(5)
-        flag = 0
-        if len(self.driver.find_elements(By.LINK_TEXT, sourceWave)) == 0:
-            val = self.openWave(sourceWave)
-            if val == 2:
-                return
+    def moveHosts(self, path, start, end):
+        workBook = openpyxl.load_workbook(path)
+        sheet = workBook.active
+
+        for r in range(start, end+1):
+            sourceWave = sheet.cell(row=r, column=1).value
+            targetWave = sheet.cell(row=r, column=2).value
+            hostNames = sheet.cell(row=r, column=3).value
             time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, sourceWave).click()
-        time.sleep(5)
-        if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
-            self.logger.info("********** Wave " + sourceWave + " Was Opened **********")
-            res = tuple(map(str, hostNames.split(', ')))
-            totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
-            count = 1
-            for hostName in res:
+            if len(self.driver.find_elements(By.LINK_TEXT, sourceWave)) == 0:
+                val = self.findWave(sourceWave)
+                if val == 2:
+                    return
                 time.sleep(5)
-                for hostNo in range(1, totalHosts + 1):
-                    if totalHosts == 1:
-                        tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/span').text
-                    else:
-                        tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
-                    if hostName == tmp:
-                        break
-                    elif hostNo == totalHosts:
-                        self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + sourceWave + " **********")
-                    count += 1
-                self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[8]/span/div/i[3]').click()
-                time.sleep(5)
-                if len(self.driver.find_element(By.XPATH, self.pop_moveHost_xpath)) != 0:
-                    self.logger.info("********** Move Machine To New Wave Pop-up Banner Was Opened For Host : " + hostName + " **********")
-                    env = Select(self.driver.find_element(By.XPATH, self.drp_selectWave_xpath))
-                    env.select_by_visible_text(targetWave)
+            self.driver.find_element(By.LINK_TEXT, sourceWave).click()
+            time.sleep(5)
+            if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
+                self.logger.info("********** Wave " + sourceWave + " Was Opened **********")
+                res = tuple(map(str, hostNames.split(', ')))
+                totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+                count = 1
+                for hostName in res:
                     time.sleep(5)
-                    self.driver.find_element(By.ID, self.btn_moveMachine_id).click()
-                else:
-                    self.logger.info("********** Move Machine To New Wave Pop-up Banner Was Not Opened For Host : " + hostName + " **********")
-        else:
-            self.logger.info("********** Wave " + sourceWave + " Was Not Opened **********")
+                    for hostNo in range(1, totalHosts + 1):
+                        if totalHosts == 1:
+                            tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/span').text
+                        else:
+                            tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
+                        if hostName == tmp:
+                            break
+                        elif hostNo == totalHosts:
+                            self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + sourceWave + " **********")
+                        count += 1
+                    self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[8]/span/div/i[3]').click()
+                    time.sleep(5)
+                    if len(self.driver.find_elements(By.XPATH, self.pop_moveHost_xpath)) != 0:
+                        self.logger.info("********** Move Machine To New Wave Pop-up Banner Was Opened For Host : " + hostName + " **********")
+                        env = Select(self.driver.find_element(By.XPATH, self.drp_selectWave_xpath))
+                        env.select_by_visible_text(targetWave)
+                        time.sleep(5)
+                        self.driver.find_element(By.ID, self.btn_moveMachine_id).click()
+                    else:
+                        self.logger.info("********** Move Machine To New Wave Pop-up Banner Was Not Opened For Host : " + hostName + " **********")
+            else:
+                self.logger.info("********** Wave " + sourceWave + " Was Not Opened **********")
+            if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
+                self.driver.find_element(By.LINK_TEXT, "Replication").click()
+                time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
         time.sleep(5)
-        if flag == 1:
-            self.driver.find_element(By.LINK_TEXT, "Replication").click()
-            time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, "Waves").click()

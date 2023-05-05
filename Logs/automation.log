@@ -1,36 +1,67 @@
-05/04/23 07:/42:/17 PM: INFO: ********** Test_019_SecondFlow ********** :
-05/04/23 07:/42:/17 PM: INFO: ********** Opening Browser ********** :
-05/04/23 07:/42:/30 PM: INFO: ********** Browser Opened Successfully **********
+05/05/23 07:/19:/54 PM: INFO: ********** Test_019_SecondFlow ********** :
+05/05/23 07:/19:/54 PM: INFO: ********** Opening Browser ********** :
+05/05/23 07:/20:/12 PM: INFO: ********** Browser Opened Successfully **********
+ 
 :
-05/04/23 07:/42:/30 PM: INFO: ********** Logging In **********:
-05/04/23 07:/42:/38 PM: INFO: ********** Login Successful **********:
-05/04/23 07:/42:/38 PM: INFO: ********** Login Successful **********
+05/05/23 07:/20:/12 PM: INFO: ********** Logging In **********:
+05/05/23 07:/20:/20 PM: INFO: ********** Login Successful **********:
+05/05/23 07:/20:/20 PM: INFO: ********** Login Successful **********
+ 
 :
-05/04/23 07:/42:/38 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
-05/04/23 07:/43:/02 PM: INFO: ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow 1 **********:
-05/04/23 07:/43:/02 PM: INFO: ********** Creating no. 1 wave with Target Type Autoprovision **********:
-05/04/23 07:/43:/20 PM: INFO: ********** Create New Wave Status of Wave : First Flow 1,:
-05/04/23 07:/43:/20 PM: INFO: Added machine 172.29.31.111 to wave
-First Flow 1
+05/05/23 07:/20:/20 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+05/05/23 07:/20:/31 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
+05/05/23 07:/20:/51 PM: INFO: ********** Create Status of Wave Name, :
+05/05/23 07:/20:/51 PM: INFO: Wave Add
+Second Flow successfully added.
 :
-05/04/23 07:/43:/20 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+05/05/23 07:/20:/52 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+ 
 :
-05/04/23 07:/43:/20 PM: INFO: ********** Starting TestCase 2: Create New Wave With Upload .csv File Method **********:
-05/04/23 07:/43:/39 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened For Wave, First Wave 2 **********:
-05/04/23 07:/43:/44 PM: INFO: ********** Create New Wave Status of Wave : First Wave 2,:
-05/04/23 07:/43:/44 PM: INFO: Wave Added
-First Wave 2
+05/05/23 07:/20:/52 PM: INFO: ********** Starting TestCase 2: Create New vCenter **********:
+05/05/23 07:/21:/08 PM: INFO: ********** Add vCenter Pop-up Banner Is Opened For hcm_vc vCenter **********:
+05/05/23 07:/21:/18 PM: INFO: Failed to Add Vcenter
+VCENTER_ERROR_NAME_IN_USE
 :
-05/04/23 07:/43:/50 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+05/05/23 07:/21:/33 PM: INFO: ********** Failed To Add vCenter hcm_vc **********:
+05/05/23 07:/21:/39 PM: INFO: ********** Successfully Executed TestCase: Create New vCenter **********
+ 
 :
-05/04/23 07:/43:/50 PM: INFO: ********** Starting TestCase 3: Create New Wave With Upload .csv File Method **********:
-05/04/23 07:/44:/00 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
-05/04/23 07:/44:/23 PM: INFO: ********** Create Status of Wave Name, :
-05/04/23 07:/44:/23 PM: INFO: Wave Add
-First Flow 3 successfully added.
+05/05/23 07:/21:/39 PM: INFO: ********** Starting TestCase 3: Set Autoprovision **********:
+05/05/23 07:/22:/04 PM: INFO: ********** Wave : Second Flow Opened Successfully **********:
+05/05/23 07:/22:/09 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, Second Flow **********:
+05/05/23 07:/22:/35 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+05/05/23 07:/22:/35 PM: INFO: Successfully edited cloud
+Second Flow
 :
-05/04/23 07:/44:/24 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+05/05/23 07:/22:/51 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : Second Flow **********:
+05/05/23 07:/22:/56 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+05/05/23 07:/23:/01 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+05/05/23 07:/23:/12 PM: INFO: ********** Successfully Added NIC For Wave : Second Flow **********:
+05/05/23 07:/23:/27 PM: INFO: ********** Set NIC Bulk Edit Status of Wave : Second Flow,:
+05/05/23 07:/23:/27 PM: INFO: Successfully modified Second Flow
 :
-05/04/23 07:/44:/37 PM: INFO: ********** Logout Successful **********:
-05/04/23 07:/44:/37 PM: INFO: ********** Logout Successful **********:
-05/04/23 07:/44:/39 PM: INFO: ********** Browser Closed Successfully **********:
+05/05/23 07:/23:/32 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+05/05/23 07:/23:/32 PM: INFO: ********** Starting TestCase 4: Bulk Edit Sync Options **********:
+05/05/23 07:/23:/38 PM: INFO: ********** Wave Second Flow Was Opened **********:
+05/05/23 07:/23:/53 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+05/05/23 07:/23:/59 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+05/05/23 07:/23:/59 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+05/05/23 07:/23:/59 PM: INFO: ********** Sync Option 'No Transfer' is set as yes **********:
+05/05/23 07:/24:/20 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+05/05/23 07:/24:/20 PM: INFO: Successfully modified Second Flow
+:
+05/05/23 07:/24:/36 PM: INFO: ********** Wave Second Flow Was Opened **********:
+05/05/23 07:/24:/52 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+05/05/23 07:/24:/57 PM: INFO: ********** Sync Option 'Transfer Compress' is set as yes **********:
+05/05/23 07:/24:/57 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+05/05/23 07:/25:/18 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+05/05/23 07:/25:/18 PM: INFO: Successfully modified Second Flow
+:
+05/05/23 07:/25:/23 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+05/05/23 07:/25:/23 PM: INFO: ********** Starting TestCase 5: Set Sync Options **********:
+05/05/23 07:/25:/44 PM: INFO: ********** Wave Second Flow Was Opened **********:
+05/05/23 07:/25:/59 PM: INFO: ********** Edit Host Pop-Up Banner Was Not Opened For Host : psp-MyLinSecondFlow-src1 **********:
