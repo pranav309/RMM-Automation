@@ -106,17 +106,24 @@ class Configuration:
     def __init__(self, driver):
         self.driver = driver
 
-    def addNewCloudUser(self, path):
+    def addNewCloudUser(self, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
-
+        if start == "NA":
+            st = 3
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = rows
         self.driver.find_element(By.LINK_TEXT, "Configuration").click()
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Clouduser").click()
         time.sleep(5)
 
-        for r in range(3, rows+1):
+        for r in range(st, ed+1):
             time.sleep(5)
             self.driver.find_element(By.ID, self.btn_add_id).click()
             time.sleep(5)
@@ -285,17 +292,24 @@ class Configuration:
                 flag += 1
         return flag
 
-    def addVCenter(self, path):
+    def addVCenter(self, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
-
+        if start == "NA":
+            st = 3
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = rows
         self.driver.find_element(By.LINK_TEXT, "Configuration").click()
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "vCenter").click()
         time.sleep(5)
 
-        for r in range(3, rows + 1):
+        for r in range(st, ed + 1):
             name = sheet.cell(row=r, column=1).value
             ipAddress = sheet.cell(row=r, column=2).value
             userName = sheet.cell(row=r, column=3).value

@@ -43,13 +43,13 @@ class Test_000_OneForAll:
         self.lp.clickOnLogin()
         self.logger.info("********** Login Successful **********\n \n")
 
-        path = "./TestData/OneForAll/oneForAll.xlsx"
+        path = "./TestData/test.xlsx"
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
 
         count = 1
-        for r in range(3, rows+1):
+        for r in range(31, rows+1):
             operation = sheet.cell(row=r, column=1).value.lower()
 
             # Wave Page
@@ -68,7 +68,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********\n \n")
                 count += 1
 
-            elif (operation.find("add") != -1 or operation.find("create") != -1) and operation.find("wave") != -1:
+            elif (operation.find("add") != -1 or operation.find("create") != -1) and operation.find("wave") != -1 and operation.find("with") != -1:
                 filePath = sheet.cell(row=r, column=2).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Create New Wave With Host **********")
                 self.wp.createWaveWithHost(filePath)
@@ -96,13 +96,6 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Delete Multiple Waves **********\n \n")
                 count += 1
 
-            elif operation.find("search") != -1 and operation.find("wave") != -1:
-                waveName = sheet.cell(row=r, column=5).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Search A Wave **********")
-                self.wp.searchWave(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Search A Wave **********\n \n")
-                count += 1
-
             elif operation.find("search") != -1 and operation.find("host") != -1:
                 waveName = sheet.cell(row=r, column=5).value
                 hostName = sheet.cell(row=r, column=7).value
@@ -111,8 +104,15 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Search A Host **********\n \n")
                 count += 1
 
+            elif operation.find("search") != -1 and operation.find("wave") != -1:
+                waveName = sheet.cell(row=r, column=5).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Search A Wave **********")
+                self.wp.searchWave(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Search A Wave **********\n \n")
+                count += 1
+
             # Wave Operations
-            elif operation.find("start") != -1 and operation.find("wave") != -1 and operation.find("verify") != -1:
+            elif operation.find("start") != -1 and operation.find("wave") != -1:
                 waveName = sheet.cell(row=r, column=5).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Start Wave And Verify **********")
                 self.wo.startWaveAndVerify(waveName)
@@ -182,15 +182,23 @@ class Test_000_OneForAll:
 
             elif operation.find("bulk") != -1 and operation.find("sync") != -1 and (operation.find("options") != -1 or operation.find("option") != -1):
                 filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Bulk Edit Sync Options **********")
-                self.we.bulkEditSyncOption(filePath)
+                self.we.bulkEditSyncOption(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Bulk Edit Sync Options **********\n \n")
                 count += 1
 
             elif operation.find("sync") != -1 and (operation.find("options") != -1 or operation.find("option") != -1):
                 filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
+                if start == "NA":
+                    start = 3
+                if end == "NA":
+                    end = rows+1
                 self.logger.info("********** Starting TestCase " + str(count) + ": Set Sync Options **********")
-                self.we.setSyncOptions(filePath)
+                self.we.setSyncOptions(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Set Sync Options **********\n \n")
                 count += 1
 
@@ -211,7 +219,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Change Datastore **********\n \n")
                 count += 1
 
-            elif (operation.find("move") != -1 or operation.find("shift") != -1) and operation.find("datastore") != -1:
+            elif (operation.find("move") != -1 or operation.find("shift") != -1) and (operation.find("host") != -1 or operation.find("hosts") != -1):
                 filePath = sheet.cell(row=r, column=2).value
                 start = sheet.cell(row=r, column=3).value
                 end = sheet.cell(row=r, column=4).value
@@ -221,7 +229,7 @@ class Test_000_OneForAll:
                 count += 1
 
             # Wave Details
-            elif operation.find("verify") != -1 and operation.find("sync") != -1 and (operation.find("detail") != -1 or operation.find("details") != -1):
+            elif operation.find("verify") != -1 and operation.find("sync") != -1 and (operation.find("detail") != -1 or operation.find("details") != -1 or operation.find("data") != -1):
                 waveName = sheet.cell(row=r, column=5).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Verify Sync Details **********")
                 self.wd.verifySyncDetails(waveName)
@@ -242,7 +250,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Total Successful Syncs **********\n \n")
                 count += 1
 
-            elif (operation.find("host") != -1 or operation.find("find") != -1) and (operation.find("check") != -1 or operation.find("find") != -1):
+            elif operation.find("host") != -1 and (operation.find("check") != -1 or operation.find("find") != -1):
                 waveName = sheet.cell(row=r, column=5).value
                 hostName = sheet.cell(row=r, column=7).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Check Host **********")
@@ -253,15 +261,19 @@ class Test_000_OneForAll:
             # DR Policy
             elif (operation.find("add") != -1 or operation.find("create") != -1) and operation.find("dr") != -1 and operation.find("policy") != -1:
                 filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Create New DR Policy **********")
-                self.dr.createDRPolicy(filePath)
+                self.dr.createDRPolicy(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Create New DR Policy **********\n \n")
                 count += 1
 
             elif (operation.find("add") != -1 or operation.find("assign") != -1) and operation.find("policy") != -1:
                 filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Assign DR Policy To Wave **********")
-                self.dr.addDRPolicyToWave(filePath)
+                self.dr.addDRPolicyToWave(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Assign DR Policy To Wave **********\n \n")
                 count += 1
 
@@ -280,6 +292,13 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Resume Policy And Verify Syncs **********\n \n")
                 count += 1
 
+            elif (operation.find("resume") != -1 or operation.find("restart") != -1) and operation.find("policy") != -1:
+                policyName = sheet.cell(row=r, column=9).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Resume Policy And Verify Syncs **********")
+                self.dr.resumePolicy(policyName)
+                self.logger.info("********** Successfully Executed TestCase: Resume Policy And Verify Syncs **********\n \n")
+                count += 1
+
             elif operation.find("failover") != -1:
                 waveName = sheet.cell(row=r, column=5).value
                 testMode = sheet.cell(row=r, column=10).value
@@ -289,30 +308,33 @@ class Test_000_OneForAll:
                 count += 1
 
             elif (operation.find("pause") != -1 or operation.find("stop") != -1) and operation.find("policy") != -1:
-                waveName = sheet.cell(row=r, column=5).value
                 policyName = sheet.cell(row=r, column=9).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Pause DR Policy **********")
-                self.dr.resumePolicyAndVerifySyncs(waveName, policyName)
+                self.dr.pauseDRPolicy(policyName)
                 self.logger.info("********** Successfully Executed TestCase: Pause DR Policy **********\n \n")
                 count += 1
 
             # Configuration
             elif (operation.find("add") != -1 or operation.find("create") != -1) and operation.find("cloud") != -1:
                 filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Create New Cloud User **********")
                 self.conf.addNewCloudUser(filePath)
                 self.logger.info("********** Successfully Executed TestCase: Create New Cloud User **********\n \n")
                 count += 1
 
-            elif (operation.find("add") != -1 or operation.find("create") != -1) and operation.find("vcenter") != -1:
+            elif (operation.find("add") != -1 or operation.find("create") != -1) and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
                 filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Create New vCenter **********")
-                self.conf.addVCenter(filePath)
+                self.conf.addVCenter(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Create New vCenter **********\n \n")
                 count += 1
 
             else:
-                self.logger.info("********** TestCase " + str(count) + ": There Are Some Mistakes In The Operation Keywords That You Have Written... Please Check Once **********\n \n")
+                self.logger.info("********** TestCase " + str(count) + ": There Are Some Mistakes In The Operation Keywords '" + str(operation) + "' ... Please Check Once **********\n \n")
                 count += 1
 
         self.lp.clickOnLogout()

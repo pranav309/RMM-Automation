@@ -10,7 +10,7 @@ from utilities.customLogger import LogGen
 
 class WavePage:
     drp_count_xpath = "//*[@id='waves_rw_dynamic_pagination']/select"
-
+    btn_start_id = "wave_policy_wave_policy_wave_detail_start_replications"
     img_createWave_xpath = "//*[@id='waves_add_machine']/div[1]/div/img"
     btn_createWave_xpath = "//*[@id='waves_add_wave']/span/i"
     img_createNewWave_xpath = "//*[@id='waves_create_wave_add_machine']/div/img"
@@ -149,7 +149,7 @@ class WavePage:
             keyboard.write(path)
             time.sleep(5)
             keyboard.send('enter')
-            time.sleep(10)
+            time.sleep(5)
             note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
             self.logger.info("********** Create Status of Wave Name, ")
             self.logger.info(note + "\n")
@@ -212,7 +212,9 @@ class WavePage:
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
-        for r in range(3, rows + 1):
+        print(rows)
+        for r in range(2, rows + 1):
+            print(r)
             waveName = sheet.cell(row=r, column=1).value
             hostName = sheet.cell(row=r, column=5).value
             time.sleep(5)
@@ -254,7 +256,7 @@ class WavePage:
         sheet = workBook.active
         rows = sheet.max_row
         tmp = "None"
-        for r in range(4, rows+1):
+        for r in range(2, rows+1):
             time.sleep(5)
             waveName = sheet.cell(row=r, column=1).value
             hostName = sheet.cell(row=r, column=5).value
@@ -290,7 +292,7 @@ class WavePage:
             else:
                 self.logger.info("********** " + str(waveName) + " Was Not Opened **********")
             tmp = waveName
-        if len(self.driver.find_element(By.LINK_TEXT, "Policies")) != 0:
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -390,13 +392,13 @@ class WavePage:
         if val == 2:
             return
         time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        self.driver.find_element(By.ID, "waves_"+waveName+"_wave_actions").click()
         time.sleep(5)
         if len(self.driver.find_elements(By.XPATH, self.pop_delete_xpath)) != 0:
             self.logger.info("********** Delete Wave Pop-up Banner Was Opened For Wave, " + str(waveName) + " **********")
             self.driver.find_element(By.ID, self.btn_delete_id).click()
             time.sleep(5)
-            note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
+            note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
             self.logger.info("********** Delete Wave Status of Wave : " + waveName + ",")
             self.logger.info(note + "\n")
         else:
@@ -468,6 +470,15 @@ class WavePage:
                 self.logger.info("********** "+waveName+" Was Not Found In Replication Waves **********")
 
     def searchHost(self, waveName, hostName):
+        time.sleep(5)
+        val = self.findWave(waveName)
+        if val == 2:
+            return
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        WebDriverWait(self.driver, 6000).until(
+            EC.element_to_be_clickable((By.ID, self.btn_start_id))
+        )
+        time.sleep(5)
         totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
         for hostNo in range(1, totalHosts + 1):
             if totalHosts == 1:
@@ -479,3 +490,7 @@ class WavePage:
                 break
             elif hostNo == totalHosts:
                 self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + waveName + " **********")
+        if val == 1:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()

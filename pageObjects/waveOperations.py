@@ -120,7 +120,7 @@ class WaveOperations:
             time.sleep(5)
             note = self.driver.find_element(By.XPATH, '/html/body/app-root/simple-notifications/div/simple-notification/div').text
             self.logger.info("********** Start Status of Wave Name : " + waveName + ",")
-            self.logger.info(note, "\n")
+            self.logger.info(note + "\n")
             time.sleep(120)
             WebDriverWait(self.driver, 18000).until(
                 EC.element_to_be_clickable((By.ID, self.btn_start_id))
@@ -146,12 +146,16 @@ class WaveOperations:
                         self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/jobid-popover/span/i').click()
                         time.sleep(5)
                         details = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/jobid-popover/ngb-popover-window/div[2]/div/textarea').text
+                        time.sleep(5)
+                        self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/a/i').click()
                     else:
                         self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/a/i').click()
                         time.sleep(5)
                         self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/jobid-popover/span/i').click()
                         time.sleep(5)
                         details = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/jobid-popover/ngb-popover-window/div[2]/div/textarea').text
+                        time.sleep(5)
+                        self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/a/i').click()
                     self.logger.info(details + "\n")
                 time.sleep(5)
                 syncType = ""
@@ -187,7 +191,7 @@ class WaveOperations:
         if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
             self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
             pc = Select(self.driver.find_element(By.ID, self.drp_parallelPolicy_id))
-            pc.select_by_visible_text(parallelCount)
+            pc.select_by_visible_text(str(parallelCount))
             time.sleep(5)
         else:
             self.logger.info("********** Failed To Open Wave : " + waveName + " **********")

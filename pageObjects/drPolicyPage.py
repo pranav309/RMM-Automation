@@ -25,6 +25,7 @@ class DRPolicy:
     btn_clear_xpath = "//*[@id='policies_dr_policy_create_dr_policy']/div/div/div/form/div[2]/div[3]/div/p-calendar/span/div/div[3]/div/div[2]/button/span"
     btn_resume_xpath = "//*[@id='policies_dr_policy_resume_dr_policy']/div/div/div/form/div/div[3]/div/button[2]"
     txt_policyName_id = "policies_dr_policy_policyname"
+    btn_cancel_xpath = "policies_create_dr_policy_sbf_cancel_btn"
 
     # By Schedule
     drp_dw_xpath = "//*[@id='select_daily_weekly']"
@@ -102,17 +103,24 @@ class DRPolicy:
                     self.logger.info("********** Wave : " + waveName + " Is Not Present **********")
         return flag
 
-    def createDRPolicy(self, path):
+    def createDRPolicy(self, path, start, end):
         workbook = openpyxl.load_workbook(path)
         sheet = workbook.active
         rows = sheet.max_row
-
+        if start == "NA":
+            st = 2
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = rows
         time.sleep(5)
         if(len(self.driver.find_elements(By.LINK_TEXT, "Policies"))) == 0:
             self.driver.find_element(By.LINK_TEXT, "DR").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Policies").click()
-        for r in range(2, rows+1):
+        for r in range(st, ed+1):
             time.sleep(5)
             self.driver.find_element(By.XPATH, self.btn_addNew_xpath).click()
             time.sleep(5)
@@ -134,11 +142,13 @@ class DRPolicy:
                     day = sheet.cell(row=r, column=10).value
 
                     self.driver.find_element(By.XPATH, self.rd_schedule_xpath).click()
+                    time.sleep(5)
                     if self.driver.find_element(By.XPATH, self.rd_schedule_xpath).is_selected():
                         self.logger.info("********** Selected Periodicity Type: By Schedule **********")
                     else:
                         self.logger.info("********** Failed To Select Periodicity Type: By Schedule **********")
                         self.logger.info("********** Failed To Create A DR Policy "+name+" **********")
+                        self.driver.find_element(By.ID, self.btn_cancel_xpath).click()
                         continue
                     dailyWeekly = Select(self.driver.find_element(By.XPATH, self.drp_dw_xpath))
                     hour = Select(self.driver.find_element(By.XPATH, self.drp_hr_xpath))
@@ -160,11 +170,13 @@ class DRPolicy:
                     tmn = sheet.cell(row=r, column=16).value
 
                     self.driver.find_element(By.XPATH, self.rd_frequency_xpath).click()
-                    if self.driver.find_element(By.XPATH, self.rd_schedule_xpath).is_selected():
+                    time.sleep(5)
+                    if self.driver.find_element(By.XPATH, self.rd_frequency_xpath).is_selected():
                         self.logger.info("********** Selected Periodicity Type: By Frequency **********")
                     else:
                         self.logger.info("********** Failed To Select Periodicity Type: By Frequency **********")
                         self.logger.info("********** Failed To Create A DR Policy " + name + " **********")
+                        self.driver.find_element(By.ID, self.btn_cancel_xpath).click()
                         continue
                     minHr = Select(self.driver.find_element(By.XPATH, self.drp_minHr_xpath))
                     minHr.select_by_visible_text(mh)
@@ -195,11 +207,13 @@ class DRPolicy:
 
                 elif periodicity == "Once":
                     self.driver.find_element(By.XPATH, self.rd_once_xpath).click()
-                    if self.driver.find_element(By.XPATH, self.rd_schedule_xpath).is_selected():
+                    time.sleep(5)
+                    if self.driver.find_element(By.XPATH, self.rd_once_xpath).is_selected():
                         self.logger.info("********** Selected Periodicity Type: Once **********")
                     else:
                         self.logger.info("********** Failed To Select Periodicity Type: Once **********")
                         self.logger.info("********** Failed To Create A DR Policy " + name + " **********")
+                        self.driver.find_element(By.ID, self.btn_cancel_xpath).click()
                         continue
                     self.driver.find_element(By.XPATH, self.txt_start_xpath).click()
                     self.driver.find_element(By.XPATH, self.btn_clear_xpath).click()
@@ -209,11 +223,13 @@ class DRPolicy:
 
                 elif periodicity == "Continuous":
                     self.driver.find_element(By.XPATH, self.rd_continuous_xpath).click()
-                    if self.driver.find_element(By.XPATH, self.rd_schedule_xpath).is_selected():
+                    time.sleep(5)
+                    if self.driver.find_element(By.XPATH, self.rd_continuous_xpath).is_selected():
                         self.logger.info("********** Selected Periodicity Type: Continuous **********")
                     else:
                         self.logger.info("********** Failed To Select Periodicity Type: Continuous **********")
                         self.logger.info("********** Failed To Create A DR Policy " + name + " **********")
+                        self.driver.find_element(By.ID, self.btn_cancel_xpath).click()
                         continue
 
                 self.driver.find_element(By.XPATH, self.txt_email_xpath).send_keys(email)
@@ -252,15 +268,23 @@ class DRPolicy:
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def addDRPolicyToWave(self, path):
+    def addDRPolicyToWave(self, path, start, end):
         workbook = openpyxl.load_workbook(path)
         sheet = workbook.active
         rows = sheet.max_row
-
-        for r in range(2, rows+1):
-            waveName = sheet.cell(row=r, column=5).value
-            drPolicyName = sheet.cell(row=r, column=9).value
-            startNow = sheet.cell(row=r, column=10).value
+        if start == "NA":
+            st = 2
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = rows
+        for r in range(st, ed+1):
+            waveName = sheet.cell(row=r, column=1).value
+            drPolicyName = sheet.cell(row=r, column=2).value
+            startNow = sheet.cell(row=r, column=3).value
+            time.sleep(5)
             val = self.findWave(waveName)
             if val == 2:
                 return
@@ -296,12 +320,15 @@ class DRPolicy:
                         self.logger.info("********** Assign DR Policy " + drPolicyName + " To Wave " + waveName + ", Status : ")
                         self.logger.info(note + "\n")
                         currentPolicy = self.driver.find_element(By.XPATH, self.txt_assPolicyName_xpath).text
-                        if drPolicyName == currentPolicy:
+                        res = tuple(map(str, currentPolicy.split(' ')))
+                        print(res[0])
+                        print(drPolicyName)
+                        if drPolicyName == res[0]:
                             self.logger.info("********** Policy : " + drPolicyName + ", Added To The Wave : " + waveName + " **********")
                             time.sleep(60)
                             self.checkDrPolicyState(drPolicyName)
                         else:
-                            self.logger.info("********** Failed To Add Policy : " + drPolicyName + ", To The Wave : " + waveName + ", Because The Wave Has " + currentPolicy + " Policy Assign **********")
+                            self.logger.info("********** Failed To Add Policy : " + drPolicyName + ", To The Wave : " + waveName + ", Because The Wave Has " + currentPolicy + " Policy Assigned To It Already i.e. In Running State **********")
                 else:
                     self.logger.info("********** Policy Assignment Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
             else:
@@ -344,7 +371,10 @@ class DRPolicy:
         totalDrPolicies = len(self.driver.find_elements(By.ID,  self.txt_policyName_id))
         count = 1
         for i in range(1, totalDrPolicies + 1):
-            tmp = self.driver.find_element(By.XPATH,'/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[1]/span').text
+            if totalDrPolicies == 1:
+                tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr/td[1]/span').text
+            else:
+                tmp = self.driver.find_element(By.XPATH,'/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[1]/span').text
             if tmp == policyName:
                 break
             count += 1
@@ -353,23 +383,27 @@ class DRPolicy:
             return
         self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[9]/span/i[1]').click()
         time.sleep(5)
-        self.driver.find_element(By.XPATH, self.btn_resume_xpath).click()
-        time.sleep(5)
-        if self.driver.find_element(By.XPATH, self.pop_resumePolicy_xpath).is_displayed():
+        if len(self.driver.find_elements(By.XPATH, self.pop_resumePolicy_xpath)) != 0:
             self.logger.info("********** Pop-up Banner For Resume Policy Was Opened For Policy: "+policyName+" **********")
-            val = self.findWave(waveName)
-            if val == 2:
-                return
+            self.driver.find_element(By.XPATH, self.btn_resume_xpath).click()
+            time.sleep(5)
+            note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+            self.logger.info("********** Start or Restart Status For Policy : " + policyName + ",")
+            self.logger.info(note + "\n")
+            if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) == 0:
+                self.driver.find_element(By.LINK_TEXT, "DR").click()
+                time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
             time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, waveName).click()
             if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
-                time.sleep(300)
+                time.sleep(120)
                 self.logger.info("********** Pausing DR Policy **********")
                 self.pauseDRPolicy(str(policyName))
                 self.logger.info("********** Successfully Paused DR Policy **********")
-                if not self.driver.find_element(By.LINK_TEXT, "Policies").is_displayed():
-                    self.driver.find_element(By.LINK_TEXT, "Policies").click()
+                if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) == 0:
+                    self.driver.find_element(By.LINK_TEXT, "DR").click()
                     time.sleep(5)
                 self.driver.find_element(By.LINK_TEXT, "Waves").click()
                 time.sleep(5)
@@ -391,7 +425,44 @@ class DRPolicy:
                 self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
         else:
             self.logger.info("********** Pop-up Banner For Resume Policy Was Not Opened For Policy: "+policyName+" **********")
-        if self.driver.find_element(By.LINK_TEXT, "Policies").is_displayed():
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
+
+    def resumePolicy(self, policyName):
+        time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) == 0:
+            self.driver.find_element(By.LINK_TEXT, "DR").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Policies").click()
+        time.sleep(5)
+        totalDrPolicies = len(self.driver.find_elements(By.ID, self.txt_policyName_id))
+        count = 1
+        for i in range(1, totalDrPolicies + 1):
+            if totalDrPolicies == 1:
+                tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr/td[1]/span').text
+            else:
+                tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[1]/span').text
+            if tmp == policyName:
+                break
+            count += 1
+        if count == totalDrPolicies + 1:
+            self.logger.info("********** There Is No Such Policy With Name: " + policyName + " **********")
+            return
+        self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr[' + str(count) + ']/td[9]/span/i[1]').click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.XPATH, self.pop_resumePolicy_xpath)) != 0:
+            self.logger.info("********** Pop-up Banner For Resume Policy Was Opened For Policy: " + policyName + " **********")
+            self.driver.find_element(By.XPATH, self.btn_resume_xpath).click()
+            time.sleep(5)
+            note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+            self.logger.info("********** Start or Restart Status For Policy : " + policyName + ",")
+            self.logger.info(note + "\n")
+        else:
+            self.logger.info("********** Pop-up Banner For Resume Policy Was Not Opened For Policy: " + policyName + " **********")
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
@@ -465,7 +536,10 @@ class DRPolicy:
             totalDrPolicies = len(self.driver.find_elements(By.ID,  self.txt_policyName_id))
             count = 1
             for i in range(1, totalDrPolicies + 1):
-                tmp = self.driver.find_element(By.XPATH,'/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[1]/span').text
+                if totalDrPolicies == 1:
+                    tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr/td[1]/span').text
+                else:
+                    tmp = self.driver.find_element(By.XPATH,'/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[1]/span').text
                 if tmp == policyName:
                     break
                 count += 1
@@ -477,6 +551,9 @@ class DRPolicy:
             self.logger.info("********** Pausing The DR Policy **********")
             self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[9]/span/i[1]').click()
             time.sleep(5)
+            note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+            self.logger.info("********** Pause Status For Policy : " + policyName + ",")
+            self.logger.info(note + "\n")
             # if len(self.driver.find_elements(By.XPATH, self.btn_endDRFailoverOK_xpath)) != 0:
             #     time.sleep(5)
             #     self.driver.find_element(By.XPATH, self.btn_endDRFailoverOK_xpath).click()
@@ -487,5 +564,9 @@ class DRPolicy:
             time.sleep(5)
             waveState = self.driver.find_element(By.XPATH,'/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr[' + str(count) + ']/td[2]/span/span').text
             self.logger.info("********** Policy : " + policyName + ", Is In " + waveState + " State **********")
-            if waveState == "Paused":
-                self.logger.info("********** Successfully Paused The Policy : " + policyName + " **********")
+            time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)

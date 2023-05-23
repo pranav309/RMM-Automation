@@ -241,7 +241,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>trial.html</h1>
-    <p>Report generated on 02-May-2023 at 18:36:04 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <p>Report generated on 17-May-2023 at 14:10:08 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -263,7 +263,7 @@ function filter_table(elem) {
         <td>Tester</td>
         <td>Pranav Pawar</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 63.97 seconds. </p>
+    <p>1 tests ran in 109.32 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -278,20 +278,30 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">testCases/Work/test_trial.py::Test_019_SecondFlow::test_createWindowsWave</td>
-          <td class="col-duration">51.69</td>
+          <td class="col-name">testCases/Work/oneForAll.py::Test_000_OneForAll::test_allInOne</td>
+          <td class="col-duration">99.42</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:test_trial.py:38 ********** Test_019_SecondFlow **********
-[32mINFO    [0m root:test_trial.py:39 ********** Opening Browser ********** 
-[32mINFO    [0m root:test_trial.py:42 ********** Browser Opened Successfully **********
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:oneForAll.py:34 ********** Test_019_SecondFlow ********** 
+[32mINFO    [0m root:oneForAll.py:35 ********** Opening Browser ********** 
+[32mINFO    [0m root:oneForAll.py:38 ********** Browser Opened Successfully **********
+ 
 
-[32mINFO    [0m root:test_trial.py:44 ********** Logging In **********
+[32mINFO    [0m root:oneForAll.py:40 ********** Logging In **********
 [32mINFO    [0m root:loginPage.py:48 ********** Login Successful **********
-[32mINFO    [0m root:test_trial.py:48 ********** Login Successful **********
+[32mINFO    [0m root:oneForAll.py:44 ********** Login Successful **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:331 ********** Starting TestCase 1: Create New vCenter **********
+[32mINFO    [0m root:configurationPage.py:325 ********** Add vCenter Pop-up Banner Is Opened For hcm_vc vCenter **********
+[32mINFO    [0m root:configurationPage.py:349 Failed to Add Vcenter
+VCENTER_ERROR_NAME_IN_USE
+
+[32mINFO    [0m root:configurationPage.py:339 ********** Failed To Add vCenter hcm_vc **********
+[32mINFO    [0m root:oneForAll.py:333 ********** Successfully Executed TestCase: Create New vCenter **********
+ 
 
 [32mINFO    [0m root:loginPage.py:59 ********** Logout Successful **********
-[32mINFO    [0m root:test_trial.py:59 ********** Logout Successful **********
-[32mINFO    [0m root:test_trial.py:61 ********** Browser Closed Successfully **********
-[32mINFO    [0m root:test_trial.py:62<br/></div></td></tr></tbody></table></body></html>
+[32mINFO    [0m root:oneForAll.py:341 ********** Logout Successful **********
+[32mINFO    [0m root:oneForAll.py:343 ********** Browser Closed Successfully **********<br/></div></td></tr></tbody></table></body></html>

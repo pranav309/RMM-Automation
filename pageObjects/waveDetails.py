@@ -13,8 +13,8 @@ class WaveDetails:
     txt_waveStatus_xpath = '//*[@id="content"]/article/div/div[2]/div[1]/div[1]/div[2]'
 
     # Validations
-    val_sourceData_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[2]/td/item-details/div/div/p-tabview/div/div/p-tabpanel[1]/div/div[1]/img'
-    val_systemData_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[2]/td/item-details/div/div/p-tabview/div/div/p-tabpanel[2]/div/div[1]/div/div[5]/div[2]/p-progressbar/div/div[2]'
+    val_sourceData_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[2]/td/item-details/div/div/p-tabview/div/div/p-tabpanel[1]/div/div[1]/label'
+    val_systemData_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[2]/td/item-details/div/div/p-tabview/div/div/p-tabpanel[2]/div/div[1]/label'
 
     # pop-up banners
     var_waveDetails_xpath = '//*[@id="rmm_lite_header"]/div/div[1]/div[2]'
@@ -53,18 +53,20 @@ class WaveDetails:
         self.driver.find_element(By.LINK_TEXT, waveName).click()
         time.sleep(5)
         if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
-            self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
+            self.logger.info("********** Wave : " + waveName + ", Opened Successfully **********")
             totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+            self.logger.info("********** Total Available Hosts : " + str(totalHosts) + " ,")
             for h in range(1, totalHosts+1):
                 time.sleep(5)
                 self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(h)+']/td[3]/span/a/i').click()
                 hostName = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(h)+']/td[3]/span/span').text
-                self.logger.info("********** Sync Details For Host "+hostName+" ,")
+                self.logger.info("********** Sync Details For Host No. "+str(h)+" : "+hostName+" ,")
                 tmp = 1
                 while tmp < 3:
+                    time.sleep(5)
                     if tmp == 1:
                         self.logger.info("********** Summary Details : ")
-                        if len(self.driver.find_elements(By.XPATH, self.val_sourceData_xpath)) != 0:
+                        if len(self.driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(h+1)+']/td/item-details/div/div/p-tabview/div/div/p-tabpanel['+str(tmp)+']/div/div[1]/label')) != 0:
                             self.logger.info("********** Summary Details Was Opened **********")
                         else:
                             self.logger.info("********** Summary Details Was Not Opened **********")
@@ -73,9 +75,9 @@ class WaveDetails:
                         time.sleep(5)
                     elif tmp == 2:
                         self.logger.info("********** Systems Details : ")
-                        self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(h + 1) + ']/td/item-details/div/div/p-tabview/div/ul/li[2]/a/span').click()
+                        self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(h+1)+']/td/item-details/div/div/p-tabview/div/ul/li[2]/a/span').click()
                         time.sleep(5)
-                        if len(self.driver.find_elements(By.XPATH, self.val_systemData_xpath)) != 0:
+                        if len(self.driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(h+1)+']/td/item-details/div/div/p-tabview/div/div/p-tabpanel['+str(tmp)+']/div/div[1]/label')) != 0:
                             self.logger.info("********** System Details Was Opened **********")
                         else:
                             self.logger.info("********** System Details Was Not Opened **********")
@@ -148,7 +150,7 @@ class WaveDetails:
         if val == 2:
             return
         time.sleep(5)
-        status = self.driver.find_element(By.ID, '//*[@id="waves_'+waveName+'_wave_state"]/span').text
+        status = self.driver.find_element(By.XPATH, '//*[@id="waves_'+waveName+'_wave_state"]/span').text
         self.logger.info("********** The Wave Status For The Wave : " + waveName + ", Is " + status + " **********")
 
     def totalSuccessfulSyncs(self, waveName):

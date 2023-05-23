@@ -17,6 +17,7 @@ class WaveEdit:
     txt_ESXHost_xpath = "//*[@id='wave_detail_cu_edit_vc_esx_host']/div/input"
     txt_Datastore_xpath = "//*[@id='wave_detail_cu_edit_vc_dc']/div/input"
     btn_applyChanges_id = "wave_detail_cu_edit_apply_changes_btn"
+    btn_cancelEdit_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[1]/button/span'
 
     # Single Edit Set NIC
     btn_NICAdd_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[3]/div/div/div[4]/div[2]/a"
@@ -112,7 +113,7 @@ class WaveEdit:
     # Pop-up Banners
     var_waveDetails_xpath = '//*[@id="rmm_lite_header"]/div/div[1]/div[2]'
     pop_setAutoprovision_xpath = '//*[@id="wave_policy_wave_policy_wave_detail_cloudUserEdit"]/div/div/div/form/div[1]/h4'
-    pop_edit_xpath = '//*[@id="wave_policy_wave_policy_wave_detail_edit_item"]/div/div/div/form/div[1]/h41'
+    pop_edit_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[2]/div/div[1]/div[1]/div/label'
     pop_system_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[1]/div/div[1]/div/div/label'
     pop_syncOption_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[2]/div/div[1]/div[1]/div/label'
     pop_vCenter_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[3]/div/div/div[1]/label'
@@ -413,12 +414,21 @@ class WaveEdit:
         time.sleep(3)
         self.driver.find_element(By.ID, self.btn_yes_id).click()
 
-    def setSyncOptions(self, path):
+    def setSyncOptions(self, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
+        if start == "NA":
+            st = 3
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = rows
+        time.sleep(5)
         tmp = "None"
-        for r in range(3, rows+1):
+        for r in range(st, ed+1):
             waveName = sheet.cell(row=r, column=1).value
             hostName = sheet.cell(row=r, column=2).value
 
@@ -447,9 +457,10 @@ class WaveEdit:
 
             time.sleep(5)
             if tmp != waveName:
+                tmp = waveName
                 val = self.findWave(waveName)
                 if val == 2:
-                    return
+                    continue
                 time.sleep(5)
                 self.driver.find_element(By.LINK_TEXT, waveName).click()
                 time.sleep(5)
@@ -466,16 +477,18 @@ class WaveEdit:
                 count = 1
                 for hostNo in range(1, totalHosts+1):
                     if totalHosts == 1:
-                        tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/span').text
+                        host = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/span').text
                     else:
-                        tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
-                    if hostName == tmp:
+                        host = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
+                    if hostName == host:
                         break
-                    elif hostNo == totalHosts:
-                        self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + waveName + " **********")
                     count += 1
                 time.sleep(5)
-                self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[8]/span/div/i[2]').click()
+                if count == totalHosts+1:
+                    self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + waveName + " **********")
+                    continue
+                else:
+                    self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[8]/span/div/i[2]').click()
             time.sleep(5)
             if len(self.driver.find_elements(By.XPATH, self.pop_edit_xpath)) != 0:
                 self.logger.info("********** Edit Host Pop-Up Banner Was Opened For Host : " + hostName + " **********")
@@ -578,7 +591,7 @@ class WaveEdit:
                     self.logger.info("********** Sync Options Pop-up Banner Is Not Opened For Host : " + hostName + " **********")
             else:
                 self.logger.info("********** Edit Host Pop-Up Banner Was Not Opened For Host : " + hostName + " **********")
-            tmp = waveName
+                self.driver.find_element(By.XPATH, self.btn_cancelEdit_xpath).click()
             time.sleep(5)
         time.sleep(5)
         if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
@@ -586,12 +599,20 @@ class WaveEdit:
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
 
-    def bulkEditSyncOption(self, path):
+    def bulkEditSyncOption(self, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
+        if start == "NA":
+            st = 3
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = end
         time.sleep(5)
-        for r in range(2, rows+1):
+        for r in range(st, ed+1):
             waveName = sheet.cell(row=r, column=1).value
             hostNames = sheet.cell(row=r, column=2).value
             tng = sheet.cell(row=r, column=3).value
@@ -980,8 +1001,19 @@ class WaveEdit:
     def changeTargetType(self, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
+        rows = sheet.max_row
         tmp = "none"
-        for r in range(start, end+1):
+
+        if start == "NA":
+            st = 2
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = rows
+
+        for r in range(st, ed+1):
             waveName = sheet.cell(row=r, column=1).value
             hostName = sheet.cell(row=r, column=2).value
             targetType = sheet.cell(row=r, column=3).value
@@ -1000,7 +1032,7 @@ class WaveEdit:
                 else:
                     self.logger.info("********** Wave " + waveName + " Was Not Opened **********")
                     continue
-                time.sleep(5)
+            time.sleep(5)
             totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
             count = 1
             for hostNo in range(1, totalHosts + 1):
@@ -1010,70 +1042,71 @@ class WaveEdit:
                     tmp = self.driver.find_element(By.XPATH,'//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
                 if hostName == tmp:
                     break
-                elif hostNo == totalHosts:
-                    self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + waveName + " **********")
                 count += 1
-            self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[8]/span/div/i[2]').click()
-            time.sleep(5)
-            if len(self.driver.find_elements(By.XPATH, self.pop_system_xpath)) != 0:
-                self.logger.info("********** Wave System Options Pop-up Banner Is Opened For Wave, " + waveName + " **********")
+            if count == totalHosts + 1:
+                self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + waveName + " **********")
+            else:
+                self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[8]/span/div/i[2]').click()
+                time.sleep(5)
+                if len(self.driver.find_elements(By.XPATH, self.pop_system_xpath)) != 0:
+                    self.logger.info("********** Wave System Options Pop-up Banner Is Opened For Wave, " + waveName + " **********")
 
-                if targetType == "Autoprovision":
-                    self.driver.find_element(By.ID, self.rd_autoprovision_id).click()
+                    if targetType == "Autoprovision":
+                        self.driver.find_element(By.ID, self.rd_autoprovision_id).click()
 
-                elif targetType == "Existing System":
-                    imageName = sheet.cell(row=r, column=4).value
-                    syncType = sheet.cell(row=r, column=5).value
-                    passthrough = sheet.cell(row=r, column=6).value
-                    targetIP = sheet.cell(row=r, column=7).value
-                    friendlyName = sheet.cell(row=r, column=8).value
-                    userName = sheet.cell(row=r, column=9).value
+                    elif targetType == "Existing System":
+                        imageName = sheet.cell(row=r, column=4).value
+                        syncType = sheet.cell(row=r, column=5).value
+                        passthrough = sheet.cell(row=r, column=6).value
+                        targetIP = sheet.cell(row=r, column=7).value
+                        friendlyName = sheet.cell(row=r, column=8).value
+                        userName = sheet.cell(row=r, column=9).value
 
-                    self.driver.find_element(By.ID, self.rd_existingSystem_id).click()
-                    time.sleep(5)
-                    if syncType == "Direct Sync":
-                        self.driver.find_element(By.ID, self.rd_directSync_id).click()
+                        self.driver.find_element(By.ID, self.rd_existingSystem_id).click()
                         time.sleep(5)
-                        tmp = self.driver.find_element(By.ID, self.ch_passthrough_id).is_selected()
-                        if passthrough and not tmp:
-                            self.driver.find_element(By.ID, self.ch_passthrough_id).click()
-                        elif not passthrough and tmp:
-                            self.driver.find_element(By.ID, self.ch_passthrough_id).click()
-                        self.driver.find_element(By.ID, self.txt_targetIP_id).clear()
-                        self.driver.find_element(By.ID, self.txt_targetIP_id).send_keys(targetIP)
-                        self.driver.find_element(By.ID, self.txt_friendlyName_id).clear()
-                        self.driver.find_element(By.ID, self.txt_friendlyName_id).send_keys(friendlyName)
+                        if syncType == "Direct Sync":
+                            self.driver.find_element(By.ID, self.rd_directSync_id).click()
+                            time.sleep(5)
+                            tmp = self.driver.find_element(By.ID, self.ch_passthrough_id).is_selected()
+                            if passthrough and not tmp:
+                                self.driver.find_element(By.ID, self.ch_passthrough_id).click()
+                            elif not passthrough and tmp:
+                                self.driver.find_element(By.ID, self.ch_passthrough_id).click()
+                            self.driver.find_element(By.ID, self.txt_targetIP_id).clear()
+                            self.driver.find_element(By.ID, self.txt_targetIP_id).send_keys(targetIP)
+                            self.driver.find_element(By.ID, self.txt_friendlyName_id).clear()
+                            self.driver.find_element(By.ID, self.txt_friendlyName_id).send_keys(friendlyName)
 
-                    elif syncType == "Stage 1 & 2" or syncType == "Stage 2":
-                        if syncType == "Stage 1 & 2":
-                            self.driver.find_element(By.ID, self.rd_stage12_id).click()
-                        elif syncType == "Stage 2":
-                            self.driver.find_element(By.ID, self.rd_stage2_id).click()
+                        elif syncType == "Stage 1 & 2" or syncType == "Stage 2":
+                            if syncType == "Stage 1 & 2":
+                                self.driver.find_element(By.ID, self.rd_stage12_id).click()
+                            elif syncType == "Stage 2":
+                                self.driver.find_element(By.ID, self.rd_stage2_id).click()
+                            time.sleep(5)
+                            self.driver.find_element(By.ID, self.txt_imageName_id).clear()
+                            self.driver.find_element(By.ID, self.txt_imageName_id).send_keys(imageName)
+                            time.sleep(5)
+                            tmp = self.driver.find_element(By.ID, self.ch_passthrough_id).is_selected()
+                            if passthrough and not tmp:
+                                self.driver.find_element(By.ID, self.ch_passthrough_id).click()
+                            elif not passthrough and tmp:
+                                self.driver.find_element(By.ID, self.ch_passthrough_id).click()
+                            self.driver.find_element(By.ID, self.txt_targetIP_id).clear()
+                            self.driver.find_element(By.ID, self.txt_targetIP_id).send_keys(targetIP)
+                            self.driver.find_element(By.ID, self.txt_friendlyName_id).clear()
+                            self.driver.find_element(By.ID, self.txt_friendlyName_id).send_keys(friendlyName)
+
+                        elif syncType == "Stage 1":
+                            self.driver.find_element(By.ID, self.rd_stage1_id).click()
+                            time.sleep(5)
+                            self.driver.find_element(By.ID, self.txt_imageName_id).clear()
+                            self.driver.find_element(By.ID, self.txt_imageName_id).send_keys(imageName)
+
+                        self.driver.find_element(By.ID, self.txt_userName_id).clear()
+                        self.driver.find_element(By.ID, self.txt_userName_id).send_keys(userName)
                         time.sleep(5)
-                        self.driver.find_element(By.ID, self.txt_imageName_id).clear()
-                        self.driver.find_element(By.ID, self.txt_imageName_id).send_keys(imageName)
-                        time.sleep(5)
-                        tmp = self.driver.find_element(By.ID, self.ch_passthrough_id).is_selected()
-                        if passthrough and not tmp:
-                            self.driver.find_element(By.ID, self.ch_passthrough_id).click()
-                        elif not passthrough and tmp:
-                            self.driver.find_element(By.ID, self.ch_passthrough_id).click()
-                        self.driver.find_element(By.ID, self.txt_targetIP_id).clear()
-                        self.driver.find_element(By.ID, self.txt_targetIP_id).send_keys(targetIP)
-                        self.driver.find_element(By.ID, self.txt_friendlyName_id).clear()
-                        self.driver.find_element(By.ID, self.txt_friendlyName_id).send_keys(friendlyName)
 
-                    elif syncType == "Stage 1":
-                        self.driver.find_element(By.ID, self.rd_stage1_id).click()
-                        time.sleep(5)
-                        self.driver.find_element(By.ID, self.txt_imageName_id).clear()
-                        self.driver.find_element(By.ID, self.txt_imageName_id).send_keys(imageName)
-
-                    self.driver.find_element(By.ID, self.txt_userName_id).clear()
-                    self.driver.find_element(By.ID, self.txt_userName_id).send_keys(userName)
-                    time.sleep(5)
-
-                    if targetType == "Capture":
+                    elif targetType == "Capture":
                         imageName = sheet.cell(row=r, column=4).value
                         self.driver.find_element(By.ID, self.rd_capture_id).click()
                         self.driver.find_element(By.XPATH, self.txt_captureImage_xpath).clear()
@@ -1081,10 +1114,13 @@ class WaveEdit:
 
                     time.sleep(5)
                     self.driver.find_element(By.ID, self.btn_modify_id).click()
-                    self.logger.info("********** Successfully Changed Target Type For Host : " + hostName + " **********")
-                time.sleep(5)
-            else:
-                self.logger.info("********** Wave System Options Pop-up Banner Is Not Opened For Wave, " + waveName + " **********")
+                    time.sleep(5)
+                    note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+                    self.logger.info("********** Changed Target Type For Host : " + hostName + ",")
+                    self.logger.info(note + "\n")
+                    time.sleep(5)
+                else:
+                    self.logger.info("********** Wave System Options Pop-up Banner Is Not Opened For Wave, " + waveName + " **********")
             tmp = waveName
         time.sleep(5)
         if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
@@ -1137,8 +1173,16 @@ class WaveEdit:
     def moveHosts(self, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
-
-        for r in range(start, end+1):
+        rows = sheet.max_row
+        if start == "NA":
+            st = 2
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = rows
+        for r in range(st, ed+1):
             sourceWave = sheet.cell(row=r, column=1).value
             targetWave = sheet.cell(row=r, column=2).value
             hostNames = sheet.cell(row=r, column=3).value
@@ -1175,10 +1219,15 @@ class WaveEdit:
                         env.select_by_visible_text(targetWave)
                         time.sleep(5)
                         self.driver.find_element(By.ID, self.btn_moveMachine_id).click()
+                        time.sleep(5)
+                        note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+                        self.logger.info("********** Changed Target Type For Host : " + hostName + ",")
+                        self.logger.info(note + "\n")
                     else:
                         self.logger.info("********** Move Machine To New Wave Pop-up Banner Was Not Opened For Host : " + hostName + " **********")
             else:
                 self.logger.info("********** Wave " + sourceWave + " Was Not Opened **********")
+            time.sleep(5)
             if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
                 self.driver.find_element(By.LINK_TEXT, "Replication").click()
                 time.sleep(5)
