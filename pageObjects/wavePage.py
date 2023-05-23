@@ -284,7 +284,11 @@ class WavePage:
                     self.logger.info("********** Add New Host Status of Wave : " + waveName + ",")
                     self.logger.info(note + "\n")
                     time.sleep(5)
-                    self.searchHost(hostName, waveName)
+                    host = self.searchHostInsideWave(hostName)
+                    if host:
+                        self.logger.info("********** The Host " + hostName + " Was Found In The Wave : " + waveName + " **********")
+                    else:
+                        self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + waveName + " **********")
                     if type(sheet.cell(row=r+1, column=3).value) == "NoneType":
                         return
                 else:
@@ -494,3 +498,15 @@ class WavePage:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def searchHostInsideWave(self, hostName):
+        time.sleep(5)
+        totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+        for hostNo in range(1, totalHosts + 1):
+            if totalHosts == 1:
+                tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/span').text
+            else:
+                tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
+            if hostName == tmp:
+                return True
+        return False

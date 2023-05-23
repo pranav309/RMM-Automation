@@ -398,7 +398,7 @@ class DRPolicy:
             self.driver.find_element(By.LINK_TEXT, waveName).click()
             if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
-                time.sleep(120)
+                time.sleep(300)
                 self.logger.info("********** Pausing DR Policy **********")
                 self.pauseDRPolicy(str(policyName))
                 self.logger.info("********** Successfully Paused DR Policy **********")
@@ -474,7 +474,7 @@ class DRPolicy:
             return
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, waveName).click()
-        if self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath).is_displayed():
+        if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
             self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
             time.sleep(5)
             self.driver.find_element(By.ID, self.btn_failOver_id).click()
@@ -506,7 +506,7 @@ class DRPolicy:
                 self.logger.info("********** Pop-up Banner Of Failover Was Not Opened **********")
         else:
             self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
-        if self.driver.find_element(By.LINK_TEXT, "Policies").is_displayed:
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()

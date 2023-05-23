@@ -43,13 +43,13 @@ class Test_000_OneForAll:
         self.lp.clickOnLogin()
         self.logger.info("********** Login Successful **********\n \n")
 
-        path = "./TestData/test.xlsx"
+        path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\firstFlow\firstFlow.xlsx"
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
 
         count = 1
-        for r in range(31, rows+1):
+        for r in range(15, rows+1):
             operation = sheet.cell(row=r, column=1).value.lower()
 
             # Wave Page

@@ -44,7 +44,7 @@ class WaveOperations:
         time.sleep(5)
         flag = 0
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
-            if self.driver.find_element(By.LINK_TEXT, "Policies").is_displayed():
+            if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
                 self.driver.find_element(By.LINK_TEXT, "Replication").click()
                 time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()

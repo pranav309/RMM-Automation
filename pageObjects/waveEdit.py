@@ -604,7 +604,7 @@ class WaveEdit:
         sheet = workBook.active
         rows = sheet.max_row
         if start == "NA":
-            st = 3
+            st = 2
         else:
             st = start
         if end == "NA":
