@@ -108,7 +108,27 @@ class WaveEdit:
     txt_userName_id = "wave_detail_edit_item_target_username"
 
     # Change Datastore
+    btn_vCenterOption_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[4]/div/p-tabview/div/ul/li[2]/a/span'
     txt_editDatastore_xpath = "//*[@id='target_vcenter_datastore']/div/input"
+    val_vCenterEdit_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[4]/div/p-tabview/div/div/p-tabpanel[2]/div/div/div[2]/label'
+    btn_cancelVCEdit_xpath = '//*[@id="main"]/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[5]/div/button[1]'
+    drp_clusterName_id = "wave_b_edit_vc_clustername"
+    drp_esxHost_id = "wave_b_edit_vc_esx_host"
+    drp_datastore_id = "target_vcenter_datastore"
+    txt_vmFolder_id = "wave_detail_bulk_edit_item_options_vm_folder"
+    txt_resourcePool_id = "wave_detail_bulk_edit_item_options_resource_pool"
+    txt_routes_id = "wave_detail_bulk_edit_item_options_routes"
+
+    txt_sinClusterName_xpath = '//*[@id="wave_detail_cu_edit_vc_clustername"]/div/input'
+    txt_esxHost_xpath = '//*[@id="wave_detail_cu_edit_vc_esx_host"]/div/input'
+    txt_dataStore_xpath = '//*[@id="target_vcenter_datastore"]/div/input'
+    txt_vmFolder_xpath = '//*[@id="wave_detail_edit_item_options_vm_folder"]'
+    txt_resourcePool_xpath = '//*[@id="wave_detail_edit_item_options_resource_pool"]'
+    txt_routes_xpath = '//*[@id="wave_detail_edit_item_options_routes"]'
+    btn_cancelSingleVC_xpath = '//*[@id="wave_detail_edit_item_cancel_btn"]'
+
+    pop_editHost_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[1]/div/div[3]/div[1]/h3'
+    pop_vc_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[3]/div/div/div[1]/label"
 
     # Pop-up Banners
     var_waveDetails_xpath = '//*[@id="rmm_lite_header"]/div/div[1]/div[2]'
@@ -1233,3 +1253,183 @@ class WaveEdit:
                 time.sleep(5)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
         time.sleep(5)
+
+    def changeVcenterData(self, path, start, end):
+        workBook = openpyxl.load_workbook(path)
+        sheet = workBook.active
+        rows = sheet.max_row
+        tmp = "none"
+        if start == "NA":
+            st = 2
+        else:
+            st = start
+        if end == "NA":
+            ed = rows
+        else:
+            ed = rows
+        for r in range(st, ed + 1):
+            waveName = sheet.cell(row=r, column=1).value
+            hostNames = sheet.cell(row=r, column=2).value
+            if tmp != waveName:
+                val = self.findWave(waveName)
+                if val == 2:
+                    return
+                time.sleep(5)
+                self.driver.find_element(By.LINK_TEXT, waveName).click()
+                time.sleep(5)
+                if len(self.driver.find_elements(By.XPATH, self.var_waveDetails_xpath)) != 0:
+                    self.logger.info("********** Wave " + waveName + " Was Opened **********")
+                else:
+                    self.logger.info("********** Wave " + waveName + " Was Not Opened **********")
+                    continue
+
+            if type(hostNames) != str:
+                self.changeBulkVcenterData(path, r)
+            else:
+                res = tuple(map(str, hostNames.split(', ')))
+                if len(res) == 1:
+                    self.changeSingleVcenterData(path, r)
+                else:
+                    self.changeBulkVcenterData(path, r)
+            tmp = waveName
+
+        time.sleep(5)
+        if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
+            self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def changeSingleVcenterData(self, path, r):
+        workBook = openpyxl.load_workbook(path)
+        sheet = workBook.active
+
+        waveName = sheet.cell(row=r, column=1).value
+        hostName = sheet.cell(row=r, column=2).value
+        clusterName = sheet.cell(row=r, column=3).value
+        ESXHost = sheet.cell(row=r, column=4).value
+        datastore = sheet.cell(row=r, column=5).value
+        VMFolder = sheet.cell(row=r, column=6).value
+        resourcePool = sheet.cell(row=r, column=7).value
+        routes = sheet.cell(row=r, column=8).value
+
+        totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+        count = 1
+        for hostNo in range(1, totalHosts + 1):
+            if totalHosts == 1:
+                tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/span').text
+            else:
+                tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
+            if hostName == tmp:
+                break
+            elif hostNo == totalHosts:
+                self.logger.info("********** The Host " + str(hostName) + " Was Not Found In The Wave : " + waveName + " **********")
+                return
+            count += 1
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(count)+']/td[8]/span/div/i[2]').click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.XPATH, self.pop_editHost_xpath)) != 0:
+            self.logger.info("********** Wave Edit Sync Options Pop-up Banner Was Opened For Wave, " + waveName + " **********")
+            time.sleep(5)
+            self.driver.find_element(By.LINK_TEXT, "vCenter Options").click()
+            time.sleep(5)
+            if len(self.driver.find_elements(By.XPATH, self.pop_vc_xpath)) != 0:
+                self.logger.info("********** Wave Edit vCenter Options Pop-up Banner Was Opened For Wave, " + waveName + " **********")
+                self.driver.find_element(By.XPATH, self.txt_clusterName_xpath).clear()
+                self.driver.find_element(By.XPATH, self.txt_clusterName_xpath).send_keys(clusterName)
+                self.driver.find_element(By.XPATH, self.txt_esxHost_xpath).clear()
+                self.driver.find_element(By.XPATH, self.txt_esxHost_xpath).send_keys(ESXHost)
+                self.driver.find_element(By.XPATH, self.txt_dataStore_xpath).clear()
+                self.driver.find_element(By.XPATH, self.txt_dataStore_xpath).send_keys(datastore)
+                if VMFolder != "NA":
+                    self.driver.find_element(By.XPATH, self.txt_vmFolder_xpath).clear()
+                    self.driver.find_element(By.XPATH, self.txt_vmFolder_xpath).send_keys(VMFolder)
+                if resourcePool != "NA":
+                    self.driver.find_element(By.XPATH, self.txt_resourcePool_xpath).clear()
+                    self.driver.find_element(By.XPATH, self.txt_resourcePool_xpath).send_keys(resourcePool)
+                if routes != "NA":
+                    self.driver.find_element(By.XPATH, self.txt_routes_xpath).clear()
+                    self.driver.find_element(By.XPATH, self.txt_routes_xpath).send_keys(routes)
+                time.sleep(5)
+                self.driver.find_element(By.ID, self.btn_modify_id).click()
+                time.sleep(5)
+                note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+                self.logger.info("********** Edit VCEnter Options Status of Wave : " + waveName + ",")
+                self.logger.info(note + "\n")
+            else:
+                self.logger.info("********** Wave Edit vCenter Options Pop-up Banner Was Not Opened For Wave, " + waveName + " **********")
+                self.driver.find_element(By.XPATH, self.btn_cancelSingleVC_xpath).click()
+        else:
+            self.logger.info("********** Wave Edit Sync Options Pop-up Banner Was Not Opened For Wave, " + waveName + " **********")
+            self.driver.find_element(By.XPATH, self.btn_cancelSingleVC_xpath).click()
+
+    def changeBulkVcenterData(self, path, r):
+        workBook = openpyxl.load_workbook(path)
+        sheet = workBook.active
+
+        waveName = sheet.cell(row=r, column=1).value
+        hostNames = sheet.cell(row=r, column=2).value
+        clusterName = sheet.cell(row=r, column=3).value
+        ESXHost = sheet.cell(row=r, column=4).value
+        datastore = sheet.cell(row=r, column=5).value
+        VMFolder = sheet.cell(row=r, column=6).value
+        resourcePool = sheet.cell(row=r, column=7).value
+        routes = sheet.cell(row=r, column=8).value
+
+        if type(hostNames) != str:
+            self.driver.find_element(By.XPATH, self.btn_selectAll_xpath).click()
+        else:
+            res = tuple(map(str, hostNames.split(', ')))
+            totalHosts = len(self.driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
+            for hostName in res:
+                count = 1
+                for hostNo in range(1, totalHosts + 1):
+                    if totalHosts == 1:
+                        tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[3]/span/span').text
+                    else:
+                        tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[3]/span/span').text
+                    if hostName == tmp:
+                        break
+                    elif hostNo == totalHosts:
+                        self.logger.info("********** The Host " + str(hostName) + " Was Not Found In The Wave : " + waveName + " **********")
+                    count += 1
+                self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(count) + ']/td[1]/p-tablecheckbox/div/div[2]').click()
+        time.sleep(5)
+        self.driver.find_element(By.XPATH, self.btn_bulkEdit_xpath).click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.XPATH, self.pop_bulkEdit_xpath)) != 0:
+            self.logger.info("********** Wave Bulk Edit Sync Options Pop-up Banner Was Opened For Wave, " + waveName + " **********")
+            time.sleep(5)
+            self.driver.find_element(By.XPATH, self.btn_vCenterOption_xpath).click()
+            time.sleep(5)
+            if len(self.driver.find_elements(By.XPATH, self.val_vCenterEdit_xpath)) != 0:
+                self.logger.info("********** Wave Edit vCenter Options Pop-up Banner Was Opened For Wave, " + waveName + " **********")
+                cn = Select(self.driver.find_element(By.ID, self.drp_clusterName_id))
+                cn.select_by_visible_text(clusterName)
+                esx = Select(self.driver.find_element(By.ID, self.drp_esxHost_id))
+                esx.select_by_visible_text(ESXHost)
+                ds = Select(self.driver.find_element(By.ID, self.drp_datastore_id))
+                ds.select_by_visible_text(datastore)
+                if VMFolder != "NA":
+                    self.driver.find_element(By.ID, self.txt_vmFolder_id).clear()
+                    self.driver.find_element(By.ID, self.txt_vmFolder_id).send_keys(VMFolder)
+                if resourcePool != "NA":
+                    self.driver.find_element(By.ID, self.txt_resourcePool_id).clear()
+                    self.driver.find_element(By.ID, self.txt_resourcePool_id).send_keys(resourcePool)
+                if routes != "NA":
+                    self.driver.find_element(By.ID, self.txt_routes_id).clear()
+                    self.driver.find_element(By.ID, self.txt_routes_id).send_keys(routes)
+                time.sleep(5)
+                self.driver.find_element(By.XPATH, self.btn_next_xpath).click()
+                time.sleep(5)
+                self.driver.find_element(By.XPATH, self.btn_modifyAll_xpath).click()
+                time.sleep(5)
+                self.driver.find_element(By.ID, self.btn_yes_id).click()
+                time.sleep(5)
+                note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+                self.logger.info("********** Edit VCEnter Options Status of Wave : " + waveName + ",")
+                self.logger.info(note + "\n")
+            else:
+                self.driver.find_element(By.XPATH, self.btn_cancelVCEdit_xpath).click()
+        else:
+            self.driver.find_element(By.XPATH, self.btn_cancelVCEdit_xpath).click()

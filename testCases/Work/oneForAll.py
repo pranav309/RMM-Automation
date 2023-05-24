@@ -43,13 +43,14 @@ class Test_000_OneForAll:
         self.lp.clickOnLogin()
         self.logger.info("********** Login Successful **********\n \n")
 
-        path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\firstFlow\firstFlow.xlsx"
+        # path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\firstFlow\firstFlow.xlsx"
+        path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\test.xlsx"
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
 
         count = 1
-        for r in range(15, rows+1):
+        for r in range(32, rows+1):
             operation = sheet.cell(row=r, column=1).value.lower()
 
             # Wave Page
@@ -211,12 +212,13 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Change Target Type **********\n \n")
                 count += 1
 
-            elif operation.find("change") != -1 and operation.find("datastore") != -1:
-                waveName = sheet.cell(row=r, column=5).value
-                dataStore = sheet.cell(row=r, column=11).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Change Datastore **********")
-                self.we.changeDatastore(waveName, dataStore)
-                self.logger.info("********** Successfully Executed TestCase: Change Datastore **********\n \n")
+            elif (operation.find("change") != -1 or operation.find("edit") != -1) and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
+                path = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Change vCenter Details **********")
+                self.we.changeVcenterData(path, start, end)
+                self.logger.info("********** Successfully Executed TestCase: Change vCenter Details **********\n \n")
                 count += 1
 
             elif (operation.find("move") != -1 or operation.find("shift") != -1) and (operation.find("host") != -1 or operation.find("hosts") != -1):
@@ -320,7 +322,7 @@ class Test_000_OneForAll:
                 start = sheet.cell(row=r, column=3).value
                 end = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Create New Cloud User **********")
-                self.conf.addNewCloudUser(filePath)
+                self.conf.addNewCloudUser(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Create New Cloud User **********\n \n")
                 count += 1
 

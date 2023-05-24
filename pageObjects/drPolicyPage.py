@@ -321,8 +321,6 @@ class DRPolicy:
                         self.logger.info(note + "\n")
                         currentPolicy = self.driver.find_element(By.XPATH, self.txt_assPolicyName_xpath).text
                         res = tuple(map(str, currentPolicy.split(' ')))
-                        print(res[0])
-                        print(drPolicyName)
                         if drPolicyName == res[0]:
                             self.logger.info("********** Policy : " + drPolicyName + ", Added To The Wave : " + waveName + " **********")
                             time.sleep(60)
