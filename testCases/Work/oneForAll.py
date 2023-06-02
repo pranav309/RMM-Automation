@@ -1,4 +1,5 @@
 import openpyxl
+import datetime
 
 
 from utilities.readProperties import ReadConfig
@@ -44,13 +45,13 @@ class Test_000_OneForAll:
         self.logger.info("********** Login Successful **********\n \n")
 
         # path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\firstFlow\firstFlow.xlsx"
-        path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\test.xlsx"
+        path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\test\drPolicy.xlsx"
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
 
         count = 1
-        for r in range(32, rows+1):
+        for r in range(2, rows+1):
             operation = sheet.cell(row=r, column=1).value.lower()
 
             # Wave Page
@@ -76,7 +77,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Create New Wave With Host **********\n \n")
                 count += 1
 
-            elif (operation.find("add") != -1 or operation.find("create") != -1) and operation.find("host") != -1 and operation.find("wave") != -1:
+            elif operation.find("add") != -1 and operation.find("host") != -1:
                 filePath = sheet.cell(row=r, column=2).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Add New Hosts To Wave **********")
                 self.wp.addHostToWave(filePath)
@@ -116,7 +117,7 @@ class Test_000_OneForAll:
             elif operation.find("start") != -1 and operation.find("wave") != -1:
                 waveName = sheet.cell(row=r, column=5).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Start Wave And Verify **********")
-                self.wo.startWaveAndVerify(waveName)
+                self.wo.startWave(waveName)
                 self.logger.info("********** Successfully Executed TestCase: Start Wave And Verify **********\n \n")
                 count += 1
 
@@ -181,7 +182,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Set Autoprovision **********\n \n")
                 count += 1
 
-            elif operation.find("bulk") != -1 and operation.find("sync") != -1 and (operation.find("options") != -1 or operation.find("option") != -1):
+            elif operation.find("bulk") != -1 and operation.find("edit") != -1 and operation.find("sync") != -1:
                 filePath = sheet.cell(row=r, column=2).value
                 start = sheet.cell(row=r, column=3).value
                 end = sheet.cell(row=r, column=4).value
@@ -190,7 +191,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Bulk Edit Sync Options **********\n \n")
                 count += 1
 
-            elif operation.find("sync") != -1 and (operation.find("options") != -1 or operation.find("option") != -1):
+            elif operation.find("edit") != -1 and operation.find("sync") != -1:
                 filePath = sheet.cell(row=r, column=2).value
                 start = sheet.cell(row=r, column=3).value
                 end = sheet.cell(row=r, column=4).value
@@ -212,7 +213,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Change Target Type **********\n \n")
                 count += 1
 
-            elif (operation.find("change") != -1 or operation.find("edit") != -1) and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
+            elif operation.find("edit") != -1 and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
                 path = sheet.cell(row=r, column=2).value
                 start = sheet.cell(row=r, column=3).value
                 end = sheet.cell(row=r, column=4).value
@@ -221,7 +222,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Change vCenter Details **********\n \n")
                 count += 1
 
-            elif (operation.find("move") != -1 or operation.find("shift") != -1) and (operation.find("host") != -1 or operation.find("hosts") != -1):
+            elif (operation.find("move") != -1 or operation.find("shift") != -1) and operation.find("host") != -1:
                 filePath = sheet.cell(row=r, column=2).value
                 start = sheet.cell(row=r, column=3).value
                 end = sheet.cell(row=r, column=4).value
@@ -238,7 +239,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Verify Sync Details **********\n \n")
                 count += 1
 
-            elif operation.find("check") != -1 and (operation.find("wave") != -1 or operation.find("sync") != -1):
+            elif operation.find("wave") != -1 and operation.find("status") != -1:
                 waveName = sheet.cell(row=r, column=5).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Check Wave Status **********")
                 self.wd.checkWaveStatus(waveName)
@@ -252,7 +253,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Total Successful Syncs **********\n \n")
                 count += 1
 
-            elif operation.find("host") != -1 and (operation.find("check") != -1 or operation.find("find") != -1):
+            elif (operation.find("check") != -1 or operation.find("find") != -1) and operation.find("host") != -1:
                 waveName = sheet.cell(row=r, column=5).value
                 hostName = sheet.cell(row=r, column=7).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Check Host **********")
@@ -279,6 +280,20 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Assign DR Policy To Wave **********\n \n")
                 count += 1
 
+            elif (operation.find("find") != -1 or operation.find("search") != -1) and operation.find("policy") != -1:
+                policyName = sheet.cell(row=r, column=9).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Search DR Policy **********")
+                self.dr.findPolicy(policyName)
+                self.logger.info("********** Successfully Executed TestCase: Search DR Policy **********\n \n")
+                count += 1
+
+            elif operation.find("verify") != -1 and operation.find("policy") != -1 and operation.find("sync") != -1:
+                waveName = sheet.cell(row=r, column=5).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Check DR Policy Host Sync Status **********")
+                self.dr.verifyDRHostSyncStatus(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********\n \n")
+                count += 1
+
             elif operation.find("policy") != -1 and operation.find("status") != -1:
                 policyName = sheet.cell(row=r, column=9).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Check DR Policy Status **********")
@@ -286,19 +301,18 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Check DR Policy Status **********\n \n")
                 count += 1
 
-            elif (operation.find("resume") != -1 or operation.find("restart") != -1) and operation.find("policy") != -1 and operation.find("verify") != -1:
-                waveName = sheet.cell(row=r, column=5).value
-                policyName = sheet.cell(row=r, column=9).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Resume Policy And Verify Syncs **********")
-                self.dr.resumePolicyAndVerifySyncs(waveName, policyName)
-                self.logger.info("********** Successfully Executed TestCase: Resume Policy And Verify Syncs **********\n \n")
-                count += 1
-
             elif (operation.find("resume") != -1 or operation.find("restart") != -1) and operation.find("policy") != -1:
                 policyName = sheet.cell(row=r, column=9).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Resume Policy And Verify Syncs **********")
+                self.logger.info("********** Starting TestCase " + str(count) + ": Resume Policy **********")
                 self.dr.resumePolicy(policyName)
-                self.logger.info("********** Successfully Executed TestCase: Resume Policy And Verify Syncs **********\n \n")
+                self.logger.info("********** Successfully Executed TestCase: Resume Policy **********\n \n")
+                count += 1
+
+            elif (operation.find("pause") != -1 or operation.find("stop") != -1) and operation.find("policy") != -1:
+                policyName = sheet.cell(row=r, column=9).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Pause DR Policy **********")
+                self.dr.pauseDRPolicy(policyName)
+                self.logger.info("********** Successfully Executed TestCase: Pause DR Policy **********\n \n")
                 count += 1
 
             elif operation.find("failover") != -1:
@@ -307,13 +321,6 @@ class Test_000_OneForAll:
                 self.logger.info("********** Starting TestCase " + str(count) + ": Failover Host **********")
                 self.dr.failoverHost(waveName, testMode)
                 self.logger.info("********** Successfully Executed TestCase: Failover Host **********\n \n")
-                count += 1
-
-            elif (operation.find("pause") != -1 or operation.find("stop") != -1) and operation.find("policy") != -1:
-                policyName = sheet.cell(row=r, column=9).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Pause DR Policy **********")
-                self.dr.pauseDRPolicy(policyName)
-                self.logger.info("********** Successfully Executed TestCase: Pause DR Policy **********\n \n")
                 count += 1
 
             # Configuration
@@ -343,3 +350,8 @@ class Test_000_OneForAll:
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")
+        timestamp = datetime.datetime.now()
+        timestamp_str = timestamp.strftime('%Y-%m-%d %H:%M:%S')
+        self.logger.info('\n')
+        self.logger.info(f'Timestamp: {timestamp_str}')
+        self.logger.info('\n \n \n')

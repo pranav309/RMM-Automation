@@ -240,8 +240,8 @@ function filter_table(elem) {
     not_found_message.hidden = !all_rows_hidden;
 }
 </script>
-    <h1>trial.html</h1>
-    <p>Report generated on 30-May-2023 at 09:23:43 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <h1>dr_policy.html</h1>
+    <p>Report generated on 31-May-2023 at 12:09:49 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -263,7 +263,7 @@ function filter_table(elem) {
         <td>Tester</td>
         <td>Pranav Pawar</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 180.17 seconds. </p>
+    <p>1 tests ran in 337.49 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -279,7 +279,7 @@ function filter_table(elem) {
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">testCases/Work/oneForAll.py::Test_000_OneForAll::test_allInOne</td>
-          <td class="col-duration">167.51</td>
+          <td class="col-duration">327.25</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
@@ -293,22 +293,86 @@ function filter_table(elem) {
 [32mINFO    [0m root:oneForAll.py:45 ********** Login Successful **********
  
 
-[32mINFO    [0m root:oneForAll.py:278 ********** Starting TestCase 1: Assign DR Policy To Wave **********
-[32mINFO    [0m root:drPolicyPage.py:276 ********** Wave : First Flow Opened Successfully **********
-[32mINFO    [0m root:drPolicyPage.py:278 ********** Currently The Wave : First Flow, Don&#x27;t Have Any Policy **********
-[32mINFO    [0m root:drPolicyPage.py:285 ********** Policy Assignment Pop-up Banner Is Opened For Wave, First Flow **********
-[32mINFO    [0m root:drPolicyPage.py:302 ********** Assign DR Policy firstFlow To Wave First Flow, Status : 
-[32mINFO    [0m root:drPolicyPage.py:303 Successfully applied DR Policy firstFlow to First Flow
+[32mINFO    [0m root:oneForAll.py:269 ********** Starting TestCase 1: Create New DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:114 ********** Create New DR Policy Pop-up Banner Is Opened **********
+[32mINFO    [0m root:drPolicyPage.py:214 ********** Selected Periodicity Type: Continuous **********
+[32mINFO    [0m root:drPolicyPage.py:227 ********** Email Notification For Fail Cases Only Was Selected **********
+[32mINFO    [0m root:drPolicyPage.py:233 ********** Email Notification When Complete Was Selected **********
+[32mINFO    [0m root:drPolicyPage.py:264 ********** DR Policy with name Trial1 Is Present At Sr. No. 4 **********
+[32mINFO    [0m root:oneForAll.py:271 ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
 
-[32mINFO    [0m root:drPolicyPage.py:307 ********** Policy : firstFlow, Added To The Wave : First Flow **********
-[32mINFO    [0m root:drPolicyPage.py:347 ********** Policy : firstFlow, Is In Paused State **********
+[32mINFO    [0m root:oneForAll.py:285 ********** Starting TestCase 2: Search DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:264 ********** DR Policy with name Trial1 Is Present At Sr. No. 4 **********
+[32mINFO    [0m root:oneForAll.py:287 ********** Successfully Executed TestCase: Search DR Policy **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:278 ********** Starting TestCase 3: Assign DR Policy To Wave **********
+[32mINFO    [0m root:drPolicyPage.py:292 ********** Wave : Trial 1 Opened Successfully **********
+[32mINFO    [0m root:drPolicyPage.py:294 ********** Currently The Wave : Trial 1, Don&#x27;t Have Any Policy **********
+[32mINFO    [0m root:drPolicyPage.py:302 ********** Policy Assignment Pop-up Banner Is Opened For Wave, Trial 1 **********
+[32mINFO    [0m root:drPolicyPage.py:317 ********** Assign DR Policy Trial1 To Wave Trial 1, Status : 
+[32mINFO    [0m root:drPolicyPage.py:318 Successfully applied DR Policy Trial1 to Trial 1
+
+[32mINFO    [0m root:drPolicyPage.py:322 ********** Policy : Trial1, Added To The Wave : Trial 1 **********
+[32mINFO    [0m root:drPolicyPage.py:360 ********** Policy : Trial1, Is In Paused State **********
 [32mINFO    [0m root:oneForAll.py:280 ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
  
 
-[32mINFO    [0m root:loginPage.py:59 ********** Logout Successful **********
-[32mINFO    [0m root:oneForAll.py:344 ********** Logout Successful **********
-[32mINFO    [0m root:oneForAll.py:346 ********** Browser Closed Successfully **********
-[32mINFO    [0m root:oneForAll.py:349 
+[32mINFO    [0m root:oneForAll.py:299 ********** Starting TestCase 4: Check DR Policy Status **********
+[32mINFO    [0m root:drPolicyPage.py:360 ********** Policy : Trial1, Is In Paused State **********
+[32mINFO    [0m root:oneForAll.py:301 ********** Successfully Executed TestCase: Check DR Policy Status **********
+ 
 
-[32mINFO    [0m root:oneForAll.py:350 Timestamp: 2023-05-30 09:23:43
-[32mINFO    [0m root:oneForAll.py:351<br/></div></td></tr></tbody></table></body></html>
+[32mINFO    [0m root:oneForAll.py:306 ********** Starting TestCase 5: Resume Policy **********
+[32mINFO    [0m root:drPolicyPage.py:399 ********** Pop-up Banner For Resume Policy Was Opened For Policy: Trial1 **********
+[32mINFO    [0m root:drPolicyPage.py:403 ********** Start or Restart Status For Policy : Trial1,
+[32mINFO    [0m root:drPolicyPage.py:404 Successfully resumed DR Policy: Trial1
+
+[32mINFO    [0m root:oneForAll.py:308 ********** Successfully Executed TestCase: Resume Policy **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:292 ********** Starting TestCase 6: Check DR Policy Host Sync Status **********
+[32mINFO    [0m root:drPolicyPage.py:422 ********** Wave : Trial 1 Opened Successfully **********
+[32mINFO    [0m root:commonObjects.py:92 ********** For Host : psp-MyLin1Trial1-src, Sync Successful **********
+[32mINFO    [0m root:commonObjects.py:92 ********** For Host : psp-MyLin2Trial1-src, Sync Successful **********
+[32mINFO    [0m root:oneForAll.py:294 ********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:313 ********** Starting TestCase 7: Pause DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:522 ********** Policy : Trial1, Is In Active State **********
+[32mINFO    [0m root:drPolicyPage.py:526 ********** Pausing The DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:537 ********** Pause Status For Policy : Trial1,
+[32mINFO    [0m root:drPolicyPage.py:538 Successfully paused DR Policy
+Trial1
+
+[32mINFO    [0m root:drPolicyPage.py:551 ********** Policy : Trial1, Is In Paused State **********
+[32mINFO    [0m root:oneForAll.py:315 ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:321 ********** Starting TestCase 8: Failover Host **********
+[32mINFO    [0m root:drPolicyPage.py:451 ********** Wave : Trial 1 Opened Successfully **********
+[32mINFO    [0m root:drPolicyPage.py:459 ********** Pop-up Banner Of Failover Was Opened **********
+[32mINFO    [0m root:commonObjects.py:92 ********** For Host : psp-MyLin1Trial1-src, Sync Successful **********
+[32mINFO    [0m root:commonObjects.py:92 ********** For Host : psp-MyLin2Trial1-src, Sync Successful **********
+[32mINFO    [0m root:oneForAll.py:323 ********** Successfully Executed TestCase: Failover Host **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:313 ********** Starting TestCase 9: Pause DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:522 ********** Policy : Trial1, Is In Failed Over State **********
+[32mINFO    [0m root:drPolicyPage.py:526 ********** Pausing The DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:537 ********** Pause Status For Policy : Trial1,
+[32mINFO    [0m root:drPolicyPage.py:538 Successfully paused DR Policy
+Trial1
+
+[32mINFO    [0m root:drPolicyPage.py:551 ********** Policy : Trial1, Is In Paused State **********
+[32mINFO    [0m root:oneForAll.py:315 ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+
+[32mINFO    [0m root:loginPage.py:59 ********** Logout Successful **********
+[32mINFO    [0m root:oneForAll.py:350 ********** Logout Successful **********
+[32mINFO    [0m root:oneForAll.py:352 ********** Browser Closed Successfully **********
+[32mINFO    [0m root:oneForAll.py:355 
+
+[32mINFO    [0m root:oneForAll.py:356 Timestamp: 2023-05-31 12:09:49
+[32mINFO    [0m root:oneForAll.py:357<br/></div></td></tr></tbody></table></body></html>

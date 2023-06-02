@@ -77,7 +77,7 @@ class Test_019_SecondFlow:
 
         self.logger.info("********** Starting TestCase 9.2: Start & Verify A Wave **********")
         # Wave name i.e. to be started
-        self.wo.startWaveAndVerify("Second Flow")
+        self.wo.startWave("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave **********\n")
 
         self.logger.info("********** Starting TestCase 9.3: Check Wave Status **********")
@@ -94,7 +94,7 @@ class Test_019_SecondFlow:
 
         self.logger.info("********** Starting TestCase 11.1: Start & Verify A Wave Again **********")
         # Wave name i.e. to be started
-        self.wo.startWaveAndVerify("Second Flow")
+        self.wo.startWave("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave Again **********\n")
 
         self.logger.info("********** Starting TestCase 11.2: Check Wave Status **********")
@@ -131,7 +131,7 @@ class Test_019_SecondFlow:
 
         self.logger.info("********** Starting TestCase 14.3: Start & Verify A Wave Again **********")
         # Wave name i.e. to be started
-        self.wo.startWaveAndVerify("Second Flow 1")
+        self.wo.startWave("Second Flow 1")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave Again **********\n")
 
         self.logger.info("********** Starting TestCase 15.1: Change Target Type Of Windows Hosts Wave **********")
@@ -140,7 +140,7 @@ class Test_019_SecondFlow:
 
         self.logger.info("********** Starting TestCase 15.2: Start & Verify A Wave Again **********")
         # Wave name i.e. to be started
-        self.wo.startWaveAndVerify("Second Flow")
+        self.wo.startWave("Second Flow")
         self.logger.info("********** Successfully Executed TestCase: Start & Verify A Wave Again **********\n")
 
         self.logger.info("********** Starting TestCase 16.1: Create New DRPolicy **********")

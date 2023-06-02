@@ -96,12 +96,12 @@ class Test_018_FirstFlow:
         self.logger.info("********** Successfully Changed Target Type Of Wave **********")
 
         self.logger.info("********** Starting A Wave Again **********")
-        self.startWave.startWaveAndVerify("First Flow")
+        self.startWave.startWave("First Flow")
         self.logger.info("********** Successful Started A Wave **********")
 
         self.logger.info("********** Starting A Wave Again **********")
         self.startWave = WaveOperations(self.driver)
-        self.startWave.startWaveAndVerify("First Flow")
+        self.startWave.startWave("First Flow")
         self.logger.info("********** Successful Started A Wave **********")
 
         self.logger.info("********** Performing Failover **********")
