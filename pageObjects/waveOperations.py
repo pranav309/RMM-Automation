@@ -136,7 +136,7 @@ class WaveOperations:
             EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
         )
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
-        self.logger.info("********** Start Status of Wave Name : " + waveName + ",")
+        self.logger.info("********** Start Status For Wave Name : " + waveName + ",")
         self.logger.info(note + "\n")
         WebDriverWait(self.driver, 30).until(
             EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Running")
