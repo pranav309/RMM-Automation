@@ -1,12 +1,12 @@
 05/31/23 12:/04:/22 PM: INFO: ********** Test_019_SecondFlow ********** :
 05/31/23 12:/04:/22 PM: INFO: ********** Opening Browser ********** :
 05/31/23 12:/04:/35 PM: INFO: ********** Browser Opened Successfully **********
- 
+
 :
 05/31/23 12:/04:/35 PM: INFO: ********** Logging In **********:
 05/31/23 12:/04:/42 PM: INFO: ********** Login Successful **********:
 05/31/23 12:/04:/42 PM: INFO: ********** Login Successful **********
- 
+
 :
 05/31/23 12:/04:/42 PM: INFO: ********** Starting TestCase 1: Create New DR Policy **********:
 05/31/23 12:/05:/03 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
@@ -15,12 +15,12 @@
 05/31/23 12:/05:/09 PM: INFO: ********** Email Notification When Complete Was Selected **********:
 05/31/23 12:/05:/29 PM: INFO: ********** DR Policy with name Trial1 Is Present At Sr. No. 4 **********:
 05/31/23 12:/05:/29 PM: INFO: ********** Successfully Executed TestCase: Create New DR Policy **********
- 
+
 :
 05/31/23 12:/05:/29 PM: INFO: ********** Starting TestCase 2: Search DR Policy **********:
 05/31/23 12:/05:/34 PM: INFO: ********** DR Policy with name Trial1 Is Present At Sr. No. 4 **********:
 05/31/23 12:/05:/34 PM: INFO: ********** Successfully Executed TestCase: Search DR Policy **********
- 
+
 :
 05/31/23 12:/05:/34 PM: INFO: ********** Starting TestCase 3: Assign DR Policy To Wave **********:
 05/31/23 12:/06:/00 PM: INFO: ********** Wave : Trial 1 Opened Successfully **********:
@@ -32,12 +32,12 @@
 05/31/23 12:/06:/24 PM: INFO: ********** Policy : Trial1, Added To The Wave : Trial 1 **********:
 05/31/23 12:/06:/45 PM: INFO: ********** Policy : Trial1, Is In Paused State **********:
 05/31/23 12:/06:/45 PM: INFO: ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
- 
+
 :
 05/31/23 12:/06:/45 PM: INFO: ********** Starting TestCase 4: Check DR Policy Status **********:
 05/31/23 12:/06:/50 PM: INFO: ********** Policy : Trial1, Is In Paused State **********:
 05/31/23 12:/06:/50 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Status **********
- 
+
 :
 05/31/23 12:/06:/50 PM: INFO: ********** Starting TestCase 5: Resume Policy **********:
 05/31/23 12:/07:/01 PM: INFO: ********** Pop-up Banner For Resume Policy Was Opened For Policy: Trial1 **********:
@@ -45,14 +45,14 @@
 05/31/23 12:/07:/06 PM: INFO: Successfully resumed DR Policy: Trial1
 :
 05/31/23 12:/07:/06 PM: INFO: ********** Successfully Executed TestCase: Resume Policy **********
- 
+
 :
 05/31/23 12:/07:/06 PM: INFO: ********** Starting TestCase 6: Check DR Policy Host Sync Status **********:
 05/31/23 12:/07:/27 PM: INFO: ********** Wave : Trial 1 Opened Successfully **********:
 05/31/23 12:/07:/38 PM: INFO: ********** For Host : psp-MyLin1Trial1-src, Sync Successful **********:
 05/31/23 12:/07:/38 PM: INFO: ********** For Host : psp-MyLin2Trial1-src, Sync Successful **********:
 05/31/23 12:/07:/43 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********
- 
+
 :
 05/31/23 12:/07:/43 PM: INFO: ********** Starting TestCase 7: Pause DR Policy **********:
 05/31/23 12:/07:/59 PM: INFO: ********** Policy : Trial1, Is In Active State **********:
@@ -63,7 +63,7 @@ Trial1
 :
 05/31/23 12:/08:/09 PM: INFO: ********** Policy : Trial1, Is In Paused State **********:
 05/31/23 12:/08:/14 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
- 
+
 :
 05/31/23 12:/08:/14 PM: INFO: ********** Starting TestCase 8: Failover Host **********:
 05/31/23 12:/08:/35 PM: INFO: ********** Wave : Trial 1 Opened Successfully **********:
@@ -71,7 +71,7 @@ Trial1
 05/31/23 12:/08:/56 PM: INFO: ********** For Host : psp-MyLin1Trial1-src, Sync Successful **********:
 05/31/23 12:/08:/56 PM: INFO: ********** For Host : psp-MyLin2Trial1-src, Sync Successful **********:
 05/31/23 12:/09:/01 PM: INFO: ********** Successfully Executed TestCase: Failover Host **********
- 
+
 :
 05/31/23 12:/09:/01 PM: INFO: ********** Starting TestCase 9: Pause DR Policy **********:
 05/31/23 12:/09:/16 PM: INFO: ********** Policy : Trial1, Is In Failed Over State **********:
@@ -82,15 +82,15 @@ Trial1
 :
 05/31/23 12:/09:/27 PM: INFO: ********** Policy : Trial1, Is In Paused State **********:
 05/31/23 12:/09:/32 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
- 
+
 :
 05/31/23 12:/09:/45 PM: INFO: ********** Logout Successful **********:
 05/31/23 12:/09:/45 PM: INFO: ********** Logout Successful **********:
 05/31/23 12:/09:/49 PM: INFO: ********** Browser Closed Successfully **********:
-05/31/23 12:/09:/49 PM: INFO: 
+05/31/23 12:/09:/49 PM: INFO:
 :
 05/31/23 12:/09:/49 PM: INFO: Timestamp: 2023-05-31 12:09:49:
-05/31/23 12:/09:/49 PM: INFO: 
- 
- 
+05/31/23 12:/09:/49 PM: INFO:
+
+
 :

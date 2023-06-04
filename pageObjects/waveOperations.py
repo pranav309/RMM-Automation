@@ -193,9 +193,8 @@ class WaveOperations:
             elif syncType == "Stage 1 & 2":
                 td.deleteSR(sourceName, str(sourceName) + "-IMAGE")
                 td.deleteSR(str(sourceName) + "-IMAGE", targetName)
-            time.sleep(5)
 
-    def verifySyncDetails(self, waveName):
+    def verifySyncSuccess(self, waveName):
         co = CommonObjects(self.driver)
         val = co.findWave(waveName)
         if val == 2:
@@ -310,9 +309,12 @@ class WaveOperations:
                     tmp = self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li[' + str(p) + ']/span').text
                     if tmp == policyName:
                         self.driver.find_element(By.XPATH, '//*[@id="wave_detail_wave_policy_dr_policy"]/div/div[4]/div/ul/li[' + str(p) + ']').click()
-                        if startNow:
-                            self.driver.find_element(By.ID, self.chBox_startNow_id).click()
-                            time.sleep(5)
+                        if len(self.driver.find_elements(By.ID, self.chBox_startNow_id)) != 0:
+                            if startNow:
+                                self.driver.find_element(By.ID, self.chBox_startNow_id).click()
+                        WebDriverWait(self.driver, 10).until(
+                            EC.element_to_be_clickable((By.XPATH, self.btn_assignPolicy_id))
+                        )
                         self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
                         break
                     if p == totalPolicies:

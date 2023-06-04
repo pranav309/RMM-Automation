@@ -13,6 +13,7 @@ from pageObjects.waveDetails import WaveDetails
 from pageObjects.retentionPolicyPage import RetentionPolicy
 from pageObjects.drPolicyPage import DRPolicy
 from pageObjects.configurationPage import Configuration
+from pageObjects.tearDown import TearDown
 
 
 class Test_000_OneForAll:
@@ -31,6 +32,7 @@ class Test_000_OneForAll:
         self.rp = RetentionPolicy(self.driver)
         self.dr = DRPolicy(self.driver)
         self.conf = Configuration(self.driver)
+        self.td = TearDown(self.driver)
 
         self.logger.info("********** Test_019_SecondFlow ********** ")
         self.logger.info("********** Opening Browser ********** ")
@@ -72,30 +74,27 @@ class Test_000_OneForAll:
 
             elif (operation.find("add") != -1 or operation.find("create") != -1) and operation.find("wave") != -1 and operation.find("with") != -1:
                 filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Create New Wave With Host **********")
-                self.wp.createWaveWithHost(filePath)
+                self.wp.createWaveWithHost(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Create New Wave With Host **********\n \n")
                 count += 1
 
-            elif operation.find("add") != -1 and operation.find("host") != -1:
+            elif operation.find("add") != -1 and operation.find("host") != -1 and operation.find("wave") != -1:
                 filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Add New Hosts To Wave **********")
-                self.wp.addHostToWave(filePath)
+                self.wp.addHostToWave(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Add New Hosts To Wave **********\n \n")
                 count += 1
 
-            elif operation.find("delete") != -1 and operation.find("wave") != -1:
+            elif operation.find("search") != -1 and operation.find("wave") != -1:
                 waveName = sheet.cell(row=r, column=5).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Delete A Wave **********")
-                self.wp.deleteWave(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete A Wave **********\n \n")
-                count += 1
-
-            elif operation.find("delete") != -1 and operation.find("waves") != -1:
-                waveName = sheet.cell(row=r, column=5).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Delete Multiple Waves **********")
-                self.wp.deleteWaves(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete Multiple Waves **********\n \n")
+                self.logger.info("********** Starting TestCase " + str(count) + ": Search A Wave **********")
+                self.wp.searchWave(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Search A Wave **********\n \n")
                 count += 1
 
             elif operation.find("search") != -1 and operation.find("host") != -1:
@@ -106,19 +105,33 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Search A Host **********\n \n")
                 count += 1
 
-            elif operation.find("search") != -1 and operation.find("wave") != -1:
+            # Wave Operations
+            elif operation.find("start") != -1 and operation.find("wave") != -1 and operation.find("one") != -1:
                 waveName = sheet.cell(row=r, column=5).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Search A Wave **********")
-                self.wp.searchWave(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Search A Wave **********\n \n")
+                self.logger.info("********** Starting TestCase " + str(count) + ": Start Wave And Verify **********")
+                self.wo.startWaveOneByOne(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Start Wave And Verify **********\n \n")
                 count += 1
 
-            # Wave Operations
             elif operation.find("start") != -1 and operation.find("wave") != -1:
                 waveName = sheet.cell(row=r, column=5).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Start Wave And Verify **********")
                 self.wo.startWave(waveName)
                 self.logger.info("********** Successfully Executed TestCase: Start Wave And Verify **********\n \n")
+                count += 1
+
+            elif operation.find("delete") != -1 and operation.find("shh") != -1:
+                waveName = sheet.cell(row=r, column=5).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Delete Sync Relation Data From RMM SSH **********")
+                self.wo.startWave(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Delete Sync Relation Data From RMM SSH **********\n \n")
+                count += 1
+
+            elif operation.find("verify") != -1 and operation.find("sync") != -1 and operation.find("success") != -1:
+                waveName = sheet.cell(row=r, column=5).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Verify Sync Success Or Fail Details **********")
+                self.wo.verifySyncSuccess(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********\n \n")
                 count += 1
 
             elif operation.find("parallel") != -1 and operation.find("count") != -1:
@@ -166,14 +179,6 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Restart Wave **********\n \n")
                 count += 1
 
-            elif operation.find("delete") != -1 and operation.find("host") != -1:
-                waveName = sheet.cell(row=r, column=5).value
-                hostNames = sheet.cell(row=r, column=7).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Delete Hosts From Wave **********")
-                self.wo.deleteHost(waveName, hostNames)
-                self.logger.info("********** Successfully Executed TestCase: Delete Hosts From Wave **********\n \n")
-                count += 1
-
             # Wave Edits
             elif (operation.find("add") != -1 or operation.find("set") != -1) and operation.find("autoprovision") != -1:
                 filePath = sheet.cell(row=r, column=2).value
@@ -213,15 +218,6 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Change Target Type **********\n \n")
                 count += 1
 
-            elif operation.find("edit") != -1 and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
-                path = sheet.cell(row=r, column=2).value
-                start = sheet.cell(row=r, column=3).value
-                end = sheet.cell(row=r, column=4).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Change vCenter Details **********")
-                self.we.changeVcenterData(path, start, end)
-                self.logger.info("********** Successfully Executed TestCase: Change vCenter Details **********\n \n")
-                count += 1
-
             elif (operation.find("move") != -1 or operation.find("shift") != -1) and operation.find("host") != -1:
                 filePath = sheet.cell(row=r, column=2).value
                 start = sheet.cell(row=r, column=3).value
@@ -231,12 +227,21 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Move Host Between Waves **********\n \n")
                 count += 1
 
+            elif operation.find("edit") != -1 and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
+                path = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Change vCenter Details **********")
+                self.we.changeVcenterData(path, start, end)
+                self.logger.info("********** Successfully Executed TestCase: Change vCenter Details **********\n \n")
+                count += 1
+
             # Wave Details
             elif operation.find("verify") != -1 and operation.find("sync") != -1 and (operation.find("detail") != -1 or operation.find("details") != -1 or operation.find("data") != -1):
                 waveName = sheet.cell(row=r, column=5).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Verify Sync Details **********")
+                self.logger.info("********** Starting TestCase " + str(count) + ": Verify Sync System And Summary Details **********")
                 self.wd.verifySyncDetails(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Verify Sync Details **********\n \n")
+                self.logger.info("********** Successfully Executed TestCase: Verify Sync System And Summary Details **********\n \n")
                 count += 1
 
             elif operation.find("wave") != -1 and operation.find("status") != -1:
@@ -271,15 +276,6 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Create New DR Policy **********\n \n")
                 count += 1
 
-            elif (operation.find("add") != -1 or operation.find("assign") != -1) and operation.find("policy") != -1:
-                filePath = sheet.cell(row=r, column=2).value
-                start = sheet.cell(row=r, column=3).value
-                end = sheet.cell(row=r, column=4).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Assign DR Policy To Wave **********")
-                self.dr.addDRPolicyToWave(filePath, start, end)
-                self.logger.info("********** Successfully Executed TestCase: Assign DR Policy To Wave **********\n \n")
-                count += 1
-
             elif (operation.find("find") != -1 or operation.find("search") != -1) and operation.find("policy") != -1:
                 policyName = sheet.cell(row=r, column=9).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Search DR Policy **********")
@@ -287,11 +283,13 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Search DR Policy **********\n \n")
                 count += 1
 
-            elif operation.find("verify") != -1 and operation.find("policy") != -1 and operation.find("sync") != -1:
-                waveName = sheet.cell(row=r, column=5).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Check DR Policy Host Sync Status **********")
-                self.dr.verifyDRHostSyncStatus(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********\n \n")
+            elif (operation.find("add") != -1 or operation.find("assign") != -1) and operation.find("policy") != -1:
+                filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Assign DR Policy To Wave **********")
+                self.dr.addDRPolicyToWave(filePath, start, end)
+                self.logger.info("********** Successfully Executed TestCase: Assign DR Policy To Wave **********\n \n")
                 count += 1
 
             elif operation.find("policy") != -1 and operation.find("status") != -1:
@@ -306,6 +304,13 @@ class Test_000_OneForAll:
                 self.logger.info("********** Starting TestCase " + str(count) + ": Resume Policy **********")
                 self.dr.resumePolicy(policyName)
                 self.logger.info("********** Successfully Executed TestCase: Resume Policy **********\n \n")
+                count += 1
+
+            elif operation.find("verify") != -1 and operation.find("policy") != -1 and operation.find("sync") != -1:
+                waveName = sheet.cell(row=r, column=5).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Check DR Policy Host Sync Status **********")
+                self.dr.verifyDRHostSyncStatus(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********\n \n")
                 count += 1
 
             elif (operation.find("pause") != -1 or operation.find("stop") != -1) and operation.find("policy") != -1:
@@ -333,6 +338,13 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Create New Cloud User **********\n \n")
                 count += 1
 
+            elif (operation.find("find") != -1 or operation.find("search") != -1) and operation.find("cloud") != -1:
+                userName = sheet.cell(row=r, column=11).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Find Cloud User **********")
+                self.conf.findClouduser(userName)
+                self.logger.info("********** Successfully Executed TestCase: Find Cloud User **********\n \n")
+                count += 1
+
             elif (operation.find("add") != -1 or operation.find("create") != -1) and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
                 filePath = sheet.cell(row=r, column=2).value
                 start = sheet.cell(row=r, column=3).value
@@ -340,6 +352,77 @@ class Test_000_OneForAll:
                 self.logger.info("********** Starting TestCase " + str(count) + ": Create New vCenter **********")
                 self.conf.addVCenter(filePath, start, end)
                 self.logger.info("********** Successfully Executed TestCase: Create New vCenter **********\n \n")
+                count += 1
+
+            elif (operation.find("find") != -1 or operation.find("search") != -1) and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
+                userName = sheet.cell(row=r, column=11).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Create New Cloud User **********")
+                self.conf.findVCenter(userName)
+                self.logger.info("********** Successfully Executed TestCase: Create New Cloud User **********\n \n")
+                count += 1
+
+            # Tear Down
+            elif operation.find("tear") != -1 and operation.find("down") != -1:
+                filePath = sheet.cell(row=r, column=2).value
+                start = sheet.cell(row=r, column=3).value
+                end = sheet.cell(row=r, column=4).value
+                self.logger.info("********** Starting TestCase " + str(count) + ": Perform Tear Down **********")
+                self.td.tearDown(filePath, start, end, count)
+                self.logger.info("********** Successfully Executed TestCase: Perform Tear Down **********\n \n")
+                count += 1
+
+            elif operation.find("delete") != -1 and operation.find("SSH") != -1 and operation.find("entry") != -1:
+                source = sheet.cell(row=r, column=5).value
+                target = sheet.cell(row=r, column=6).value
+                self.logger.info("********** Starting TestCase "+str(count)+": Delete SSH Host Sync Entry **********")
+                self.td.deleteSR(source, target)
+                self.logger.info("********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********\n \n")
+                count += 1
+
+            elif operation.find("delete") != -1 and operation.find("host") != -1 and operation.find("wave") != -1:
+                waveName = sheet.cell(row=r, column=2).value
+                hostNames = sheet.cell(row=r, column=3).value
+                self.logger.info("********** Starting TestCase "+str(count)+": Delete Host In Wave **********")
+                self.td.deleteHostInWave(waveName, hostNames)
+                self.logger.info("********** Successfully Executed TestCase: Delete Host In Wave **********\n \n")
+                count += 1
+
+            elif operation.find("delete") != -1 and operation.find("single") != -1 and operation.find("wave") != -1:
+                waveName = sheet.cell(row=r, column=2).value
+                self.logger.info("********** Starting TestCase "+str(count)+": Delete Wave **********")
+                self.td.deleteWave(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
+                count += 1
+
+            elif operation.find("delete") != -1 and operation.find("replication") != -1 and (operation.find("wave") != -1 or operation.find("waves") != -1):
+                waveName = sheet.cell(row=r, column=2).value
+                self.logger.info("********** Starting TestCase "+str(count)+": Delete Wave **********")
+                self.td.deleteRepWaves(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
+                count += 1
+
+            elif operation.find("delete") != -1 and operation.find("DR") != -1 and (operation.find("wave") != -1 or operation.find("waves") != -1):
+                waveName = sheet.cell(row=r, column=2).value
+                self.logger.info("********** Starting TestCase "+str(count)+": Delete Wave **********")
+                self.td.deleteDrWaves(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
+                count += 1
+
+            elif operation.find("delete") != -1 and operation.find("dr") != -1 and (operation.find("policy") != -1 or operation.find("policies") != -1):
+                policyName = sheet.cell(row=r, column=4).value
+                self.logger.info("********** Starting TestCase "+str(count)+": Delete SSH Host Sync Entry **********")
+                self.td.deleteDRPolicy(policyName)
+                self.logger.info("********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********\n \n")
+                count += 1
+
+            elif operation.find("delete") != -1 and (operation.find("host") != -1 or operation.find("hosts") != -1):
+                hostNames = sheet.cell(row=r, column=3).value
+                VM = sheet.cell(row=r, column=7).value
+                environment = sheet.cell(row=r, column=8).value
+                name = sheet.cell(row=r, column=9).value
+                self.logger.info("********** Starting TestCase "+str(count)+": Delete Host In Wave **********")
+                self.td.deleteHost(hostNames, VM, environment, name)
+                self.logger.info("********** Successfully Executed TestCase: Delete Host In Wave **********\n \n")
                 count += 1
 
             else:

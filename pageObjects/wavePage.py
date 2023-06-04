@@ -110,7 +110,6 @@ class WavePage:
                 note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Create New Wave Status of Wave : " + waveName + ",")
                 self.logger.info(note + "\n")
-                time.sleep(5)
             else:
                 self.logger.info("********** Create New Wave Pop-up Banner Was Not Opened For Wave, " + str(waveName) + " **********")
         else:

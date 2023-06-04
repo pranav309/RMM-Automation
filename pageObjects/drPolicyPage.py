@@ -446,60 +446,6 @@ class DRPolicy:
         else:
             self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
 
-    def failoverHost(self, waveName, testMode):
-        co = CommonObjects(self.driver)
-        val = co.findDrWave(waveName)
-        if val == 2:
-            return
-        if val == 1:
-            self.driver.find_element(By.LINK_TEXT, waveName).click()
-            time.sleep(5)
-            if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
-                self.logger.info("********** Wave : " + waveName + " Was Opened Successfully **********")
-            else:
-                self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
-                return
-        if val == 0:
-            if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
-                self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        if len(self.driver.find_elements(By.XPATH, self.val_waveOpen_xpath)) != 0:
-            self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
-            self.driver.find_element(By.ID, self.btn_failOver_id).click()
-            time.sleep(5)
-            if len(self.driver.find_elements(By.XPATH, self.pop_failOver_xpath)) != 0:
-                self.logger.info("********** Pop-up Banner Of Failover Was Opened **********")
-                if testMode:
-                    self.driver.find_element(By.ID, self.ch_testMode_id).click()
-                self.driver.find_element(By.ID, self.btn_failoverYes_id).click()
-                WebDriverWait(self.driver, 18000).until(
-                    EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Failed Over")
-                )
-                time.sleep(5)
-                co = CommonObjects(self.driver)
-                co.hostSyncState()
-                time.sleep(5)
-            else:
-                self.logger.info("********** Pop-up Banner Of Failover Was Not Opened **********")
-        else:
-            self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
-        # if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
-        #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
-        #     time.sleep(5)
-        # self.driver.find_element(By.LINK_TEXT, "Waves").click()
-
-    def fallbackHost(self, waveName):
-        time.sleep(5)
-        self.driver.find_element(By.LINK_TEXT, waveName).click()
-        time.sleep(5)
-        self.driver.find_element(By.ID, self.btn_fallBack_id).click()
-        time.sleep(5)
-        self.driver.find_element(By.ID, self.btn_fallBackYes_id).click()
-        time.sleep(5)
-        WebDriverWait(self.driver, 18000).until(
-            EC.element_to_be_clickable((By.XPATH, self.btn_failOver_xpath))
-        )
-        self.driver.find_element(By.LINK_TEXT, "Waves")
-
     def pauseDRPolicy(self, policyName):
         dr_class = self.driver.find_element(By.XPATH, self.txt_dr_xpath).get_attribute("class")
         if dr_class == "ng-star-inserted":
@@ -558,3 +504,57 @@ class DRPolicy:
             time.sleep(5)
             waveState = self.driver.find_element(By.XPATH,'/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr[' + str(count) + ']/td[2]/span/span').text
         self.logger.info("********** Policy : " + policyName + ", Is In " + waveState + " State **********")
+
+    def failoverHost(self, waveName, testMode):
+        co = CommonObjects(self.driver)
+        val = co.findDrWave(waveName)
+        if val == 2:
+            return
+        if val == 1:
+            self.driver.find_element(By.LINK_TEXT, waveName).click()
+            time.sleep(5)
+            if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+                self.logger.info("********** Wave : " + waveName + " Was Opened Successfully **********")
+            else:
+                self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
+                return
+        if val == 0:
+            if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+                self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
+        if len(self.driver.find_elements(By.XPATH, self.val_waveOpen_xpath)) != 0:
+            self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
+            self.driver.find_element(By.ID, self.btn_failOver_id).click()
+            time.sleep(5)
+            if len(self.driver.find_elements(By.XPATH, self.pop_failOver_xpath)) != 0:
+                self.logger.info("********** Pop-up Banner Of Failover Was Opened **********")
+                if testMode:
+                    self.driver.find_element(By.ID, self.ch_testMode_id).click()
+                self.driver.find_element(By.ID, self.btn_failoverYes_id).click()
+                WebDriverWait(self.driver, 18000).until(
+                    EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Failed Over")
+                )
+                time.sleep(5)
+                co = CommonObjects(self.driver)
+                co.hostSyncState()
+                time.sleep(5)
+            else:
+                self.logger.info("********** Pop-up Banner Of Failover Was Not Opened **********")
+        else:
+            self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
+        # if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
+        #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
+        #     time.sleep(5)
+        # self.driver.find_element(By.LINK_TEXT, "Waves").click()
+
+    def fallbackHost(self, waveName):
+        time.sleep(5)
+        self.driver.find_element(By.LINK_TEXT, waveName).click()
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.btn_fallBack_id).click()
+        time.sleep(5)
+        self.driver.find_element(By.ID, self.btn_fallBackYes_id).click()
+        time.sleep(5)
+        WebDriverWait(self.driver, 18000).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_failOver_xpath))
+        )
+        self.driver.find_element(By.LINK_TEXT, "Waves")
