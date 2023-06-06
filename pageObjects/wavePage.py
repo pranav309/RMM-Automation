@@ -81,7 +81,6 @@ class WavePage:
         self.driver = driver
 
     def createWaveWithoutHost(self, waveName, passthrough):
-        time.sleep(5)
         replication_class = self.driver.find_element(By.XPATH, self.txt_replication_xpath).get_attribute("class")
         if replication_class == "ng-star-inserted":
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
@@ -103,13 +102,18 @@ class WavePage:
                 self.driver.find_element(By.ID, self.txt_waveName_id).send_keys(waveName)
                 if not passthrough:
                     self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
-                self.driver.find_element(By.ID, self.btn_create_id).click()
+                ele1 = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.ID, self.btn_create_id))
+                )
+                ele1.click()
                 WebDriverWait(self.driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
                 )
                 note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Create New Wave Status of Wave : " + waveName + ",")
                 self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Create New Wave Pop-up Banner Was Not Opened For Wave, " + str(waveName) + " **********")
         else:
@@ -138,7 +142,7 @@ class WavePage:
             self.driver.find_element(By.XPATH, self.img_uploadCSV_xpath).click()
             time.sleep(2)
             keyboard.write(path)
-            time.sleep(2)
+            time.sleep(5)
             keyboard.send('enter')
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
@@ -146,6 +150,8 @@ class WavePage:
             note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
             self.logger.info("********** Create Status of Wave Name, ")
             self.logger.info(note + "\n")
+            time.sleep(2)
+            self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         else:
             self.logger.info("********** Create New Wave Pop-up Banner Was Not Opened **********")
         # if len(self.driver.find_elements(By.LINK_TEXT, "Summary")) == 0:
@@ -193,13 +199,18 @@ class WavePage:
                         self.driver.find_element(By.ID, self.chBox_passthrough_id).click()
                     time.sleep(3)
                     self.enterData(sheet, r)
-                    self.driver.find_element(By.ID, self.btn_create_id).click()
+                    ele1 = WebDriverWait(self.driver, 10).until(
+                        EC.element_to_be_clickable((By.ID, self.btn_create_id))
+                    )
+                    ele1.click()
                     WebDriverWait(self.driver, 10).until(
                         EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
                     )
                     note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                     self.logger.info("********** Create New Wave Status of Wave : " + waveName + ",")
                     self.logger.info(note + "\n")
+                    time.sleep(2)
+                    self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
                 else:
                     self.logger.info("********** Create Wave Pop-up Banner Was Not Opened For Wave, " + str(waveName) + " **********")
             else:
@@ -245,19 +256,26 @@ class WavePage:
             if host:
                 self.logger.info("********** The Host " + hostName + " Was Already Present In The Wave : " + waveName + " **********")
                 continue
-            self.driver.find_element(By.ID, self.btn_addHost_id).click()
+            ele1 = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.ID, self.btn_addHost_id))
+            )
+            ele1.click()
             time.sleep(3)
             if len(self.driver.find_elements(By.XPATH, self.pop_addHost_xpath)) != 0:
                 self.logger.info("********** Add New Host Pop-up Banner Was Opened For Wave, " + str(waveName) + " **********")
                 self.enterData(sheet, r)
-                time.sleep(5)
-                self.driver.find_element(By.ID, self.btn_createHost_id).click()
+                ele1 = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.ID, self.btn_createHost_id))
+                )
+                ele1.click()
                 WebDriverWait(self.driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
                 )
                 note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Add New Host Status of Wave : " + waveName + ",")
                 self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Add New Host Pop-up Banner Was Not Opened For Wave, " + str(waveName) + " **********")
         # if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
@@ -362,6 +380,10 @@ class WavePage:
             time.sleep(5)
         for waveName in res:
             flag = 0
+            if replication_class == "ng-star-inserted" and dr_class == "ng-star-inserted":
+                self.driver.find_element(By.LINK_TEXT, "Replication").click()
+                time.sleep(3)
+            replication_class = self.driver.find_element(By.XPATH, self.txt_replication_xpath).get_attribute("class")
             if replication_class == "ng-star-inserted open":
                 val = co.findWaveCommonOne(waveName, 0)
                 if val == 0:
@@ -374,28 +396,6 @@ class WavePage:
                     flag += 1
             if flag > 0:
                 self.logger.info("********** Wave: " + waveName + ", Was Not Found **********")
-
-        # replication_class = self.driver.find_element(By.XPATH, self.txt_replication_xpath).get_attribute("class")
-        # if replication_class == "ng-star-inserted":
-        #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
-        #     time.sleep(5)
-        # wave_class = self.driver.find_element(By.XPATH, self.txt_rWave_xpath).get_attribute("class")
-        # if wave_class != "active":
-        #     self.driver.find_element(By.LINK_TEXT, "Waves").click()
-        #     time.sleep(5)
-        # res = tuple(map(str, waveNames.split(', ')))
-        # totalWaves = len(self.driver.find_elements(By.XPATH, self.txt_totalWaves_xpath))
-        # for waveName in res:
-        #     for i in range(1, totalWaves+1):
-        #         if totalWaves == 1:
-        #             tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span/div/a').text
-        #         else:
-        #             tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[2]/span/div/a').text
-        #         if tmp == waveName:
-        #             self.logger.info("********** Wave: " + waveName + ", Was Found In Replication Waves At Position: "+str(i)+" **********")
-        #             break
-        #         if i == totalWaves:
-        #             self.logger.info("********** " + waveName + " Was Not Found In Replication Waves **********")
 
     def searchHost(self, waveName, hostName):
         co = CommonObjects(self.driver)
@@ -414,7 +414,7 @@ class WavePage:
             if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
         WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.ID, self.txt_waveName_xpath))
+            EC.presence_of_element_located((By.XPATH, self.txt_waveName_xpath))
         )
         totalHosts = len(self.driver.find_elements(By.ID, self.txt_totalHosts_id))
         for hostNo in range(1, totalHosts + 1):

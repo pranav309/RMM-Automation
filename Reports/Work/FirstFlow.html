@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Test Report</title>
+    <link href="assets/style.css" rel="stylesheet" type="text/css"/></head>
+  <body onLoad="init()">
+    <script>/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+
+function toArray(iter) {
+    if (iter === null) {
+        return null;
+    }
+    return Array.prototype.slice.call(iter);
+}
+
+function find(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return elem.querySelector(selector);
+}
+
+function find_all(selector, elem) {
+    if (!elem) {
+        elem = document;
+    }
+    return toArray(elem.querySelectorAll(selector));
+}
+
+function sort_column(elem) {
+    toggle_sort_states(elem);
+    var colIndex = toArray(elem.parentNode.childNodes).indexOf(elem);
+    var key;
+    if (elem.classList.contains('numeric')) {
+        key = key_num;
+    } else if (elem.classList.contains('result')) {
+        key = key_result;
+    } else {
+        key = key_alpha;
+    }
+    sort_table(elem, key(colIndex));
+}
+
+function show_all_extras() {
+    find_all('.col-result').forEach(show_extras);
+}
+
+function hide_all_extras() {
+    find_all('.col-result').forEach(hide_extras);
+}
+
+function show_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.remove("collapsed");
+    expandcollapse.classList.remove("expander");
+    expandcollapse.classList.add("collapser");
+}
+
+function hide_extras(colresult_elem) {
+    var extras = colresult_elem.parentNode.nextElementSibling;
+    var expandcollapse = colresult_elem.firstElementChild;
+    extras.classList.add("collapsed");
+    expandcollapse.classList.remove("collapser");
+    expandcollapse.classList.add("expander");
+}
+
+function show_filters() {
+    var filter_items = document.getElementsByClassName('filter');
+    for (var i = 0; i < filter_items.length; i++)
+        filter_items[i].hidden = false;
+}
+
+function add_collapse() {
+    // Add links for show/hide all
+    var resulttable = find('table#results-table');
+    var showhideall = document.createElement("p");
+    showhideall.innerHTML = '<a href="javascript:show_all_extras()">Show all details</a> / ' +
+                            '<a href="javascript:hide_all_extras()">Hide all details</a>';
+    resulttable.parentElement.insertBefore(showhideall, resulttable);
+
+    // Add show/hide link to each result
+    find_all('.col-result').forEach(function(elem) {
+        var collapsed = get_query_parameter('collapsed') || 'Passed';
+        var extras = elem.parentNode.nextElementSibling;
+        var expandcollapse = document.createElement("span");
+        if (collapsed.includes(elem.innerHTML)) {
+            extras.classList.add("collapsed");
+            expandcollapse.classList.add("expander");
+        } else {
+            expandcollapse.classList.add("collapser");
+        }
+        elem.appendChild(expandcollapse);
+
+        elem.addEventListener("click", function(event) {
+            if (event.currentTarget.parentNode.nextElementSibling.classList.contains("collapsed")) {
+                show_extras(event.currentTarget);
+            } else {
+                hide_extras(event.currentTarget);
+            }
+        });
+    })
+}
+
+function get_query_parameter(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
+function init () {
+    reset_sort_headers();
+
+    add_collapse();
+
+    show_filters();
+
+    sort_column(find('.initial-sort'));
+
+    find_all('.sortable').forEach(function(elem) {
+        elem.addEventListener("click",
+                              function(event) {
+                                  sort_column(elem);
+                              }, false)
+    });
+
+};
+
+function sort_table(clicked, key_func) {
+    var rows = find_all('.results-table-row');
+    var reversed = !clicked.classList.contains('asc');
+    var sorted_rows = sort(rows, key_func, reversed);
+    /* Whole table is removed here because browsers acts much slower
+     * when appending existing elements.
+     */
+    var thead = document.getElementById("results-table-head");
+    document.getElementById('results-table').remove();
+    var parent = document.createElement("table");
+    parent.id = "results-table";
+    parent.appendChild(thead);
+    sorted_rows.forEach(function(elem) {
+        parent.appendChild(elem);
+    });
+    document.getElementsByTagName("BODY")[0].appendChild(parent);
+}
+
+function sort(items, key_func, reversed) {
+    var sort_array = items.map(function(item, i) {
+        return [key_func(item), i];
+    });
+
+    sort_array.sort(function(a, b) {
+        var key_a = a[0];
+        var key_b = b[0];
+
+        if (key_a == key_b) return 0;
+
+        if (reversed) {
+            return (key_a < key_b ? 1 : -1);
+        } else {
+            return (key_a > key_b ? 1 : -1);
+        }
+    });
+
+    return sort_array.map(function(item) {
+        var index = item[1];
+        return items[index];
+    });
+}
+
+function key_alpha(col_index) {
+    return function(elem) {
+        return elem.childNodes[1].childNodes[col_index].firstChild.data.toLowerCase();
+    };
+}
+
+function key_num(col_index) {
+    return function(elem) {
+        return parseFloat(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function key_result(col_index) {
+    return function(elem) {
+        var strings = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed',
+                       'Skipped', 'Passed'];
+        return strings.indexOf(elem.childNodes[1].childNodes[col_index].firstChild.data);
+    };
+}
+
+function reset_sort_headers() {
+    find_all('.sort-icon').forEach(function(elem) {
+        elem.parentNode.removeChild(elem);
+    });
+    find_all('.sortable').forEach(function(elem) {
+        var icon = document.createElement("div");
+        icon.className = "sort-icon";
+        icon.textContent = "vvv";
+        elem.insertBefore(icon, elem.firstChild);
+        elem.classList.remove("desc", "active");
+        elem.classList.add("asc", "inactive");
+    });
+}
+
+function toggle_sort_states(elem) {
+    //if active, toggle between asc and desc
+    if (elem.classList.contains('active')) {
+        elem.classList.toggle('asc');
+        elem.classList.toggle('desc');
+    }
+
+    //if inactive, reset all other functions and add ascending active
+    if (elem.classList.contains('inactive')) {
+        reset_sort_headers();
+        elem.classList.remove('inactive');
+        elem.classList.add('active');
+    }
+}
+
+function is_all_rows_hidden(value) {
+  return value.hidden == false;
+}
+
+function filter_table(elem) {
+    var outcome_att = "data-test-result";
+    var outcome = elem.getAttribute(outcome_att);
+    class_outcome = outcome + " results-table-row";
+    var outcome_rows = document.getElementsByClassName(class_outcome);
+
+    for(var i = 0; i < outcome_rows.length; i++){
+        outcome_rows[i].hidden = !elem.checked;
+    }
+
+    var rows = find_all('.results-table-row').filter(is_all_rows_hidden);
+    var all_rows_hidden = rows.length == 0 ? true : false;
+    var not_found_message = document.getElementById("not-found-message");
+    not_found_message.hidden = !all_rows_hidden;
+}
+</script>
+    <h1>FirstFlow.html</h1>
+    <p>Report generated on 06-Jun-2023 at 14:54:05 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <h2>Environment</h2>
+    <table id="environment">
+      <tr>
+        <td>Module Name</td>
+        <td>First Flow Automation</td></tr>
+      <tr>
+        <td>Packages</td>
+        <td>{&apos;pytest&apos;: &apos;7.2.1&apos;, &apos;pluggy&apos;: &apos;1.0.0&apos;}</td></tr>
+      <tr>
+        <td>Platform</td>
+        <td>Windows-10-10.0.19045-SP0</td></tr>
+      <tr>
+        <td>Project Name</td>
+        <td>RMM Product</td></tr>
+      <tr>
+        <td>Python</td>
+        <td>3.11.3</td></tr>
+      <tr>
+        <td>Tester</td>
+        <td>Pranav Pawar</td></tr></table>
+    <h2>Summary</h2>
+    <p>1 tests ran in 2098.07 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <h2>Results</h2>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable result initial-sort" col="result">Result</th>
+          <th class="sortable" col="name">Test</th>
+          <th class="sortable numeric" col="duration">Duration</th>
+          <th>Links</th></tr>
+        <tr hidden="true" id="not-found-message">
+          <th colspan="4">No results found. Try to check the filters</th></tr></thead>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">testCases/Work/oneForAll.py::Test_000_OneForAll::test_allInOne</td>
+          <td class="col-duration">2086.92</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:oneForAll.py:37 ********** Test_000_OneForAll ********** 
+[32mINFO    [0m root:oneForAll.py:38 ********** Opening Browser ********** 
+[32mINFO    [0m root:oneForAll.py:41 ********** Browser Opened Successfully **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:43 ********** Logging In **********
+[32mINFO    [0m root:loginPage.py:49 ********** Login Successful **********
+[32mINFO    [0m root:oneForAll.py:47 ********** Login Successful **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:57 Timestamp: 2023-06-06 14:19:39
+[32mINFO    [0m root:oneForAll.py:58 
+
+[32mINFO    [0m root:oneForAll.py:84 ********** Starting TestCase 1: Create New Wave With Host **********
+[32mINFO    [0m root:wavePage.py:194 ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow **********
+[32mINFO    [0m root:wavePage.py:195 ********** Creating No. 1 Wave With Target Type Autoprovision **********
+[32mINFO    [0m root:wavePage.py:210 ********** Create New Wave Status of Wave : First Flow,
+[32mINFO    [0m root:wavePage.py:211 Added machine 172.29.31.111 to wave
+First Flow
+
+[32mINFO    [0m root:oneForAll.py:86 ********** Successfully Executed TestCase: Create New Wave With Host **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:93 ********** Starting TestCase 2: Add New Hosts To Wave **********
+[32mINFO    [0m root:wavePage.py:248 ********** Wave : First Flow Was Opened Successfully **********
+[32mINFO    [0m root:wavePage.py:265 ********** Add New Host Pop-up Banner Was Opened For Wave, First Flow **********
+[32mINFO    [0m root:wavePage.py:275 ********** Add New Host Status of Wave : First Flow,
+[32mINFO    [0m root:wavePage.py:276 Added machine 172.29.31.183 to wave
+First Flow
+
+[32mINFO    [0m root:oneForAll.py:95 ********** Successfully Executed TestCase: Add New Hosts To Wave **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:199 ********** Starting TestCase 3: Bulk Edit Sync Options **********
+[32mINFO    [0m root:waveEdit.py:746 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveEdit.py:768 ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, First Flow **********
+[32mINFO    [0m root:waveEdit.py:778 ********** Sync Option &#x27;Verbose&#x27; is set as yes **********
+[32mINFO    [0m root:waveEdit.py:792 ********** Sync Option &#x27;Allow Direct Fscopy&#x27; is set as yes **********
+[32mINFO    [0m root:waveEdit.py:914 ********** Set Bulk Edit Sync Options Status of Wave : First Flow,
+[32mINFO    [0m root:waveEdit.py:915 Successfully modified First Flow
+
+[32mINFO    [0m root:oneForAll.py:201 ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:190 ********** Starting TestCase 4: Set Autoprovision **********
+[32mINFO    [0m root:waveEdit.py:191 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveEdit.py:202 ********** Select An Environment Pop-up Banner Is Opened For Wave, First Flow **********
+[32mINFO    [0m root:waveEdit.py:246 ********** Set Autoprovision Status of Wave : First Flow,
+[32mINFO    [0m root:waveEdit.py:247 Successfully edited cloud
+First Flow
+
+[32mINFO    [0m root:waveEdit.py:384 ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : First Flow **********
+[32mINFO    [0m root:waveEdit.py:388 ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : First Flow **********
+[32mINFO    [0m root:waveEdit.py:396 ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : First Flow **********
+[32mINFO    [0m root:waveEdit.py:416 ********** Successfully Added NIC For Wave : First Flow **********
+[32mINFO    [0m root:waveEdit.py:216 ********** Set Autoprovision Status of Wave : First Flow,
+[32mINFO    [0m root:waveEdit.py:217 Successfully modified First Flow
+
+[32mINFO    [0m root:oneForAll.py:192 ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:145 ********** Starting TestCase 5: Set Parallel Count **********
+[32mINFO    [0m root:waveOperations.py:278 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveOperations.py:285 ********** Set Parallel Count To Wave: First Flow, Status : 
+[32mINFO    [0m root:waveOperations.py:286 Updated parallel count to 2
+
+[32mINFO    [0m root:oneForAll.py:147 ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:123 ********** Starting TestCase 6: Start Wave And Verify **********
+[32mINFO    [0m root:waveOperations.py:138 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveOperations.py:147 ********** Start Status For Wave Name : First Flow,
+[32mINFO    [0m root:waveOperations.py:148 Wave Started
+First Flow
+
+[32mINFO    [0m root:oneForAll.py:125 ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:137 ********** Starting TestCase 7: Verify Sync Success Or Fail Details **********
+[32mINFO    [0m root:waveOperations.py:220 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveOperations.py:235 ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********
+[32mINFO    [0m root:waveOperations.py:235 ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********
+[32mINFO    [0m root:oneForAll.py:139 ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:247 ********** Starting TestCase 8: Verify Sync System And Summary Details **********
+[32mINFO    [0m root:waveDetails.py:46 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveDetails.py:48 ********** Total Available Hosts : 2 ,
+[32mINFO    [0m root:waveDetails.py:111 ********** Sync Details For Host No. 1 : psp-MyLinFirstFlow-src1 ,
+[32mINFO    [0m root:waveDetails.py:116 ********** Summary Details : 
+[32mINFO    [0m root:waveDetails.py:118 ********** Summary Details Was Opened **********
+[32mINFO    [0m root:waveDetails.py:143 ********** Name: psp-MyLinFirstFlow-src1 **********
+[32mINFO    [0m root:waveDetails.py:144 ********** IP Address: 172.29.31.111 **********
+[32mINFO    [0m root:waveDetails.py:145 ********** OS: Linux **********
+[32mINFO    [0m root:waveDetails.py:146 ********** OS Version: CentOS Linux 7 (Core) **********
+[32mINFO    [0m root:waveDetails.py:125 ********** Systems Details : 
+[32mINFO    [0m root:waveDetails.py:130 ********** System Details Was Opened **********
+[32mINFO    [0m root:waveDetails.py:143 ********** Name: psp-MyLinFirstFlow-src1 **********
+[32mINFO    [0m root:waveDetails.py:144 ********** IP Address: 172.29.31.111 **********
+[32mINFO    [0m root:waveDetails.py:145 ********** OS: Linux **********
+[32mINFO    [0m root:waveDetails.py:146 ********** OS Version: CentOS Linux 7 (Core) **********
+[32mINFO    [0m root:waveDetails.py:111 ********** Sync Details For Host No. 2 : psp-MyLinFirstFlow-src2 ,
+[32mINFO    [0m root:waveDetails.py:116 ********** Summary Details : 
+[32mINFO    [0m root:waveDetails.py:118 ********** Summary Details Was Opened **********
+[32mINFO    [0m root:waveDetails.py:143 ********** Name: psp-MyLinFirstFlow-src2 **********
+[32mINFO    [0m root:waveDetails.py:144 ********** IP Address: 172.29.31.183 **********
+[32mINFO    [0m root:waveDetails.py:145 ********** OS: Linux **********
+[32mINFO    [0m root:waveDetails.py:146 ********** OS Version: CentOS Linux 7 (Core) **********
+[32mINFO    [0m root:waveDetails.py:125 ********** Systems Details : 
+[32mINFO    [0m root:waveDetails.py:130 ********** System Details Was Opened **********
+[32mINFO    [0m root:waveDetails.py:143 ********** Name: psp-MyLinFirstFlow-src2 **********
+[32mINFO    [0m root:waveDetails.py:144 ********** IP Address: 172.29.31.183 **********
+[32mINFO    [0m root:waveDetails.py:145 ********** OS: Linux **********
+[32mINFO    [0m root:waveDetails.py:146 ********** OS Version: CentOS Linux 7 (Core) **********
+[32mINFO    [0m root:oneForAll.py:249 ********** Successfully Executed TestCase: Verify Sync System And Summary Details **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:279 ********** Starting TestCase 9: Create New DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:117 ********** Create New DR Policy Pop-up Banner Is Opened **********
+[32mINFO    [0m root:drPolicyPage.py:216 ********** Selected Periodicity Type: Continuous **********
+[32mINFO    [0m root:drPolicyPage.py:229 ********** Email Notification For Fail Cases Only Was Selected **********
+[32mINFO    [0m root:drPolicyPage.py:235 ********** Email Notification When Complete Was Selected **********
+[32mINFO    [0m root:drPolicyPage.py:246 ********** Create DR Policy Status For Policy : firstFlow,
+[32mINFO    [0m root:drPolicyPage.py:247 Successfully created DR Policy firstFlow
+
+[32mINFO    [0m root:oneForAll.py:281 ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:295 ********** Starting TestCase 10: Assign DR Policy To Wave **********
+[32mINFO    [0m root:drPolicyPage.py:300 ********** Wave : First Flow Was Opened Successfully **********
+[32mINFO    [0m root:drPolicyPage.py:309 ********** Currently The Wave : First Flow, Don&#x27;t Have Any Policy **********
+[32mINFO    [0m root:drPolicyPage.py:320 ********** Policy Assignment Pop-up Banner Is Opened For Wave, First Flow **********
+[32mINFO    [0m root:drPolicyPage.py:339 ********** Assign DR Policy firstFlow To Wave First Flow, Status : 
+[32mINFO    [0m root:drPolicyPage.py:340 Successfully applied DR Policy firstFlow to First Flow
+
+[32mINFO    [0m root:drPolicyPage.py:349 ********** Policy : firstFlow, Added To The Wave : First Flow **********
+[32mINFO    [0m root:drPolicyPage.py:381 ********** Policy : firstFlow, Is In Paused State **********
+[32mINFO    [0m root:oneForAll.py:297 ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:309 ********** Starting TestCase 11: Resume Policy **********
+[32mINFO    [0m root:drPolicyPage.py:415 ********** Pop-up Banner For Resume Policy Was Opened For Policy: firstFlow **********
+[32mINFO    [0m root:drPolicyPage.py:421 ********** Start or Restart Status For Policy : firstFlow,
+[32mINFO    [0m root:drPolicyPage.py:422 Successfully resumed DR Policy: firstFlow
+
+[32mINFO    [0m root:oneForAll.py:311 ********** Successfully Executed TestCase: Resume Policy **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:323 ********** Starting TestCase 12: Pause DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:484 ********** Policy : firstFlow, Is In Active State **********
+[32mINFO    [0m root:drPolicyPage.py:488 ********** Pausing The DR Policy **********
+[32mINFO    [0m root:drPolicyPage.py:500 ********** Pause Status For Policy : firstFlow,
+[32mINFO    [0m root:drPolicyPage.py:501 Successfully paused DR Policy
+firstFlow
+
+[32mINFO    [0m root:drPolicyPage.py:516 ********** Policy : firstFlow, Is In Paused State **********
+[32mINFO    [0m root:oneForAll.py:325 ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:316 ********** Starting TestCase 13: Check DR Policy Host Sync Status **********
+[32mINFO    [0m root:drPolicyPage.py:443 ********** Wave : First Flow Was Opened Successfully **********
+[32mINFO    [0m root:commonObjects.py:152 ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********
+[32mINFO    [0m root:commonObjects.py:152 ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********
+[32mINFO    [0m root:oneForAll.py:318 ********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:221 ********** Starting TestCase 14: Change Target Type **********
+[32mINFO    [0m root:waveEdit.py:964 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveEdit.py:986 ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********
+[32mINFO    [0m root:waveEdit.py:1043 ********** Changed Target Type For Host : psp-MyLinFirstFlow-src1,
+[32mINFO    [0m root:waveEdit.py:1044 Successfully modified 172.29.31.111
+
+[32mINFO    [0m root:waveEdit.py:964 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveEdit.py:986 ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********
+[32mINFO    [0m root:waveEdit.py:1043 ********** Changed Target Type For Host : psp-MyLinFirstFlow-src2,
+[32mINFO    [0m root:waveEdit.py:1044 Successfully modified 172.29.31.183
+
+[32mINFO    [0m root:oneForAll.py:223 ********** Successfully Executed TestCase: Change Target Type **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:374 ********** Starting TestCase 15: Perform Tear Down **********
+[32mINFO    [0m root:tearDown.py:83 ********** Starting TestCase 15.1: Delete SSH Host Sync Entry **********
+[32mINFO    [0m paramiko.transport:transport.py:1873 Connected (version 2.0, client OpenSSH_7.4)
+[32mINFO    [0m paramiko.transport:transport.py:1873 Authentication (password) successful!
+[32mINFO    [0m root:tearDown.py:85 ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+
+[32mINFO    [0m root:tearDown.py:83 ********** Starting TestCase 15.2: Delete SSH Host Sync Entry **********
+[32mINFO    [0m paramiko.transport:transport.py:1873 Connected (version 2.0, client OpenSSH_7.4)
+[32mINFO    [0m paramiko.transport:transport.py:1873 Authentication (password) successful!
+[32mINFO    [0m root:tearDown.py:85 ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:376 ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:123 ********** Starting TestCase 16: Start Wave And Verify **********
+[32mINFO    [0m root:waveOperations.py:138 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveOperations.py:147 ********** Start Status For Wave Name : First Flow,
+[32mINFO    [0m root:waveOperations.py:148 Wave Started
+First Flow
+
+[32mINFO    [0m root:oneForAll.py:125 ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:137 ********** Starting TestCase 17: Verify Sync Success Or Fail Details **********
+[32mINFO    [0m root:waveOperations.py:220 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:waveOperations.py:235 ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********
+[32mINFO    [0m root:waveOperations.py:235 ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********
+[32mINFO    [0m root:oneForAll.py:139 ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:331 ********** Starting TestCase 18: Failover Host **********
+[32mINFO    [0m root:drPolicyPage.py:533 ********** Wave : First Flow Was Already Open **********
+[32mINFO    [0m root:drPolicyPage.py:537 ********** Pop-up Banner Of Failover Was Opened **********
+[32mINFO    [0m root:commonObjects.py:152 ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********
+[32mINFO    [0m root:commonObjects.py:152 ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********
+[32mINFO    [0m root:oneForAll.py:333 ********** Successfully Executed TestCase: Failover Host **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:374 ********** Starting TestCase 19: Perform Tear Down **********
+[32mINFO    [0m root:tearDown.py:112 ********** Starting TestCase 19.1: Delete Wave **********
+[32mINFO    [0m root:tearDown.py:232 ********** Delete Wave Pop-up Banner Was Opened For Wave, First Flow **********
+[32mINFO    [0m root:tearDown.py:238 ********** Delete Wave Status of Wave : First Flow,
+[32mINFO    [0m root:tearDown.py:239 Wave Deleted
+First Flow successfully deleted.
+
+[32mINFO    [0m root:tearDown.py:114 ********** Successfully Executed TestCase: Delete Wave **********
+ 
+
+[32mINFO    [0m root:tearDown.py:119 ********** Starting TestCase 19.2: Delete SSH Host Sync Entry **********
+[32mINFO    [0m root:tearDown.py:397 ********** Delete Policy Pop Up Banner Was Opened **********
+[32mINFO    [0m root:tearDown.py:403 ********** Delete Policy Status, 
+[32mINFO    [0m root:tearDown.py:404 Successfully deleted DR Policy
+firstFlow
+
+[32mINFO    [0m root:tearDown.py:121 ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+
+[32mINFO    [0m root:tearDown.py:126 ********** Starting TestCase 19.3: Delete Source Host **********
+[32mINFO    [0m root:tearDown.py:464 ********** Delete Host Pop Up Banner Was Opened **********
+[32mINFO    [0m root:tearDown.py:469 ********** Delete Status For Hosts,
+[32mINFO    [0m root:tearDown.py:476 Successfully deleted host psp-MyLinFirstFlow-src1
+
+[32mINFO    [0m root:tearDown.py:476 Successfully deleted host psp-MyLinFirstFlow-src1
+
+[32mINFO    [0m root:tearDown.py:128 ********** Successfully Executed TestCase: Delete Source Host **********
+ 
+
+[32mINFO    [0m root:tearDown.py:136 ********** Starting TestCase 19.4: Delete Target Host **********
+[32mINFO    [0m root:tearDown.py:528 ********** Delete Host Pop Up Banner Was Opened **********
+[32mINFO    [0m root:tearDown.py:138 ********** Successfully Executed TestCase: Delete Target Host **********
+ 
+
+[32mINFO    [0m root:tearDown.py:83 ********** Starting TestCase 19.5: Delete SSH Host Sync Entry **********
+[32mINFO    [0m paramiko.transport:transport.py:1873 Connected (version 2.0, client OpenSSH_7.4)
+[32mINFO    [0m paramiko.transport:transport.py:1873 Authentication (password) successful!
+[32mINFO    [0m root:tearDown.py:85 ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+
+[32mINFO    [0m root:tearDown.py:83 ********** Starting TestCase 19.6: Delete SSH Host Sync Entry **********
+[32mINFO    [0m paramiko.transport:transport.py:1873 Connected (version 2.0, client OpenSSH_7.4)
+[32mINFO    [0m paramiko.transport:transport.py:1873 Authentication (password) successful!
+[32mINFO    [0m root:tearDown.py:85 ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+
+[32mINFO    [0m root:tearDown.py:83 ********** Starting TestCase 19.7: Delete SSH Host Sync Entry **********
+[32mINFO    [0m paramiko.transport:transport.py:1873 Connected (version 2.0, client OpenSSH_7.4)
+[32mINFO    [0m paramiko.transport:transport.py:1873 Authentication (password) successful!
+[32mINFO    [0m root:tearDown.py:85 ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+
+[32mINFO    [0m root:tearDown.py:83 ********** Starting TestCase 19.8: Delete SSH Host Sync Entry **********
+[32mINFO    [0m paramiko.transport:transport.py:1873 Connected (version 2.0, client OpenSSH_7.4)
+[32mINFO    [0m paramiko.transport:transport.py:1873 Authentication (password) successful!
+[32mINFO    [0m root:tearDown.py:85 ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:376 ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+
+[32mINFO    [0m root:loginPage.py:65 ********** Logout Successful **********
+[32mINFO    [0m root:oneForAll.py:384 ********** Logout Successful **********
+[32mINFO    [0m root:oneForAll.py:386 ********** Browser Closed Successfully **********
+[32mINFO    [0m root:oneForAll.py:389 
+
+[32mINFO    [0m root:oneForAll.py:390 Timestamp: 2023-06-06 14:54:05
+[32mINFO    [0m root:oneForAll.py:391<br/></div></td></tr></tbody></table></body></html>

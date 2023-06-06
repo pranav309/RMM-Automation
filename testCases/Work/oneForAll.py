@@ -34,7 +34,7 @@ class Test_000_OneForAll:
         self.conf = Configuration(self.driver)
         self.td = TearDown(self.driver)
 
-        self.logger.info("********** Test_019_SecondFlow ********** ")
+        self.logger.info("********** Test_000_OneForAll ********** ")
         self.logger.info("********** Opening Browser ********** ")
         self.driver.get(self.baseURL)
         self.driver.maximize_window()
@@ -46,11 +46,16 @@ class Test_000_OneForAll:
         self.lp.clickOnLogin()
         self.logger.info("********** Login Successful **********\n \n")
 
-        # path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\firstFlow\firstFlow.xlsx"
-        path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\test\drPolicy.xlsx"
+        path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\firstFlow\firstFlow.xlsx"
+        # path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\secondFlow\secondFlow.xlsx"
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
+
+        timestamp = datetime.datetime.now()
+        timestamp_str = timestamp.strftime('%Y-%m-%d %H:%M:%S')
+        self.logger.info(f'Timestamp: {timestamp_str}')
+        self.logger.info('\n')
 
         count = 1
         for r in range(2, rows+1):
@@ -120,11 +125,11 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Start Wave And Verify **********\n \n")
                 count += 1
 
-            elif operation.find("delete") != -1 and operation.find("shh") != -1:
+            elif operation.find("delete") != -1 and operation.find("sync") != -1 and operation.find("wave") != -1:
                 waveName = sheet.cell(row=r, column=5).value
-                self.logger.info("********** Starting TestCase " + str(count) + ": Delete Sync Relation Data From RMM SSH **********")
-                self.wo.startWave(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete Sync Relation Data From RMM SSH **********\n \n")
+                self.logger.info("********** Starting TestCase " + str(count) + ": Delete Sync Relation Data From RMM SSH Of Wave **********")
+                self.wo.deleteSRDetails(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Delete Sync Relation Data From RMM SSH Of Wave **********\n \n")
                 count += 1
 
             elif operation.find("verify") != -1 and operation.find("sync") != -1 and operation.find("success") != -1:
@@ -227,7 +232,7 @@ class Test_000_OneForAll:
                 self.logger.info("********** Successfully Executed TestCase: Move Host Between Waves **********\n \n")
                 count += 1
 
-            elif operation.find("edit") != -1 and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
+            elif (operation.find("change") != -1 or operation.find("edit") != -1) and (operation.find("vcenter") != -1 or operation.find("vcentre") != -1):
                 path = sheet.cell(row=r, column=2).value
                 start = sheet.cell(row=r, column=3).value
                 end = sheet.cell(row=r, column=4).value
@@ -237,7 +242,7 @@ class Test_000_OneForAll:
                 count += 1
 
             # Wave Details
-            elif operation.find("verify") != -1 and operation.find("sync") != -1 and (operation.find("detail") != -1 or operation.find("details") != -1 or operation.find("data") != -1):
+            elif operation.find("verify") != -1 and operation.find("wave") != -1 and operation.find("sync") != -1 and (operation.find("detail") != -1 or operation.find("details") != -1 or operation.find("data") != -1):
                 waveName = sheet.cell(row=r, column=5).value
                 self.logger.info("********** Starting TestCase " + str(count) + ": Verify Sync System And Summary Details **********")
                 self.wd.verifySyncDetails(waveName)
@@ -369,60 +374,6 @@ class Test_000_OneForAll:
                 self.logger.info("********** Starting TestCase " + str(count) + ": Perform Tear Down **********")
                 self.td.tearDown(filePath, start, end, count)
                 self.logger.info("********** Successfully Executed TestCase: Perform Tear Down **********\n \n")
-                count += 1
-
-            elif operation.find("delete") != -1 and operation.find("SSH") != -1 and operation.find("entry") != -1:
-                source = sheet.cell(row=r, column=5).value
-                target = sheet.cell(row=r, column=6).value
-                self.logger.info("********** Starting TestCase "+str(count)+": Delete SSH Host Sync Entry **********")
-                self.td.deleteSR(source, target)
-                self.logger.info("********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********\n \n")
-                count += 1
-
-            elif operation.find("delete") != -1 and operation.find("host") != -1 and operation.find("wave") != -1:
-                waveName = sheet.cell(row=r, column=2).value
-                hostNames = sheet.cell(row=r, column=3).value
-                self.logger.info("********** Starting TestCase "+str(count)+": Delete Host In Wave **********")
-                self.td.deleteHostInWave(waveName, hostNames)
-                self.logger.info("********** Successfully Executed TestCase: Delete Host In Wave **********\n \n")
-                count += 1
-
-            elif operation.find("delete") != -1 and operation.find("single") != -1 and operation.find("wave") != -1:
-                waveName = sheet.cell(row=r, column=2).value
-                self.logger.info("********** Starting TestCase "+str(count)+": Delete Wave **********")
-                self.td.deleteWave(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
-                count += 1
-
-            elif operation.find("delete") != -1 and operation.find("replication") != -1 and (operation.find("wave") != -1 or operation.find("waves") != -1):
-                waveName = sheet.cell(row=r, column=2).value
-                self.logger.info("********** Starting TestCase "+str(count)+": Delete Wave **********")
-                self.td.deleteRepWaves(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
-                count += 1
-
-            elif operation.find("delete") != -1 and operation.find("DR") != -1 and (operation.find("wave") != -1 or operation.find("waves") != -1):
-                waveName = sheet.cell(row=r, column=2).value
-                self.logger.info("********** Starting TestCase "+str(count)+": Delete Wave **********")
-                self.td.deleteDrWaves(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
-                count += 1
-
-            elif operation.find("delete") != -1 and operation.find("dr") != -1 and (operation.find("policy") != -1 or operation.find("policies") != -1):
-                policyName = sheet.cell(row=r, column=4).value
-                self.logger.info("********** Starting TestCase "+str(count)+": Delete SSH Host Sync Entry **********")
-                self.td.deleteDRPolicy(policyName)
-                self.logger.info("********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********\n \n")
-                count += 1
-
-            elif operation.find("delete") != -1 and (operation.find("host") != -1 or operation.find("hosts") != -1):
-                hostNames = sheet.cell(row=r, column=3).value
-                VM = sheet.cell(row=r, column=7).value
-                environment = sheet.cell(row=r, column=8).value
-                name = sheet.cell(row=r, column=9).value
-                self.logger.info("********** Starting TestCase "+str(count)+": Delete Host In Wave **********")
-                self.td.deleteHost(hostNames, VM, environment, name)
-                self.logger.info("********** Successfully Executed TestCase: Delete Host In Wave **********\n \n")
                 count += 1
 
             else:

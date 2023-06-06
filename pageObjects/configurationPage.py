@@ -140,7 +140,7 @@ class Configuration:
 
         for r in range(st, ed+1):
             WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.XPATH, self.btn_add_id))
+                EC.element_to_be_clickable((By.ID, self.btn_add_id))
             )
             self.driver.find_element(By.ID, self.btn_add_id).click()
             WebDriverWait(self.driver, 10).until(
@@ -315,7 +315,7 @@ class Configuration:
                     self.driver.find_element(By.ID, self.txt_ZadaraRegion_id).send_keys(region)
 
                 WebDriverWait(self.driver, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, self.btn_confirm_id))
+                    EC.element_to_be_clickable((By.ID, self.btn_confirm_id))
                 )
                 self.driver.find_element(By.ID, self.btn_confirm_id).click()
                 WebDriverWait(self.driver, 10).until(
@@ -324,6 +324,8 @@ class Configuration:
                 note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
                 self.logger.info("********** Add New Clouduser Status For Clouduser: " + name + ",")
                 self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
             else:
                 self.logger.info("********** Failed To Open Pop-up Banner For "+name+" Clouduser **********")
 
@@ -380,6 +382,11 @@ class Configuration:
             password = sheet.cell(row=r, column=4).value
             portNumber = sheet.cell(row=r, column=5).value
 
+            val = self.findVCenter(name)
+            if val == 1:
+                self.logger.info("********** The vCenter With Name: " + name + " Was Already Present **********")
+                continue
+
             element = WebDriverWait(self.driver, 30).until(
                     EC.element_to_be_clickable((By.ID, self.btn_createVC_id))
             )
@@ -398,7 +405,7 @@ class Configuration:
                 if portNumber != "NA":
                     self.driver.find_element(By.ID, self.txt_VCPort_id).send_keys(portNumber)
                 WebDriverWait(self.driver, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, self.btn_addVC_id))
+                    EC.element_to_be_clickable((By.ID, self.btn_addVC_id))
                 )
                 self.driver.find_element(By.ID, self.btn_addVC_id).click()
                 WebDriverWait(self.driver, 10).until(
@@ -407,10 +414,13 @@ class Configuration:
                 note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
                 self.logger.info("********** Add New Clouduser Status For Clouduser: " + name + ",")
                 self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
             else:
                 self.logger.info("********** Add vCenter Pop-up Banner Is Not Opened For "+str(name)+" vCenter **********")
 
     def findVCenter(self, vcNames):
+        flag = 0
         conf_class = self.driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
         if conf_class == "ng-star-inserted":
             self.driver.find_element(By.LINK_TEXT, "Configuration").click()
@@ -421,9 +431,9 @@ class Configuration:
         if vc_class != "active":
             self.driver.find_element(By.LINK_TEXT, "vCenter").click()
             time.sleep(5)
-
+        res = tuple(map(str, vcNames.split(', ')))
         totalUser = len(self.driver.find_elements(By.XPATH, self.txt_totalUser_xpath))
-        for vcName in vcNames:
+        for vcName in res:
             for i in range(1, totalUser + 1):
                 if totalUser == 1:
                     tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span[1]').text
@@ -431,5 +441,7 @@ class Configuration:
                     tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[2]/span[1]').text
                 if tmp == vcName:
                     self.logger.info("********** Found The vCenter With Name: " + vcName + " At Location, " + str(i) + "**********")
+                    flag += 1
                 else:
                     self.logger.info("********** Failed To Found The vCenter With Name: " + vcName + " **********")
+        return flag

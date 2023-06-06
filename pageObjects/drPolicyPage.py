@@ -236,7 +236,7 @@ class DRPolicy:
                     else:
                         self.logger.info("********** Failed To Select Email Notification When Complete **********")
                 WebDriverWait(self.driver, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, self.btn_create_id))
+                    EC.element_to_be_clickable((By.ID, self.btn_create_id))
                 )
                 self.driver.find_element(By.ID, self.btn_create_id).click()
                 WebDriverWait(self.driver, 10).until(
@@ -245,6 +245,8 @@ class DRPolicy:
                 note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Create DR Policy Status For Policy : " + name + ",")
                 self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Create New DR Policy Pop-up Banner Is Not Opened **********")
         # time.sleep(5)
@@ -303,13 +305,16 @@ class DRPolicy:
                 if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                     self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
             tmp = len(self.driver.find_elements(By.XPATH, self.txt_noPolicy_xpath))
-            if tmp == 0:
+            if tmp != 0:
                 self.logger.info("********** Currently The Wave : " + waveName + ", Don't Have Any Policy **********")
             else:
                 currentPolicy = self.driver.find_element(By.XPATH, self.txt_assPolicyName_xpath).text
                 res = tuple(map(str, currentPolicy.split(' ')))
                 self.logger.info("********** Currently The Wave : " + waveName + ", Has Policy : " + res[0] + " Assigned To It **********")
-            self.driver.find_element(By.XPATH, self.txt_drPolicy_xpath).click()
+            ele1 = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, self.txt_drPolicy_xpath))
+            )
+            ele1.click()
             time.sleep(5)
             if len(self.driver.find_elements(By.XPATH, self.pop_policyAssignment_xpath)) != 0:
                 self.logger.info("********** Policy Assignment Pop-up Banner Is Opened For Wave, " + str(waveName) + " **********")
@@ -324,7 +329,7 @@ class DRPolicy:
                     if startNow:
                         self.driver.find_element(By.ID, self.ch_startPolicyNow_id).click()
                     WebDriverWait(self.driver, 10).until(
-                        EC.element_to_be_clickable((By.XPATH, self.btn_assignPolicy_id))
+                        EC.element_to_be_clickable((By.ID, self.btn_assignPolicy_id))
                     )
                     self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
                     WebDriverWait(self.driver, 10).until(
@@ -333,6 +338,11 @@ class DRPolicy:
                     note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                     self.logger.info("********** Assign DR Policy " + policyName + " To Wave " + waveName + ", Status : ")
                     self.logger.info(note + "\n")
+                    time.sleep(2)
+                    self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
+                    WebDriverWait(self.driver, 10).until(
+                        EC.presence_of_element_located((By.XPATH, self.txt_assPolicyName_xpath))
+                    )
                     currentPolicy = self.driver.find_element(By.XPATH, self.txt_assPolicyName_xpath).text
                     res = tuple(map(str, currentPolicy.split(' ')))
                     if policyName == res[0]:
@@ -410,6 +420,8 @@ class DRPolicy:
             note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
             self.logger.info("********** Start or Restart Status For Policy : " + policyName + ",")
             self.logger.info(note + "\n")
+            time.sleep(2)
+            self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         else:
             self.logger.info("********** Pop-up Banner For Resume Policy Was Not Opened For Policy: " + policyName + " **********")
         # if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
@@ -435,16 +447,12 @@ class DRPolicy:
         if val == 0:
             if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        if len(self.driver.find_elements(By.XPATH, self.val_waveOpen_xpath)) != 0:
-            self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
-            WebDriverWait(self.driver, 18000).until(
-                EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Idle" or "	Paused" or "Stopped")
-            )
-            co = CommonObjects(self.driver)
-            co.hostSyncState()
-            time.sleep(5)
-        else:
-            self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
+        WebDriverWait(self.driver, 18000).until(
+            EC.element_to_be_clickable((By.ID, self.btn_start_id))
+        )
+        co = CommonObjects(self.driver)
+        co.hostSyncState()
+        time.sleep(5)
 
     def pauseDRPolicy(self, policyName):
         dr_class = self.driver.find_element(By.XPATH, self.txt_dr_xpath).get_attribute("class")
@@ -491,6 +499,8 @@ class DRPolicy:
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
         self.logger.info("********** Pause Status For Policy : " + policyName + ",")
         self.logger.info(note + "\n")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         if totalDrPolicies == 1:
             WebDriverWait(self.driver, 18000).until(
                 EC.text_to_be_present_in_element((By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr/td[2]/span/span'), "Paused")
@@ -521,26 +531,25 @@ class DRPolicy:
         if val == 0:
             if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        if len(self.driver.find_elements(By.XPATH, self.val_waveOpen_xpath)) != 0:
-            self.logger.info("********** Wave : " + waveName + " Opened Successfully **********")
-            self.driver.find_element(By.ID, self.btn_failOver_id).click()
+        self.driver.find_element(By.ID, self.btn_failOver_id).click()
+        time.sleep(5)
+        if len(self.driver.find_elements(By.XPATH, self.pop_failOver_xpath)) != 0:
+            self.logger.info("********** Pop-up Banner Of Failover Was Opened **********")
+            if testMode:
+                self.driver.find_element(By.ID, self.ch_testMode_id).click()
+            self.driver.find_element(By.ID, self.btn_failoverYes_id).click()
+            WebDriverWait(self.driver, 18000).until(
+                EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Running Failover")
+            )
+            WebDriverWait(self.driver, 18000).until(
+                EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Failed Over")
+            )
             time.sleep(5)
-            if len(self.driver.find_elements(By.XPATH, self.pop_failOver_xpath)) != 0:
-                self.logger.info("********** Pop-up Banner Of Failover Was Opened **********")
-                if testMode:
-                    self.driver.find_element(By.ID, self.ch_testMode_id).click()
-                self.driver.find_element(By.ID, self.btn_failoverYes_id).click()
-                WebDriverWait(self.driver, 18000).until(
-                    EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Failed Over")
-                )
-                time.sleep(5)
-                co = CommonObjects(self.driver)
-                co.hostSyncState()
-                time.sleep(5)
-            else:
-                self.logger.info("********** Pop-up Banner Of Failover Was Not Opened **********")
+            co = CommonObjects(self.driver)
+            co.hostSyncState()
+            time.sleep(5)
         else:
-            self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
+            self.logger.info("********** Pop-up Banner Of Failover Was Not Opened **********")
         # if len(self.driver.find_elements(By.LINK_TEXT, "Policies")) != 0:
         #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
         #     time.sleep(5)

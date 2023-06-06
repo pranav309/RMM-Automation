@@ -94,3 +94,2684 @@ Trial1
 
 
 :
+06/04/23 07:/56:/59 PM: INFO: ********** Test_019_SecondFlow ********** :
+06/04/23 07:/56:/59 PM: INFO: ********** Opening Browser ********** :
+06/04/23 07:/57:/10 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/04/23 07:/57:/10 PM: INFO: ********** Logging In **********:
+06/04/23 07:/57:/17 PM: INFO: ********** Login Successful **********:
+06/04/23 07:/57:/17 PM: INFO: ********** Login Successful **********
+ 
+:
+06/04/23 07:/57:/17 PM: INFO: ********** Starting TestCase 1: Create New Wave With Host **********:
+06/04/23 07:/57:/26 PM: INFO: ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/04/23 07:/57:/26 PM: INFO: ********** Creating No. 1 Wave With Target Type Autoprovision **********:
+06/04/23 07:/57:/32 PM: INFO: ********** Create New Wave Status of Wave : First Flow,:
+06/04/23 07:/57:/32 PM: INFO: Added machine 172.29.31.111 to wave
+First Flow
+:
+06/04/23 07:/57:/32 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Host **********
+ 
+:
+06/04/23 07:/57:/32 PM: INFO: ********** Starting TestCase 2: Add New Hosts To Wave **********:
+06/04/23 07:/57:/47 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/04/23 07:/57:/55 PM: INFO: ********** Add New Host Pop-up Banner Was Opened For Wave, First Flow **********:
+06/04/23 07:/57:/58 PM: INFO: ********** Add New Host Status of Wave : First Flow,:
+06/04/23 07:/57:/58 PM: INFO: Added machine 172.29.31.183 to wave
+First Flow
+:
+06/04/23 07:/57:/58 PM: INFO: ********** Successfully Executed TestCase: Add New Hosts To Wave **********
+ 
+:
+06/04/23 07:/57:/58 PM: INFO: ********** Starting TestCase 3: Bulk Edit Sync Options **********:
+06/04/23 07:/58:/08 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 07:/58:/13 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 07:/58:/14 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/04/23 07:/58:/14 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/04/23 07:/58:/16 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : First Flow,:
+06/04/23 07:/58:/16 PM: INFO: Successfully modified First Flow
+:
+06/04/23 07:/58:/20 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/04/23 07:/58:/20 PM: INFO: ********** Starting TestCase 4: Set Autoprovision **********:
+06/04/23 07:/58:/25 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 07:/58:/30 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 07:/58:/38 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/04/23 07:/58:/38 PM: INFO: Successfully edited cloud
+First Flow
+:
+06/04/23 07:/58:/49 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/04/23 07:/58:/49 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/04/23 07:/58:/52 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/04/23 07:/58:/59 PM: INFO: ********** Successfully Added NIC For Wave : First Flow **********:
+06/04/23 07:/59:/03 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/04/23 07:/59:/03 PM: INFO: Successfully modified First Flow
+:
+06/04/23 07:/59:/03 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/04/23 07:/59:/03 PM: INFO: ********** Starting TestCase 5: Set Parallel Count **********:
+06/04/23 07:/59:/08 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 07:/59:/08 PM: INFO: ********** Set Parallel Count To Wave: First Flow, Status : :
+06/04/23 07:/59:/08 PM: INFO: Successfully modified First Flow
+:
+06/04/23 07:/59:/08 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/04/23 07:/59:/08 PM: INFO: ********** Starting TestCase 6: Start Wave And Verify **********:
+06/04/23 07:/59:/13 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 07:/59:/13 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/04/23 07:/59:/13 PM: INFO: Updated parallel count to 2
+:
+06/04/23 08:/17:/47 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/04/23 08:/17:/47 PM: INFO: ********** Starting TestCase 7: Verify Sync Success Or Fail Details **********:
+06/04/23 08:/17:/52 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 08:/17:/52 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/04/23 08:/17:/52 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/04/23 08:/17:/52 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/04/23 08:/17:/52 PM: INFO: ********** Starting TestCase 8: Verify Sync System And Summary Details **********:
+06/04/23 08:/17:/57 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 08:/17:/58 PM: INFO: ********** Total Available Hosts : 2 ,:
+06/04/23 08:/17:/58 PM: INFO: ********** Sync Details For Host No. 1 : psp-MyLinFirstFlow-src1 ,:
+06/04/23 08:/18:/03 PM: INFO: ********** Summary Details : :
+06/04/23 08:/18:/03 PM: INFO: ********** Summary Details Was Opened **********:
+06/04/23 08:/18:/13 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/04/23 08:/18:/13 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/04/23 08:/18:/13 PM: INFO: ********** OS: Linux **********:
+06/04/23 08:/18:/13 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/04/23 08:/18:/18 PM: INFO: ********** Systems Details : :
+06/04/23 08:/18:/23 PM: INFO: ********** System Details Was Opened **********:
+06/04/23 08:/18:/29 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/04/23 08:/18:/29 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/04/23 08:/18:/29 PM: INFO: ********** OS: Linux **********:
+06/04/23 08:/18:/29 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/04/23 08:/18:/29 PM: INFO: ********** Sync Details For Host No. 2 : psp-MyLinFirstFlow-src2 ,:
+06/04/23 08:/18:/34 PM: INFO: ********** Summary Details : :
+06/04/23 08:/18:/34 PM: INFO: ********** Summary Details Was Opened **********:
+06/04/23 08:/18:/44 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/04/23 08:/18:/44 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/04/23 08:/18:/44 PM: INFO: ********** OS: Linux **********:
+06/04/23 08:/18:/44 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/04/23 08:/18:/49 PM: INFO: ********** Systems Details : :
+06/04/23 08:/18:/55 PM: INFO: ********** System Details Was Opened **********:
+06/04/23 08:/19:/00 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/04/23 08:/19:/00 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/04/23 08:/19:/00 PM: INFO: ********** OS: Linux **********:
+06/04/23 08:/19:/00 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/04/23 08:/19:/00 PM: INFO: ********** Successfully Executed TestCase: Verify Sync System And Summary Details **********
+ 
+:
+06/04/23 08:/19:/00 PM: INFO: ********** Starting TestCase 9: Create New DR Policy **********:
+06/04/23 08:/19:/09 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/04/23 08:/19:/12 PM: INFO: ********** Selected Periodicity Type: Continuous **********:
+06/04/23 08:/19:/13 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/04/23 08:/19:/13 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/04/23 08:/19:/15 PM: INFO: ********** Create DR Policy Status For Policy : firstFlow,:
+06/04/23 08:/19:/15 PM: INFO: Successfully created DR Policy firstFlow
+:
+06/04/23 08:/19:/15 PM: INFO: ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
+:
+06/04/23 08:/19:/15 PM: INFO: ********** Starting TestCase 10: Assign DR Policy To Wave **********:
+06/04/23 08:/19:/52 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/04/23 08:/19:/52 PM: INFO: ********** Currently The Wave : First Flow, Don't Have Any Policy **********:
+06/04/23 08:/19:/57 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 08:/20:/07 PM: INFO: ********** Assign DR Policy firstFlow To Wave First Flow, Status : :
+06/04/23 08:/20:/07 PM: INFO: Successfully applied DR Policy firstFlow to First Flow
+:
+06/04/23 08:/20:/09 PM: INFO: ********** Policy : firstFlow, Added To The Wave : First Flow **********:
+06/04/23 08:/20:/17 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/04/23 08:/20:/17 PM: INFO: ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+:
+06/04/23 08:/20:/17 PM: INFO: ********** Starting TestCase 11: Resume Policy **********:
+06/04/23 08:/20:/28 PM: INFO: ********** Pop-up Banner For Resume Policy Was Opened For Policy: firstFlow **********:
+06/04/23 08:/20:/30 PM: INFO: ********** Start or Restart Status For Policy : firstFlow,:
+06/04/23 08:/20:/30 PM: INFO: Successfully resumed DR Policy: firstFlow
+:
+06/04/23 08:/20:/30 PM: INFO: ********** Successfully Executed TestCase: Resume Policy **********
+ 
+:
+06/04/23 08:/20:/30 PM: INFO: ********** Starting TestCase 12: Pause DR Policy **********:
+06/04/23 08:/20:/40 PM: INFO: ********** Policy : firstFlow, Is In Active State **********:
+06/04/23 08:/20:/40 PM: INFO: ********** Pausing The DR Policy **********:
+06/04/23 08:/20:/41 PM: INFO: ********** Pause Status For Policy : firstFlow,:
+06/04/23 08:/20:/41 PM: INFO: Successfully resumed DR Policy: firstFlow
+:
+06/04/23 08:/20:/46 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/04/23 08:/20:/46 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/04/23 08:/20:/46 PM: INFO: ********** Starting TestCase 13: Check DR Policy Host Sync Status **********:
+06/04/23 08:/21:/07 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/04/23 08:/35:/52 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/04/23 08:/35:/52 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/04/23 08:/35:/57 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********
+ 
+:
+06/04/23 08:/35:/57 PM: INFO: ********** Starting TestCase 14: Change Target Type **********:
+06/04/23 08:/36:/02 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 08:/36:/08 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 08:/36:/10 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src1,:
+06/04/23 08:/36:/10 PM: INFO: Successfully modified 172.29.31.111
+:
+06/04/23 08:/36:/20 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 08:/36:/25 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 08:/36:/27 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src2,:
+06/04/23 08:/36:/27 PM: INFO: Successfully modified 172.29.31.183
+:
+06/04/23 08:/36:/32 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/04/23 08:/36:/32 PM: INFO: ********** Starting TestCase 15: Perform Tear Down **********:
+06/04/23 08:/36:/37 PM: INFO: ********** Starting TestCase 15.1: Delete SSH Host Sync Entry **********:
+06/04/23 08:/36:/38 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 08:/36:/40 PM: INFO: Authentication (password) successful!:
+06/04/23 08:/36:/41 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 08:/36:/41 PM: INFO: ********** Starting TestCase 15.2: Delete SSH Host Sync Entry **********:
+06/04/23 08:/36:/41 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 08:/36:/43 PM: INFO: Authentication (password) successful!:
+06/04/23 08:/36:/45 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 08:/36:/45 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/04/23 08:/36:/45 PM: INFO: ********** Starting TestCase 16: Start Wave And Verify **********:
+06/04/23 08:/36:/50 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 08:/36:/51 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/04/23 08:/36:/51 PM: INFO: Wave Started
+First Flow
+:
+06/04/23 08:/37:/22 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/04/23 08:/37:/22 PM: INFO: ********** Starting TestCase 17: Verify Sync Success Or Fail Details **********:
+06/04/23 08:/37:/27 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 08:/37:/27 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/04/23 08:/37:/27 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/04/23 08:/37:/27 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/04/23 08:/37:/27 PM: INFO: ********** Starting TestCase 18: Failover Host **********:
+06/04/23 08:/37:/32 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 08:/37:/32 PM: INFO: ********** Wave : First Flow Opened Successfully **********:
+06/04/23 08:/37:/37 PM: INFO: ********** Pop-up Banner Of Failover Was Opened **********:
+06/04/23 08:/42:/38 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/04/23 08:/42:/38 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/04/23 08:/42:/43 PM: INFO: ********** Successfully Executed TestCase: Failover Host **********
+ 
+:
+06/04/23 08:/54:/20 PM: INFO: ********** Starting TestCase 19: Perform Tear Down **********:
+06/04/23 08:/54:/25 PM: INFO: ********** Starting TestCase 19.1: Delete Wave **********:
+06/04/23 08:/54:/48 PM: INFO: ********** Delete Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/04/23 08:/54:/50 PM: INFO: ********** Delete Wave Status of Wave : First Flow,:
+06/04/23 08:/54:/50 PM: INFO: Wave Deleted
+First Flow successfully deleted.
+:
+06/04/23 08:/54:/55 PM: INFO: ********** Successfully Executed TestCase: Delete Wave **********
+ 
+:
+06/04/23 08:/54:/55 PM: INFO: ********** Starting TestCase 19.2: Delete SSH Host Sync Entry **********:
+06/04/23 08:/55:/08 PM: INFO: ********** Delete Policy Pop Up Banner Was Opened **********:
+06/04/23 08:/55:/10 PM: INFO: ********** Delete Policy Status, :
+06/04/23 08:/55:/10 PM: INFO: Successfully deleted DR Policy
+firstFlow
+:
+06/04/23 08:/55:/10 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 08:/55:/10 PM: INFO: ********** Starting TestCase 19.3: Delete Source Host **********:
+06/04/23 08:/55:/26 PM: INFO: ********** Delete Host Pop Up Banner Was Opened **********:
+06/04/23 08:/55:/27 PM: INFO: ********** Delete Status For Hosts,:
+06/04/23 08:/55:/27 PM: INFO: Successfully deleted host psp-MyLinFirstFlow-src1
+:
+06/04/23 08:/55:/27 PM: INFO: ********** Successfully Executed TestCase: Delete Source Host **********
+
+06/04/23 09:/14:/56 PM: INFO: ********** Starting TestCase 19.4: Delete Target Host **********:
+06/04/23 09:/15:/13 PM: INFO: ********** Delete Host Pop Up Banner Was Opened **********:
+06/04/23 09:/15:/20 PM: INFO: ********** Failed To Delete Target Hosts **********:
+06/04/23 09:/15:/20 PM: INFO: ********** Successfully Executed TestCase: Delete Target Host **********
+ 
+:
+06/04/23 09:/15:/20 PM: INFO: ********** Starting TestCase 19.5: Delete SSH Host Sync Entry **********:
+06/04/23 09:/15:/21 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 09:/15:/22 PM: INFO: Authentication (password) successful!:
+06/04/23 09:/15:/23 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 09:/15:/23 PM: INFO: ********** Starting TestCase 19.6: Delete SSH Host Sync Entry **********:
+06/04/23 09:/15:/24 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 09:/15:/26 PM: INFO: Authentication (password) successful!:
+06/04/23 09:/15:/27 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 09:/15:/27 PM: INFO: ********** Starting TestCase 19.7: Delete SSH Host Sync Entry **********:
+06/04/23 09:/15:/27 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 09:/15:/29 PM: INFO: Authentication (password) successful!:
+06/04/23 09:/15:/30 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 09:/15:/30 PM: INFO: ********** Starting TestCase 19.8: Delete SSH Host Sync Entry **********:
+06/04/23 09:/15:/30 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 09:/15:/32 PM: INFO: Authentication (password) successful!:
+06/04/23 09:/15:/33 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 09:/15:/33 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/04/23 09:/15:/39 PM: INFO: ********** Logout Successful **********:
+06/04/23 09:/15:/39 PM: INFO: ********** Logout Successful **********:
+06/04/23 09:/15:/46 PM: INFO: ********** Browser Closed Successfully **********:
+06/04/23 09:/15:/46 PM: INFO: 
+:
+06/04/23 09:/15:/46 PM: INFO: Timestamp: 2023-06-04 21:15:46:
+06/04/23 09:/15:/46 PM: INFO: 
+ 
+ 
+:
+06/04/23 10:/36:/58 PM: INFO: ********** Test_000_OneForAll ********** :
+06/04/23 10:/36:/58 PM: INFO: ********** Opening Browser ********** :
+06/04/23 10:/37:/14 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/04/23 10:/37:/14 PM: INFO: ********** Logging In **********:
+06/04/23 10:/37:/23 PM: INFO: ********** Login Successful **********:
+06/04/23 10:/37:/23 PM: INFO: ********** Login Successful **********
+ 
+:
+06/04/23 10:/37:/23 PM: INFO: ********** Starting TestCase 1: Create New Wave With Host **********:
+06/04/23 10:/37:/32 PM: INFO: ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/04/23 10:/37:/32 PM: INFO: ********** Creating No. 1 Wave With Target Type Autoprovision **********:
+06/04/23 10:/37:/37 PM: INFO: ********** Create New Wave Status of Wave : First Flow,:
+06/04/23 10:/37:/37 PM: INFO: Added machine 172.29.31.111 to wave
+First Flow
+:
+06/04/23 10:/37:/37 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Host **********
+ 
+:
+06/04/23 10:/37:/37 PM: INFO: ********** Starting TestCase 2: Add New Hosts To Wave **********:
+06/04/23 10:/37:/53 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/04/23 10:/38:/02 PM: INFO: ********** Add New Host Pop-up Banner Was Opened For Wave, First Flow **********:
+06/04/23 10:/38:/04 PM: INFO: ********** Add New Host Status of Wave : First Flow,:
+06/04/23 10:/38:/04 PM: INFO: Added machine 172.29.31.183 to wave
+First Flow
+:
+06/04/23 10:/38:/04 PM: INFO: ********** Successfully Executed TestCase: Add New Hosts To Wave **********
+ 
+:
+06/04/23 10:/38:/04 PM: INFO: ********** Starting TestCase 3: Bulk Edit Sync Options **********:
+06/04/23 10:/38:/15 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 10:/38:/21 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 10:/38:/21 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/04/23 10:/38:/21 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/04/23 10:/38:/23 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : First Flow,:
+06/04/23 10:/38:/23 PM: INFO: Successfully modified First Flow
+:
+06/04/23 10:/38:/30 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/04/23 10:/38:/30 PM: INFO: ********** Starting TestCase 4: Set Autoprovision **********:
+06/04/23 10:/38:/35 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 10:/38:/40 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 10:/38:/48 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/04/23 10:/38:/48 PM: INFO: Successfully edited cloud
+First Flow
+:
+06/04/23 10:/38:/59 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/04/23 10:/38:/59 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/04/23 10:/39:/02 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/04/23 10:/39:/09 PM: INFO: ********** Successfully Added NIC For Wave : First Flow **********:
+06/04/23 10:/39:/13 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/04/23 10:/39:/13 PM: INFO: Successfully modified First Flow
+:
+06/04/23 10:/39:/13 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/04/23 10:/39:/13 PM: INFO: ********** Starting TestCase 5: Set Parallel Count **********:
+06/04/23 10:/39:/18 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 10:/39:/20 PM: INFO: ********** Set Parallel Count To Wave: First Flow, Status : :
+06/04/23 10:/39:/20 PM: INFO: Updated parallel count to 2
+:
+06/04/23 10:/39:/20 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/04/23 10:/39:/20 PM: INFO: ********** Starting TestCase 6: Start Wave And Verify **********:
+06/04/23 10:/39:/25 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 10:/39:/26 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/04/23 10:/39:/26 PM: INFO: Wave Started
+First Flow
+:
+06/04/23 10:/57:/59 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/04/23 10:/57:/59 PM: INFO: ********** Starting TestCase 7: Verify Sync Success Or Fail Details **********:
+06/04/23 10:/58:/04 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 10:/58:/04 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/04/23 10:/58:/04 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/04/23 10:/58:/04 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/04/23 10:/58:/04 PM: INFO: ********** Starting TestCase 8: Verify Sync System And Summary Details **********:
+06/04/23 10:/58:/09 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 10:/58:/09 PM: INFO: ********** Total Available Hosts : 2 ,:
+06/04/23 10:/58:/10 PM: INFO: ********** Sync Details For Host No. 1 : psp-MyLinFirstFlow-src1 ,:
+06/04/23 10:/58:/15 PM: INFO: ********** Summary Details : :
+06/04/23 10:/58:/15 PM: INFO: ********** Summary Details Was Opened **********:
+06/04/23 10:/58:/25 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/04/23 10:/58:/25 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/04/23 10:/58:/25 PM: INFO: ********** OS: Linux **********:
+06/04/23 10:/58:/25 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/04/23 10:/58:/30 PM: INFO: ********** Systems Details : :
+06/04/23 10:/58:/35 PM: INFO: ********** System Details Was Opened **********:
+06/04/23 10:/58:/40 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/04/23 10:/58:/40 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/04/23 10:/58:/40 PM: INFO: ********** OS: Linux **********:
+06/04/23 10:/58:/40 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/04/23 10:/58:/41 PM: INFO: ********** Sync Details For Host No. 2 : psp-MyLinFirstFlow-src2 ,:
+06/04/23 10:/58:/46 PM: INFO: ********** Summary Details : :
+06/04/23 10:/58:/46 PM: INFO: ********** Summary Details Was Opened **********:
+06/04/23 10:/59:/05 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/04/23 10:/59:/06 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/04/23 10:/59:/06 PM: INFO: ********** OS: Linux **********:
+06/04/23 10:/59:/06 PM: INFO: ********** OS Version:  **********:
+06/04/23 10:/59:/11 PM: INFO: ********** Systems Details : :
+06/04/23 10:/59:/19 PM: INFO: ********** System Details Was Opened **********:
+06/04/23 10:/59:/24 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/04/23 10:/59:/24 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/04/23 10:/59:/24 PM: INFO: ********** OS: Linux **********:
+06/04/23 10:/59:/24 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/04/23 10:/59:/25 PM: INFO: ********** Successfully Executed TestCase: Verify Sync System And Summary Details **********
+ 
+:
+06/04/23 10:/59:/25 PM: INFO: ********** Starting TestCase 9: Create New DR Policy **********:
+06/04/23 10:/59:/38 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/04/23 10:/59:/41 PM: INFO: ********** Selected Periodicity Type: Continuous **********:
+06/04/23 10:/59:/42 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/04/23 10:/59:/42 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/04/23 10:/59:/50 PM: INFO: ********** Create DR Policy Status For Policy : firstFlow,:
+06/04/23 10:/59:/50 PM: INFO: Successfully created DR Policy firstFlow
+:
+06/04/23 10:/59:/50 PM: INFO: ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
+:
+06/04/23 10:/59:/50 PM: INFO: ********** Starting TestCase 10: Assign DR Policy To Wave **********:
+06/04/23 11:/00:/32 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/04/23 11:/00:/36 PM: INFO: ********** Currently The Wave : First Flow, Don't Have Any Policy **********:
+06/04/23 11:/00:/45 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 11:/00:/59 PM: INFO: ********** Assign DR Policy firstFlow To Wave First Flow, Status : :
+06/04/23 11:/00:/59 PM: INFO: Successfully applied DR Policy firstFlow to First Flow
+:
+06/04/23 11:/01:/00 PM: INFO: ********** Failed To Add Policy : firstFlow, To The Wave : First Flow **********:
+06/04/23 11:/01:/00 PM: INFO: ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+:
+06/04/23 11:/01:/00 PM: INFO: ********** Starting TestCase 11: Resume Policy **********:
+06/04/23 11:/01:/14 PM: INFO: ********** Pop-up Banner For Resume Policy Was Opened For Policy: firstFlow **********:
+06/04/23 11:/01:/23 PM: INFO: ********** Start or Restart Status For Policy : firstFlow,:
+06/04/23 11:/01:/23 PM: INFO: Successfully resumed DR Policy: firstFlow
+:
+06/04/23 11:/01:/23 PM: INFO: ********** Successfully Executed TestCase: Resume Policy **********
+ 
+:
+06/04/23 11:/01:/24 PM: INFO: ********** Starting TestCase 12: Pause DR Policy **********:
+06/04/23 11:/01:/38 PM: INFO: ********** Policy : firstFlow, Is In Active State **********:
+06/04/23 11:/01:/38 PM: INFO: ********** Pausing The DR Policy **********:
+06/04/23 11:/01:/41 PM: INFO: ********** Pause Status For Policy : firstFlow,:
+06/04/23 11:/01:/41 PM: INFO: Successfully paused DR Policy
+firstFlow
+:
+06/04/23 11:/01:/46 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/04/23 11:/01:/46 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/04/23 11:/01:/46 PM: INFO: ********** Starting TestCase 13: Check DR Policy Host Sync Status **********:
+06/04/23 11:/02:/07 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/04/23 11:/06:/24 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/04/23 11:/06:/24 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/04/23 11:/06:/29 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********
+ 
+:
+06/04/23 11:/06:/29 PM: INFO: ********** Starting TestCase 14: Change Target Type **********:
+06/04/23 11:/06:/34 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 11:/06:/40 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 11:/06:/42 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src1,:
+06/04/23 11:/06:/42 PM: INFO: Successfully modified 172.29.31.111
+:
+06/04/23 11:/06:/52 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 11:/06:/57 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/04/23 11:/07:/00 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src2,:
+06/04/23 11:/07:/00 PM: INFO: Successfully modified 172.29.31.183
+:
+06/04/23 11:/07:/05 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/04/23 11:/07:/05 PM: INFO: ********** Starting TestCase 15: Perform Tear Down **********:
+06/04/23 11:/07:/10 PM: INFO: ********** Starting TestCase 15.1: Delete SSH Host Sync Entry **********:
+06/04/23 11:/07:/11 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 11:/07:/13 PM: INFO: Authentication (password) successful!:
+06/04/23 11:/07:/14 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 11:/07:/14 PM: INFO: ********** Starting TestCase 15.2: Delete SSH Host Sync Entry **********:
+06/04/23 11:/07:/14 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 11:/07:/16 PM: INFO: Authentication (password) successful!:
+06/04/23 11:/07:/17 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 11:/07:/17 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/04/23 11:/07:/17 PM: INFO: ********** Starting TestCase 16: Start Wave And Verify **********:
+06/04/23 11:/07:/22 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 11:/07:/24 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/04/23 11:/07:/24 PM: INFO: Wave Started
+First Flow
+:
+06/04/23 11:/07:/30 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/04/23 11:/07:/30 PM: INFO: ********** Starting TestCase 17: Verify Sync Success Or Fail Details **********:
+06/04/23 11:/07:/35 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 11:/07:/35 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/04/23 11:/07:/35 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/04/23 11:/07:/35 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/04/23 11:/07:/35 PM: INFO: ********** Starting TestCase 18: Failover Host **********:
+06/04/23 11:/07:/40 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/04/23 11:/07:/40 PM: INFO: ********** Wave : First Flow Opened Successfully **********:
+06/04/23 11:/07:/45 PM: INFO: ********** Pop-up Banner Of Failover Was Opened **********:
+06/04/23 11:/08:/01 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/04/23 11:/08:/01 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/04/23 11:/08:/06 PM: INFO: ********** Successfully Executed TestCase: Failover Host **********
+ 
+:
+06/04/23 11:/08:/06 PM: INFO: ********** Starting TestCase 19: Perform Tear Down **********:
+06/04/23 11:/08:/11 PM: INFO: ********** Starting TestCase 19.1: Delete Wave **********:
+06/04/23 11:/08:/42 PM: INFO: ********** Delete Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/04/23 11:/08:/44 PM: INFO: ********** Delete Wave Status of Wave : First Flow,:
+06/04/23 11:/08:/44 PM: INFO: Wave Deleted
+First Flow successfully deleted.
+:
+06/04/23 11:/08:/49 PM: INFO: ********** Successfully Executed TestCase: Delete Wave **********
+ 
+:
+06/04/23 11:/08:/49 PM: INFO: ********** Starting TestCase 19.2: Delete SSH Host Sync Entry **********:
+06/04/23 11:/09:/02 PM: INFO: ********** Delete Policy Pop Up Banner Was Opened **********:
+06/04/23 11:/09:/05 PM: INFO: ********** Delete Policy Status, :
+06/04/23 11:/09:/05 PM: INFO: Successfully deleted DR Policy
+firstFlow
+:
+06/04/23 11:/09:/05 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 11:/09:/05 PM: INFO: ********** Starting TestCase 19.3: Delete Source Host **********:
+06/04/23 11:/09:/21 PM: INFO: ********** Delete Host Pop Up Banner Was Opened **********:
+06/04/23 11:/09:/23 PM: INFO: ********** Delete Status For Hosts,:
+06/04/23 11:/09:/23 PM: INFO: Successfully deleted host psp-MyLinFirstFlow-src1
+:
+06/04/23 11:/09:/23 PM: INFO: ********** Successfully Executed TestCase: Delete Source Host **********
+ 
+:
+06/04/23 11:/09:/23 PM: INFO: ********** Starting TestCase 19.4: Delete Target Host **********:
+06/04/23 11:/09:/31 PM: INFO: ********** Delete Host Pop Up Banner Was Opened **********:
+06/04/23 11:/09:/48 PM: INFO: ********** Failed To Delete Target Hosts **********:
+06/04/23 11:/09:/48 PM: INFO: ********** Successfully Executed TestCase: Delete Target Host **********
+ 
+:
+06/04/23 11:/09:/48 PM: INFO: ********** Starting TestCase 19.5: Delete SSH Host Sync Entry **********:
+06/04/23 11:/09:/49 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 11:/09:/51 PM: INFO: Authentication (password) successful!:
+06/04/23 11:/09:/52 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 11:/09:/52 PM: INFO: ********** Starting TestCase 19.6: Delete SSH Host Sync Entry **********:
+06/04/23 11:/09:/52 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 11:/09:/55 PM: INFO: Authentication (password) successful!:
+06/04/23 11:/09:/55 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 11:/09:/55 PM: INFO: ********** Starting TestCase 19.7: Delete SSH Host Sync Entry **********:
+06/04/23 11:/09:/56 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 11:/09:/58 PM: INFO: Authentication (password) successful!:
+06/04/23 11:/09:/59 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 11:/09:/59 PM: INFO: ********** Starting TestCase 19.8: Delete SSH Host Sync Entry **********:
+06/04/23 11:/10:/00 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/04/23 11:/10:/01 PM: INFO: Authentication (password) successful!:
+06/04/23 11:/10:/02 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/04/23 11:/10:/02 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/04/23 11:/10:/08 PM: INFO: ********** Logout Successful **********:
+06/04/23 11:/10:/08 PM: INFO: ********** Logout Successful **********:
+06/04/23 11:/10:/10 PM: INFO: ********** Browser Closed Successfully **********:
+06/04/23 11:/10:/10 PM: INFO: 
+:
+06/04/23 11:/10:/10 PM: INFO: Timestamp: 2023-06-04 23:10:10:
+06/04/23 11:/10:/10 PM: INFO: 
+ 
+ 
+:
+06/05/23 04:/44:/04 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 04:/44:/04 PM: INFO: ********** Opening Browser ********** :
+06/05/23 04:/44:/17 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 04:/44:/17 PM: INFO: ********** Logging In **********:
+06/05/23 04:/44:/24 PM: INFO: ********** Login Successful **********:
+06/05/23 04:/44:/24 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 04:/44:/24 PM: INFO: ********** Starting TestCase 1: Delete Sync Relation Data From RMM SSH Of Wave **********:
+06/05/23 04:/44:/39 PM: INFO: ********** Wave : Existing Systems Was Opened Successfully **********:
+06/05/23 04:/44:/40 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 04:/44:/43 PM: INFO: Authentication (password) successful!:
+06/05/23 04:/44:/44 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 04:/44:/46 PM: INFO: Authentication (password) successful!:
+06/05/23 04:/44:/48 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 04:/44:/49 PM: INFO: Authentication (password) successful!:
+06/05/23 04:/44:/51 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 04:/44:/52 PM: INFO: Authentication (password) successful!:
+06/05/23 04:/44:/54 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 04:/44:/56 PM: INFO: Authentication (password) successful!:
+06/05/23 04:/44:/58 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 04:/44:/59 PM: INFO: Authentication (password) successful!:
+06/05/23 04:/45:/00 PM: INFO: ********** Successfully Executed TestCase: Delete Sync Relation Data From RMM SSH Of Wave **********
+ 
+:
+06/05/23 04:/45:/07 PM: INFO: ********** Logout Successful **********:
+06/05/23 04:/45:/07 PM: INFO: ********** Logout Successful **********:
+06/05/23 04:/45:/12 PM: INFO: ********** Browser Closed Successfully **********:
+06/05/23 04:/45:/12 PM: INFO: 
+:
+06/05/23 04:/45:/12 PM: INFO: Timestamp: 2023-06-05 16:45:12:
+06/05/23 04:/45:/12 PM: INFO: 
+ 
+ 
+:
+06/05/23 05:/11:/53 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 05:/11:/53 PM: INFO: ********** Opening Browser ********** :
+06/05/23 05:/12:/08 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+
+
+
+
+
+
+
+
+
+
+06/05/23 07:/10:/07 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 07:/10:/07 PM: INFO: ********** Opening Browser ********** :
+06/05/23 07:/10:/18 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 07:/10:/18 PM: INFO: ********** Logging In **********:
+06/05/23 07:/10:/25 PM: INFO: ********** Login Successful **********:
+06/05/23 07:/10:/25 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 07:/10:/25 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+06/05/23 07:/10:/31 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
+06/05/23 07:/10:/38 PM: INFO: ********** Create Status of Wave Name, :
+06/05/23 07:/10:/38 PM: INFO: Failed to add wave Second Flow
+:
+06/05/23 07:/10:/40 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+ 
+:
+06/05/23 07:/10:/40 PM: INFO: ********** Starting TestCase 2: Create New vCenter **********:
+06/05/23 07:/10:/51 PM: INFO: ********** Found The vCenter With Name: hcm_vc At Location, 1**********:
+06/05/23 07:/10:/51 PM: INFO: ********** The vCenter With Name: hcm_vc Was Already Present **********:
+06/05/23 07:/10:/51 PM: INFO: ********** Successfully Executed TestCase: Create New vCenter **********
+ 
+:
+06/05/23 07:/10:/51 PM: INFO: ********** Starting TestCase 3: Set Autoprovision **********:
+06/05/23 07:/11:/14 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 07:/11:/20 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/11:/28 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/05/23 07:/11:/28 PM: INFO: Successfully edited cloud
+Second Flow
+:
+06/05/23 07:/11:/41 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/11:/41 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/11:/44 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/11:/51 PM: INFO: ********** Successfully Added NIC For Wave : Second Flow **********:
+06/05/23 07:/11:/55 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/05/23 07:/11:/55 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/11:/57 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/05/23 07:/11:/57 PM: INFO: ********** Starting TestCase 4: Bulk Edit Sync Options **********:
+06/05/23 07:/12:/07 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/12:/13 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/12:/13 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/05/23 07:/12:/13 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/05/23 07:/12:/13 PM: INFO: ********** Sync Option 'No Transfer' is set as yes **********:
+06/05/23 07:/12:/16 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/12:/16 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/12:/29 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/12:/35 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/12:/36 PM: INFO: ********** Sync Option 'Transfer Compress' is set as yes **********:
+06/05/23 07:/12:/36 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/05/23 07:/12:/38 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/12:/38 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/12:/47 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/05/23 07:/12:/47 PM: INFO: ********** Starting TestCase 5: Set Sync Options **********:
+06/05/23 07:/12:/57 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/13:/02 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 07:/13:/07 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 07:/13:/08 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/05/23 07:/13:/08 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/05/23 07:/13:/09 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/13:/09 PM: INFO: Successfully modified 172.29.31.111
+:
+06/05/23 07:/18:/21 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 07:/18:/21 PM: INFO: ********** Opening Browser ********** :
+06/05/23 07:/18:/33 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 07:/18:/33 PM: INFO: ********** Logging In **********:
+06/05/23 07:/18:/40 PM: INFO: ********** Login Successful **********:
+06/05/23 07:/18:/40 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 07:/18:/40 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+06/05/23 07:/18:/45 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
+06/05/23 07:/18:/54 PM: INFO: ********** Create Status of Wave Name, :
+06/05/23 07:/18:/54 PM: INFO: Wave Add
+Second Flow successfully added.
+:
+06/05/23 07:/18:/57 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+ 
+:
+06/05/23 07:/18:/57 PM: INFO: ********** Starting TestCase 2: Create New vCenter **********:
+06/05/23 07:/19:/09 PM: INFO: ********** Found The vCenter With Name: hcm_vc At Location, 1**********:
+06/05/23 07:/19:/09 PM: INFO: ********** The vCenter With Name: hcm_vc Was Already Present **********:
+06/05/23 07:/19:/09 PM: INFO: ********** Successfully Executed TestCase: Create New vCenter **********
+ 
+:
+06/05/23 07:/19:/09 PM: INFO: ********** Starting TestCase 3: Set Autoprovision **********:
+06/05/23 07:/19:/32 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 07:/19:/37 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/19:/44 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/05/23 07:/19:/44 PM: INFO: Successfully edited cloud
+Second Flow
+:
+06/05/23 07:/19:/57 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/19:/57 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/20:/01 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/20:/07 PM: INFO: ********** Successfully Added NIC For Wave : Second Flow **********:
+06/05/23 07:/20:/11 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/05/23 07:/20:/11 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/20:/13 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/05/23 07:/20:/13 PM: INFO: ********** Starting TestCase 4: Bulk Edit Sync Options **********:
+06/05/23 07:/20:/23 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/20:/29 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/20:/29 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/05/23 07:/20:/30 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/05/23 07:/20:/30 PM: INFO: ********** Sync Option 'No Transfer' is set as yes **********:
+06/05/23 07:/20:/31 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/20:/31 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/20:/45 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/20:/51 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/20:/51 PM: INFO: ********** Sync Option 'Transfer Compress' is set as yes **********:
+06/05/23 07:/20:/51 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/05/23 07:/20:/54 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/20:/54 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/21:/02 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/05/23 07:/21:/02 PM: INFO: ********** Starting TestCase 5: Set Sync Options **********:
+06/05/23 07:/21:/12 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/21:/17 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 07:/21:/23 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 07:/21:/23 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/05/23 07:/21:/23 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/05/23 07:/21:/25 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/21:/25 PM: INFO: Successfully modified 172.29.31.111
+:
+06/05/23 07:/21:/37 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/21:/42 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/05/23 07:/21:/48 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/05/23 07:/21:/48 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/05/23 07:/21:/48 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/05/23 07:/21:/49 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/21:/49 PM: INFO: Successfully modified 172.29.31.183
+:
+06/05/23 07:/21:/57 PM: INFO: ********** Successfully Executed TestCase: Set Sync Options **********
+ 
+:
+06/05/23 07:/21:/57 PM: INFO: ********** TestCase 6: There Are Some Mistakes In The Operation Keywords 'change vcenter details' ... Please Check Once **********
+ 
+:
+06/05/23 07:/21:/57 PM: INFO: ********** Starting TestCase 7: Bulk Edit Sync Options **********:
+06/05/23 07:/22:/07 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/22:/12 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/22:/12 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/05/23 07:/22:/15 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/22:/15 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/32:/36 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 07:/32:/36 PM: INFO: ********** Opening Browser ********** :
+06/05/23 07:/32:/47 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 07:/32:/47 PM: INFO: ********** Logging In **********:
+06/05/23 07:/32:/55 PM: INFO: ********** Login Successful **********:
+06/05/23 07:/32:/55 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 07:/32:/55 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+06/05/23 07:/33:/00 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
+06/05/23 07:/35:/14 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 07:/35:/14 PM: INFO: ********** Opening Browser ********** :
+06/05/23 07:/35:/39 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 07:/35:/39 PM: INFO: ********** Logging In **********:
+06/05/23 07:/35:/47 PM: INFO: ********** Login Successful **********:
+06/05/23 07:/35:/47 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 07:/35:/47 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+06/05/23 07:/35:/52 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
+06/05/23 07:/36:/01 PM: INFO: ********** Create Status of Wave Name, :
+06/05/23 07:/36:/01 PM: INFO: Wave Add
+Second Flow successfully added.
+:
+06/05/23 07:/36:/03 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+ 
+:
+06/05/23 07:/36:/03 PM: INFO: ********** Starting TestCase 2: Create New vCenter **********:
+06/05/23 07:/36:/16 PM: INFO: ********** Found The vCenter With Name: hcm_vc At Location, 1**********:
+06/05/23 07:/36:/16 PM: INFO: ********** The vCenter With Name: hcm_vc Was Already Present **********:
+06/05/23 07:/36:/16 PM: INFO: ********** Successfully Executed TestCase: Create New vCenter **********
+ 
+:
+06/05/23 07:/36:/16 PM: INFO: ********** Starting TestCase 3: Set Autoprovision **********:
+06/05/23 07:/36:/39 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 07:/36:/44 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/36:/50 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/05/23 07:/36:/50 PM: INFO: Successfully edited cloud
+Second Flow
+:
+06/05/23 07:/37:/03 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/37:/04 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/37:/07 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/37:/13 PM: INFO: ********** Successfully Added NIC For Wave : Second Flow **********:
+06/05/23 07:/37:/17 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/05/23 07:/37:/17 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/37:/20 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/05/23 07:/37:/20 PM: INFO: ********** Starting TestCase 4: Bulk Edit Sync Options **********:
+06/05/23 07:/37:/30 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/37:/35 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/37:/36 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/05/23 07:/37:/36 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/05/23 07:/37:/36 PM: INFO: ********** Sync Option 'No Transfer' is set as yes **********:
+06/05/23 07:/37:/38 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/37:/38 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/37:/52 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/37:/58 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/37:/59 PM: INFO: ********** Sync Option 'Transfer Compress' is set as yes **********:
+06/05/23 07:/37:/59 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/05/23 07:/38:/02 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/38:/02 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/38:/09 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/05/23 07:/38:/09 PM: INFO: ********** Starting TestCase 5: Set Sync Options **********:
+06/05/23 07:/38:/19 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/38:/25 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 07:/38:/30 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 07:/38:/30 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/05/23 07:/38:/30 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/05/23 07:/38:/32 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/38:/32 PM: INFO: Successfully modified 172.29.31.111
+:
+06/05/23 07:/38:/45 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/38:/50 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/05/23 07:/38:/55 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/05/23 07:/38:/55 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/05/23 07:/38:/55 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/05/23 07:/38:/57 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/38:/57 PM: INFO: Successfully modified 172.29.31.183
+:
+06/05/23 07:/39:/04 PM: INFO: ********** Successfully Executed TestCase: Set Sync Options **********
+ 
+:
+06/05/23 07:/39:/04 PM: INFO: ********** Starting TestCase 6: Change vCenter Details **********:
+06/05/23 07:/39:/09 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/39:/15 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Was Opened For Wave, Second Flow **********:
+06/05/23 07:/39:/15 PM: INFO: ********** Wave Edit vCenter Options Pop-up Banner Was Opened For Wave, Second Flow **********:
+06/05/23 07:/39:/18 PM: INFO: ********** Edit VCEnter Options Status of Wave : Second Flow,:
+06/05/23 07:/39:/18 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/39:/26 PM: INFO: ********** Successfully Executed TestCase: Change vCenter Details **********
+ 
+:
+06/05/23 07:/39:/26 PM: INFO: ********** Starting TestCase 7: Bulk Edit Sync Options **********:
+06/05/23 07:/39:/36 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/39:/42 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/39:/42 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/05/23 07:/39:/45 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/39:/45 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/39:/52 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/05/23 07:/39:/52 PM: INFO: ********** Starting TestCase 8: Set Parallel Count **********:
+06/05/23 07:/39:/57 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/39:/58 PM: INFO: ********** Set Parallel Count To Wave: Second Flow, Status : :
+06/05/23 07:/39:/58 PM: INFO: Updated parallel count to 4
+:
+06/05/23 07:/40:/01 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/05/23 07:/40:/01 PM: INFO: ********** Starting TestCase 9: Start Wave And Verify **********:
+06/05/23 07:/42:/44 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 07:/42:/44 PM: INFO: ********** Opening Browser ********** :
+06/05/23 07:/42:/54 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 07:/42:/54 PM: INFO: ********** Logging In **********:
+06/05/23 07:/43:/02 PM: INFO: ********** Login Successful **********:
+06/05/23 07:/43:/02 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 07:/43:/02 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+06/05/23 07:/43:/07 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
+06/05/23 07:/43:/15 PM: INFO: ********** Create Status of Wave Name, :
+06/05/23 07:/43:/15 PM: INFO: Wave Add
+Second Flow successfully added.
+:
+06/05/23 07:/43:/18 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+ 
+:
+06/05/23 07:/43:/18 PM: INFO: ********** Starting TestCase 2: Create New vCenter **********:
+06/05/23 07:/43:/30 PM: INFO: ********** Found The vCenter With Name: hcm_vc At Location, 1**********:
+06/05/23 07:/43:/30 PM: INFO: ********** The vCenter With Name: hcm_vc Was Already Present **********:
+06/05/23 07:/43:/30 PM: INFO: ********** Successfully Executed TestCase: Create New vCenter **********
+ 
+:
+06/05/23 07:/43:/30 PM: INFO: ********** Starting TestCase 3: Set Autoprovision **********:
+06/05/23 07:/43:/53 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 07:/43:/58 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/44:/06 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/05/23 07:/44:/06 PM: INFO: Successfully edited cloud
+Second Flow
+:
+06/05/23 07:/44:/19 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/44:/19 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/44:/22 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/05/23 07:/44:/29 PM: INFO: ********** Successfully Added NIC For Wave : Second Flow **********:
+06/05/23 07:/44:/33 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/05/23 07:/44:/33 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/44:/35 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/05/23 07:/44:/35 PM: INFO: ********** Starting TestCase 4: Bulk Edit Sync Options **********:
+06/05/23 07:/44:/45 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/44:/51 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/44:/51 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/05/23 07:/44:/51 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/05/23 07:/44:/52 PM: INFO: ********** Sync Option 'No Transfer' is set as yes **********:
+06/05/23 07:/44:/53 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/44:/53 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/45:/06 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/45:/12 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/45:/12 PM: INFO: ********** Sync Option 'Transfer Compress' is set as yes **********:
+06/05/23 07:/45:/12 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/05/23 07:/45:/16 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/45:/16 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/45:/26 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/05/23 07:/45:/26 PM: INFO: ********** Starting TestCase 5: Set Sync Options **********:
+06/05/23 07:/45:/36 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/45:/41 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 07:/45:/46 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 07:/45:/46 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/05/23 07:/45:/46 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/05/23 07:/45:/48 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/45:/48 PM: INFO: Successfully modified 172.29.31.111
+:
+06/05/23 07:/46:/00 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/46:/05 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/05/23 07:/46:/11 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/05/23 07:/46:/11 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/05/23 07:/46:/11 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/05/23 07:/46:/12 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/46:/12 PM: INFO: Successfully modified 172.29.31.183
+:
+06/05/23 07:/46:/20 PM: INFO: ********** Successfully Executed TestCase: Set Sync Options **********
+ 
+:
+06/05/23 07:/46:/20 PM: INFO: ********** Starting TestCase 6: Change vCenter Details **********:
+06/05/23 07:/46:/25 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/46:/30 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Was Opened For Wave, Second Flow **********:
+06/05/23 07:/46:/30 PM: INFO: ********** Wave Edit vCenter Options Pop-up Banner Was Opened For Wave, Second Flow **********:
+06/05/23 07:/46:/33 PM: INFO: ********** Edit VCEnter Options Status of Wave : Second Flow,:
+06/05/23 07:/46:/33 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/46:/39 PM: INFO: ********** Successfully Executed TestCase: Change vCenter Details **********
+ 
+:
+06/05/23 07:/46:/39 PM: INFO: ********** Starting TestCase 7: Bulk Edit Sync Options **********:
+06/05/23 07:/46:/49 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/46:/55 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 07:/46:/55 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/05/23 07:/46:/57 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 07:/46:/57 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 07:/47:/07 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/05/23 07:/47:/07 PM: INFO: ********** Starting TestCase 8: Set Parallel Count **********:
+06/05/23 07:/47:/12 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/47:/13 PM: INFO: ********** Set Parallel Count To Wave: Second Flow, Status : :
+06/05/23 07:/47:/13 PM: INFO: Updated parallel count to 4
+:
+06/05/23 07:/47:/15 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/05/23 07:/47:/15 PM: INFO: ********** Starting TestCase 9: Start Wave And Verify **********:
+06/05/23 07:/47:/20 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 07:/47:/22 PM: INFO: ********** Start Status For Wave Name : Second Flow,:
+06/05/23 07:/47:/22 PM: INFO: Wave Started
+Second Flow
+:
+06/05/23 08:/03:/14 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/05/23 08:/03:/14 PM: INFO: ********** Starting TestCase 10: Verify Sync Success Or Fail Details **********:
+06/05/23 08:/03:/19 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 08:/03:/19 PM: INFO: ********** Host : psp-MyLinSecondFlow-src1, Sync Successful **********:
+06/05/23 08:/03:/19 PM: INFO: ********** Host : psp-MyLinSecondFlow-src2, Sync Successful **********:
+06/05/23 08:/03:/19 PM: INFO: ********** Host : psp-MyWinSecondFlow-src1, Sync Successful **********:
+06/05/23 08:/03:/19 PM: INFO: ********** Host : psp-MyWinSecondFlow-src2, Sync Successful **********:
+06/05/23 08:/03:/19 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/05/23 08:/03:/19 PM: INFO: ********** Starting TestCase 11: Verify Sync System And Summary Details **********:
+06/05/23 08:/03:/25 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 08:/03:/25 PM: INFO: ********** Total Available Hosts : 4 ,:
+06/05/23 08:/03:/25 PM: INFO: ********** Sync Details For Host No. 1 : psp-MyLinSecondFlow-src1 ,:
+06/05/23 08:/03:/30 PM: INFO: ********** Summary Details : :
+06/05/23 08:/03:/30 PM: INFO: ********** Summary Details Was Opened **********:
+06/05/23 08:/03:/52 PM: INFO: ********** Name: psp-MyLinSecondFlow-src1 **********:
+06/05/23 08:/03:/52 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/05/23 08:/03:/52 PM: INFO: ********** OS: Linux **********:
+06/05/23 08:/03:/52 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/05/23 08:/03:/57 PM: INFO: ********** Systems Details : :
+06/05/23 08:/04:/09 PM: INFO: ********** System Details Was Opened **********:
+06/05/23 08:/58:/18 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 08:/58:/18 PM: INFO: ********** Opening Browser ********** :
+06/05/23 08:/58:/34 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 08:/58:/34 PM: INFO: ********** Logging In **********:
+06/05/23 08:/58:/43 PM: INFO: ********** Login Successful **********:
+06/05/23 08:/58:/43 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 08:/58:/45 PM: INFO: ********** Starting TestCase 1: Verify Sync System And Summary Details **********:
+06/05/23 08:/59:/17 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 08:/59:/17 PM: INFO: ********** Total Available Hosts : 0 ,:
+06/05/23 08:/59:/17 PM: INFO: ********** Successfully Executed TestCase: Verify Sync System And Summary Details **********
+ 
+:
+06/05/23 08:/59:/17 PM: INFO: ********** Starting TestCase 2: Bulk Edit Sync Options **********:
+06/05/23 08:/59:/31 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 08:/59:/40 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 08:/59:/41 PM: INFO: ********** Sync Option 'No Transfer' is set as no **********:
+06/05/23 08:/59:/45 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/05/23 08:/59:/45 PM: INFO: Successfully modified Second Flow
+:
+06/05/23 08:/59:/54 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/05/23 08:/59:/54 PM: INFO: ********** Starting TestCase 3: Start Wave And Verify **********:
+06/05/23 08:/59:/59 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 09:/00:/00 PM: INFO: ********** Start Status For Wave Name : Second Flow,:
+06/05/23 09:/00:/00 PM: INFO: Wave Started
+Second Flow
+:
+06/05/23 09:/48:/53 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/05/23 09:/48:/53 PM: INFO: ********** Starting TestCase 4: Verify Sync Success Or Fail Details **********:
+06/05/23 09:/48:/59 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 09:/48:/59 PM: INFO: ********** Host : psp-MyLinSecondFlow-src1, Sync Failed **********:
+06/05/23 09:/48:/59 PM: INFO: ********** Failed Due To,
+:
+06/05/23 09:/49:/03 PM: INFO: RSP_CMD_ACCEPTED  STATUS_INFO
+Accepted command 'host sync '
+
+jobid file: /var/log/rackware/by-jobid/000000000003f3df.log
+RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_RUNNING_EVENT_SCRIPT  STATUS_INFO
+Syncing psp-MyLinSecondFlow-src1: Running event script ...
+RSP_SYNC_ERROR  SYNC_ERROR_EVENT_SCRIPT  STATUS_ERROR
+Details: Pre-event script reported failure (exit status = 0)
+jobid file: /var/log/rackware/by-jobid/000000000003f3df.log:
+06/05/23 09:/49:/03 PM: INFO: 
+:
+06/05/23 09:/49:/03 PM: INFO: ********** Host : psp-MyLinSecondFlow-src2, Sync Successful **********:
+06/05/23 09:/49:/03 PM: INFO: ********** Host : psp-MyWinSecondFlow-src1, Sync Successful **********:
+06/05/23 09:/49:/03 PM: INFO: ********** Host : psp-MyWinSecondFlow-src2, Sync Successful **********:
+06/05/23 09:/49:/03 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/05/23 09:/49:/03 PM: INFO: ********** Starting TestCase 5: Delete Sync Relation Data From RMM SSH Of Wave **********:
+06/05/23 09:/49:/10 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 09:/49:/11 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 09:/49:/14 PM: INFO: Authentication (password) successful!:
+06/05/23 09:/49:/15 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 09:/49:/17 PM: INFO: Authentication (password) successful!:
+06/05/23 09:/49:/19 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 09:/49:/21 PM: INFO: Authentication (password) successful!:
+06/05/23 09:/49:/23 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 09:/49:/24 PM: INFO: Authentication (password) successful!:
+06/05/23 09:/49:/25 PM: INFO: ********** Successfully Executed TestCase: Delete Sync Relation Data From RMM SSH Of Wave **********
+ 
+:
+06/05/23 09:/49:/25 PM: INFO: ********** Starting TestCase 6: Create New Wave Without Hosts **********:
+06/05/23 09:/49:/39 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened For Wave, Second Flow 1 **********:
+06/05/23 09:/49:/41 PM: INFO: ********** Create New Wave Status of Wave : Second Flow 1,:
+06/05/23 09:/49:/41 PM: INFO: Wave Added
+Second Flow 1
+:
+06/05/23 09:/49:/43 PM: INFO: ********** Successfully Executed TestCase: Create New Wave Without Hosts **********
+ 
+:
+06/05/23 09:/49:/43 PM: INFO: ********** Starting TestCase 7: Move Host Between Waves **********:
+06/05/23 09:/50:/04 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 09:/50:/09 PM: INFO: ********** Move Machine To New Wave Pop-up Banner Was Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 09:/50:/10 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src1,:
+06/05/23 09:/50:/10 PM: INFO: Move machine success.
+Moved 172.29.31.111 from Second Flow to Second Flow 1
+:
+06/05/23 09:/50:/18 PM: INFO: ********** Move Machine To New Wave Pop-up Banner Was Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/05/23 09:/50:/20 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src2,:
+06/05/23 09:/50:/20 PM: INFO: Move machine success.
+Moved 172.29.31.183 from Second Flow to Second Flow 1
+:
+06/05/23 09:/50:/22 PM: INFO: ********** Successfully Executed TestCase: Move Host Between Waves **********
+ 
+:
+06/05/23 09:/50:/22 PM: INFO: ********** Starting TestCase 8: Change Target Type **********:
+06/05/23 09:/50:/43 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/05/23 09:/50:/48 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 09:/50:/51 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src1,:
+06/05/23 09:/50:/51 PM: INFO: Successfully modified 172.29.31.111
+:
+06/05/23 09:/51:/03 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/05/23 09:/51:/08 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 09:/51:/11 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src2,:
+06/05/23 09:/51:/11 PM: INFO: Successfully modified 172.29.31.183
+:
+06/05/23 09:/51:/39 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 09:/51:/44 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 09:/51:/57 PM: INFO: ********** Changed Target Type For Host : psp-MyWinSecondFlow-src1,:
+06/05/23 09:/51:/57 PM: INFO: Successfully modified 172.29.30.203
+:
+06/05/23 09:/52:/09 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 09:/52:/14 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 09:/52:/27 PM: INFO: ********** Changed Target Type For Host : psp-MyWinSecondFlow-src2,:
+06/05/23 09:/52:/27 PM: INFO: Successfully modified 172.29.30.179
+:
+06/05/23 09:/52:/55 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/05/23 09:/53:/01 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 10:/06:/03 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 10:/06:/03 PM: INFO: ********** Opening Browser ********** :
+06/05/23 10:/06:/18 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 10:/06:/18 PM: INFO: ********** Logging In **********:
+06/05/23 10:/06:/26 PM: INFO: ********** Login Successful **********:
+06/05/23 10:/06:/26 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 10:/06:/26 PM: INFO: ********** Starting TestCase 1: Move Host Between Waves **********:
+06/05/23 10:/06:/47 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 10:/06:/52 PM: INFO: ********** Move Machine To New Wave Pop-up Banner Was Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/05/23 10:/06:/54 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src1,:
+06/05/23 10:/06:/54 PM: INFO: Move machine success.
+Moved 172.29.31.111 from Second Flow to Second Flow 1
+:
+06/05/23 10:/07:/02 PM: INFO: ********** Move Machine To New Wave Pop-up Banner Was Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/05/23 10:/07:/05 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src2,:
+06/05/23 10:/07:/05 PM: INFO: Move machine success.
+Moved 172.29.31.183 from Second Flow to Second Flow 1
+:
+06/05/23 10:/07:/08 PM: INFO: ********** Successfully Executed TestCase: Move Host Between Waves **********
+ 
+:
+06/05/23 10:/07:/08 PM: INFO: ********** Starting TestCase 2: Change Target Type **********:
+06/05/23 10:/07:/28 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/05/23 10:/07:/34 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 10:/07:/36 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src1,:
+06/05/23 10:/07:/36 PM: INFO: Successfully modified 172.29.31.111
+:
+06/05/23 10:/07:/48 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/05/23 10:/07:/54 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 10:/07:/56 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src2,:
+06/05/23 10:/07:/56 PM: INFO: Successfully modified 172.29.31.183
+:
+06/05/23 10:/08:/03 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/05/23 10:/08:/03 PM: INFO: ********** Starting TestCase 3: Set Parallel Count **********:
+06/05/23 10:/08:/08 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/05/23 10:/08:/09 PM: INFO: ********** Set Parallel Count To Wave: Second Flow 1, Status : :
+06/05/23 10:/08:/09 PM: INFO: Updated parallel count to 2
+:
+06/05/23 10:/08:/11 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/05/23 10:/08:/11 PM: INFO: ********** Starting TestCase 4: Start Wave And Verify **********:
+06/05/23 10:/08:/16 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/05/23 10:/08:/18 PM: INFO: ********** Start Status For Wave Name : Second Flow 1,:
+06/05/23 10:/08:/18 PM: INFO: Wave Started
+Second Flow 1
+:
+06/05/23 10:/08:/50 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/05/23 10:/08:/50 PM: INFO: ********** Starting TestCase 5: Verify Sync Success Or Fail Details **********:
+06/05/23 10:/08:/55 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/05/23 10:/08:/55 PM: INFO: ********** Host : psp-MyLinSecondFlow-src1, Sync Successful **********:
+06/05/23 10:/08:/55 PM: INFO: ********** Host : psp-MyLinSecondFlow-src2, Sync Successful **********:
+06/05/23 10:/08:/55 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/05/23 10:/08:/55 PM: INFO: ********** Starting TestCase 6: Change Target Type **********:
+06/05/23 10:/09:/17 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 10:/09:/22 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 10:/09:/35 PM: INFO: ********** Changed Target Type For Host : psp-MyWinSecondFlow-src1,:
+06/05/23 10:/09:/35 PM: INFO: Successfully modified 172.29.30.203
+:
+06/05/23 10:/09:/47 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 10:/09:/53 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 10:/10:/06 PM: INFO: ********** Changed Target Type For Host : psp-MyWinSecondFlow-src2,:
+06/05/23 10:/10:/06 PM: INFO: Successfully modified 172.29.30.179
+:
+06/05/23 10:/10:/13 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/05/23 10:/10:/13 PM: INFO: ********** Starting TestCase 7: Start Wave And Verify **********:
+06/05/23 10:/10:/18 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 10:/10:/19 PM: INFO: ********** Start Status For Wave Name : Second Flow,:
+06/05/23 10:/10:/19 PM: INFO: Wave Started
+Second Flow
+:
+06/05/23 10:/39:/26 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/05/23 10:/39:/26 PM: INFO: ********** Starting TestCase 8: Verify Sync Success Or Fail Details **********:
+06/05/23 10:/39:/31 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/05/23 10:/39:/31 PM: INFO: ********** Host : psp-MyWinSecondFlow-src1, Sync Successful **********:
+06/05/23 10:/39:/31 PM: INFO: ********** Host : psp-MyWinSecondFlow-src2, Sync Successful **********:
+06/05/23 10:/39:/31 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/05/23 10:/39:/31 PM: INFO: ********** Starting TestCase 9: Create New DR Policy **********:
+06/05/23 10:/39:/42 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/05/23 10:/39:/46 PM: INFO: ********** Selected Periodicity Type: Continuous **********:
+06/05/23 10:/39:/46 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/05/23 10:/39:/47 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/05/23 10:/39:/51 PM: INFO: ********** Create DR Policy Status For Policy : SecondFlowWin,:
+06/05/23 10:/39:/51 PM: INFO: Successfully created DR Policy SecondFlowWin
+:
+06/05/23 10:/39:/57 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/05/23 10:/40:/00 PM: INFO: ********** Selected Periodicity Type: By Frequency **********:
+06/05/23 10:/40:/06 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/05/23 10:/40:/06 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/05/23 10:/40:/09 PM: INFO: ********** Create DR Policy Status For Policy : SecondFlowLin,:
+06/05/23 10:/40:/09 PM: INFO: Successfully created DR Policy SecondFlowLin
+:
+06/05/23 10:/40:/11 PM: INFO: ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
+:
+06/05/23 10:/40:/11 PM: INFO: ********** Starting TestCase 10: Assign DR Policy To Wave **********:
+06/05/23 10:/40:/48 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 10:/40:/48 PM: INFO: ********** Currently The Wave : Second Flow, Don't Have Any Policy **********:
+06/05/23 10:/40:/53 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/05/23 10:/41:/04 PM: INFO: ********** Assign DR Policy SecondFlowWin To Wave Second Flow, Status : :
+06/05/23 10:/41:/04 PM: INFO: Successfully applied DR Policy SecondFlowWin to Second Flow
+:
+06/05/23 10:/41:/07 PM: INFO: ********** Policy : SecondFlowWin, Added To The Wave : Second Flow **********:
+06/05/23 10:/41:/15 PM: INFO: ********** Policy : SecondFlowWin, Is In Active State **********:
+06/05/23 10:/41:/52 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/05/23 10:/41:/52 PM: INFO: ********** Currently The Wave : Second Flow 1, Don't Have Any Policy **********:
+06/05/23 10:/41:/57 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 10:/42:/07 PM: INFO: ********** Assign DR Policy SecondFlowLin To Wave Second Flow 1, Status : :
+06/05/23 10:/42:/07 PM: INFO: Successfully applied DR Policy SecondFlowLin to Second Flow 1
+:
+06/05/23 10:/42:/10 PM: INFO: ********** Policy : SecondFlowLin, Added To The Wave : Second Flow 1 **********:
+06/05/23 10:/42:/18 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+06/05/23 10:/42:/18 PM: INFO: ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+:
+06/05/23 10:/42:/18 PM: INFO: ********** Starting TestCase 11: Check DR Policy Status **********:
+06/05/23 10:/42:/24 PM: INFO: ********** Policy : SecondFlowWin, Is In Syncing State **********:
+06/05/23 10:/42:/24 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Status **********
+ 
+:
+06/05/23 10:/42:/24 PM: INFO: ********** Starting TestCase 12: Check DR Policy Status **********:
+06/05/23 10:/42:/29 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+06/05/23 10:/42:/29 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Status **********
+ 
+:
+06/05/23 10:/42:/29 PM: INFO: ********** Starting TestCase 13: Pause DR Policy **********:
+06/05/23 10:/42:/39 PM: INFO: ********** Policy : SecondFlowWin, Is In Syncing State **********:
+06/05/23 10:/42:/39 PM: INFO: ********** Pausing The DR Policy **********:
+06/05/23 10:/42:/42 PM: INFO: ********** Pause Status For Policy : SecondFlowWin,:
+06/05/23 10:/42:/42 PM: INFO: Successfully paused DR Policy
+SecondFlowWin
+:
+06/05/23 10:/42:/49 PM: INFO: ********** Policy : SecondFlowWin, Is In Paused State **********:
+06/05/23 10:/42:/49 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/05/23 10:/42:/49 PM: INFO: ********** Starting TestCase 14: Pause DR Policy **********:
+06/05/23 10:/43:/00 PM: INFO: ********** Policy : SecondFlowLin, Is In Syncing State **********:
+06/05/23 10:/43:/00 PM: INFO: ********** Pausing The DR Policy **********:
+06/05/23 10:/43:/02 PM: INFO: ********** Pause Status For Policy : SecondFlowLin,:
+06/05/23 10:/43:/02 PM: INFO: Successfully paused DR Policy
+SecondFlowLin
+:
+06/05/23 10:/43:/09 PM: INFO: ********** Policy : SecondFlowLin, Is In Paused State **********:
+06/05/23 10:/43:/09 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/05/23 10:/43:/09 PM: INFO: ********** Starting TestCase 15: Failover Host **********:
+06/05/23 10:/43:/25 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/05/23 10:/43:/25 PM: INFO: ********** Wave : Second Flow Opened Successfully **********:
+06/05/23 10:/43:/30 PM: INFO: ********** Pop-up Banner Of Failover Was Opened **********:
+06/05/23 10:/59:/01 PM: INFO: ********** For Host : psp-MyWinSecondFlow-src1, Sync Successful **********:
+06/05/23 10:/59:/01 PM: INFO: ********** For Host : psp-MyWinSecondFlow-src2, Sync Successful **********:
+06/05/23 10:/59:/06 PM: INFO: ********** Successfully Executed TestCase: Failover Host **********
+ 
+:
+06/05/23 10:/59:/06 PM: INFO: ********** Starting TestCase 16: Check DR Policy Status **********:
+06/05/23 10:/59:/12 PM: INFO: ********** Policy : SecondFlowWin, Is In Failed Over State **********:
+06/05/23 10:/59:/12 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Status **********
+ 
+:
+06/05/23 10:/59:/12 PM: INFO: ********** Starting TestCase 17: Delete Sync Relation Data From RMM SSH Of Wave **********:
+06/05/23 10:/59:/32 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/05/23 10:/59:/33 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 10:/59:/36 PM: INFO: Authentication (password) successful!:
+06/05/23 10:/59:/37 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/05/23 10:/59:/39 PM: INFO: Authentication (password) successful!:
+06/05/23 10:/59:/40 PM: INFO: ********** Successfully Executed TestCase: Delete Sync Relation Data From RMM SSH Of Wave **********
+ 
+:
+06/05/23 10:/59:/40 PM: INFO: ********** Starting TestCase 18: Change Target Type **********:
+06/05/23 10:/59:/45 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/05/23 10:/59:/50 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 11:/06:/35 PM: INFO: ********** Test_000_OneForAll ********** :
+06/05/23 11:/06:/35 PM: INFO: ********** Opening Browser ********** :
+06/05/23 11:/06:/50 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/05/23 11:/06:/50 PM: INFO: ********** Logging In **********:
+06/05/23 11:/07:/00 PM: INFO: ********** Login Successful **********:
+06/05/23 11:/07:/00 PM: INFO: ********** Login Successful **********
+ 
+:
+06/05/23 11:/07:/00 PM: INFO: ********** Starting TestCase 1: Change Target Type **********:
+06/05/23 11:/07:/23 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/05/23 11:/07:/28 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 11:/07:/39 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src2,:
+06/05/23 11:/07:/39 PM: INFO: Successfully modified 172.29.31.183
+:
+06/05/23 11:/07:/52 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/05/23 11:/07:/57 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/05/23 11:/08:/08 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src1,:
+06/05/23 11:/08:/08 PM: INFO: Successfully modified 172.29.31.111
+:
+06/05/23 11:/08:/15 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/05/23 11:/08:/15 PM: INFO: ********** Starting TestCase 2: Resume Policy **********:
+06/05/23 11:/08:/26 PM: INFO: ********** Pop-up Banner For Resume Policy Was Opened For Policy: SecondFlowLin **********:
+06/05/23 11:/08:/27 PM: INFO: ********** Start or Restart Status For Policy : SecondFlowLin,:
+06/05/23 11:/08:/27 PM: INFO: Successfully resumed DR Policy: SecondFlowLin
+:
+06/05/23 11:/08:/30 PM: INFO: ********** Successfully Executed TestCase: Resume Policy **********
+ 
+:
+06/05/23 11:/08:/30 PM: INFO: ********** Starting TestCase 3: Pause DR Policy **********:
+06/05/23 11:/08:/40 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+06/05/23 11:/08:/40 PM: INFO: ********** Pausing The DR Policy **********:
+06/05/23 11:/08:/43 PM: INFO: ********** Pause Status For Policy : SecondFlowLin,:
+06/05/23 11:/08:/43 PM: INFO: Successfully paused DR Policy
+SecondFlowLin
+:
+06/05/23 11:/08:/50 PM: INFO: ********** Policy : SecondFlowLin, Is In Paused State **********:
+06/05/23 11:/08:/50 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/05/23 11:/08:/50 PM: INFO: ********** Starting TestCase 4: Verify Sync Success Or Fail Details **********:
+06/05/23 11:/09:/11 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/05/23 11:/09:/11 PM: INFO: ********** Host : psp-MyLinSecondFlow-src1, Sync Successful **********:
+06/05/23 11:/09:/11 PM: INFO: ********** Host : psp-MyLinSecondFlow-src2, Sync Successful **********:
+06/05/23 11:/09:/11 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/05/23 11:/09:/16 PM: INFO: ********** Logout Successful **********:
+06/05/23 11:/09:/16 PM: INFO: ********** Logout Successful **********:
+06/05/23 11:/09:/21 PM: INFO: ********** Browser Closed Successfully **********:
+06/05/23 11:/09:/21 PM: INFO: 
+:
+06/05/23 11:/09:/21 PM: INFO: Timestamp: 2023-06-05 23:09:21:
+06/05/23 11:/09:/21 PM: INFO: 
+ 
+ 
+:
+
+
+
+
+
+
+
+
+06/06/23 12:/43:/10 PM: INFO: ********** Test_000_OneForAll ********** :
+06/06/23 12:/43:/10 PM: INFO: ********** Opening Browser ********** :
+06/06/23 12:/43:/23 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/06/23 12:/43:/23 PM: INFO: ********** Logging In **********:
+06/06/23 12:/43:/31 PM: INFO: ********** Login Successful **********:
+06/06/23 12:/43:/31 PM: INFO: ********** Login Successful **********
+ 
+:
+06/06/23 12:/43:/31 PM: INFO: ********** Starting TestCase 1: Create New Wave With Host **********:
+06/06/23 12:/43:/39 PM: INFO: ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/06/23 12:/43:/39 PM: INFO: ********** Creating No. 1 Wave With Target Type Autoprovision **********:
+06/06/23 12:/43:/44 PM: INFO: ********** Create New Wave Status of Wave : First Flow,:
+06/06/23 12:/43:/44 PM: INFO: Added machine 172.29.31.111 to wave
+First Flow
+:
+06/06/23 12:/43:/47 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Host **********
+ 
+:
+06/06/23 12:/43:/47 PM: INFO: ********** Starting TestCase 2: Add New Hosts To Wave **********:
+06/06/23 12:/44:/00 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 12:/44:/08 PM: INFO: ********** Add New Host Pop-up Banner Was Opened For Wave, First Flow **********:
+06/06/23 12:/44:/10 PM: INFO: ********** Add New Host Status of Wave : First Flow,:
+06/06/23 12:/44:/10 PM: INFO: Added machine 172.29.31.183 to wave
+First Flow
+:
+06/06/23 12:/44:/13 PM: INFO: ********** Successfully Executed TestCase: Add New Hosts To Wave **********
+ 
+:
+06/06/23 12:/44:/13 PM: INFO: ********** Starting TestCase 3: Bulk Edit Sync Options **********:
+06/06/23 12:/44:/23 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 12:/44:/29 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 12:/44:/29 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/06/23 12:/44:/29 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/06/23 12:/44:/32 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : First Flow,:
+06/06/23 12:/44:/32 PM: INFO: Successfully modified First Flow
+:
+06/06/23 12:/44:/39 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/06/23 12:/44:/39 PM: INFO: ********** Starting TestCase 4: Set Autoprovision **********:
+06/06/23 12:/44:/44 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 12:/44:/50 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 12:/44:/57 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/06/23 12:/44:/57 PM: INFO: Successfully edited cloud
+First Flow
+:
+06/06/23 12:/45:/10 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 12:/45:/10 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 12:/45:/14 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 12:/45:/20 PM: INFO: ********** Successfully Added NIC For Wave : First Flow **********:
+06/06/23 12:/45:/24 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/06/23 12:/45:/24 PM: INFO: Successfully modified First Flow
+:
+06/06/23 12:/45:/26 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/06/23 12:/45:/26 PM: INFO: ********** Starting TestCase 5: Set Parallel Count **********:
+06/06/23 12:/45:/31 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 12:/45:/32 PM: INFO: ********** Set Parallel Count To Wave: First Flow, Status : :
+06/06/23 12:/45:/32 PM: INFO: Updated parallel count to 2
+:
+06/06/23 12:/45:/35 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/06/23 12:/45:/35 PM: INFO: ********** Starting TestCase 6: Start Wave And Verify **********:
+06/06/23 12:/45:/40 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 12:/45:/42 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/06/23 12:/45:/42 PM: INFO: Wave Started
+First Flow
+:
+06/06/23 01:/00:/33 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 01:/00:/33 PM: INFO: ********** Starting TestCase 7: Verify Sync Success Or Fail Details **********:
+06/06/23 01:/00:/38 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/00:/38 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Failed **********:
+06/06/23 01:/00:/38 PM: INFO: ********** Failed Due To,
+:
+06/06/23 01:/00:/42 PM: INFO: ['jobid file: /var/log/rackware/by-jobid/000000000003f9d7.log', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_EXAMINING_HOST  STATUS_INFO', 'Syncing psp-MyLinFirstFlow-src1: Examining psp-MyLinFirstFlow-src1', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_HOST_EXAMINED  STATUS_INFO', 'Syncing psp-MyLinFirstFlow-src1: psp-MyLinFirstFlow-src1 examined', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_AUTOPROVISIONING_TARGET  STATUS_INFO', 'Syncing psp-MyLinFirstFlow-src1: Autoprovisioning psp-MyLinFirstFlow-tgt1', 'RSP_SYNC_ERROR  SYNC_ERROR_PROVISION  STATUS_ERROR', "Details: PyHE operation to create vCenter machine failed:Operation 'vmcreate' failed. Failed to create ISO: Internal Error", 'jobid file: /var/log/rackware/by-jobid/000000000003f9d7.log']:
+06/06/23 01:/00:/42 PM: INFO: 
+:
+06/06/23 01:/00:/42 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 01:/00:/42 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 01:/00:/42 PM: INFO: ********** Starting TestCase 8: Verify Sync System And Summary Details **********:
+06/06/23 01:/00:/47 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/00:/47 PM: INFO: ********** Total Available Hosts : 2 ,:
+06/06/23 01:/00:/47 PM: INFO: ********** Sync Details For Host No. 1 : psp-MyLinFirstFlow-src1 ,:
+06/06/23 01:/00:/52 PM: INFO: ********** Summary Details : :
+06/06/23 01:/00:/52 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 01:/01:/02 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/06/23 01:/01:/02 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/06/23 01:/01:/02 PM: INFO: ********** OS: Linux **********:
+06/06/23 01:/01:/02 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 01:/01:/07 PM: INFO: ********** Systems Details : :
+06/06/23 01:/01:/12 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 01:/01:/18 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/06/23 01:/01:/18 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/06/23 01:/01:/18 PM: INFO: ********** OS: Linux **********:
+06/06/23 01:/01:/18 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 01:/01:/18 PM: INFO: ********** Sync Details For Host No. 2 : psp-MyLinFirstFlow-src2 ,:
+06/06/23 01:/01:/23 PM: INFO: ********** Summary Details : :
+06/06/23 01:/01:/23 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 01:/01:/33 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/06/23 01:/01:/33 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/06/23 01:/01:/33 PM: INFO: ********** OS: Linux **********:
+06/06/23 01:/01:/33 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 01:/01:/38 PM: INFO: ********** Systems Details : :
+06/06/23 01:/01:/44 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 01:/01:/49 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/06/23 01:/01:/49 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/06/23 01:/01:/49 PM: INFO: ********** OS: Linux **********:
+06/06/23 01:/01:/49 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 01:/01:/49 PM: INFO: ********** Successfully Executed TestCase: Verify Sync System And Summary Details **********
+ 
+:
+06/06/23 01:/01:/49 PM: INFO: ********** Starting TestCase 9: Create New DR Policy **********:
+06/06/23 01:/01:/57 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/06/23 01:/02:/00 PM: INFO: ********** Selected Periodicity Type: Continuous **********:
+06/06/23 01:/02:/01 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/06/23 01:/02:/01 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/06/23 01:/02:/03 PM: INFO: ********** Create DR Policy Status For Policy : firstFlow,:
+06/06/23 01:/02:/03 PM: INFO: Successfully created DR Policy firstFlow
+:
+06/06/23 01:/02:/05 PM: INFO: ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
+:
+06/06/23 01:/02:/05 PM: INFO: ********** Starting TestCase 10: Assign DR Policy To Wave **********:
+06/06/23 01:/02:/39 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 01:/02:/39 PM: INFO: ********** Currently The Wave : First Flow, Don't Have Any Policy **********:
+06/06/23 01:/02:/45 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 01:/02:/55 PM: INFO: ********** Assign DR Policy firstFlow To Wave First Flow, Status : :
+06/06/23 01:/02:/55 PM: INFO: Successfully applied DR Policy firstFlow to First Flow
+:
+06/06/23 01:/02:/58 PM: INFO: ********** Policy : firstFlow, Added To The Wave : First Flow **********:
+06/06/23 01:/03:/06 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/06/23 01:/03:/06 PM: INFO: ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+:
+06/06/23 01:/03:/06 PM: INFO: ********** Starting TestCase 11: Resume Policy **********:
+06/06/23 01:/03:/17 PM: INFO: ********** Pop-up Banner For Resume Policy Was Opened For Policy: firstFlow **********:
+06/06/23 01:/03:/19 PM: INFO: ********** Start or Restart Status For Policy : firstFlow,:
+06/06/23 01:/03:/19 PM: INFO: Successfully resumed DR Policy: firstFlow
+:
+06/06/23 01:/03:/21 PM: INFO: ********** Successfully Executed TestCase: Resume Policy **********
+ 
+:
+06/06/23 01:/03:/21 PM: INFO: ********** Starting TestCase 12: Pause DR Policy **********:
+06/06/23 01:/03:/31 PM: INFO: ********** Policy : firstFlow, Is In Active State **********:
+06/06/23 01:/03:/31 PM: INFO: ********** Pausing The DR Policy **********:
+06/06/23 01:/03:/32 PM: INFO: ********** Pause Status For Policy : firstFlow,:
+06/06/23 01:/03:/32 PM: INFO: Successfully paused DR Policy
+firstFlow
+:
+06/06/23 01:/03:/39 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/06/23 01:/03:/39 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/06/23 01:/03:/39 PM: INFO: ********** Starting TestCase 13: Check DR Policy Host Sync Status **********:
+06/06/23 01:/04:/02 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 01:/04:/02 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src1, Sync Failed **********:
+06/06/23 01:/04:/02 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 01:/04:/07 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********
+ 
+:
+06/06/23 01:/04:/07 PM: INFO: ********** Starting TestCase 14: Change Target Type **********:
+06/06/23 01:/04:/12 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/04:/18 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 01:/04:/20 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src1,:
+06/06/23 01:/04:/20 PM: INFO: Successfully modified 172.29.31.111
+:
+06/06/23 01:/04:/32 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/04:/38 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 01:/04:/40 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src2,:
+06/06/23 01:/04:/40 PM: INFO: Successfully modified 172.29.31.183
+:
+06/06/23 01:/04:/47 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/06/23 01:/04:/47 PM: INFO: ********** Starting TestCase 15: Perform Tear Down **********:
+06/06/23 01:/04:/52 PM: INFO: ********** Starting TestCase 15.1: Delete SSH Host Sync Entry **********:
+06/06/23 01:/04:/53 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 01:/04:/55 PM: INFO: Authentication (password) successful!:
+06/06/23 01:/04:/56 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 01:/04:/56 PM: INFO: ********** Starting TestCase 15.2: Delete SSH Host Sync Entry **********:
+06/06/23 01:/04:/57 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 01:/04:/59 PM: INFO: Authentication (password) successful!:
+06/06/23 01:/05:/00 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 01:/05:/00 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/06/23 01:/05:/00 PM: INFO: ********** Starting TestCase 16: Start Wave And Verify **********:
+06/06/23 01:/05:/05 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/05:/08 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/06/23 01:/05:/08 PM: INFO: Wave Started
+First Flow
+:
+06/06/23 01:/05:/39 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 01:/05:/39 PM: INFO: ********** Starting TestCase 17: Verify Sync Success Or Fail Details **********:
+06/06/23 01:/05:/44 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/05:/44 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/06/23 01:/05:/44 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 01:/05:/44 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 01:/05:/44 PM: INFO: ********** Starting TestCase 18: Failover Host **********:
+06/06/23 01:/05:/49 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/05:/49 PM: INFO: ********** Wave : First Flow Opened Successfully **********:
+06/06/23 01:/05:/55 PM: INFO: ********** Pop-up Banner Of Failover Was Opened **********:
+
+
+
+
+
+
+
+06/06/23 01:/34:/39 PM: INFO: ********** Test_000_OneForAll ********** :
+06/06/23 01:/34:/39 PM: INFO: ********** Opening Browser ********** :
+06/06/23 01:/34:/59 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/06/23 01:/34:/59 PM: INFO: ********** Logging In **********:
+06/06/23 01:/35:/09 PM: INFO: ********** Login Successful **********:
+06/06/23 01:/35:/09 PM: INFO: ********** Login Successful **********
+ 
+:
+06/06/23 01:/35:/09 PM: INFO: 
+:
+06/06/23 01:/35:/09 PM: INFO: Timestamp: 2023-06-06 13:35:09:
+06/06/23 01:/35:/09 PM: INFO: ********** Starting TestCase 1: Create New Wave With Host **********:
+06/06/23 01:/35:/18 PM: INFO: ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/06/23 01:/35:/18 PM: INFO: ********** Creating No. 1 Wave With Target Type Autoprovision **********:
+06/06/23 01:/35:/27 PM: INFO: ********** Create New Wave Status of Wave : First Flow,:
+06/06/23 01:/35:/27 PM: INFO: Added machine 172.29.31.111 to wave
+First Flow
+:
+06/06/23 01:/35:/29 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Host **********
+ 
+:
+06/06/23 01:/35:/29 PM: INFO: ********** Starting TestCase 2: Add New Hosts To Wave **********:
+06/06/23 01:/35:/45 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 01:/35:/53 PM: INFO: ********** Add New Host Pop-up Banner Was Opened For Wave, First Flow **********:
+06/06/23 01:/35:/57 PM: INFO: ********** Add New Host Status of Wave : First Flow,:
+06/06/23 01:/35:/57 PM: INFO: Added machine 172.29.31.183 to wave
+First Flow
+:
+06/06/23 01:/35:/59 PM: INFO: ********** Successfully Executed TestCase: Add New Hosts To Wave **********
+ 
+:
+06/06/23 01:/35:/59 PM: INFO: ********** Starting TestCase 3: Bulk Edit Sync Options **********:
+06/06/23 01:/36:/09 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/36:/15 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 01:/36:/15 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/06/23 01:/36:/15 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/06/23 01:/36:/19 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : First Flow,:
+06/06/23 01:/36:/19 PM: INFO: Successfully modified First Flow
+:
+06/06/23 01:/36:/27 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/06/23 01:/36:/27 PM: INFO: ********** Starting TestCase 4: Set Autoprovision **********:
+06/06/23 01:/36:/32 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/36:/37 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 01:/36:/45 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/06/23 01:/36:/45 PM: INFO: Successfully edited cloud
+First Flow
+:
+06/06/23 01:/36:/57 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 01:/36:/58 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 01:/37:/01 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 01:/37:/08 PM: INFO: ********** Successfully Added NIC For Wave : First Flow **********:
+06/06/23 01:/37:/12 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/06/23 01:/37:/12 PM: INFO: Successfully modified First Flow
+:
+06/06/23 01:/37:/14 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/06/23 01:/37:/14 PM: INFO: ********** Starting TestCase 5: Set Parallel Count **********:
+06/06/23 01:/37:/19 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/37:/21 PM: INFO: ********** Set Parallel Count To Wave: First Flow, Status : :
+06/06/23 01:/37:/21 PM: INFO: Updated parallel count to 2
+:
+06/06/23 01:/37:/24 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/06/23 01:/37:/24 PM: INFO: ********** Starting TestCase 6: Start Wave And Verify **********:
+06/06/23 01:/37:/29 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/37:/31 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/06/23 01:/37:/31 PM: INFO: Wave Started
+First Flow
+:
+06/06/23 01:/56:/04 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 01:/56:/04 PM: INFO: ********** Starting TestCase 7: Verify Sync Success Or Fail Details **********:
+06/06/23 01:/56:/09 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/56:/09 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/06/23 01:/56:/09 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 01:/56:/09 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 01:/56:/09 PM: INFO: ********** Starting TestCase 8: Verify Sync System And Summary Details **********:
+06/06/23 01:/56:/14 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/56:/14 PM: INFO: ********** Total Available Hosts : 2 ,:
+06/06/23 01:/56:/14 PM: INFO: ********** Sync Details For Host No. 1 : psp-MyLinFirstFlow-src1 ,:
+06/06/23 01:/56:/19 PM: INFO: ********** Summary Details : :
+06/06/23 01:/56:/19 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 01:/56:/29 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/06/23 01:/56:/29 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/06/23 01:/56:/29 PM: INFO: ********** OS: Linux **********:
+06/06/23 01:/56:/29 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 01:/56:/34 PM: INFO: ********** Systems Details : :
+06/06/23 01:/56:/40 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 01:/56:/45 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/06/23 01:/56:/45 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/06/23 01:/56:/45 PM: INFO: ********** OS: Linux **********:
+06/06/23 01:/56:/45 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 01:/56:/46 PM: INFO: ********** Sync Details For Host No. 2 : psp-MyLinFirstFlow-src2 ,:
+06/06/23 01:/56:/51 PM: INFO: ********** Summary Details : :
+06/06/23 01:/56:/51 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 01:/57:/01 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/06/23 01:/57:/01 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/06/23 01:/57:/01 PM: INFO: ********** OS: Linux **********:
+06/06/23 01:/57:/01 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 01:/57:/06 PM: INFO: ********** Systems Details : :
+06/06/23 01:/57:/11 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 01:/57:/16 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/06/23 01:/57:/16 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/06/23 01:/57:/16 PM: INFO: ********** OS: Linux **********:
+06/06/23 01:/57:/16 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 01:/57:/17 PM: INFO: ********** Successfully Executed TestCase: Verify Sync System And Summary Details **********
+ 
+:
+06/06/23 01:/57:/17 PM: INFO: ********** Starting TestCase 9: Create New DR Policy **********:
+06/06/23 01:/57:/24 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/06/23 01:/57:/29 PM: INFO: ********** Selected Periodicity Type: Continuous **********:
+06/06/23 01:/57:/29 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/06/23 01:/57:/30 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/06/23 01:/57:/31 PM: INFO: ********** Create DR Policy Status For Policy : firstFlow,:
+06/06/23 01:/57:/31 PM: INFO: Successfully created DR Policy firstFlow
+:
+06/06/23 01:/57:/34 PM: INFO: ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
+:
+06/06/23 01:/57:/34 PM: INFO: ********** Starting TestCase 10: Assign DR Policy To Wave **********:
+06/06/23 01:/58:/08 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 01:/58:/08 PM: INFO: ********** Currently The Wave : First Flow, Don't Have Any Policy **********:
+06/06/23 01:/58:/13 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 01:/58:/23 PM: INFO: ********** Assign DR Policy firstFlow To Wave First Flow, Status : :
+06/06/23 01:/58:/23 PM: INFO: Successfully applied DR Policy firstFlow to First Flow
+:
+06/06/23 01:/58:/26 PM: INFO: ********** Policy : firstFlow, Added To The Wave : First Flow **********:
+06/06/23 01:/58:/34 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/06/23 01:/58:/34 PM: INFO: ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+:
+06/06/23 01:/58:/34 PM: INFO: ********** Starting TestCase 11: Resume Policy **********:
+06/06/23 01:/58:/45 PM: INFO: ********** Pop-up Banner For Resume Policy Was Opened For Policy: firstFlow **********:
+06/06/23 01:/58:/47 PM: INFO: ********** Start or Restart Status For Policy : firstFlow,:
+06/06/23 01:/58:/47 PM: INFO: Successfully resumed DR Policy: firstFlow
+:
+06/06/23 01:/58:/49 PM: INFO: ********** Successfully Executed TestCase: Resume Policy **********
+ 
+:
+06/06/23 01:/58:/49 PM: INFO: ********** Starting TestCase 12: Pause DR Policy **********:
+06/06/23 01:/58:/59 PM: INFO: ********** Policy : firstFlow, Is In Active State **********:
+06/06/23 01:/58:/59 PM: INFO: ********** Pausing The DR Policy **********:
+06/06/23 01:/59:/01 PM: INFO: ********** Pause Status For Policy : firstFlow,:
+06/06/23 01:/59:/01 PM: INFO: Successfully paused DR Policy
+firstFlow
+:
+06/06/23 01:/59:/08 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/06/23 01:/59:/08 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/06/23 01:/59:/08 PM: INFO: ********** Starting TestCase 13: Check DR Policy Host Sync Status **********:
+06/06/23 01:/59:/31 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 01:/59:/31 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/06/23 01:/59:/31 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 01:/59:/36 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********
+ 
+:
+06/06/23 01:/59:/36 PM: INFO: ********** Starting TestCase 14: Change Target Type **********:
+06/06/23 01:/59:/41 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 01:/59:/47 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 01:/59:/49 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src1,:
+06/06/23 01:/59:/49 PM: INFO: Successfully modified 172.29.31.111
+:
+06/06/23 02:/00:/01 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/00:/06 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 02:/00:/09 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src2,:
+06/06/23 02:/00:/09 PM: INFO: Successfully modified 172.29.31.183
+:
+06/06/23 02:/00:/16 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/06/23 02:/00:/16 PM: INFO: ********** Starting TestCase 15: Perform Tear Down **********:
+06/06/23 02:/00:/21 PM: INFO: ********** Starting TestCase 15.1: Delete SSH Host Sync Entry **********:
+06/06/23 02:/00:/21 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/00:/25 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/00:/26 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/00:/26 PM: INFO: ********** Starting TestCase 15.2: Delete SSH Host Sync Entry **********:
+06/06/23 02:/00:/27 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/00:/28 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/00:/29 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/00:/29 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/06/23 02:/00:/29 PM: INFO: ********** Starting TestCase 16: Start Wave And Verify **********:
+06/06/23 02:/00:/34 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/00:/36 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/06/23 02:/00:/36 PM: INFO: Wave Started
+First Flow
+:
+06/06/23 02:/01:/17 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 02:/01:/17 PM: INFO: ********** Starting TestCase 17: Verify Sync Success Or Fail Details **********:
+06/06/23 02:/01:/22 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/01:/22 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/06/23 02:/01:/22 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 02:/01:/22 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 02:/01:/22 PM: INFO: ********** Starting TestCase 18: Failover Host **********:
+06/06/23 02:/01:/27 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/01:/33 PM: INFO: ********** Pop-up Banner Of Failover Was Opened **********:
+
+06/06/23 02:/15:/04 PM: INFO: ********** Test_000_OneForAll ********** :
+06/06/23 02:/15:/04 PM: INFO: ********** Opening Browser ********** :
+06/06/23 02:/15:/23 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/06/23 02:/15:/23 PM: INFO: ********** Logging In **********:
+06/06/23 02:/15:/34 PM: INFO: ********** Login Successful **********:
+06/06/23 02:/15:/34 PM: INFO: ********** Login Successful **********
+ 
+:
+06/06/23 02:/15:/34 PM: INFO: Timestamp: 2023-06-06 14:15:34:
+06/06/23 02:/15:/34 PM: INFO: 
+:
+06/06/23 02:/15:/34 PM: INFO: ********** Starting TestCase 1: Perform Tear Down **********:
+06/06/23 02:/15:/39 PM: INFO: ********** Starting TestCase 1.1: Delete Wave **********:
+06/06/23 02:/16:/02 PM: INFO: ********** Delete Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/06/23 02:/16:/04 PM: INFO: ********** Delete Wave Status of Wave : First Flow,:
+06/06/23 02:/16:/04 PM: INFO: Wave Deleted
+First Flow successfully deleted.
+:
+06/06/23 02:/16:/11 PM: INFO: ********** Successfully Executed TestCase: Delete Wave **********
+ 
+:
+06/06/23 02:/16:/11 PM: INFO: ********** Starting TestCase 1.2: Delete SSH Host Sync Entry **********:
+06/06/23 02:/16:/26 PM: INFO: ********** Delete Policy Pop Up Banner Was Opened **********:
+06/06/23 02:/16:/28 PM: INFO: ********** Delete Policy Status, :
+06/06/23 02:/16:/28 PM: INFO: Successfully deleted DR Policy
+firstFlow
+:
+06/06/23 02:/16:/30 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/16:/30 PM: INFO: ********** Starting TestCase 1.3: Delete Source Host **********:
+06/06/23 02:/16:/57 PM: INFO: ********** Delete Host Pop Up Banner Was Opened **********:
+06/06/23 02:/16:/58 PM: INFO: ********** Delete Status For Hosts,:
+06/06/23 02:/16:/58 PM: INFO: Successfully deleted host psp-MyLinFirstFlow-src1
+:
+06/06/23 02:/16:/59 PM: INFO: Successfully deleted host psp-MyLinFirstFlow-src1
+:
+06/06/23 02:/16:/59 PM: INFO: ********** Successfully Executed TestCase: Delete Source Host **********
+ 
+:
+06/06/23 02:/16:/59 PM: INFO: ********** Starting TestCase 1.4: Delete Target Host **********:
+06/06/23 02:/17:/12 PM: INFO: ********** Delete Host Pop Up Banner Was Opened **********:
+06/06/23 02:/17:/29 PM: INFO: ********** Successfully Executed TestCase: Delete Target Host **********
+ 
+:
+06/06/23 02:/17:/29 PM: INFO: ********** Starting TestCase 1.5: Delete SSH Host Sync Entry **********:
+06/06/23 02:/17:/30 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/17:/32 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/17:/33 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/17:/33 PM: INFO: ********** Starting TestCase 1.6: Delete SSH Host Sync Entry **********:
+06/06/23 02:/17:/33 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/17:/35 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/17:/36 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/17:/36 PM: INFO: ********** Starting TestCase 1.7: Delete SSH Host Sync Entry **********:
+06/06/23 02:/17:/37 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/17:/39 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/17:/40 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/17:/40 PM: INFO: ********** Starting TestCase 1.8: Delete SSH Host Sync Entry **********:
+06/06/23 02:/17:/40 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/17:/42 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/17:/43 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/17:/43 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/06/23 02:/17:/48 PM: INFO: ********** Logout Successful **********:
+06/06/23 02:/17:/48 PM: INFO: ********** Logout Successful **********:
+06/06/23 02:/17:/52 PM: INFO: ********** Browser Closed Successfully **********:
+06/06/23 02:/17:/52 PM: INFO: 
+:
+06/06/23 02:/17:/52 PM: INFO: Timestamp: 2023-06-06 14:17:52:
+06/06/23 02:/17:/52 PM: INFO: 
+ 
+ 
+:
+
+
+
+
+
+
+
+06/06/23 02:/19:/18 PM: INFO: ********** Test_000_OneForAll ********** :
+06/06/23 02:/19:/18 PM: INFO: ********** Opening Browser ********** :
+06/06/23 02:/19:/31 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/06/23 02:/19:/31 PM: INFO: ********** Logging In **********:
+06/06/23 02:/19:/39 PM: INFO: ********** Login Successful **********:
+06/06/23 02:/19:/39 PM: INFO: ********** Login Successful **********
+ 
+:
+06/06/23 02:/19:/39 PM: INFO: Timestamp: 2023-06-06 14:19:39:
+06/06/23 02:/19:/39 PM: INFO: 
+:
+06/06/23 02:/19:/39 PM: INFO: ********** Starting TestCase 1: Create New Wave With Host **********:
+06/06/23 02:/19:/49 PM: INFO: ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/06/23 02:/19:/49 PM: INFO: ********** Creating No. 1 Wave With Target Type Autoprovision **********:
+06/06/23 02:/19:/55 PM: INFO: ********** Create New Wave Status of Wave : First Flow,:
+06/06/23 02:/19:/55 PM: INFO: Added machine 172.29.31.111 to wave
+First Flow
+:
+06/06/23 02:/19:/58 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Host **********
+ 
+:
+06/06/23 02:/19:/58 PM: INFO: ********** Starting TestCase 2: Add New Hosts To Wave **********:
+06/06/23 02:/20:/11 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 02:/20:/19 PM: INFO: ********** Add New Host Pop-up Banner Was Opened For Wave, First Flow **********:
+06/06/23 02:/20:/21 PM: INFO: ********** Add New Host Status of Wave : First Flow,:
+06/06/23 02:/20:/21 PM: INFO: Added machine 172.29.31.183 to wave
+First Flow
+:
+06/06/23 02:/20:/24 PM: INFO: ********** Successfully Executed TestCase: Add New Hosts To Wave **********
+ 
+:
+06/06/23 02:/20:/24 PM: INFO: ********** Starting TestCase 3: Bulk Edit Sync Options **********:
+06/06/23 02:/20:/34 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/20:/40 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 02:/20:/40 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/06/23 02:/20:/41 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/06/23 02:/20:/42 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : First Flow,:
+06/06/23 02:/20:/42 PM: INFO: Successfully modified First Flow
+:
+06/06/23 02:/20:/49 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/06/23 02:/20:/49 PM: INFO: ********** Starting TestCase 4: Set Autoprovision **********:
+06/06/23 02:/20:/55 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/21:/00 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 02:/21:/08 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/06/23 02:/21:/08 PM: INFO: Successfully edited cloud
+First Flow
+:
+06/06/23 02:/21:/20 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 02:/21:/21 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 02:/21:/24 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : First Flow **********:
+06/06/23 02:/21:/31 PM: INFO: ********** Successfully Added NIC For Wave : First Flow **********:
+06/06/23 02:/21:/35 PM: INFO: ********** Set Autoprovision Status of Wave : First Flow,:
+06/06/23 02:/21:/35 PM: INFO: Successfully modified First Flow
+:
+06/06/23 02:/21:/37 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/06/23 02:/21:/37 PM: INFO: ********** Starting TestCase 5: Set Parallel Count **********:
+06/06/23 02:/21:/42 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/21:/44 PM: INFO: ********** Set Parallel Count To Wave: First Flow, Status : :
+06/06/23 02:/21:/44 PM: INFO: Updated parallel count to 2
+:
+06/06/23 02:/21:/46 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/06/23 02:/21:/46 PM: INFO: ********** Starting TestCase 6: Start Wave And Verify **********:
+06/06/23 02:/21:/51 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/21:/54 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/06/23 02:/21:/54 PM: INFO: Wave Started
+First Flow
+:
+06/06/23 02:/40:/36 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 02:/40:/36 PM: INFO: ********** Starting TestCase 7: Verify Sync Success Or Fail Details **********:
+06/06/23 02:/40:/41 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/40:/41 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/06/23 02:/40:/41 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 02:/40:/41 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 02:/40:/41 PM: INFO: ********** Starting TestCase 8: Verify Sync System And Summary Details **********:
+06/06/23 02:/40:/46 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/40:/46 PM: INFO: ********** Total Available Hosts : 2 ,:
+06/06/23 02:/40:/47 PM: INFO: ********** Sync Details For Host No. 1 : psp-MyLinFirstFlow-src1 ,:
+06/06/23 02:/40:/52 PM: INFO: ********** Summary Details : :
+06/06/23 02:/40:/52 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 02:/41:/02 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/06/23 02:/41:/02 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/06/23 02:/41:/02 PM: INFO: ********** OS: Linux **********:
+06/06/23 02:/41:/02 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 02:/41:/07 PM: INFO: ********** Systems Details : :
+06/06/23 02:/41:/12 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 02:/41:/17 PM: INFO: ********** Name: psp-MyLinFirstFlow-src1 **********:
+06/06/23 02:/41:/17 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/06/23 02:/41:/17 PM: INFO: ********** OS: Linux **********:
+06/06/23 02:/41:/17 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 02:/41:/18 PM: INFO: ********** Sync Details For Host No. 2 : psp-MyLinFirstFlow-src2 ,:
+06/06/23 02:/41:/23 PM: INFO: ********** Summary Details : :
+06/06/23 02:/41:/23 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 02:/41:/33 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/06/23 02:/41:/33 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/06/23 02:/41:/33 PM: INFO: ********** OS: Linux **********:
+06/06/23 02:/41:/33 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 02:/41:/38 PM: INFO: ********** Systems Details : :
+06/06/23 02:/41:/44 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 02:/41:/49 PM: INFO: ********** Name: psp-MyLinFirstFlow-src2 **********:
+06/06/23 02:/41:/49 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/06/23 02:/41:/49 PM: INFO: ********** OS: Linux **********:
+06/06/23 02:/41:/49 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 02:/41:/49 PM: INFO: ********** Successfully Executed TestCase: Verify Sync System And Summary Details **********
+ 
+:
+06/06/23 02:/41:/49 PM: INFO: ********** Starting TestCase 9: Create New DR Policy **********:
+06/06/23 02:/41:/57 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/06/23 02:/42:/00 PM: INFO: ********** Selected Periodicity Type: Continuous **********:
+06/06/23 02:/42:/00 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/06/23 02:/42:/01 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/06/23 02:/42:/03 PM: INFO: ********** Create DR Policy Status For Policy : firstFlow,:
+06/06/23 02:/42:/03 PM: INFO: Successfully created DR Policy firstFlow
+:
+06/06/23 02:/42:/06 PM: INFO: ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
+:
+06/06/23 02:/42:/06 PM: INFO: ********** Starting TestCase 10: Assign DR Policy To Wave **********:
+06/06/23 02:/42:/40 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 02:/42:/40 PM: INFO: ********** Currently The Wave : First Flow, Don't Have Any Policy **********:
+06/06/23 02:/42:/45 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 02:/42:/55 PM: INFO: ********** Assign DR Policy firstFlow To Wave First Flow, Status : :
+06/06/23 02:/42:/55 PM: INFO: Successfully applied DR Policy firstFlow to First Flow
+:
+06/06/23 02:/42:/57 PM: INFO: ********** Policy : firstFlow, Added To The Wave : First Flow **********:
+06/06/23 02:/43:/06 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/06/23 02:/43:/06 PM: INFO: ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+:
+06/06/23 02:/43:/06 PM: INFO: ********** Starting TestCase 11: Resume Policy **********:
+06/06/23 02:/43:/17 PM: INFO: ********** Pop-up Banner For Resume Policy Was Opened For Policy: firstFlow **********:
+06/06/23 02:/43:/19 PM: INFO: ********** Start or Restart Status For Policy : firstFlow,:
+06/06/23 02:/43:/19 PM: INFO: Successfully resumed DR Policy: firstFlow
+:
+06/06/23 02:/43:/21 PM: INFO: ********** Successfully Executed TestCase: Resume Policy **********
+ 
+:
+06/06/23 02:/43:/21 PM: INFO: ********** Starting TestCase 12: Pause DR Policy **********:
+06/06/23 02:/43:/31 PM: INFO: ********** Policy : firstFlow, Is In Active State **********:
+06/06/23 02:/43:/31 PM: INFO: ********** Pausing The DR Policy **********:
+06/06/23 02:/43:/33 PM: INFO: ********** Pause Status For Policy : firstFlow,:
+06/06/23 02:/43:/33 PM: INFO: Successfully paused DR Policy
+firstFlow
+:
+06/06/23 02:/43:/40 PM: INFO: ********** Policy : firstFlow, Is In Paused State **********:
+06/06/23 02:/43:/40 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/06/23 02:/43:/40 PM: INFO: ********** Starting TestCase 13: Check DR Policy Host Sync Status **********:
+06/06/23 02:/44:/03 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/06/23 02:/44:/03 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/06/23 02:/44:/04 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 02:/44:/09 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Host Sync Status **********
+ 
+:
+06/06/23 02:/44:/09 PM: INFO: ********** Starting TestCase 14: Change Target Type **********:
+06/06/23 02:/44:/14 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/44:/19 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 02:/44:/21 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src1,:
+06/06/23 02:/44:/21 PM: INFO: Successfully modified 172.29.31.111
+:
+06/06/23 02:/44:/33 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/44:/39 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, First Flow **********:
+06/06/23 02:/44:/41 PM: INFO: ********** Changed Target Type For Host : psp-MyLinFirstFlow-src2,:
+06/06/23 02:/44:/41 PM: INFO: Successfully modified 172.29.31.183
+:
+06/06/23 02:/44:/48 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/06/23 02:/44:/48 PM: INFO: ********** Starting TestCase 15: Perform Tear Down **********:
+06/06/23 02:/44:/53 PM: INFO: ********** Starting TestCase 15.1: Delete SSH Host Sync Entry **********:
+06/06/23 02:/44:/54 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/44:/56 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/44:/57 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/44:/57 PM: INFO: ********** Starting TestCase 15.2: Delete SSH Host Sync Entry **********:
+06/06/23 02:/44:/58 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/45:/00 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/45:/00 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/45:/00 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/06/23 02:/45:/00 PM: INFO: ********** Starting TestCase 16: Start Wave And Verify **********:
+06/06/23 02:/45:/06 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/45:/07 PM: INFO: ********** Start Status For Wave Name : First Flow,:
+06/06/23 02:/45:/07 PM: INFO: Wave Started
+First Flow
+:
+06/06/23 02:/45:/38 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 02:/45:/38 PM: INFO: ********** Starting TestCase 17: Verify Sync Success Or Fail Details **********:
+06/06/23 02:/45:/43 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/45:/43 PM: INFO: ********** Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/06/23 02:/45:/43 PM: INFO: ********** Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 02:/45:/43 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 02:/45:/43 PM: INFO: ********** Starting TestCase 18: Failover Host **********:
+06/06/23 02:/45:/48 PM: INFO: ********** Wave : First Flow Was Already Open **********:
+06/06/23 02:/45:/54 PM: INFO: ********** Pop-up Banner Of Failover Was Opened **********:
+06/06/23 02:/51:/14 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src1, Sync Successful **********:
+06/06/23 02:/51:/14 PM: INFO: ********** For Host : psp-MyLinFirstFlow-src2, Sync Successful **********:
+06/06/23 02:/51:/19 PM: INFO: ********** Successfully Executed TestCase: Failover Host **********
+ 
+:
+06/06/23 02:/51:/19 PM: INFO: ********** Starting TestCase 19: Perform Tear Down **********:
+06/06/23 02:/51:/24 PM: INFO: ********** Starting TestCase 19.1: Delete Wave **********:
+06/06/23 02:/51:/56 PM: INFO: ********** Delete Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/06/23 02:/51:/57 PM: INFO: ********** Delete Wave Status of Wave : First Flow,:
+06/06/23 02:/51:/57 PM: INFO: Wave Deleted
+First Flow successfully deleted.
+:
+06/06/23 02:/52:/05 PM: INFO: ********** Successfully Executed TestCase: Delete Wave **********
+ 
+:
+06/06/23 02:/52:/05 PM: INFO: ********** Starting TestCase 19.2: Delete SSH Host Sync Entry **********:
+06/06/23 02:/52:/19 PM: INFO: ********** Delete Policy Pop Up Banner Was Opened **********:
+06/06/23 02:/52:/22 PM: INFO: ********** Delete Policy Status, :
+06/06/23 02:/52:/22 PM: INFO: Successfully deleted DR Policy
+firstFlow
+:
+06/06/23 02:/52:/24 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/52:/24 PM: INFO: ********** Starting TestCase 19.3: Delete Source Host **********:
+06/06/23 02:/52:/51 PM: INFO: ********** Delete Host Pop Up Banner Was Opened **********:
+06/06/23 02:/52:/52 PM: INFO: ********** Delete Status For Hosts,:
+06/06/23 02:/52:/52 PM: INFO: Successfully deleted host psp-MyLinFirstFlow-src1
+:
+06/06/23 02:/52:/52 PM: INFO: Successfully deleted host psp-MyLinFirstFlow-src1
+:
+06/06/23 02:/52:/53 PM: INFO: ********** Successfully Executed TestCase: Delete Source Host **********
+ 
+:
+06/06/23 02:/52:/53 PM: INFO: ********** Starting TestCase 19.4: Delete Target Host **********:
+06/06/23 02:/53:/06 PM: INFO: ********** Delete Host Pop Up Banner Was Opened **********:
+06/06/23 02:/53:/23 PM: INFO: ********** Successfully Executed TestCase: Delete Target Host **********
+ 
+:
+06/06/23 02:/53:/23 PM: INFO: ********** Starting TestCase 19.5: Delete SSH Host Sync Entry **********:
+06/06/23 02:/53:/24 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/53:/26 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/53:/27 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/53:/27 PM: INFO: ********** Starting TestCase 19.6: Delete SSH Host Sync Entry **********:
+06/06/23 02:/53:/28 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/53:/30 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/53:/31 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/53:/31 PM: INFO: ********** Starting TestCase 19.7: Delete SSH Host Sync Entry **********:
+06/06/23 02:/53:/32 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/53:/34 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/53:/35 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/53:/35 PM: INFO: ********** Starting TestCase 19.8: Delete SSH Host Sync Entry **********:
+06/06/23 02:/53:/36 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 02:/53:/37 PM: INFO: Authentication (password) successful!:
+06/06/23 02:/53:/39 PM: INFO: ********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********
+ 
+:
+06/06/23 02:/53:/39 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/06/23 02:/53:/44 PM: INFO: ********** Logout Successful **********:
+06/06/23 02:/53:/44 PM: INFO: ********** Logout Successful **********:
+06/06/23 02:/54:/05 PM: INFO: ********** Browser Closed Successfully **********:
+06/06/23 02:/54:/05 PM: INFO: 
+:
+06/06/23 02:/54:/05 PM: INFO: Timestamp: 2023-06-06 14:54:05:
+06/06/23 02:/54:/05 PM: INFO: 
+ 
+ 
+:
+
+
+
+
+
+
+
+
+06/06/23 03:/00:/39 PM: INFO: ********** Test_000_OneForAll ********** :
+06/06/23 03:/00:/39 PM: INFO: ********** Opening Browser ********** :
+06/06/23 03:/00:/52 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/06/23 03:/00:/52 PM: INFO: ********** Logging In **********:
+06/06/23 03:/01:/00 PM: INFO: ********** Login Successful **********:
+06/06/23 03:/01:/00 PM: INFO: ********** Login Successful **********
+ 
+:
+06/06/23 03:/01:/00 PM: INFO: Timestamp: 2023-06-06 15:01:00:
+06/06/23 03:/01:/00 PM: INFO: 
+:
+06/06/23 03:/01:/00 PM: INFO: ********** Starting TestCase 1: Create New Wave With Upload .csv File Method **********:
+06/06/23 03:/01:/05 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened **********:
+06/06/23 03:/01:/16 PM: INFO: ********** Create Status of Wave Name, :
+06/06/23 03:/01:/16 PM: INFO: Wave Add
+Second Flow successfully added.
+:
+06/06/23 03:/01:/18 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Upload .csv File Method **********
+ 
+:
+06/06/23 03:/01:/18 PM: INFO: ********** Starting TestCase 2: Create New vCenter **********:
+06/06/23 03:/01:/31 PM: INFO: ********** Found The vCenter With Name: hcm_vc At Location, 1**********:
+06/06/23 03:/01:/31 PM: INFO: ********** The vCenter With Name: hcm_vc Was Already Present **********:
+06/06/23 03:/01:/31 PM: INFO: ********** Successfully Executed TestCase: Create New vCenter **********
+ 
+:
+06/06/23 03:/01:/31 PM: INFO: ********** Starting TestCase 3: Set Autoprovision **********:
+06/06/23 03:/01:/52 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/06/23 03:/01:/57 PM: INFO: ********** Select An Environment Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/06/23 03:/02:/04 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/06/23 03:/02:/04 PM: INFO: Successfully edited cloud
+Second Flow
+:
+06/06/23 03:/02:/17 PM: INFO: ********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/06/23 03:/02:/17 PM: INFO: ********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/06/23 03:/02:/21 PM: INFO: ********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : Second Flow **********:
+06/06/23 03:/02:/27 PM: INFO: ********** Successfully Added NIC For Wave : Second Flow **********:
+06/06/23 03:/02:/31 PM: INFO: ********** Set Autoprovision Status of Wave : Second Flow,:
+06/06/23 03:/02:/31 PM: INFO: Successfully modified Second Flow
+:
+06/06/23 03:/02:/33 PM: INFO: ********** Successfully Executed TestCase: Set Autoprovision **********
+ 
+:
+06/06/23 03:/02:/33 PM: INFO: ********** Starting TestCase 4: Bulk Edit Sync Options **********:
+06/06/23 03:/02:/44 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/02:/49 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/06/23 03:/02:/49 PM: INFO: ********** Sync Option 'Verbose' is set as yes **********:
+06/06/23 03:/02:/50 PM: INFO: ********** Sync Option 'Allow Direct Fscopy' is set as yes **********:
+06/06/23 03:/02:/50 PM: INFO: ********** Sync Option 'No Transfer' is set as yes **********:
+06/06/23 03:/02:/52 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/06/23 03:/02:/52 PM: INFO: Successfully modified Second Flow
+:
+06/06/23 03:/03:/04 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/03:/10 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/06/23 03:/03:/10 PM: INFO: ********** Sync Option 'Transfer Compress' is set as yes **********:
+06/06/23 03:/03:/11 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/06/23 03:/03:/13 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/06/23 03:/03:/13 PM: INFO: Successfully modified Second Flow
+:
+06/06/23 03:/03:/23 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/06/23 03:/03:/23 PM: INFO: ********** Starting TestCase 5: Set Sync Options **********:
+06/06/23 03:/03:/33 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/03:/38 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/06/23 03:/03:/44 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/06/23 03:/03:/44 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/06/23 03:/03:/44 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/06/23 03:/03:/45 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/06/23 03:/03:/45 PM: INFO: Successfully modified 172.29.31.111
+:
+06/06/23 03:/03:/57 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/04:/03 PM: INFO: ********** Edit Host Pop-Up Banner Was Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/06/23 03:/04:/08 PM: INFO: ********** Sync Options Pop-up Banner Is Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/06/23 03:/04:/08 PM: INFO: ********** Sync Option 'Event Script' is set **********:
+06/06/23 03:/04:/08 PM: INFO: ********** Sync Option 'Event Script Arguments' is set **********:
+06/06/23 03:/04:/10 PM: INFO: ********** Set Edit Sync Options Status of Wave : Second Flow,:
+06/06/23 03:/04:/10 PM: INFO: Successfully modified 172.29.31.183
+:
+06/06/23 03:/04:/17 PM: INFO: ********** Successfully Executed TestCase: Set Sync Options **********
+ 
+:
+06/06/23 03:/04:/17 PM: INFO: ********** Starting TestCase 6: Change vCenter Details **********:
+06/06/23 03:/04:/22 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/04:/27 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Was Opened For Wave, Second Flow **********:
+06/06/23 03:/04:/28 PM: INFO: ********** Wave Edit vCenter Options Pop-up Banner Was Opened For Wave, Second Flow **********:
+06/06/23 03:/04:/30 PM: INFO: ********** Edit VCEnter Options Status of Wave : Second Flow,:
+06/06/23 03:/04:/30 PM: INFO: Successfully modified Second Flow
+:
+06/06/23 03:/04:/36 PM: INFO: ********** Successfully Executed TestCase: Change vCenter Details **********
+ 
+:
+06/06/23 03:/04:/36 PM: INFO: ********** Starting TestCase 7: Bulk Edit Sync Options **********:
+06/06/23 03:/04:/46 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/04:/52 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/06/23 03:/04:/52 PM: INFO: ********** Sync Option 'Exclude File System(s)' is set as no **********:
+06/06/23 03:/04:/54 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/06/23 03:/04:/54 PM: INFO: Successfully modified Second Flow
+:
+06/06/23 03:/05:/04 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/06/23 03:/05:/04 PM: INFO: ********** Starting TestCase 8: Set Parallel Count **********:
+06/06/23 03:/05:/09 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/05:/11 PM: INFO: ********** Set Parallel Count To Wave: Second Flow, Status : :
+06/06/23 03:/05:/11 PM: INFO: Updated parallel count to 4
+:
+06/06/23 03:/05:/13 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/06/23 03:/05:/13 PM: INFO: ********** Starting TestCase 9: Start Wave And Verify **********:
+06/06/23 03:/05:/18 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/05:/20 PM: INFO: ********** Start Status For Wave Name : Second Flow,:
+06/06/23 03:/05:/20 PM: INFO: Wave Started
+Second Flow
+:
+06/06/23 03:/21:/01 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 03:/21:/01 PM: INFO: ********** Starting TestCase 10: Verify Sync Success Or Fail Details **********:
+06/06/23 03:/21:/06 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/21:/06 PM: INFO: ********** Host : psp-MyLinSecondFlow-src1, Sync Successful **********:
+06/06/23 03:/21:/06 PM: INFO: ********** Host : psp-MyLinSecondFlow-src2, Sync Successful **********:
+06/06/23 03:/21:/06 PM: INFO: ********** Host : psp-MyWinSecondFlow-src1, Sync Successful **********:
+06/06/23 03:/21:/06 PM: INFO: ********** Host : psp-MyWinSecondFlow-src2, Sync Successful **********:
+06/06/23 03:/21:/06 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 03:/21:/06 PM: INFO: ********** Starting TestCase 11: Verify Sync System And Summary Details **********:
+06/06/23 03:/21:/11 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/21:/11 PM: INFO: ********** Total Available Hosts : 4 ,:
+06/06/23 03:/21:/12 PM: INFO: ********** Sync Details For Host No. 1 : psp-MyLinSecondFlow-src1 ,:
+06/06/23 03:/21:/17 PM: INFO: ********** Summary Details : :
+06/06/23 03:/21:/17 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 03:/21:/27 PM: INFO: ********** Name: psp-MyLinSecondFlow-src1 **********:
+06/06/23 03:/21:/27 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/06/23 03:/21:/27 PM: INFO: ********** OS: Linux **********:
+06/06/23 03:/21:/27 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 03:/21:/32 PM: INFO: ********** Systems Details : :
+06/06/23 03:/21:/37 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 03:/21:/43 PM: INFO: ********** Name: psp-MyLinSecondFlow-src1 **********:
+06/06/23 03:/21:/43 PM: INFO: ********** IP Address: 172.29.31.111 **********:
+06/06/23 03:/21:/43 PM: INFO: ********** OS: Linux **********:
+06/06/23 03:/21:/43 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 03:/21:/43 PM: INFO: ********** Sync Details For Host No. 2 : psp-MyLinSecondFlow-src2 ,:
+06/06/23 03:/21:/48 PM: INFO: ********** Summary Details : :
+06/06/23 03:/21:/48 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 03:/21:/58 PM: INFO: ********** Name: psp-MyLinSecondFlow-src2 **********:
+06/06/23 03:/21:/58 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/06/23 03:/21:/58 PM: INFO: ********** OS: Linux **********:
+06/06/23 03:/21:/58 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 03:/22:/03 PM: INFO: ********** Systems Details : :
+06/06/23 03:/22:/09 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 03:/22:/14 PM: INFO: ********** Name: psp-MyLinSecondFlow-src2 **********:
+06/06/23 03:/22:/14 PM: INFO: ********** IP Address: 172.29.31.183 **********:
+06/06/23 03:/22:/14 PM: INFO: ********** OS: Linux **********:
+06/06/23 03:/22:/14 PM: INFO: ********** OS Version: CentOS Linux 7 (Core) **********:
+06/06/23 03:/22:/14 PM: INFO: ********** Sync Details For Host No. 3 : psp-MyWinSecondFlow-src1 ,:
+06/06/23 03:/22:/19 PM: INFO: ********** Summary Details : :
+06/06/23 03:/22:/19 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 03:/22:/29 PM: INFO: ********** Name: psp-MyWinSecondFlow-src1 **********:
+06/06/23 03:/22:/29 PM: INFO: ********** IP Address: 172.29.30.203 **********:
+06/06/23 03:/22:/29 PM: INFO: ********** OS: Windows **********:
+06/06/23 03:/22:/29 PM: INFO: ********** OS Version: Windows Server 2012 R2 Standard **********:
+06/06/23 03:/22:/34 PM: INFO: ********** Systems Details : :
+06/06/23 03:/22:/40 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 03:/22:/45 PM: INFO: ********** Name: psp-MyWinSecondFlow-src1 **********:
+06/06/23 03:/22:/45 PM: INFO: ********** IP Address: 172.29.30.203 **********:
+06/06/23 03:/22:/45 PM: INFO: ********** OS: Windows **********:
+06/06/23 03:/22:/45 PM: INFO: ********** OS Version: Windows Server 2012 R2 Standard **********:
+06/06/23 03:/22:/45 PM: INFO: ********** Sync Details For Host No. 4 : psp-MyWinSecondFlow-src2 ,:
+06/06/23 03:/22:/50 PM: INFO: ********** Summary Details : :
+06/06/23 03:/22:/50 PM: INFO: ********** Summary Details Was Opened **********:
+06/06/23 03:/23:/00 PM: INFO: ********** Name: psp-MyWinSecondFlow-src2 **********:
+06/06/23 03:/23:/00 PM: INFO: ********** IP Address: 172.29.30.179 **********:
+06/06/23 03:/23:/00 PM: INFO: ********** OS: Windows **********:
+06/06/23 03:/23:/00 PM: INFO: ********** OS Version: Windows Server 2012 Standard **********:
+06/06/23 03:/23:/05 PM: INFO: ********** Systems Details : :
+06/06/23 03:/23:/11 PM: INFO: ********** System Details Was Opened **********:
+06/06/23 03:/23:/16 PM: INFO: ********** Name: psp-MyWinSecondFlow-src2 **********:
+06/06/23 03:/23:/16 PM: INFO: ********** IP Address: 172.29.30.179 **********:
+06/06/23 03:/23:/16 PM: INFO: ********** OS: Windows **********:
+06/06/23 03:/23:/16 PM: INFO: ********** OS Version: Windows Server 2012 Standard **********:
+06/06/23 03:/23:/16 PM: INFO: ********** Successfully Executed TestCase: Verify Sync System And Summary Details **********
+ 
+:
+06/06/23 03:/23:/16 PM: INFO: ********** Starting TestCase 12: Bulk Edit Sync Options **********:
+06/06/23 03:/23:/26 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/23:/32 PM: INFO: ********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/06/23 03:/23:/32 PM: INFO: ********** Sync Option 'No Transfer' is set as no **********:
+06/06/23 03:/23:/34 PM: INFO: ********** Set Bulk Edit Sync Options Status of Wave : Second Flow,:
+06/06/23 03:/23:/34 PM: INFO: Successfully modified Second Flow
+:
+06/06/23 03:/23:/42 PM: INFO: ********** Successfully Executed TestCase: Bulk Edit Sync Options **********
+ 
+:
+06/06/23 03:/23:/42 PM: INFO: ********** Starting TestCase 13: Start Wave And Verify **********:
+06/06/23 03:/23:/47 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 03:/23:/48 PM: INFO: ********** Start Status For Wave Name : Second Flow,:
+06/06/23 03:/23:/48 PM: INFO: Wave Started
+Second Flow
+:
+06/06/23 04:/15:/32 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 04:/15:/32 PM: INFO: ********** Starting TestCase 14: Verify Sync Success Or Fail Details **********:
+06/06/23 04:/15:/37 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 04:/15:/37 PM: INFO: ********** Host : psp-MyLinSecondFlow-src1, Sync Failed **********:
+06/06/23 04:/15:/37 PM: INFO: ********** Failed Due To,
+:
+06/06/23 04:/15:/41 PM: INFO: RSP_CMD_ACCEPTED  STATUS_INFO
+Accepted command 'host sync '
+
+jobid file: /var/log/rackware/by-jobid/000000000003ff2e.log
+RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_RUNNING_EVENT_SCRIPT  STATUS_INFO
+Syncing psp-MyLinSecondFlow-src1: Running event script ...
+RSP_SYNC_ERROR  SYNC_ERROR_EVENT_SCRIPT  STATUS_ERROR
+Details: Pre-event script reported failure (exit status = 0)
+jobid file: /var/log/rackware/by-jobid/000000000003ff2e.log:
+06/06/23 04:/15:/41 PM: INFO: 
+:
+06/06/23 04:/15:/41 PM: INFO: ********** Host : psp-MyLinSecondFlow-src2, Sync Successful **********:
+06/06/23 04:/15:/41 PM: INFO: ********** Host : psp-MyWinSecondFlow-src1, Sync Successful **********:
+06/06/23 04:/15:/41 PM: INFO: ********** Host : psp-MyWinSecondFlow-src2, Sync Successful **********:
+06/06/23 04:/15:/41 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 04:/15:/41 PM: INFO: ********** Starting TestCase 15: Delete Sync Relation Data From RMM SSH Of Wave **********:
+06/06/23 04:/15:/46 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 04:/15:/48 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 04:/15:/51 PM: INFO: Authentication (password) successful!:
+06/06/23 04:/15:/52 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 04:/15:/54 PM: INFO: Authentication (password) successful!:
+06/06/23 04:/15:/56 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 04:/15:/58 PM: INFO: Authentication (password) successful!:
+06/06/23 04:/16:/00 PM: INFO: Connected (version 2.0, client OpenSSH_7.4):
+06/06/23 04:/16:/02 PM: INFO: Authentication (password) successful!:
+06/06/23 04:/16:/03 PM: INFO: ********** Successfully Executed TestCase: Delete Sync Relation Data From RMM SSH Of Wave **********
+ 
+:
+06/06/23 04:/16:/03 PM: INFO: ********** Starting TestCase 16: Create New Wave Without Hosts **********:
+06/06/23 04:/16:/17 PM: INFO: ********** Create New Wave Pop-up Banner Was Opened For Wave, Second Flow 1 **********:
+06/06/23 04:/16:/18 PM: INFO: ********** Create New Wave Status of Wave : Second Flow 1,:
+06/06/23 04:/16:/18 PM: INFO: Wave Added
+Second Flow 1
+:
+06/06/23 04:/16:/20 PM: INFO: ********** Successfully Executed TestCase: Create New Wave Without Hosts **********
+ 
+:
+06/06/23 04:/16:/20 PM: INFO: ********** Starting TestCase 17: Move Host Between Waves **********:
+06/06/23 04:/16:/38 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/06/23 04:/16:/43 PM: INFO: ********** Move Machine To New Wave Pop-up Banner Was Opened For Host : psp-MyLinSecondFlow-src1 **********:
+06/06/23 04:/16:/45 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src1,:
+06/06/23 04:/16:/45 PM: INFO: Move machine success.
+Moved 172.29.31.111 from Second Flow to Second Flow 1
+:
+06/06/23 04:/16:/53 PM: INFO: ********** Move Machine To New Wave Pop-up Banner Was Opened For Host : psp-MyLinSecondFlow-src2 **********:
+06/06/23 04:/16:/55 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src2,:
+06/06/23 04:/16:/55 PM: INFO: Move machine success.
+Moved 172.29.31.183 from Second Flow to Second Flow 1
+:
+06/06/23 04:/16:/57 PM: INFO: ********** Successfully Executed TestCase: Move Host Between Waves **********
+ 
+:
+06/06/23 04:/16:/57 PM: INFO: ********** Starting TestCase 18: Change Target Type **********:
+06/06/23 04:/17:/15 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/06/23 04:/17:/21 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/06/23 04:/17:/23 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src1,:
+06/06/23 04:/17:/23 PM: INFO: Successfully modified 172.29.31.111
+:
+06/06/23 04:/17:/35 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/06/23 04:/17:/40 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/06/23 04:/17:/43 PM: INFO: ********** Changed Target Type For Host : psp-MyLinSecondFlow-src2,:
+06/06/23 04:/17:/43 PM: INFO: Successfully modified 172.29.31.183
+:
+06/06/23 04:/17:/50 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/06/23 04:/17:/50 PM: INFO: ********** Starting TestCase 19: Set Parallel Count **********:
+06/06/23 04:/17:/55 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/06/23 04:/17:/56 PM: INFO: ********** Set Parallel Count To Wave: Second Flow 1, Status : :
+06/06/23 04:/17:/56 PM: INFO: Updated parallel count to 2
+:
+06/06/23 04:/17:/58 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/06/23 04:/17:/58 PM: INFO: ********** Starting TestCase 20: Start Wave And Verify **********:
+06/06/23 04:/18:/04 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/06/23 04:/18:/06 PM: INFO: ********** Start Status For Wave Name : Second Flow 1,:
+06/06/23 04:/18:/06 PM: INFO: Wave Started
+Second Flow 1
+:
+06/06/23 04:/18:/37 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 04:/18:/37 PM: INFO: ********** Starting TestCase 21: Verify Sync Success Or Fail Details **********:
+06/06/23 04:/18:/42 PM: INFO: ********** Wave : Second Flow 1 Was Already Open **********:
+06/06/23 04:/18:/42 PM: INFO: ********** Host : psp-MyLinSecondFlow-src1, Sync Successful **********:
+06/06/23 04:/18:/42 PM: INFO: ********** Host : psp-MyLinSecondFlow-src2, Sync Successful **********:
+06/06/23 04:/18:/42 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 04:/18:/42 PM: INFO: ********** Starting TestCase 22: Change Target Type **********:
+06/06/23 04:/19:/01 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/06/23 04:/19:/06 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/06/23 04:/19:/17 PM: INFO: ********** Changed Target Type For Host : psp-MyWinSecondFlow-src1,:
+06/06/23 04:/19:/17 PM: INFO: Successfully modified 172.29.30.203
+:
+06/06/23 04:/19:/29 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 04:/19:/35 PM: INFO: ********** Wave System Options Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/06/23 04:/19:/46 PM: INFO: ********** Changed Target Type For Host : psp-MyWinSecondFlow-src2,:
+06/06/23 04:/19:/46 PM: INFO: Successfully modified 172.29.30.179
+:
+06/06/23 04:/19:/53 PM: INFO: ********** Successfully Executed TestCase: Change Target Type **********
+ 
+:
+06/06/23 04:/19:/53 PM: INFO: ********** Starting TestCase 23: Set Parallel Count **********:
+06/06/23 04:/19:/59 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 04:/19:/59 PM: INFO: ********** Set Parallel Count To Wave: Second Flow, Status : :
+06/06/23 04:/19:/59 PM: INFO: Updated parallel count to 2
+:
+06/06/23 04:/20:/02 PM: INFO: ********** Successfully Executed TestCase: Set Parallel Count **********
+ 
+:
+06/06/23 04:/20:/02 PM: INFO: ********** Starting TestCase 24: Start Wave And Verify **********:
+06/06/23 04:/20:/07 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 04:/20:/08 PM: INFO: ********** Start Status For Wave Name : Second Flow,:
+06/06/23 04:/20:/08 PM: INFO: Wave Started
+Second Flow
+:
+06/06/23 04:/38:/11 PM: INFO: ********** Successfully Executed TestCase: Start Wave And Verify **********
+ 
+:
+06/06/23 04:/38:/11 PM: INFO: ********** Starting TestCase 25: Verify Sync Success Or Fail Details **********:
+06/06/23 04:/38:/16 PM: INFO: ********** Wave : Second Flow Was Already Open **********:
+06/06/23 04:/38:/16 PM: INFO: ********** Host : psp-MyWinSecondFlow-src1, Sync Failed **********:
+06/06/23 04:/38:/16 PM: INFO: ********** Failed Due To,
+:
+06/06/23 04:/38:/20 PM: INFO: ['Syncing psp-MyWinSecondFlow-tgt1: Image psp-MyWinSecondFlow-src1-IMAGE queried', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_DETERMINING_TARGET_OS  STATUS_INFO', 'Syncing psp-MyWinSecondFlow-tgt1: Checking OS on psp-MyWinSecondFlow-tgt1', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_UNMOUNTING_IMAGE_SNAPSHOT  STATUS_INFO', 'Syncing psp-MyWinSecondFlow-tgt1: Unmounting snapshot of image psp-MyWinSecondFlow-src1-IMAGE', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_IMAGE_SNAPSHOT_UNMOUNTED  STATUS_INFO', 'Syncing psp-MyWinSecondFlow-tgt1: Snapshot of image psp-MyWinSecondFlow-src1-IMAGE unmounted', 'RSP_SYNC_ERROR  SYNC_ERROR_DETERMINE_BOOTED_OS  STATUS_ERROR', 'Details: Unable to determine OS: failed to connect to 172.29.30.156', 'jobid file: /var/log/rackware/by-jobid/0000000000040154.log']:
+06/06/23 04:/38:/20 PM: INFO: 
+:
+06/06/23 04:/38:/20 PM: INFO: ********** Host : psp-MyWinSecondFlow-src2, Sync Failed **********:
+06/06/23 04:/38:/20 PM: INFO: ********** Failed Due To,
+:
+06/06/23 04:/38:/23 PM: INFO: ['Syncing psp-MyWinSecondFlow-tgt2: Image psp-MyWinSecondFlow-src2-IMAGE queried', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_DETERMINING_TARGET_OS  STATUS_INFO', 'Syncing psp-MyWinSecondFlow-tgt2: Checking OS on psp-MyWinSecondFlow-tgt2', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_UNMOUNTING_IMAGE_SNAPSHOT  STATUS_INFO', 'Syncing psp-MyWinSecondFlow-tgt2: Unmounting snapshot of image psp-MyWinSecondFlow-src2-IMAGE', 'RSP_SYNC_CHECKPOINT  SYNC_CHECKPOINT_IMAGE_SNAPSHOT_UNMOUNTED  STATUS_INFO', 'Syncing psp-MyWinSecondFlow-tgt2: Snapshot of image psp-MyWinSecondFlow-src2-IMAGE unmounted', 'RSP_SYNC_ERROR  SYNC_ERROR_DETERMINE_BOOTED_OS  STATUS_ERROR', 'Details: Unable to determine OS: failed to connect to 172.29.30.219', 'jobid file: /var/log/rackware/by-jobid/000000000004015c.log']:
+06/06/23 04:/38:/23 PM: INFO: 
+:
+06/06/23 04:/38:/23 PM: INFO: ********** Successfully Executed TestCase: Verify Sync Success Or Fail Details **********
+ 
+:
+06/06/23 04:/38:/23 PM: INFO: ********** Starting TestCase 26: Create New DR Policy **********:
+06/06/23 04:/38:/33 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/06/23 04:/38:/36 PM: INFO: ********** Selected Periodicity Type: Continuous **********:
+06/06/23 04:/38:/37 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/06/23 04:/38:/37 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/06/23 04:/38:/39 PM: INFO: ********** Create DR Policy Status For Policy : SecondFlowWin,:
+06/06/23 04:/38:/39 PM: INFO: Successfully created DR Policy SecondFlowWin
+:
+06/06/23 04:/38:/44 PM: INFO: ********** Create New DR Policy Pop-up Banner Is Opened **********:
+06/06/23 04:/38:/48 PM: INFO: ********** Selected Periodicity Type: By Frequency **********:
+06/06/23 04:/38:/54 PM: INFO: ********** Email Notification For Fail Cases Only Was Selected **********:
+06/06/23 04:/38:/54 PM: INFO: ********** Email Notification When Complete Was Selected **********:
+06/06/23 04:/38:/56 PM: INFO: ********** Create DR Policy Status For Policy : SecondFlowLin,:
+06/06/23 04:/38:/56 PM: INFO: Successfully created DR Policy SecondFlowLin
+:
+06/06/23 04:/38:/58 PM: INFO: ********** Successfully Executed TestCase: Create New DR Policy **********
+ 
+:
+06/06/23 04:/38:/58 PM: INFO: ********** Starting TestCase 27: Assign DR Policy To Wave **********:
+06/06/23 04:/39:/32 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/06/23 04:/39:/32 PM: INFO: ********** Currently The Wave : Second Flow, Don't Have Any Policy **********:
+06/06/23 04:/39:/38 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, Second Flow **********:
+06/06/23 04:/39:/48 PM: INFO: ********** Assign DR Policy SecondFlowWin To Wave Second Flow, Status : :
+06/06/23 04:/39:/48 PM: INFO: Successfully applied DR Policy SecondFlowWin to Second Flow
+:
+06/06/23 04:/39:/50 PM: INFO: ********** Policy : SecondFlowWin, Added To The Wave : Second Flow **********:
+06/06/23 04:/39:/59 PM: INFO: ********** Policy : SecondFlowWin, Is In Active State **********:
+06/06/23 04:/40:/33 PM: INFO: ********** Wave : Second Flow 1 Was Opened Successfully **********:
+06/06/23 04:/40:/33 PM: INFO: ********** Currently The Wave : Second Flow 1, Don't Have Any Policy **********:
+06/06/23 04:/40:/38 PM: INFO: ********** Policy Assignment Pop-up Banner Is Opened For Wave, Second Flow 1 **********:
+06/06/23 04:/40:/49 PM: INFO: ********** Assign DR Policy SecondFlowLin To Wave Second Flow 1, Status : :
+06/06/23 04:/40:/49 PM: INFO: Successfully applied DR Policy SecondFlowLin to Second Flow 1
+:
+06/06/23 04:/40:/51 PM: INFO: ********** Policy : SecondFlowLin, Added To The Wave : Second Flow 1 **********:
+06/06/23 04:/41:/00 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+06/06/23 04:/41:/00 PM: INFO: ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+:
+06/06/23 04:/41:/00 PM: INFO: ********** Starting TestCase 28: Check DR Policy Status **********:
+06/06/23 04:/41:/05 PM: INFO: ********** Policy : SecondFlowWin, Is In Syncing State **********:
+06/06/23 04:/41:/05 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Status **********
+ 
+:
+06/06/23 04:/41:/05 PM: INFO: ********** Starting TestCase 29: Check DR Policy Status **********:
+06/06/23 04:/41:/10 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+06/06/23 04:/41:/10 PM: INFO: ********** Successfully Executed TestCase: Check DR Policy Status **********
+ 
+:
+06/06/23 04:/41:/10 PM: INFO: ********** Starting TestCase 30: Pause DR Policy **********:
+06/06/23 04:/41:/21 PM: INFO: ********** Policy : SecondFlowWin, Is In Syncing State **********:
+06/06/23 04:/41:/21 PM: INFO: ********** Pausing The DR Policy **********:
+06/06/23 04:/41:/23 PM: INFO: ********** Pause Status For Policy : SecondFlowWin,:
+06/06/23 04:/41:/23 PM: INFO: Successfully paused DR Policy
+SecondFlowWin
+:
+06/06/23 04:/41:/30 PM: INFO: ********** Policy : SecondFlowWin, Is In Paused State **********:
+06/06/23 04:/41:/30 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/06/23 04:/41:/30 PM: INFO: ********** Starting TestCase 31: Pause DR Policy **********:
+06/06/23 04:/41:/40 PM: INFO: ********** Policy : SecondFlowLin, Is In Active State **********:
+06/06/23 04:/41:/40 PM: INFO: ********** Pausing The DR Policy **********:
+06/06/23 04:/41:/42 PM: INFO: ********** Pause Status For Policy : SecondFlowLin,:
+06/06/23 04:/41:/42 PM: INFO: Successfully paused DR Policy
+SecondFlowLin
+:
+06/06/23 04:/41:/49 PM: INFO: ********** Policy : SecondFlowLin, Is In Paused State **********:
+06/06/23 04:/41:/49 PM: INFO: ********** Successfully Executed TestCase: Pause DR Policy **********
+ 
+:
+06/06/23 04:/41:/49 PM: INFO: ********** Starting TestCase 32: Failover Host **********:
+06/06/23 04:/42:/07 PM: INFO: ********** Wave : Second Flow Was Opened Successfully **********:
+06/06/23 04:/42:/13 PM: INFO: ********** Pop-up Banner Of Failover Was Opened **********:
+
+
+
+
+
+

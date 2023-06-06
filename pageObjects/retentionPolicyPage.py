@@ -123,7 +123,8 @@ class RetentionPolicy:
                 note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Create New Retention Policy Status, ")
                 self.logger.info(note + "\n")
-                time.sleep(5)
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Create New Retention Policy Pop-up Banner Was Not Opened For Retention Policy, " + str(policyName) + " **********")
 
@@ -230,6 +231,8 @@ class RetentionPolicy:
                 note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Create New Retention Policy Status of Policy : " + policyName + ",")
                 self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Modify Retention Policy Pop-up Banner Was Not Opened For Policy, " + str(policyName) + " **********")
 
@@ -267,7 +270,7 @@ class RetentionPolicy:
                 if len(self.driver.find_elements(By.XPATH, self.ch_forceDelete_xpath)) != 0 and force:
                     self.driver.find_element(By.XPATH, self.pop_delete_xpath).click()
                 WebDriverWait(self.driver, 10).until(
-                    EC.element_to_be_clickable((By.XPATH, self.btn_deleteRetentionPolicy_id))
+                    EC.element_to_be_clickable((By.ID, self.btn_deleteRetentionPolicy_id))
                 )
                 self.driver.find_element(By.ID, self.btn_deleteRetentionPolicy_id).click()
                 WebDriverWait(self.driver, 10).until(
@@ -276,6 +279,7 @@ class RetentionPolicy:
                 note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Delete Retention Policy Status For Retention Policy: " + policy + ",")
                 self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Delete Retention Policy Pop-Up Banner Was Not Opened For Retention Policy With Name : " + policy + " **********")
-            time.sleep(3)

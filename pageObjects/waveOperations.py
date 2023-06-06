@@ -77,18 +77,23 @@ class WaveOperations:
                     self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[1]/p-tablecheckbox/div/div[2]').click()
                     time.sleep(5)
                     hostName = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[3]/span/span').text
-                self.driver.find_element(By.ID, self.btn_start_id).click()
+                ele = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.ID, self.btn_start_id))
+                )
+                ele.click()
                 WebDriverWait(self.driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
                 )
-                note = self.driver.find_element(By.XPATH,'/html/body/app-root/simple-notifications/div/simple-notification/div').text
+                note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Start Status of Host : " + hostName + ",")
                 self.logger.info(note, "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
                 WebDriverWait(self.driver, 30).until(
                     EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Running")
                 )
                 WebDriverWait(self.driver, 7200).until(
-                    EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Idle" or "Paused" or "Stopped")
+                    EC.element_to_be_clickable((By.ID, self.btn_start_id))
                 )
                 time.sleep(5)
                 if totalHosts == 1:
@@ -131,18 +136,21 @@ class WaveOperations:
         if val == 0:
             if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        self.driver.find_element(By.ID, self.btn_start_id).click()
+        ele3 = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.ID, self.btn_start_id))
+        )
+        ele3.click()
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
         )
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
         self.logger.info("********** Start Status For Wave Name : " + waveName + ",")
         self.logger.info(note + "\n")
-        WebDriverWait(self.driver, 30).until(
-            EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Running")
-        )
-        WebDriverWait(self.driver, 7200).until(
-            EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Idle" or "Paused" or "Stopped")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
+        time.sleep(5)
+        WebDriverWait(self.driver, 18000).until(
+            EC.element_to_be_clickable((By.ID, self.btn_start_id))
         )
         # if val == 1:
         #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
@@ -234,17 +242,23 @@ class WaveOperations:
                     WebDriverWait(self.driver, 10).until(
                         EC.presence_of_element_located((By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/jobid-popover/ngb-popover-window/h3'))
                     )
+                    time.sleep(3)
                     details = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/jobid-popover/ngb-popover-window/div[2]/div/textarea').text
                 else:
                     self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/jobid-popover/span/i').click()
                     WebDriverWait(self.driver, 10).until(
                         EC.presence_of_element_located((By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/jobid-popover/ngb-popover-window/h3'))
                     )
+                    time.sleep(3)
                     details = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(hostNo) + ']/td[6]/span/span/jobid-popover/ngb-popover-window/div[2]/div/textarea').text
                 self.driver.find_element(By.XPATH, self.txt_waveName_xpath).click()
                 lines = details.split("\n")
-                last_10_lines = lines[-10:]
-                self.logger.info(last_10_lines + "\n")
+                if len(lines) > 10:
+                    last_10_lines = lines[-10:]
+                    self.logger.info(last_10_lines)
+                else:
+                    self.logger.info(details)
+                self.logger.info("\n")
 
     def setParallelCount(self, waveName, parallelCount):
         co = CommonObjects(self.driver)
@@ -270,6 +284,8 @@ class WaveOperations:
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
         self.logger.info("********** Set Parallel Count To Wave: " + waveName + ", Status : ")
         self.logger.info(note + "\n")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         # if val == 1:
         #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
         #     time.sleep(5)
@@ -313,19 +329,22 @@ class WaveOperations:
                             if startNow:
                                 self.driver.find_element(By.ID, self.chBox_startNow_id).click()
                         WebDriverWait(self.driver, 10).until(
-                            EC.element_to_be_clickable((By.XPATH, self.btn_assignPolicy_id))
+                            EC.element_to_be_clickable((By.ID, self.btn_assignPolicy_id))
                         )
                         self.driver.find_element(By.ID, self.btn_assignPolicy_id).click()
                         break
                     if p == totalPolicies:
                         self.logger.info("********** There Is No DR Policy With Name : " + policyName + "**********")
                         self.driver.find_element(By.ID, self.btn_cancelPolicy_id).click()
+                        return
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
             )
             note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
             self.logger.info("********** Assign DR Policy " + policyName + " To Wave " + waveName + ", Status : ")
             self.logger.info(note + "\n")
+            time.sleep(2)
+            self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         else:
             self.logger.info("********** Policy Assignment Pop-up Banner Is Not Opened For Wave, " + str(waveName) + " **********")
         time.sleep(5)
@@ -346,13 +365,18 @@ class WaveOperations:
         if val == 0:
             if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        self.driver.find_element(By.XPATH, self.btn_stop_xpath).click()
+        ele1 = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_stop_xpath))
+        )
+        ele1.click()
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
         )
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
         self.logger.info("********** Stop Wave Status : " + waveName + ",")
         self.logger.info(note + "\n")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         # if val == 1:
         #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
         #     time.sleep(5)
@@ -374,13 +398,18 @@ class WaveOperations:
         if val == 0:
             if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        self.driver.find_element(By.XPATH, self.btn_pause_xpath).click()
+        ele1 = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_pause_xpath))
+        )
+        ele1.click()
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
         )
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
         self.logger.info("********** Pause Wave Status : " + waveName + ",")
         self.logger.info(note + "\n")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         # if val == 1:
         #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
         #     time.sleep(5)
@@ -402,13 +431,18 @@ class WaveOperations:
         if val == 0:
             if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        self.driver.find_element(By.XPATH, self.btn_restart_xpath).click()
+        ele1 = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, self.btn_restart_xpath))
+        )
+        ele1.click()
         WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
         )
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
         self.logger.info("********** Restart Wave Status : " + waveName + ",")
         self.logger.info(note + "\n")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         # if val == 1:
         #     self.driver.find_element(By.LINK_TEXT, "Replication").click()
         #     time.sleep(5)

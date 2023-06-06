@@ -23,14 +23,20 @@ class TearDown:
     txt_images_xpath = '//*[@id="nav-panel"]/nav/ul/li[4]/ul/li[2]'
     txt_select_xpath = '//*[@id="hosts_images_host_delete_host_modal"]/div/div/div/div[2]/div[3]/div[2]/select'
     txt_waveName_xpath = '//*[@id="content"]/article/div/div[1]/div/h3/strong'
+    txt_totalHosts_xpath = '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr'
+    txt_totalPolicies_xpath = '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr'
+    txt_hostSearch_xpath = '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[1]/div[2]/input'
+    txt_waveSearch_xpath = '//*[@id="waves_search_input"]'
+    txt_policySearch_xpath = '//*[@id="policies_dr_policy_search_text"]'
 
     # Buttons
     btn_deleteWaveHost_id = "wave_detail_delete_item_delete_btn"
-    btn_delete_id = "waves_wave_delete_delete_btn"
+    btn_deleteWave_id = "waves_wave_delete_delete_btn"
     btn_deleteWaves_xpath = "//*[@id='waves_bulk_delete']/span/i"
     btn_bulkDelete_id = "waves_wave_bulk_delete_delete_btn"
     btn_deleteDRP_id = "policies_delete_dr_policy_delete_btn"
     btn_deleteHost_id = "hosts_images_hosts_delete_host_btn"
+    btn_delete_xpath = '//*[@id="conf_vc_del_btn"]/span'
 
     # Check Boxs
     ch_deleteVM_xpath = '//*[@id="hosts_delete_host_delete_vm"]'
@@ -71,7 +77,7 @@ class TearDown:
         for r in range(st, ed+1):
             operation = sheet.cell(row=r, column=1).value.lower()
 
-            if operation.find("delete") != -1 and operation.find("SSH") != -1 and operation.find("entry") != -1:
+            if operation.find("delete") != -1 and operation.find("ssh") != -1 and operation.find("entry") != -1:
                 source = sheet.cell(row=r, column=5).value
                 target = sheet.cell(row=r, column=6).value
                 self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete SSH Host Sync Entry **********")
@@ -85,13 +91,6 @@ class TearDown:
                 self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Host In Wave **********")
                 self.deleteHostInWave(waveName, hostNames)
                 self.logger.info("********** Successfully Executed TestCase: Delete Host In Wave **********\n \n")
-                cnt += 1
-
-            elif operation.find("delete") != -1 and operation.find("single") != -1 and operation.find("wave") != -1:
-                waveName = sheet.cell(row=r, column=2).value
-                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Wave **********")
-                self.deleteWave(waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
                 cnt += 1
 
             elif operation.find("delete") != -1 and operation.find("replication") != -1 and (operation.find("wave") != -1 or operation.find("waves") != -1):
@@ -108,6 +107,13 @@ class TearDown:
                 self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
                 cnt += 1
 
+            elif operation.find("delete") != -1 and operation.find("wave") != -1:
+                waveName = sheet.cell(row=r, column=2).value
+                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Wave **********")
+                self.deleteWave(waveName)
+                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
+                cnt += 1
+
             elif operation.find("delete") != -1 and operation.find("dr") != -1 and (operation.find("policy") != -1 or operation.find("policies") != -1):
                 policyName = sheet.cell(row=r, column=4).value
                 self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete SSH Host Sync Entry **********")
@@ -115,14 +121,21 @@ class TearDown:
                 self.logger.info("********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********\n \n")
                 cnt += 1
 
-            elif operation.find("delete") != -1 and (operation.find("host") != -1 or operation.find("hosts") != -1):
+            elif operation.find("delete") != -1 and operation.find("source") != -1 and (operation.find("host") != -1 or operation.find("hosts") != -1):
+                hostNames = sheet.cell(row=r, column=3).value
+                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Source Host **********")
+                self.deleteSourceHost(hostNames)
+                self.logger.info("********** Successfully Executed TestCase: Delete Source Host **********\n \n")
+                cnt += 1
+
+            elif operation.find("delete") != -1 and operation.find("target") != -1 and (operation.find("host") != -1 or operation.find("hosts") != -1):
                 hostNames = sheet.cell(row=r, column=3).value
                 VM = sheet.cell(row=r, column=7).value
                 environment = sheet.cell(row=r, column=8).value
                 name = sheet.cell(row=r, column=9).value
-                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Host In Wave **********")
-                self.deleteHost(hostNames, VM, environment, name)
-                self.logger.info("********** Successfully Executed TestCase: Delete Host In Wave **********\n \n")
+                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Target Host **********")
+                self.deleteTargetHost(hostNames, VM, environment, name)
+                self.logger.info("********** Successfully Executed TestCase: Delete Target Host **********\n \n")
                 cnt += 1
 
             else:
@@ -195,6 +208,8 @@ class TearDown:
         note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
         self.logger.info("********** Delete Status For Host : " + hostName + ",")
         self.logger.info(note + "\n")
+        time.sleep(2)
+        self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
 
     def deleteWave(self, waveName):
         co = CommonObjects(self.driver)
@@ -203,6 +218,8 @@ class TearDown:
             return
         if val == 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
+            time.sleep(3)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
             val = co.findWave(waveName)
             if val == 2:
                 return
@@ -213,13 +230,15 @@ class TearDown:
         time.sleep(5)
         if len(self.driver.find_elements(By.XPATH, self.pop_delete_xpath)) != 0:
             self.logger.info("********** Delete Wave Pop-up Banner Was Opened For Wave, " + str(waveName) + " **********")
-            self.driver.find_element(By.ID, self.btn_delete_id).click()
+            self.driver.find_element(By.ID, self.btn_deleteWave_id).click()
             WebDriverWait(self.driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
             )
             note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
             self.logger.info("********** Delete Wave Status of Wave : " + waveName + ",")
             self.logger.info(note + "\n")
+            time.sleep(2)
+            self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
         else:
             self.logger.info("********** Delete Wave Pop-up Banner Was Not Opened For Wave, " + str(waveName) + " **********")
         time.sleep(5)
@@ -235,30 +254,50 @@ class TearDown:
         if wave_class != "active":
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
             time.sleep(5)
-        totalWaves = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr'))
+        flag = 0
         for waveName in res:
-            for i in range(1, totalWaves+1):
-                tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[2]/span/div/a').text
+            self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
+            self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
+            self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
+            time.sleep(2)
+            totalWaves = len(self.driver.find_elements(By.XPATH, self.txt_totalPolicies_xpath))
+            if totalWaves == 0:
+                self.logger.info("********** " + waveName + " Was Not Found In Replication Waves **********")
+            elif totalWaves == 1:
+                tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span/div/a').text
                 if tmp == waveName:
-                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/p-tablecheckbox/div/div[2]/span').click()
-                    break
-                if i == totalWaves:
-                    self.logger.info("********** "+waveName+" Was Not Found In Replication Waves **********")
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, self.btn_deleteWaves_xpath).click()
-        time.sleep(5)
-        if len(self.driver.find_elements(By.ID, self.pop_delMultWaves_id)) != 0:
-            self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Opened **********")
-            self.driver.find_element(By.ID, self.btn_bulkDelete_id).click()
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
+                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/p-tablecheckbox/div/div[2]').click()
+                    flag += 1
+                else:
+                    self.logger.info("********** " + waveName + " Was Not Found In Replication Waves **********")
+            else:
+                for i in range(1, totalWaves + 1):
+                    tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[2]/span/div/a').text
+                    if tmp == waveName:
+                        self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[1]/p-tablecheckbox/div/div[2]').click()
+                        flag += 1
+                        break
+                    if i == totalWaves:
+                        self.logger.info("********** " + waveName + " Was Not Found In Replication Waves **********")
+        if flag > 0:
+            ele1 = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, self.btn_deleteWaves_xpath))
             )
-            note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
-            self.logger.info("********** Delete Wave Status,")
-            self.logger.info(note + "\n")
-        else:
-            self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Not Opened **********")
-        time.sleep(5)
+            ele1.click()
+            time.sleep(5)
+            if len(self.driver.find_elements(By.ID, self.pop_delMultWaves_id)) != 0:
+                self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Opened **********")
+                self.driver.find_element(By.ID, self.btn_bulkDelete_id).click()
+                WebDriverWait(self.driver, 10).until(
+                    EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
+                )
+                note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
+                self.logger.info("********** Delete Wave Status,")
+                self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
+            else:
+                self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Not Opened **********")
 
     def deleteDrWaves(self, waveNames):
         time.sleep(5)
@@ -271,30 +310,50 @@ class TearDown:
         if wave_class == "ng-star-inserted":
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
             time.sleep(5)
-        totalWaves = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr'))
+        flag = 0
         for waveName in res:
-            for i in range(1, totalWaves+1):
-                tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[2]/span/div/a').text
+            self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
+            self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
+            self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
+            time.sleep(2)
+            totalWaves = len(self.driver.find_elements(By.XPATH, self.txt_totalPolicies_xpath))
+            if totalWaves == 0:
+                self.logger.info("********** "+waveName+" Was Not Found In DR Waves **********")
+            elif totalWaves == 1:
+                tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span/div/a').text
                 if tmp == waveName:
-                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/p-tablecheckbox/div/div[2]').click()
-                    break
-                if i == totalWaves:
-                    self.logger.info("********** "+waveName+" Was Not Found In Replication Waves **********")
-        time.sleep(5)
-        self.driver.find_element(By.XPATH, self.btn_deleteWaves_xpath).click()
-        time.sleep(5)
-        if len(self.driver.find_elements(By.ID, self.pop_delMultWaves_id)) != 0:
-            self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Opened **********")
-            self.driver.find_element(By.ID, self.btn_bulkDelete_id).click()
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
+                    self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/p-tablecheckbox/div/div[2]').click()
+                    flag += 1
+                else:
+                    self.logger.info("********** " + waveName + " Was Not Found In DR Waves **********")
+            else:
+                for i in range(1, totalWaves+1):
+                    tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[2]/span/div/a').text
+                    if tmp == waveName:
+                        self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/app-waves/div/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/p-tablecheckbox/div/div[2]').click()
+                        flag += 1
+                        break
+                    if i == totalWaves:
+                        self.logger.info("********** "+waveName+" Was Not Found In DR Waves **********")
+        if flag > 0:
+            ele1 = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, self.btn_deleteWaves_xpath))
             )
-            note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
-            self.logger.info("********** Delete Wave Status,")
-            self.logger.info(note + "\n")
-        else:
-            self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Not Opened **********")
-        time.sleep(5)
+            ele1.click()
+            time.sleep(5)
+            if len(self.driver.find_elements(By.ID, self.pop_delMultWaves_id)) != 0:
+                self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Opened **********")
+                self.driver.find_element(By.ID, self.btn_bulkDelete_id).click()
+                WebDriverWait(self.driver, 10).until(
+                    EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
+                )
+                note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
+                self.logger.info("********** Delete Wave Status,")
+                self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
+            else:
+                self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Not Opened **********")
 
     def deleteDRPolicy(self, policyNames):
         time.sleep(5)
@@ -306,10 +365,16 @@ class TearDown:
         if policies_class != "active":
             self.driver.find_element(By.LINK_TEXT, "Policies").click()
             time.sleep(5)
-        totalPolicies = len(self.driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr'))
         res = tuple(map(str, policyNames.split(', ')))
         flag = 0
         for policyName in res:
+            self.driver.find_element(By.XPATH, self.txt_policySearch_xpath).click()
+            self.driver.find_element(By.XPATH, self.txt_policySearch_xpath).clear()
+            self.driver.find_element(By.XPATH, self.txt_policySearch_xpath).send_keys(policyName)
+            time.sleep(2)
+            totalPolicies = len(self.driver.find_elements(By.XPATH, self.txt_totalPolicies_xpath))
+            if totalPolicies == 0:
+                self.logger.info("********** Policy : " + policyName + ", Was Not Present **********")
             if totalPolicies == 1:
                 tmp = self.driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/dr-policy/div/div/article/div/div[3]/p-table/div/div[2]/table/tbody/tr/td[1]/span').text
                 if tmp == policyName:
@@ -337,10 +402,12 @@ class TearDown:
                 note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Delete Policy Status, ")
                 self.logger.info(note + "\n")
+                time.sleep(2)
+                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Delete Policy Pop Up Banner Was Not Opened **********")
 
-    def deleteHost(self, hostNames, VM, environment, name):
+    def deleteSourceHost(self, hostNames):
         time.sleep(5)
         hi_class = self.driver.find_element(By.XPATH, self.txt_hostNImages_xpath).get_attribute("class")
         if hi_class == "ng-star-inserted":
@@ -350,14 +417,28 @@ class TearDown:
         if hosts_class != "active":
             self.driver.find_element(By.LINK_TEXT, "Hosts").click()
             time.sleep(5)
-        totalHosts = len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr'))
         res = tuple(map(str, hostNames.split(', ')))
         flag = 0
         for hostName in res:
-            if totalHosts == 1:
+            time.sleep(2)
+            self.driver.find_element(By.XPATH, self.txt_hostSearch_xpath).click()
+            self.driver.find_element(By.XPATH, self.txt_hostSearch_xpath).clear()
+            self.driver.find_element(By.XPATH, self.txt_hostSearch_xpath).send_keys(hostName)
+            time.sleep(3)
+            totalHosts = len(self.driver.find_elements(By.XPATH, self.txt_totalHosts_xpath))
+            if totalHosts == 0:
+                self.logger.info("********** Host : " + hostName + ", Was Not Present **********")
+            elif totalHosts == 1:
+                if len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td/span')) != 0:
+                    tp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td/span').text
+                    if tp == "* No hosts to show.":
+                        continue
                 tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span[1]').text
                 if tmp == hostName:
-                    self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/p-tablecheckbox/div/div[2]/span').click()
+                    WebDriverWait(self.driver, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/p-tablecheckbox/div/div[2]'))
+                    )
+                    self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/p-tablecheckbox/div/div[2]').click()
                     flag += 1
                 else:
                     self.logger.info("********** Host : " + hostName + ", Was Not Present **********")
@@ -365,34 +446,102 @@ class TearDown:
                 for i in range(1, totalHosts + 1):
                     tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[2]/span[1]').text
                     if tmp == hostName:
-                        self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/p-tablecheckbox/div/div[2]/span').click()
+                        WebDriverWait(self.driver, 10).until(
+                            EC.element_to_be_clickable((By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/p-tablecheckbox/div/div[2]'))
+                        )
+                        self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/p-tablecheckbox/div/div[2]').click()
                         flag += 1
                         break
                     if i == totalHosts:
                         self.logger.info("********** Host : " + hostName + ", Was Not Present **********")
         if flag > 0:
+            ele = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, self.btn_delete_xpath))
+            )
+            ele.click()
+            time.sleep(3)
+            if len(self.driver.find_elements(By.XPATH, self.pop_deleteHost_xpath)) != 0:
+                self.logger.info("********** Delete Host Pop Up Banner Was Opened **********")
+                self.driver.find_element(By.ID, self.btn_deleteHost_id).click()
+                WebDriverWait(self.driver, 10).until(
+                    EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
+                )
+                self.logger.info("********** Delete Status For Hosts,")
+                for i in range(1, len(res)+1):
+                    if len(self.driver.find_elements(By.XPATH, self.pop_deleteSuccessful_xpath)) != 0:
+                        WebDriverWait(self.driver, 5).until(
+                            EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
+                        )
+                        note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
+                        self.logger.info(note + "\n")
+                        self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
+            else:
+                self.logger.info("********** Delete Host Pop Up Banner Was Not Opened **********")
+
+    def deleteTargetHost(self, hostNames, VM, environment, name):
+        time.sleep(5)
+        hi_class = self.driver.find_element(By.XPATH, self.txt_hostNImages_xpath).get_attribute("class")
+        if hi_class == "ng-star-inserted":
+            self.driver.find_element(By.LINK_TEXT, "Hosts & Images").click()
             time.sleep(2)
+        hosts_class = self.driver.find_element(By.XPATH, self.txt_hosts_xpath).get_attribute("class")
+        if hosts_class != "active":
+            self.driver.find_element(By.LINK_TEXT, "Hosts").click()
+            time.sleep(5)
+        res = tuple(map(str, hostNames.split(', ')))
+        flag = 0
+        for hostName in res:
+            self.driver.find_element(By.XPATH, self.txt_hostSearch_xpath).click()
+            self.driver.find_element(By.XPATH, self.txt_hostSearch_xpath).clear()
+            self.driver.find_element(By.XPATH, self.txt_hostSearch_xpath).send_keys(hostName)
+            time.sleep(2)
+            totalHosts = len(self.driver.find_elements(By.XPATH, self.txt_totalHosts_xpath))
+            if totalHosts == 0:
+                self.logger.info("********** Host : " + hostName + ", Was Not Present **********")
+            if totalHosts == 1:
+                if len(self.driver.find_elements(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td/span')) != 0:
+                    tp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td/span').text
+                    if tp == "* No hosts to show.":
+                        continue
+                tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span[1]').text
+                if tmp == hostName:
+                    self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/p-tablecheckbox/div/div[2]').click()
+                    flag += 1
+                else:
+                    self.logger.info("********** Host : " + hostName + ", Was Not Present **********")
+            else:
+                for i in range(1, totalHosts + 1):
+                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[2]/span[1]').text
+                    if tmp == hostName:
+                        self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/p-tablecheckbox/div/div[2]').click()
+                        flag += 1
+                        break
+                    if i == totalHosts:
+                        self.logger.info("********** Host : " + hostName + ", Was Not Present **********")
+        if flag > 0:
+            ele = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.XPATH, self.btn_delete_xpath))
+            )
+            ele.click()
+            time.sleep(3)
             if len(self.driver.find_elements(By.XPATH, self.pop_deleteHost_xpath)) != 0:
                 self.logger.info("********** Delete Host Pop Up Banner Was Opened **********")
                 if VM:
                     self.driver.find_element(By.XPATH, self.ch_deleteVM_xpath).click()
-                    time.sleep(2)
+                    time.sleep(3)
                     if environment == "clouduser":
                         self.driver.find_element(By.XPATH, self.rd_cloudUSer_xpath).click()
                     elif environment == "vCenter":
                         self.driver.find_element(By.XPATH, self.rd_vCenter_xpath).click()
                     elif environment == "Hypervisor":
                         self.driver.find_element(By.XPATH, self.rd_hypervisor_xpath).click()
-                    time.sleep(2)
+                    time.sleep(3)
                     select = Select(self.driver.find_element(By.XPATH, self.txt_select_xpath))
                     select.select_by_visible_text(str(name))
-                    time.sleep(2)
-                self.driver.find_element(By.ID, self.btn_deleteHost_id).click()
-                WebDriverWait(self.driver, 10).until(
-                    EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
+                ele2 = WebDriverWait(self.driver, 10).until(
+                    EC.element_to_be_clickable((By.ID, self.btn_deleteHost_id))
                 )
-                note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
-                self.logger.info("********** Delete Status For Hosts,")
-                self.logger.info(note + "\n")
+                ele2.click()
+                time.sleep(10)
             else:
                 self.logger.info("********** Delete Host Pop Up Banner Was Not Opened **********")
