@@ -1,5 +1,0 @@
-Origin Name,Origin IP,Target Name,Target IP,Origin Username,Origin Password,Target Username,Target Password,Clonename,OS,Image Name,Shape,Network Interface,ssh only,cluster,vm folder,resource pool,datacenter,route,operation
-psp-MyLinSecondFlow-src1,172.29.31.111,psp-MyLinSecondFlow-tgt1,,root,rackware,,,,Linux,,,,Y,,,,,,host sync
-psp-MyLinSecondFlow-src2,172.29.31.183,psp-MyLinSecondFlow-tgt2,,root,rackware,,,,Linux,,,,Y,,,,,,host sync
-psp-MyWinSecondFlow-src1,172.29.30.203,psp-MyWinSecondFlow-tgt1,,SYSTEM,R@ckware,,,,Windows,,,,Y,,,,,,host sync
-psp-MyWinSecondFlow-src2,172.29.30.179,psp-MyWinSecondFlow-tgt2,,SYSTEM,R@ckware,,,,Windows,,,,Y,,,,,,host sync
