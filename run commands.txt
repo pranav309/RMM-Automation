@@ -1,12 +1,15 @@
-pytest -s -v --html=Reports\Waves\createWaveWithoutHost.html testCases/Wave/test_createWaveWithoutHost.py --browser firefox
+# To Run the automation flow and generate .html report,
+Command: pytest -s -v --html=<directory>\<report_name>.html testCases/Work/oneForAll.py --browser <browser_name>
+eg. pytest -s -v --html=Reports\Work\tp.html testCases/Work/oneForAll.py --browser firefox
 
-pytest -s -v --html=Reports\Waves\createWaveWithHost.html testCases/Wave/test_createWaveWithHost.py --browser firefox
+# To send the generated report via email,
+Command: pytest -s -v --html=<directory>\<report_name>.html testCases/Work/oneForAll.py --browser <browser_name>
+eg. pytest -s -v --html=Reports\Work\tp.html testCases/Work/sendEmail.py --browser firefox
 
-pytest -s -v --html=Reports\Waves\addNewHost.html testCases/Wave/test_addNewHost.py --browser firefox
 
-pytest -s -v --html=Reports\DRPolicy\createDRPolicy.html testCases/DRPolicy/test_createDRPolicy.py --browser firefox
+Here,
+    report_name = You can give any name that you want to give to the generated report file
+    browser_name = Either chrome, firefox or edge
 
-pytest -s -v --html=Reports\DRPolicy\startDRPolicy.html testCases/DRPolicy/test_startPolicy.py --browser firefox 
-
-pytest -s -v --html=Reports\RetentionPolicy\createRetentionPolicy.html testCases/DRPolicy/test_createRetentionPolicy.py --browser firefox
-
+Note -> Here the recommended browser is firefox. Because, other browsers may give privacy errors. With firefox this error
+        occurs only once and once validated this won't bother any.

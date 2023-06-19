@@ -1,8 +1,8 @@
 import time
 
-from pageObjects.wavePage import WavePage
-from pageObjects.waveOperations import WaveOperations
-from pageObjects.loginPage import LoginPage
+from pageObjects.testWavePage import Test_WavePage
+from pageObjects.testWaveOperations import Test_WaveOperations
+from pageObjects.testLoginPage import loginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
@@ -21,23 +21,23 @@ class Test_011_CreateAndStartWave:
         self.driver.maximize_window()
         self.logger.info("********** Browser Opened Successfully **********")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickOnLogin()
+        self.lp = loginPage(self.driver)
+        self.lp.test_setUserName(self.username)
+        self.lp.test_setPassword(self.password)
+        self.lp.test_clickOnLogin()
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
 
         self.logger.info("********** Creating New Wave With Host **********")
         path = "./TestData/createWaveWithHost.xlsx"
-        self.crtWave = WavePage(self.driver)
-        self.crtWave.createWaveWithHost(path)
+        self.crtWave = Test_WavePage(self.driver)
+        self.crtWave.test_createWaveWithHost(path)
         self.logger.info("********** Successful Created New Wave With Host **********")
         self.logger.info("********** Starting A Wave **********")
-        self.startWave = WaveOperations(self.driver)
-        self.startWave.startWave(["test"])
+        self.startWave = Test_WaveOperations(self.driver)
+        self.startWave.test_startWave(["test"])
         self.logger.info("********** Successful Started A Wave **********")
-        self.lp.clickOnLogout()
+        self.lp.test_clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")

@@ -1,4 +1,5 @@
 import time
+import unittest
 import openpyxl
 
 from selenium.webdriver.common.by import By
@@ -7,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class RetentionPolicy:
+class RetentionPolicy(unittest.TestCase):
     btn_add_xpath = "//*[@id='retention_add_retention']/span/i"
     btn_create_xpath = "//*[@id='main']/app-retention-policies/create-retention-policy/div/div/div/form/div[3]/div/button[2]"
     txt_policyName_xpath = "//*[@id='main']/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[1]/div/input"
@@ -57,10 +58,7 @@ class RetentionPolicy:
 
     logger = LogGen.loggen()
 
-    def __init__(self, driver):
-        self.driver = driver
-
-    def createRetentionPolicy(self, path, start, end):
+    def createRetentionPolicy(self, driver, path, start, end):
         workbook = openpyxl.load_workbook(path)
         sheet = workbook.active
         rows = sheet.max_row
@@ -72,13 +70,13 @@ class RetentionPolicy:
             ed = rows
         else:
             ed = end
-        backup_class = self.driver.find_element(By.XPATH, self.txt_backup_xpath).get_attribute("class")
+        backup_class = driver.find_element(By.XPATH, self.txt_backup_xpath).get_attribute("class")
         if backup_class == "ng-star-inserted":
-            self.driver.find_element(By.LINK_TEXT, "Backup & Restore").click()
-        rp_class = self.driver.find_element(By.XPATH, self.txt_retentionPolicy_xpath).get_attribute("class")
+            driver.find_element(By.LINK_TEXT, "Backup & Restore").click()
+        rp_class = driver.find_element(By.XPATH, self.txt_retentionPolicy_xpath).get_attribute("class")
         if rp_class == "active":
-            self.driver.find_element(By.LINK_TEXT, "Retention Policies").click()
-        WebDriverWait(self.driver, 10).until(
+            driver.find_element(By.LINK_TEXT, "Retention Policies").click()
+        WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.btn_add_xpath))
         )
         for r in range(st, ed+1):
@@ -93,65 +91,67 @@ class RetentionPolicy:
             longMinIntType = sheet.cell(row=r, column=9).value
             longMaxWin = sheet.cell(row=r, column=10).value
             longMaxWinType = sheet.cell(row=r, column=11).value
-            self.driver.find_element(By.XPATH, self.btn_add_xpath).click()
+            driver.find_element(By.XPATH, self.btn_add_xpath).click()
             time.sleep(3)
-            if len(self.driver.find_elements(By.ID, self.val_createRP_id)) != 0:
+            if len(driver.find_elements(By.ID, self.val_createRP_id)) != 0:
                 self.logger.info("********** Create New Retention Policy Pop-up Banner Was Opened For Retention Policy, " + str(policyName) + " **********")
-                self.driver.find_element(By.XPATH, self.txt_policyName_xpath).send_keys(policyName)
+                driver.find_element(By.XPATH, self.txt_policyName_xpath).send_keys(policyName)
                 if retentionType == "By Interval":
-                    self.driver.find_element(By.XPATH, self.rd_byInterval_xpath).click()
-                    self.driver.find_element(By.XPATH, self.txt_shortMinInt_xpath).send_keys(shortMinInt)
-                    self.selectShortType(shortMinIntType, 2)
-                    self.driver.find_element(By.XPATH, self.txt_shortMaxWin_xpath).send_keys(shortMaxWin)
-                    self.selectShortType(shortMaxWinType, 3)
-                    self.driver.find_element(By.XPATH, self.txt_longMinInt_xpath).send_keys(longMinInt)
-                    self.selectLongType(longMinIntType, 2)
-                    self.driver.find_element(By.XPATH, self.txt_longMaxWin_xpath).send_keys(longMaxWin)
-                    self.selectLongType(longMaxWinType, 3)
+                    driver.find_element(By.XPATH, self.rd_byInterval_xpath).click()
+                    driver.find_element(By.XPATH, self.txt_shortMinInt_xpath).send_keys(shortMinInt)
+                    self.selectShortType(driver, shortMinIntType, 2)
+                    driver.find_element(By.XPATH, self.txt_shortMaxWin_xpath).send_keys(shortMaxWin)
+                    self.selectShortType(driver, shortMaxWinType, 3)
+                    driver.find_element(By.XPATH, self.txt_longMinInt_xpath).send_keys(longMinInt)
+                    self.selectLongType(driver, longMinIntType, 2)
+                    driver.find_element(By.XPATH, self.txt_longMaxWin_xpath).send_keys(longMaxWin)
+                    self.selectLongType(driver, longMaxWinType, 3)
 
                 elif retentionType == "By Count":
-                    self.driver.find_element(By.XPATH, self.rd_byCount_xpath).click()
-                    self.driver.find_element(By.XPATH, self.txt_retainCount_xpath).send_keys(retainCount)
+                    driver.find_element(By.XPATH, self.rd_byCount_xpath).click()
+                    driver.find_element(By.XPATH, self.txt_retainCount_xpath).send_keys(retainCount)
 
-                btn = WebDriverWait(self.driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, self.btn_create_xpath))
                 )
                 btn.click()
-                WebDriverWait(self.driver, 10).until(
+                WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
                 )
-                note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+                note = driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Create New Retention Policy Status, ")
                 self.logger.info(note + "\n")
                 time.sleep(2)
-                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
+                driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Create New Retention Policy Pop-up Banner Was Not Opened For Retention Policy, " + str(policyName) + " **********")
 
-    def selectShortType(self, val, minMax):
+    @staticmethod
+    def selectShortType(driver, val, minMax):
         if val == "Hours":
-            self.driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[3]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[1]/span').click()
+            driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[3]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[1]/span').click()
         elif val == "Days":
-            self.driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[3]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[2]/span').click()
+            driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[3]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[2]/span').click()
         elif val == "Weeks":
-            self.driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[3]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[3]/span').click()
+            driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[3]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[3]/span').click()
 
-    def selectLongType(self, val, minMax):
+    @staticmethod
+    def selectLongType(driver, val, minMax):
         if val == "Days":
-            self.driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[4]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[1]/span').click()
+            driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[4]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[1]/span').click()
         elif val == "Weeks":
-            self.driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[4]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[2]/span').click()
+            driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[4]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[2]/span').click()
 
-    def startRetentionPolicy(self, vals, images):
+    def startRetentionPolicy(self, driver, vals, images):
         for i in vals:
-            self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[7]/span/div/i[1]').click()
+            driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[7]/span/div/i[1]').click()
             time.sleep(2)
-            self.driver.find_element(By.XPATH, self.txt_imageName_xpath).click()
+            driver.find_element(By.XPATH, self.txt_imageName_xpath).click()
             time.sleep(2)
             for image in images:
-                self.driver.find_element(By.XPATH, self.txt_searchImage_xpath).send_keys(image)
+                driver.find_element(By.XPATH, self.txt_searchImage_xpath).send_keys(image)
 
-    def editRetentionPolicy(self, path, start, end):
+    def editRetentionPolicy(self, driver, path, start, end):
         workbook = openpyxl.load_workbook(path)
         sheet = workbook.active
         rows = sheet.max_row
@@ -163,13 +163,13 @@ class RetentionPolicy:
             ed = rows
         else:
             ed = end
-        backup_class = self.driver.find_element(By.XPATH, self.txt_backup_xpath).get_attribute("class")
+        backup_class = driver.find_element(By.XPATH, self.txt_backup_xpath).get_attribute("class")
         if backup_class == "ng-star-inserted":
-            self.driver.find_element(By.LINK_TEXT, "Backup & Restore").click()
-        rp_class = self.driver.find_element(By.XPATH, self.txt_retentionPolicy_xpath).get_attribute("class")
+            driver.find_element(By.LINK_TEXT, "Backup & Restore").click()
+        rp_class = driver.find_element(By.XPATH, self.txt_retentionPolicy_xpath).get_attribute("class")
         if rp_class == "active":
-            self.driver.find_element(By.LINK_TEXT, "Retention Policies").click()
-        WebDriverWait(self.driver, 10).until(
+            driver.find_element(By.LINK_TEXT, "Retention Policies").click()
+        WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.btn_add_xpath))
         )
         for r in range(st, ed+1):
@@ -185,101 +185,101 @@ class RetentionPolicy:
             longMaxWin = sheet.cell(row=r, column=10).value
             longMaxWinType = sheet.cell(row=r, column=11).value
 
-            totalPolicies = len(self.driver.find_elements(By.XPATH, self.cnt_totalPolicies_xpath))
+            totalPolicies = len(driver.find_elements(By.XPATH, self.cnt_totalPolicies_xpath))
             if totalPolicies == 1:
-                tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/span').text
+                tmp = driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/span').text
                 if tmp == policyName:
-                    self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[7]/span/div/i[2]').click()
+                    driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[7]/span/div/i[2]').click()
                 else:
                     self.logger.info("********** There Was No Retention Policy With Name : " + policyName + "**********")
                     continue
             else:
                 for i in range(1, totalPolicies+1):
-                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/span').text
+                    tmp = driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/span').text
                     if tmp == policyName:
-                        self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[7]/span/div/i[2]').click()
+                        driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[7]/span/div/i[2]').click()
                         break
                     if i == totalPolicies:
                         self.logger.info("********** There Was No Retention Policy With Name : " + policyName + "**********")
                         continue
             time.sleep(5)
-            if len(self.driver.find_elements(By.XPATH, self.val_modRP_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, self.val_modRP_xpath)) != 0:
                 self.logger.info("********** Modify Retention Policy Pop-up Banner Was Opened For Policy, " + str(policyName) + " **********")
-                self.driver.find_element(By.XPATH, self.txt_policyName_xpath).send_keys(policyName)
+                driver.find_element(By.XPATH, self.txt_policyName_xpath).send_keys(policyName)
                 if retentionType == "By Interval":
-                    self.driver.find_element(By.XPATH, self.rd_byInterval_xpath).click()
-                    self.driver.find_element(By.XPATH, self.txt_shortMinInt_xpath).send_keys(shortMinInt)
-                    self.selectShortType(shortMinIntType, 2)
-                    self.driver.find_element(By.XPATH, self.txt_shortMaxWin_xpath).send_keys(shortMaxWin)
-                    self.selectShortType(shortMaxWinType, 3)
-                    self.driver.find_element(By.XPATH, self.txt_longMinInt_xpath).send_keys(longMinInt)
-                    self.selectLongType(longMinIntType, 2)
-                    self.driver.find_element(By.XPATH, self.txt_longMaxWin_xpath).send_keys(longMaxWin)
-                    self.selectLongType(longMaxWinType, 3)
+                    driver.find_element(By.XPATH, self.rd_byInterval_xpath).click()
+                    driver.find_element(By.XPATH, self.txt_shortMinInt_xpath).send_keys(shortMinInt)
+                    self.selectShortType(driver, shortMinIntType, 2)
+                    driver.find_element(By.XPATH, self.txt_shortMaxWin_xpath).send_keys(shortMaxWin)
+                    self.selectShortType(driver, shortMaxWinType, 3)
+                    driver.find_element(By.XPATH, self.txt_longMinInt_xpath).send_keys(longMinInt)
+                    self.selectLongType(driver, longMinIntType, 2)
+                    driver.find_element(By.XPATH, self.txt_longMaxWin_xpath).send_keys(longMaxWin)
+                    self.selectLongType(driver, longMaxWinType, 3)
 
                 elif retentionType == "By Count":
-                    self.driver.find_element(By.XPATH, self.rd_byCount_xpath).click()
-                    self.driver.find_element(By.XPATH, self.txt_retainCount_xpath).send_keys(retainCount)
+                    driver.find_element(By.XPATH, self.rd_byCount_xpath).click()
+                    driver.find_element(By.XPATH, self.txt_retainCount_xpath).send_keys(retainCount)
 
-                WebDriverWait(self.driver, 10).until(
+                WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, self.btn_modifyRP_xpath))
                 )
-                self.driver.find_element(By.XPATH, self.btn_modifyRP_xpath).click()
-                WebDriverWait(self.driver, 10).until(
+                driver.find_element(By.XPATH, self.btn_modifyRP_xpath).click()
+                WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
                 )
-                note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+                note = driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Create New Retention Policy Status of Policy : " + policyName + ",")
                 self.logger.info(note + "\n")
                 time.sleep(2)
-                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
+                driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Modify Retention Policy Pop-up Banner Was Not Opened For Policy, " + str(policyName) + " **********")
 
-    def deleteRetentionPolicy(self, policies, force):
-        backup_class = self.driver.find_element(By.XPATH, self.txt_backup_xpath).get_attribute("class")
+    def deleteRetentionPolicy(self, driver, policies, force):
+        backup_class = driver.find_element(By.XPATH, self.txt_backup_xpath).get_attribute("class")
         if backup_class == "ng-star-inserted":
-            self.driver.find_element(By.LINK_TEXT, "Backup & Restore").click()
-        rp_class = self.driver.find_element(By.XPATH, self.txt_retentionPolicy_xpath).get_attribute("class")
+            driver.find_element(By.LINK_TEXT, "Backup & Restore").click()
+        rp_class = driver.find_element(By.XPATH, self.txt_retentionPolicy_xpath).get_attribute("class")
         if rp_class == "active":
-            self.driver.find_element(By.LINK_TEXT, "Retention Policies").click()
-        WebDriverWait(self.driver, 10).until(
+            driver.find_element(By.LINK_TEXT, "Retention Policies").click()
+        WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.btn_add_xpath))
         )
         for policy in policies:
-            totalPolicies = len(self.driver.find_elements(By.XPATH, self.cnt_totalPolicies_xpath))
+            totalPolicies = len(driver.find_elements(By.XPATH, self.cnt_totalPolicies_xpath))
             if totalPolicies == 1:
-                tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/span').text
+                tmp = driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[1]/span').text
                 if tmp == policy:
-                    self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[7]/span/div/i[3]').click()
+                    driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[7]/span/div/i[3]').click()
                 else:
                     self.logger.info("********** There Was No Retention Policy With Name : " + policy + "**********")
                     continue
             else:
                 for i in range(1, totalPolicies+1):
-                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/span').text
+                    tmp = driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[1]/span').text
                     if tmp == policy:
-                        self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[7]/span/div/i[3]').click()
+                        driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[7]/span/div/i[3]').click()
                         break
                     if i == totalPolicies:
                         self.logger.info("********** There Was No Retention Policy With Name : " + policy + "**********")
                         continue
             time.sleep(5)
-            if len(self.driver.find_elements(By.XPATH, self.pop_delete_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, self.pop_delete_xpath)) != 0:
                 self.logger.info("********** Delete Retention Policy Pop-Up Banner Was Opened For Retention Policy With Name : " + policy + " **********")
-                if len(self.driver.find_elements(By.XPATH, self.ch_forceDelete_xpath)) != 0 and force:
-                    self.driver.find_element(By.XPATH, self.pop_delete_xpath).click()
-                WebDriverWait(self.driver, 10).until(
+                if len(driver.find_elements(By.XPATH, self.ch_forceDelete_xpath)) != 0 and force:
+                    driver.find_element(By.XPATH, self.pop_delete_xpath).click()
+                WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, self.btn_deleteRetentionPolicy_id))
                 )
-                self.driver.find_element(By.ID, self.btn_deleteRetentionPolicy_id).click()
-                WebDriverWait(self.driver, 10).until(
+                driver.find_element(By.ID, self.btn_deleteRetentionPolicy_id).click()
+                WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))
                 )
-                note = self.driver.find_element(By.XPATH, self.pop_successful_xpath).text
+                note = driver.find_element(By.XPATH, self.pop_successful_xpath).text
                 self.logger.info("********** Delete Retention Policy Status For Retention Policy: " + policy + ",")
                 self.logger.info(note + "\n")
                 time.sleep(2)
-                self.driver.find_element(By.XPATH, self.pop_successful_xpath).click()
+                driver.find_element(By.XPATH, self.pop_successful_xpath).click()
             else:
                 self.logger.info("********** Delete Retention Policy Pop-Up Banner Was Not Opened For Retention Policy With Name : " + policy + " **********")

@@ -3,8 +3,8 @@ import time
 from selenium.webdriver.common.by import By
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.loginPage import LoginPage
-from pageObjects.configurationPage import Configuration
+from pageObjects.testLoginPage import loginPage
+from pageObjects.testConfigurationPage import Test_Configuration
 
 
 class Test_011_AddVCenter:
@@ -21,10 +21,10 @@ class Test_011_AddVCenter:
         self.driver.maximize_window()
         self.logger.info("********** Browser Opened Successfully **********")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickOnLogin()
+        self.lp = loginPage(self.driver)
+        self.lp.test_setUserName(self.username)
+        self.lp.test_setPassword(self.password)
+        self.lp.test_clickOnLogin()
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
 
@@ -34,11 +34,11 @@ class Test_011_AddVCenter:
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "vCenter").click()
         path = "./TestData/addVcenter.xlsx"
-        self.addUser = Configuration(self.driver)
-        self.addUser.addVCenter(path)
+        self.addUser = Test_Configuration(self.driver)
+        self.addUser.test_addVCenter(path)
         time.sleep(5)
         self.logger.info("********** Add vCenter Test Is Successful **********")
-        self.lp.clickOnLogout()
+        self.lp.test_clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")

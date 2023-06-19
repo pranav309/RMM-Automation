@@ -2,8 +2,8 @@ import time
 
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.loginPage import LoginPage
-from pageObjects.wavePage import WavePage
+from pageObjects.testLoginPage import loginPage
+from pageObjects.testWavePage import Test_WavePage
 
 
 class Test_005_AddHost:
@@ -20,20 +20,20 @@ class Test_005_AddHost:
         self.driver.maximize_window()
         self.logger.info("********** Browser Opened Successfully **********")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickOnLogin()
+        self.lp = loginPage(self.driver)
+        self.lp.test_setUserName(self.username)
+        self.lp.test_setPassword(self.password)
+        self.lp.test_clickOnLogin()
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
 
         self.logger.info("********** Starting Add New Host Test **********")
         path = "./TestData/addNewHost.xlsx"
-        self.addHost = WavePage(self.driver)
+        self.addHost = Test_WavePage(self.driver)
         self.addHost.addHostToWaves(path)
         time.sleep(5)
         self.logger.info("********** Add New Host Test Is Successful **********")
-        self.lp.clickOnLogout()
+        self.lp.test_clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")

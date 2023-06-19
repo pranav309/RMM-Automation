@@ -2,7 +2,7 @@ import time
 
 from selenium.webdriver.common.by import By
 
-from customLogger import LogGen
+from utilities.customLogger import LogGen
 
 
 class CommonObjects:

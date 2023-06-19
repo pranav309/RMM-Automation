@@ -5,7 +5,7 @@ class LogGen:
     @staticmethod
     def loggen():
 
-        logging.basicConfig(filename='.\\Logs\\automation.log',
+        logging.basicConfig(filename=r'C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\Logs\automation.log',
                             format='%(asctime)s: %(levelname)s: %(message)s:',
                             datefmt='%m/%d/%y %I:/%M:/%S %p', force=True)
 

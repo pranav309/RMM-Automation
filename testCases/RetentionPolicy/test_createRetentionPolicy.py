@@ -3,8 +3,8 @@ import py
 
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.loginPage import LoginPage
-from pageObjects.retentionPolicyPage import RetentionPolicy
+from pageObjects.testLoginPage import loginPage
+from pageObjects.testRetentionPolicyPage import Test_RetentionPolicy
 from selenium.webdriver.common.by import By
 
 
@@ -22,10 +22,10 @@ class Test_008_CreateRetentionPolicy:
         self.driver.maximize_window()
         self.logger.info("********** Browser Opened Successfully **********")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickOnLogin()
+        self.lp = loginPage(self.driver)
+        self.lp.test_setUserName(self.username)
+        self.lp.test_setPassword(self.password)
+        self.lp.test_clickOnLogin()
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
 
@@ -35,11 +35,11 @@ class Test_008_CreateRetentionPolicy:
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Retention Policies").click()
         path = "./TestData/createRetentionPolicy.xlsx"
-        self.rtp = RetentionPolicy(self.driver)
-        self.rtp.createRetentionPolicy(path)
+        self.rtp = Test_RetentionPolicy(self.driver)
+        self.rtp.test_createRetentionPolicy(path)
         time.sleep(5)
         self.logger.info("********** Create New Retention Policy Test Is Successful **********")
-        self.lp.clickOnLogout()
+        self.lp.test_clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")

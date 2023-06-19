@@ -1,14 +1,14 @@
 import time
 
-from pageObjects.wavePage import WavePage
-from pageObjects.configurationPage import Configuration
-from pageObjects.waveOperations import WaveOperations
-from pageObjects.loginPage import LoginPage
-from pageObjects.waveEdit import WaveEdit
+from pageObjects.testWavePage import Test_WavePage
+from pageObjects.testConfigurationPage import Test_Configuration
+from pageObjects.testWaveOperations import Test_WaveOperations
+from pageObjects.testLoginPage import loginPage
+from pageObjects.testWaveEdit import Test_WaveEdit
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.drPolicyPage import DRPolicy
-from pageObjects.waveDetails import WaveDetails
+from pageObjects.testDrPolicyPage import Test_DRPolicy
+from pageObjects.testWaveDetails import Test_WaveDetails
 
 from selenium.webdriver.common.by import By
 
@@ -27,13 +27,13 @@ class Test_019_SecondFlow:
 
     def test_createWindowsWave(self, setup):
         self.driver = setup
-        self.lp = LoginPage(self.driver)
-        self.wp = WavePage(self.driver)
-        self.conf = Configuration(self.driver)
-        self.wo = WaveOperations(self.driver)
-        self.dr = DRPolicy(self.driver)
-        self.we = WaveEdit(self.driver)
-        self.wd = WaveDetails(self.driver)
+        self.lp = loginPage(self.driver)
+        self.wp = Test_WavePage(self.driver)
+        self.conf = Test_Configuration(self.driver)
+        self.wo = Test_WaveOperations(self.driver)
+        self.dr = Test_DRPolicy(self.driver)
+        self.we = Test_WaveEdit(self.driver)
+        self.wd = Test_WaveDetails(self.driver)
 
         self.logger.info("********** Test_019_SecondFlow **********")
         self.logger.info("********** Opening Browser ********** ")
@@ -42,9 +42,9 @@ class Test_019_SecondFlow:
         self.logger.info("********** Browser Opened Successfully **********\n")
 
         self.logger.info("********** Logging In **********")
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickOnLogin()
+        self.lp.test_setUserName(self.username)
+        self.lp.test_setPassword(self.password)
+        self.lp.test_clickOnLogin()
         self.logger.info("********** Login Successful **********\n")
 
         time.sleep(10)
@@ -55,7 +55,7 @@ class Test_019_SecondFlow:
         time.sleep(5)
         print(len(self.driver.find_elements(By.LINK_TEXT, "tp")))
 
-        self.lp.clickOnLogout()
+        self.lp.test_clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")

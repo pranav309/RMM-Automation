@@ -1,18 +1,16 @@
 import time
+import unittest
 import openpyxl
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 from utilities.customLogger import LogGen
 
-from webtest import TestApp
 
-TestApp.__test__ = False
-
-
-class Test_Configuration:
+class Configuration(unittest.TestCase):
     # Common Data for Cloud Users
     btn_add_id = "conf_cu_add_btn"
     btn_edit_id = "conf_cu_edit_btn"
@@ -116,10 +114,7 @@ class Test_Configuration:
 
     logger = LogGen.loggen()
 
-    def __init__(self, driver):
-        self.driver = driver
-
-    def addNewCloudUser(self, path, start, end):
+    def addNewCloudUser(self, driver, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
@@ -130,42 +125,42 @@ class Test_Configuration:
         if end == "NA":
             ed = rows
         else:
-            ed = rows
-        conf_class = self.driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
+            ed = end
+        conf_class = driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
         if conf_class == "ng-star-inserted":
-            self.driver.find_element(By.LINK_TEXT, "Configuration").click()
-        WebDriverWait(self.driver, 10).until(
+            driver.find_element(By.LINK_TEXT, "Configuration").click()
+        WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.txt_cu_xpath))
         )
-        cu_class = self.driver.find_element(By.XPATH, self.txt_cu_xpath).get_attribute("class")
+        cu_class = driver.find_element(By.XPATH, self.txt_cu_xpath).get_attribute("class")
         if cu_class != "active":
-            self.driver.find_element(By.LINK_TEXT, "Clouduser").click()
+            driver.find_element(By.LINK_TEXT, "Clouduser").click()
             time.sleep(5)
 
         for r in range(st, ed+1):
-            WebDriverWait(self.driver, 10).until(
+            WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.ID, self.btn_add_id))
             )
-            self.driver.find_element(By.ID, self.btn_add_id).click()
-            WebDriverWait(self.driver, 10).until(
+            driver.find_element(By.ID, self.btn_add_id).click()
+            WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, self.pop_addCloudUser_xpath))
             )
             name = sheet.cell(row=r, column=1).value
             cloudProvider = sheet.cell(row=r, column=2).value
-            if len(self.driver.find_elements(By.XPATH, self.pop_addCloudUser_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, self.pop_addCloudUser_xpath)) != 0:
                 self.logger.info("********** Pop-up Banner For Add Clouduser Was Opened **********")
-                self.driver.find_element(By.ID, self.txt_name_id).send_keys(name)
-                cp = Select(self.driver.find_element(By.XPATH, self.drp_cloudProvider_xpath))
+                driver.find_element(By.ID, self.txt_name_id).send_keys(name)
+                cp = Select(driver.find_element(By.XPATH, self.drp_cloudProvider_xpath))
                 cp.select_by_visible_text(cloudProvider)
 
                 if cloudProvider == "AWS":
                     self.logger.info("********** AWS Was Selected As Cloud Provider **********")
                     accessKey = sheet.cell(row=r, column=3).value
                     secretAccessKey = sheet.cell(row=r, column=4).value
-                    self.driver.find_element(By.ID, self.txt_AWSAccessKey_id).clear()
-                    self.driver.find_element(By.ID, self.txt_AWSAccessKey_id).send_keys(accessKey)
-                    self.driver.find_element(By.ID, self.txt_AWSSecretAccessKey_id).clear()
-                    self.driver.find_element(By.ID, self.txt_AWSSecretAccessKey_id).send_keys(secretAccessKey)
+                    driver.find_element(By.ID, self.txt_AWSAccessKey_id).clear()
+                    driver.find_element(By.ID, self.txt_AWSAccessKey_id).send_keys(accessKey)
+                    driver.find_element(By.ID, self.txt_AWSSecretAccessKey_id).clear()
+                    driver.find_element(By.ID, self.txt_AWSSecretAccessKey_id).send_keys(secretAccessKey)
                 elif cloudProvider == "Azure":
                     self.logger.info("********** Azure Was Selected As Cloud Provider **********")
                     subscriptionId = sheet.cell(row=r, column=5).value
@@ -175,18 +170,18 @@ class Test_Configuration:
                     cloudType = sheet.cell(row=r, column=9).value
                     dataCentre = sheet.cell(row=r, column=10).value
 
-                    self.driver.find_element(By.ID, self.txt_AzureSubscriptionId_id).clear()
-                    self.driver.find_element(By.ID, self.txt_AzureSubscriptionId_id).send_keys(subscriptionId)
-                    self.driver.find_element(By.ID, self.txt_AzureTenantId_id).clear()
-                    self.driver.find_element(By.ID, self.txt_AzureTenantId_id).send_keys(tenantId)
-                    self.driver.find_element(By.ID, self.txt_AzureClientId_id).clear()
-                    self.driver.find_element(By.ID, self.txt_AzureClientId_id).send_keys(clientId)
-                    self.driver.find_element(By.ID, self.txt_AzureClientSecret_id).clear()
-                    self.driver.find_element(By.ID, self.txt_AzureClientSecret_id).send_keys(clientSecret)
-                    ct = Select(self.driver.find_element(By.XPATH, self.drp_AzureCloudType_xpath))
+                    driver.find_element(By.ID, self.txt_AzureSubscriptionId_id).clear()
+                    driver.find_element(By.ID, self.txt_AzureSubscriptionId_id).send_keys(subscriptionId)
+                    driver.find_element(By.ID, self.txt_AzureTenantId_id).clear()
+                    driver.find_element(By.ID, self.txt_AzureTenantId_id).send_keys(tenantId)
+                    driver.find_element(By.ID, self.txt_AzureClientId_id).clear()
+                    driver.find_element(By.ID, self.txt_AzureClientId_id).send_keys(clientId)
+                    driver.find_element(By.ID, self.txt_AzureClientSecret_id).clear()
+                    driver.find_element(By.ID, self.txt_AzureClientSecret_id).send_keys(clientSecret)
+                    ct = Select(driver.find_element(By.XPATH, self.drp_AzureCloudType_xpath))
                     ct.select_by_visible_text(cloudType)
-                    self.driver.find_element(By.XPATH, self.drp_AzureDataCentre_xpath).clear()
-                    self.driver.find_element(By.XPATH, self.drp_AzureDataCentre_xpath).send_keys(dataCentre)
+                    driver.find_element(By.XPATH, self.drp_AzureDataCentre_xpath).clear()
+                    driver.find_element(By.XPATH, self.drp_AzureDataCentre_xpath).send_keys(dataCentre)
 
                 elif cloudProvider == "Google":
                     self.logger.info("********** Google Was Selected As Cloud Provider **********")
@@ -195,25 +190,25 @@ class Test_Configuration:
                     projectId = sheet.cell(row=r, column=13).value
 
                     if fileUploadMethod == "Upload local File":
-                        self.driver.find_element(By.XPATH, self.rd_GGLUploadLocal_xpath).click()
-                        self.driver.find_element(By.XPATH, self.src_GGLBrowse_xpath).clear()
-                        self.driver.find_element(By.XPATH, self.src_GGLBrowse_xpath).send_keys(filePath)
+                        driver.find_element(By.XPATH, self.rd_GGLUploadLocal_xpath).click()
+                        driver.find_element(By.XPATH, self.src_GGLBrowse_xpath).clear()
+                        driver.find_element(By.XPATH, self.src_GGLBrowse_xpath).send_keys(filePath)
                     elif fileUploadMethod == "File path on RMM":
-                        self.driver.find_element(By.XPATH, self.rd_GGLFilePath_xpath).click()
-                        self.driver.find_element(By.ID, self.txt_GGLPathOnRMM_id).clear()
-                        self.driver.find_element(By.ID, self.txt_GGLPathOnRMM_id).send_keys(filePath)
-                    self.driver.find_element(By.ID, self.txt_GGLProjectId_id).clear()
-                    self.driver.find_element(By.ID, self.txt_GGLProjectId_id).send_keys(projectId)
+                        driver.find_element(By.XPATH, self.rd_GGLFilePath_xpath).click()
+                        driver.find_element(By.ID, self.txt_GGLPathOnRMM_id).clear()
+                        driver.find_element(By.ID, self.txt_GGLPathOnRMM_id).send_keys(filePath)
+                    driver.find_element(By.ID, self.txt_GGLProjectId_id).clear()
+                    driver.find_element(By.ID, self.txt_GGLProjectId_id).send_keys(projectId)
 
                 elif cloudProvider == "IBM Cloud VPC":
                     self.logger.info("********** IBM Cloud VPC Was Selected As Cloud Provider **********")
                     region = sheet.cell(row=r, column=14).value
                     apiKey = sheet.cell(row=r, column=15).value
 
-                    self.driver.find_element(By.XPATH, self.drp_IBMRegion_xpath).clear()
-                    self.driver.find_element(By.XPATH, self.drp_IBMRegion_xpath).send_keys(region)
-                    self.driver.find_element(By.ID, self.txt_IBMapiKey_id).clear()
-                    self.driver.find_element(By.ID, self.txt_IBMapiKey_id).send_keys(apiKey)
+                    driver.find_element(By.XPATH, self.drp_IBMRegion_xpath).clear()
+                    driver.find_element(By.XPATH, self.drp_IBMRegion_xpath).send_keys(region)
+                    driver.find_element(By.ID, self.txt_IBMapiKey_id).clear()
+                    driver.find_element(By.ID, self.txt_IBMapiKey_id).send_keys(apiKey)
 
                 elif cloudProvider == "CloudStack":
                     self.logger.info("********** CloudStack Was Selected As Cloud Provider **********")
@@ -222,14 +217,14 @@ class Test_Configuration:
                     secretKey = sheet.cell(row=r, column=18).value
                     domainId = sheet.cell(row=r, column=19).value
 
-                    self.driver.find_element(By.ID, self.txt_CSApiUrl_id).clear()
-                    self.driver.find_element(By.ID, self.txt_CSApiUrl_id).send_keys(apiUrl)
-                    self.driver.find_element(By.ID, self.txt_CSApiKey_id).clear()
-                    self.driver.find_element(By.ID, self.txt_CSApiKey_id).send_keys(apiKey)
-                    self.driver.find_element(By.ID, self.txt_CSSecretKey_id).clear()
-                    self.driver.find_element(By.ID, self.txt_CSSecretKey_id).send_keys(secretKey)
-                    self.driver.find_element(By.ID, self.txt_CSDomainId_id).clear()
-                    self.driver.find_element(By.ID, self.txt_CSDomainId_id).send_keys(domainId)
+                    driver.find_element(By.ID, self.txt_CSApiUrl_id).clear()
+                    driver.find_element(By.ID, self.txt_CSApiUrl_id).send_keys(apiUrl)
+                    driver.find_element(By.ID, self.txt_CSApiKey_id).clear()
+                    driver.find_element(By.ID, self.txt_CSApiKey_id).send_keys(apiKey)
+                    driver.find_element(By.ID, self.txt_CSSecretKey_id).clear()
+                    driver.find_element(By.ID, self.txt_CSSecretKey_id).send_keys(secretKey)
+                    driver.find_element(By.ID, self.txt_CSDomainId_id).clear()
+                    driver.find_element(By.ID, self.txt_CSDomainId_id).send_keys(domainId)
 
                 elif cloudProvider == "OCI":
                     self.logger.info("********** OCI Was Selected As Cloud Provider **********")
@@ -246,42 +241,42 @@ class Test_Configuration:
                     certUploadMethod = sheet.cell(row=r, column=30).value
                     certFilePath = sheet.cell(row=r, column=31).value
 
-                    self.driver.find_element(By.ID, self.txt_OCIUserId_id).clear()
-                    self.driver.find_element(By.ID, self.txt_OCIUserId_id).send_keys(userId)
+                    driver.find_element(By.ID, self.txt_OCIUserId_id).clear()
+                    driver.find_element(By.ID, self.txt_OCIUserId_id).send_keys(userId)
                     if fileUploadMethod == "Upload local File":
-                        self.driver.find_element(By.ID, self.rd_OCIUploadFile_id).click()
-                        self.driver.find_element(By.XPATH, self.src_OCIBrowse_xpath).clear()
-                        self.driver.find_element(By.XPATH, self.src_OCIBrowse_xpath).send_keys(filePath)
+                        driver.find_element(By.ID, self.rd_OCIUploadFile_id).click()
+                        driver.find_element(By.XPATH, self.src_OCIBrowse_xpath).clear()
+                        driver.find_element(By.XPATH, self.src_OCIBrowse_xpath).send_keys(filePath)
                     elif fileUploadMethod == "File path on RMM":
-                        self.driver.find_element(By.XPATH, self.rd_OCIFilePath_xpath).click()
-                        self.driver.find_element(By.ID, self.txt_OCIPathOnRMM_id).clear()
-                        self.driver.find_element(By.ID, self.txt_OCIPathOnRMM_id).send_keys(filePath)
-                    self.driver.find_element(By.ID, self.txt_OCIFingerprint_id).clear()
-                    self.driver.find_element(By.ID, self.txt_OCIFingerprint_id).send_keys(fingerprint)
-                    self.driver.find_element(By.ID, self.txt_OCITenantId_id).clear()
-                    self.driver.find_element(By.ID, self.txt_OCITenantId_id).send_keys(tenantId)
-                    self.driver.find_element(By.ID, self.txt_OCIPassphrase_id).clear()
-                    self.driver.find_element(By.ID, self.txt_OCIPassphrase_id).send_keys(passphrase)
-                    self.driver.find_element(By.XPATH, self.drp_OCIRegion_xpath).clear()
-                    self.driver.find_element(By.XPATH, self.drp_OCIRegion_xpath).send_keys(region)
-                    self.driver.find_element(By.ID, self.txt_OCIApiUrl_id).clear()
-                    self.driver.find_element(By.ID, self.txt_OCIApiUrl_id).send_keys(apiUrl)
+                        driver.find_element(By.XPATH, self.rd_OCIFilePath_xpath).click()
+                        driver.find_element(By.ID, self.txt_OCIPathOnRMM_id).clear()
+                        driver.find_element(By.ID, self.txt_OCIPathOnRMM_id).send_keys(filePath)
+                    driver.find_element(By.ID, self.txt_OCIFingerprint_id).clear()
+                    driver.find_element(By.ID, self.txt_OCIFingerprint_id).send_keys(fingerprint)
+                    driver.find_element(By.ID, self.txt_OCITenantId_id).clear()
+                    driver.find_element(By.ID, self.txt_OCITenantId_id).send_keys(tenantId)
+                    driver.find_element(By.ID, self.txt_OCIPassphrase_id).clear()
+                    driver.find_element(By.ID, self.txt_OCIPassphrase_id).send_keys(passphrase)
+                    driver.find_element(By.XPATH, self.drp_OCIRegion_xpath).clear()
+                    driver.find_element(By.XPATH, self.drp_OCIRegion_xpath).send_keys(region)
+                    driver.find_element(By.ID, self.txt_OCIApiUrl_id).clear()
+                    driver.find_element(By.ID, self.txt_OCIApiUrl_id).send_keys(apiUrl)
                     if parameterType == "Name":
-                        self.driver.find_element(By.ID, self.rd_OCIParameterName_id).click()
-                        self.driver.find_element(By.ID, self.txt_OCICompartmentName_id).clear()
-                        self.driver.find_element(By.ID, self.txt_OCICompartmentName_id).send_keys(compartmentName)
+                        driver.find_element(By.ID, self.rd_OCIParameterName_id).click()
+                        driver.find_element(By.ID, self.txt_OCICompartmentName_id).clear()
+                        driver.find_element(By.ID, self.txt_OCICompartmentName_id).send_keys(compartmentName)
                     elif parameterType == "ID":
-                        self.driver.find_element(By.ID, self.rd_OCIParameterId_id).click()
-                        self.driver.find_element(By.ID, self.txt_OCICompartmentId_id).clear()
-                        self.driver.find_element(By.ID, self.txt_OCICompartmentId_id).send_keys(compartmentName)
+                        driver.find_element(By.ID, self.rd_OCIParameterId_id).click()
+                        driver.find_element(By.ID, self.txt_OCICompartmentId_id).clear()
+                        driver.find_element(By.ID, self.txt_OCICompartmentId_id).send_keys(compartmentName)
                     if certUploadMethod == "Upload local File":
-                        self.driver.find_element(By.XPATH, self.rd_OCICertUploadFile_id).click()
-                        self.driver.find_element(By.XPATH, self.src_OCICertBrowse_xpath).clear()
-                        self.driver.find_element(By.XPATH, self.src_OCICertBrowse_xpath).send_keys(certFilePath)
+                        driver.find_element(By.XPATH, self.rd_OCICertUploadFile_id).click()
+                        driver.find_element(By.XPATH, self.src_OCICertBrowse_xpath).clear()
+                        driver.find_element(By.XPATH, self.src_OCICertBrowse_xpath).send_keys(certFilePath)
                     elif certUploadMethod == "File path on RMM":
-                        self.driver.find_element(By.XPATH, self.rd_OCICertFilePath_xpath).click()
-                        self.driver.find_element(By.XPATH, self.txt_OCICertPathOnRMM_id).clear()
-                        self.driver.find_element(By.XPATH, self.txt_OCICertPathOnRMM_id).send_keys(certFilePath)
+                        driver.find_element(By.XPATH, self.rd_OCICertFilePath_xpath).click()
+                        driver.find_element(By.XPATH, self.txt_OCICertPathOnRMM_id).clear()
+                        driver.find_element(By.XPATH, self.txt_OCICertPathOnRMM_id).send_keys(certFilePath)
 
                 elif cloudProvider == "Softlayer":
                     self.logger.info("********** Softlayer Was Selected As Cloud Provider **********")
@@ -291,16 +286,16 @@ class Test_Configuration:
                     accessRight = sheet.cell(row=r, column=35).value
                     hourly = sheet.cell(row=r, column=36).value
 
-                    self.driver.find_element(By.ID, self.txt_SLUserName_id).clear()
-                    self.driver.find_element(By.ID, self.txt_SLUserName_id).send_keys(userName)
-                    self.driver.find_element(By.ID, self.txt_SLApiKey_id).clear()
-                    self.driver.find_element(By.ID, self.txt_SLApiKey_id).send_keys(apiKey)
-                    self.driver.find_element(By.ID, self.txt_SlDomainName_id).clear()
-                    self.driver.find_element(By.ID, self.txt_SlDomainName_id).send_keys(domainName)
-                    self.driver.find_element(By.ID, self.txt_SLAccessRights_id).clear()
-                    self.driver.find_element(By.ID, self.txt_SLAccessRights_id).send_keys(accessRight)
+                    driver.find_element(By.ID, self.txt_SLUserName_id).clear()
+                    driver.find_element(By.ID, self.txt_SLUserName_id).send_keys(userName)
+                    driver.find_element(By.ID, self.txt_SLApiKey_id).clear()
+                    driver.find_element(By.ID, self.txt_SLApiKey_id).send_keys(apiKey)
+                    driver.find_element(By.ID, self.txt_SlDomainName_id).clear()
+                    driver.find_element(By.ID, self.txt_SlDomainName_id).send_keys(domainName)
+                    driver.find_element(By.ID, self.txt_SLAccessRights_id).clear()
+                    driver.find_element(By.ID, self.txt_SLAccessRights_id).send_keys(accessRight)
                     if hourly:
-                        self.driver.find_element(By.ID, self.chBox_SLHourly_id).click()
+                        driver.find_element(By.ID, self.chBox_SLHourly_id).click()
 
                 elif cloudProvider == "Zadara":
                     self.logger.info("********** Zadara Was Selected As Cloud Provider **********")
@@ -309,54 +304,54 @@ class Test_Configuration:
                     apiUrl = sheet.cell(row=r, column=39).value
                     region = sheet.cell(row=r, column=40).value
 
-                    self.driver.find_element(By.ID, self.txt_ZadaraAccessKey_id).clear()
-                    self.driver.find_element(By.ID, self.txt_ZadaraAccessKey_id).send_keys(accessKey)
-                    self.driver.find_element(By.ID, self.txt_ZadaraSecretAccessKey_id).clear()
-                    self.driver.find_element(By.ID, self.txt_ZadaraSecretAccessKey_id).send_keys(secretAccessKey)
-                    self.driver.find_element(By.ID, self.txt_ZadaraApiUrl_id).clear()
-                    self.driver.find_element(By.ID, self.txt_ZadaraApiUrl_id).send_keys(apiUrl)
-                    self.driver.find_element(By.ID, self.txt_ZadaraRegion_id).clear()
-                    self.driver.find_element(By.ID, self.txt_ZadaraRegion_id).send_keys(region)
+                    driver.find_element(By.ID, self.txt_ZadaraAccessKey_id).clear()
+                    driver.find_element(By.ID, self.txt_ZadaraAccessKey_id).send_keys(accessKey)
+                    driver.find_element(By.ID, self.txt_ZadaraSecretAccessKey_id).clear()
+                    driver.find_element(By.ID, self.txt_ZadaraSecretAccessKey_id).send_keys(secretAccessKey)
+                    driver.find_element(By.ID, self.txt_ZadaraApiUrl_id).clear()
+                    driver.find_element(By.ID, self.txt_ZadaraApiUrl_id).send_keys(apiUrl)
+                    driver.find_element(By.ID, self.txt_ZadaraRegion_id).clear()
+                    driver.find_element(By.ID, self.txt_ZadaraRegion_id).send_keys(region)
 
-                WebDriverWait(self.driver, 10).until(
+                WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, self.btn_confirm_id))
                 )
-                self.driver.find_element(By.ID, self.btn_confirm_id).click()
-                WebDriverWait(self.driver, 10).until(
+                driver.find_element(By.ID, self.btn_confirm_id).click()
+                WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
                 )
-                note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
+                note = driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
                 self.logger.info("********** Add New Clouduser Status For Clouduser: " + name + ",")
                 self.logger.info(note + "\n")
                 time.sleep(2)
-                self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
+                driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
             else:
                 self.logger.info("********** Failed To Open Pop-up Banner For "+name+" Clouduser **********")
 
-    def findClouduser(self, cuNames):
-        conf_class = self.driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
+    def findClouduser(self, driver, cuNames):
+        conf_class = driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
         if conf_class == "ng-star-inserted":
-            self.driver.find_element(By.LINK_TEXT, "Configuration").click()
-        WebDriverWait(self.driver, 10).until(
+            driver.find_element(By.LINK_TEXT, "Configuration").click()
+        WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.txt_cu_xpath))
         )
-        cu_class = self.driver.find_element(By.XPATH, self.txt_cu_xpath).get_attribute("class")
+        cu_class = driver.find_element(By.XPATH, self.txt_cu_xpath).get_attribute("class")
         if cu_class != "active":
-            self.driver.find_element(By.LINK_TEXT, "Clouduser").click()
+            driver.find_element(By.LINK_TEXT, "Clouduser").click()
             time.sleep(5)
-        totalCU = len(self.driver.find_elements(By.XPATH, self.txt_totalUser_xpath))
+        totalCU = len(driver.find_elements(By.XPATH, self.txt_totalUser_xpath))
         for cuName in cuNames:
             for i in range(1, totalCU+1):
                 if totalCU == 1:
-                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span[1]').text
+                    tmp = driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span[1]').text
                 else:
-                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[2]/span[1]').text
+                    tmp = driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[2]/span[1]').text
                 if tmp == cuName:
                     self.logger.info("********** Found The Clouduser With Name: " + cuName + " At Location, " + str(i) + "**********")
                 else:
                     self.logger.info("********** Failed To Found The Clouduser With Name: " + cuName + " **********")
 
-    def test_addVCenter(self, path, start, end):
+    def addVCenter(self, driver, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row
@@ -367,16 +362,16 @@ class Test_Configuration:
         if end == "NA":
             ed = rows
         else:
-            ed = rows
-        conf_class = self.driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
+            ed = end
+        conf_class = driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
         if conf_class == "ng-star-inserted":
-            self.driver.find_element(By.LINK_TEXT, "Configuration").click()
-        WebDriverWait(self.driver, 10).until(
+            driver.find_element(By.LINK_TEXT, "Configuration").click()
+        WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.txt_cu_xpath))
         )
-        vc_class = self.driver.find_element(By.XPATH, self.txt_vc_xpath).get_attribute("class")
+        vc_class = driver.find_element(By.XPATH, self.txt_vc_xpath).get_attribute("class")
         if vc_class != "active":
-            self.driver.find_element(By.LINK_TEXT, "vCenter").click()
+            driver.find_element(By.LINK_TEXT, "vCenter").click()
             time.sleep(5)
 
         for r in range(st, ed + 1):
@@ -386,63 +381,63 @@ class Test_Configuration:
             password = sheet.cell(row=r, column=4).value
             portNumber = sheet.cell(row=r, column=5).value
 
-            val = self.findVCenter(name)
+            val = self.findVCenter(driver, name)
             if val == 1:
                 self.logger.info("********** The vCenter With Name: " + name + " Was Already Present **********")
                 continue
 
-            element = WebDriverWait(self.driver, 30).until(
+            element = WebDriverWait(driver, 30).until(
                     EC.element_to_be_clickable((By.ID, self.btn_createVC_id))
             )
             element.click()
             time.sleep(5)
-            if len(self.driver.find_elements(By.XPATH, self.pop_addVC_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, self.pop_addVC_xpath)) != 0:
                 self.logger.info("********** Add vCenter Pop-up Banner Is Opened For "+str(name)+" vCenter **********")
-                self.driver.find_element(By.ID, self.txt_VCName_id).clear()
-                self.driver.find_element(By.ID, self.txt_VCName_id).send_keys(name)
-                self.driver.find_element(By.ID, self.txt_VCipAddress_id).clear()
-                self.driver.find_element(By.ID, self.txt_VCipAddress_id).send_keys(ipAddress)
-                self.driver.find_element(By.ID, self.txt_VCUserName_id).clear()
-                self.driver.find_element(By.ID, self.txt_VCUserName_id).send_keys(userName)
-                self.driver.find_element(By.ID, self.txt_VCPassword_id).clear()
-                self.driver.find_element(By.ID, self.txt_VCPassword_id).send_keys(password)
+                driver.find_element(By.ID, self.txt_VCName_id).clear()
+                driver.find_element(By.ID, self.txt_VCName_id).send_keys(name)
+                driver.find_element(By.ID, self.txt_VCipAddress_id).clear()
+                driver.find_element(By.ID, self.txt_VCipAddress_id).send_keys(ipAddress)
+                driver.find_element(By.ID, self.txt_VCUserName_id).clear()
+                driver.find_element(By.ID, self.txt_VCUserName_id).send_keys(userName)
+                driver.find_element(By.ID, self.txt_VCPassword_id).clear()
+                driver.find_element(By.ID, self.txt_VCPassword_id).send_keys(password)
                 if portNumber != "NA":
-                    self.driver.find_element(By.ID, self.txt_VCPort_id).send_keys(portNumber)
-                WebDriverWait(self.driver, 10).until(
+                    driver.find_element(By.ID, self.txt_VCPort_id).send_keys(portNumber)
+                WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, self.btn_addVC_id))
                 )
-                self.driver.find_element(By.ID, self.btn_addVC_id).click()
-                WebDriverWait(self.driver, 10).until(
+                driver.find_element(By.ID, self.btn_addVC_id).click()
+                WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, self.pop_deleteSuccessful_xpath))
                 )
-                note = self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
+                note = driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).text
                 self.logger.info("********** Add New Clouduser Status For Clouduser: " + name + ",")
                 self.logger.info(note + "\n")
                 time.sleep(2)
-                self.driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
+                driver.find_element(By.XPATH, self.pop_deleteSuccessful_xpath).click()
             else:
                 self.logger.info("********** Add vCenter Pop-up Banner Is Not Opened For "+str(name)+" vCenter **********")
 
-    def findVCenter(self, vcNames):
+    def findVCenter(self, driver, vcNames):
         flag = 0
-        conf_class = self.driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
+        conf_class = driver.find_element(By.XPATH, self.txt_config_xpath).get_attribute("class")
         if conf_class == "ng-star-inserted":
-            self.driver.find_element(By.LINK_TEXT, "Configuration").click()
-        WebDriverWait(self.driver, 10).until(
+            driver.find_element(By.LINK_TEXT, "Configuration").click()
+        WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, self.txt_cu_xpath))
         )
-        vc_class = self.driver.find_element(By.XPATH, self.txt_vc_xpath).get_attribute("class")
+        vc_class = driver.find_element(By.XPATH, self.txt_vc_xpath).get_attribute("class")
         if vc_class != "active":
-            self.driver.find_element(By.LINK_TEXT, "vCenter").click()
+            driver.find_element(By.LINK_TEXT, "vCenter").click()
             time.sleep(5)
         res = tuple(map(str, vcNames.split(', ')))
-        totalUser = len(self.driver.find_elements(By.XPATH, self.txt_totalUser_xpath))
+        totalUser = len(driver.find_elements(By.XPATH, self.txt_totalUser_xpath))
         for vcName in res:
             for i in range(1, totalUser + 1):
                 if totalUser == 1:
-                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span[1]').text
+                    tmp = driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[2]/span[1]').text
                 else:
-                    tmp = self.driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[2]/span[1]').text
+                    tmp = driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[' + str(i) + ']/td[2]/span[1]').text
                 if tmp == vcName:
                     self.logger.info("********** Found The vCenter With Name: " + vcName + " At Location, " + str(i) + "**********")
                     flag += 1

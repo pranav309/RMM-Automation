@@ -1,8 +1,8 @@
 import time
 import py
 
-from pageObjects.wavePage import WavePage
-from pageObjects.loginPage import LoginPage
+from pageObjects.testWavePage import Test_WavePage
+from pageObjects.testLoginPage import loginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 
@@ -21,19 +21,19 @@ class Test_002_CreateWaveWithFile:
         self.driver.maximize_window()
         self.logger.info("********** Browser Opened Successfully **********")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickOnLogin()
+        self.lp = loginPage(self.driver)
+        self.lp.test_setUserName(self.username)
+        self.lp.test_setPassword(self.password)
+        self.lp.test_clickOnLogin()
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
 
         self.logger.info("********** Starting  Create Wave With File Test **********")
         path = "./TestData/RackwareWaveTemplate.csv"
-        self.crtWave = WavePage(self.driver)
-        self.crtWave.createWaveWithFile(path)
+        self.crtWave = Test_WavePage(self.driver)
+        self.crtWave.test_createWaveWithFile(path)
         self.logger.info("**********  Create Wave With File Test Is Successful **********")
-        self.lp.clickOnLogout()
+        self.lp.test_clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")

@@ -2,8 +2,8 @@ import time
 
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.loginPage import LoginPage
-from pageObjects.waveOperations import WaveOperations
+from pageObjects.testLoginPage import loginPage
+from pageObjects.testWaveOperations import Test_WaveOperations
 
 
 class Test_009_StartWave:
@@ -20,19 +20,19 @@ class Test_009_StartWave:
         self.driver.maximize_window()
         self.logger.info("********** Browser Opened Successfully **********")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickOnLogin()
+        self.lp = loginPage(self.driver)
+        self.lp.test_setUserName(self.username)
+        self.lp.test_setPassword(self.password)
+        self.lp.test_clickOnLogin()
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
 
         self.logger.info("********** Starting Start Wave Test **********")
-        self.startWave = WaveOperations(self.driver)
-        self.startWave.startWave(["linStage12", "linStage2"])
+        self.startWave = Test_WaveOperations(self.driver)
+        self.startWave.test_startWave(["linStage12", "linStage2"])
         time.sleep(5)
         self.logger.info("********** Add New Host Test Is Successful **********")
-        self.lp.clickOnLogout()
+        self.lp.test_clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")

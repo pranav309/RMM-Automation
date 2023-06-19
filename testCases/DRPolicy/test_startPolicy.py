@@ -2,8 +2,8 @@ import time
 
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.loginPage import LoginPage
-from pageObjects.drPolicyPage import DRPolicy
+from pageObjects.testLoginPage import loginPage
+from pageObjects.testDrPolicyPage import Test_DRPolicy
 from selenium.webdriver.common.by import By
 
 
@@ -21,10 +21,10 @@ class Test_007_StartDRPolicy:
         self.driver.maximize_window()
         self.logger.info("********** Browser Opened Successfully **********")
 
-        self.lp = LoginPage(self.driver)
-        self.lp.setUserName(self.username)
-        self.lp.setPassword(self.password)
-        self.lp.clickOnLogin()
+        self.lp = loginPage(self.driver)
+        self.lp.test_setUserName(self.username)
+        self.lp.test_setPassword(self.password)
+        self.lp.test_clickOnLogin()
         time.sleep(20)
         self.logger.info("********** Login Successful **********")
         self.logger.info("********** Starting Start DR Policy Test **********")
@@ -32,11 +32,11 @@ class Test_007_StartDRPolicy:
         self.driver.find_element(By.LINK_TEXT, "DR").click()
         time.sleep(5)
         self.driver.find_element(By.LINK_TEXT, "Policies").click()
-        self.dr = DRPolicy(self.driver)
+        self.dr = Test_DRPolicy(self.driver)
         self.dr.startPolicy([1])
         time.sleep(5)
         self.logger.info("********** Start DR Policy Test Is Successful **********")
-        self.lp.clickOnLogout()
+        self.lp.test_clickOnLogout()
         self.logger.info("********** Logout Successful **********")
         self.driver.close()
         self.logger.info("********** Browser Closed Successfully **********")
