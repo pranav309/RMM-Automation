@@ -219,6 +219,9 @@ class WaveOperations:
             if len(self.driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
         successCount = 0
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.ID, self.txt_totalHosts_id))
+        )
         totalHosts = len(self.driver.find_elements(By.ID, self.txt_totalHosts_id))
         for hostNo in range(1, totalHosts + 1):
             if totalHosts == 1:
@@ -255,9 +258,13 @@ class WaveOperations:
                 lines = details.split("\n")
                 if len(lines) > 10:
                     last_10_lines = lines[-10:]
-                    self.logger.info(last_10_lines)
+                    log = ""
+                    for i in range(1, len(last_10_lines)):
+                        log += str(last_10_lines[i])
+                        log += "\n"
+                    self.logger.info("\n" + log)
                 else:
-                    self.logger.info(details)
+                    self.logger.info("\n" + details)
                 self.logger.info("\n")
 
     def setParallelCount(self, waveName, parallelCount):

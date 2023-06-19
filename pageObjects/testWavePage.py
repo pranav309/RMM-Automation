@@ -8,6 +8,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from utilities.customLogger import LogGen
 from pageObjects.commonObjects import CommonObjects
 
+from webtest import TestApp
+
+TestApp.__test__ = False
+
 
 class WavePage:
     drp_count_xpath = "//*[@id='waves_rw_dynamic_pagination']/select"

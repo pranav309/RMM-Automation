@@ -77,7 +77,7 @@ class TearDown:
         for r in range(st, ed+1):
             operation = sheet.cell(row=r, column=1).value.lower()
 
-            if operation.find("delete") != -1 and operation.find("ssh") != -1 and operation.find("entry") != -1:
+            if operation.find("delete") != -1 and operation.find("sync") != -1 and operation.find("relation") != -1:
                 source = sheet.cell(row=r, column=5).value
                 target = sheet.cell(row=r, column=6).value
                 self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete SSH Host Sync Entry **********")
@@ -142,8 +142,7 @@ class TearDown:
                 self.logger.info("********** TestCase "+str(count)+"."+str(cnt)+": There Are Some Mistakes In The Operation Keywords '" + str(operation) + "' ... Please Check Once **********\n \n")
                 cnt += 1
 
-    @staticmethod
-    def deleteSR(source, target):
+    def deleteSR(self, source, target):
         vm_ip = "172.29.30.127"
         vm_username = "root"
         vm_password = "rackware"
@@ -155,7 +154,10 @@ class TearDown:
                     username=vm_username,
                     password=vm_password,
                     look_for_keys=False)
-        ssh.exec_command("rw ic srd "+str(source)+" --target "+str(target))
+        stdin, stdout, stderr = ssh.exec_command("rw ic srd " + str(source) + " --target " + str(target))
+        output = stdout.read().decode()
+        self.logger.info("********** Delete Sync Relation Status: \n" + output + "\n")
+        ssh.close()
 
     def deleteHostInWave(self, waveName, hostNames):
         co = CommonObjects(self.driver)

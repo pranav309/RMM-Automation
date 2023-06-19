@@ -7,8 +7,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from utilities.customLogger import LogGen
 
+from webtest import TestApp
 
-class Configuration:
+TestApp.__test__ = False
+
+
+class Test_Configuration:
     # Common Data for Cloud Users
     btn_add_id = "conf_cu_add_btn"
     btn_edit_id = "conf_cu_edit_btn"
@@ -352,7 +356,7 @@ class Configuration:
                 else:
                     self.logger.info("********** Failed To Found The Clouduser With Name: " + cuName + " **********")
 
-    def addVCenter(self, path, start, end):
+    def test_addVCenter(self, path, start, end):
         workBook = openpyxl.load_workbook(path)
         sheet = workBook.active
         rows = sheet.max_row

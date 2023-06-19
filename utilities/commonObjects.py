@@ -1,7 +1,8 @@
 import time
 
 from selenium.webdriver.common.by import By
-from utilities.customLogger import LogGen
+
+from customLogger import LogGen
 
 
 class CommonObjects:
@@ -23,16 +24,16 @@ class CommonObjects:
 
     def findWaveCommon(self, waveName, flag):
         self.driver.find_element(By.LINK_TEXT, "Replication").click()
-        time.sleep(2)
+        time.sleep(3)
         self.driver.find_element(By.LINK_TEXT, "Waves").click()
         time.sleep(5)
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
-        time.sleep(2)
+        time.sleep(3)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
             self.driver.find_element(By.LINK_TEXT, "DR").click()
-            time.sleep(2)
+            time.sleep(3)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
             time.sleep(5)
             self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
@@ -52,7 +53,7 @@ class CommonObjects:
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
-        time.sleep(2)
+        time.sleep(3)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
             self.driver.find_element(By.LINK_TEXT, "DR").click()
             time.sleep(3)
@@ -75,7 +76,7 @@ class CommonObjects:
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
-        time.sleep(2)
+        time.sleep(3)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
             time.sleep(3)

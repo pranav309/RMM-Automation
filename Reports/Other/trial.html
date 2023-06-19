@@ -240,13 +240,13 @@ function filter_table(elem) {
     not_found_message.hidden = !all_rows_hidden;
 }
 </script>
-    <h1>tp.html</h1>
-    <p>Report generated on 20-Feb-2023 at 10:38:30 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
+    <h1>trial.html</h1>
+    <p>Report generated on 30-May-2023 at 09:23:43 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v2.0.1</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
         <td>Module Name</td>
-        <td>Disaster Recovery</td></tr>
+        <td>First Flow Automation</td></tr>
       <tr>
         <td>Packages</td>
         <td>{&apos;pytest&apos;: &apos;7.2.1&apos;, &apos;pluggy&apos;: &apos;1.0.0&apos;}</td></tr>
@@ -258,12 +258,12 @@ function filter_table(elem) {
         <td>RMM Product</td></tr>
       <tr>
         <td>Python</td>
-        <td>3.11.1</td></tr>
+        <td>3.11.3</td></tr>
       <tr>
         <td>Tester</td>
         <td>Pranav Pawar</td></tr></table>
     <h2>Summary</h2>
-    <p>1 tests ran in 58.67 seconds. </p>
+    <p>1 tests ran in 180.17 seconds. </p>
     <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
@@ -278,14 +278,37 @@ function filter_table(elem) {
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
-          <td class="col-name">testCases/tp.py::Test_011_CreateAndStartWave::test_createAndStartWave</td>
-          <td class="col-duration">47.94</td>
+          <td class="col-name">testCases/Work/oneForAll.py::Test_000_OneForAll::test_allInOne</td>
+          <td class="col-duration">167.51</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
-            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:tp.py:18 ********** Test_011_CreateAndStartWave ********** 
-[32mINFO    [0m root:tp.py:19 ********** Opening Browser ********** 
-[32mINFO    [0m root:tp.py:23 ********** Browser Opened Successfully **********
-[32mINFO    [0m root:tp.py:33 4
-[32mINFO    [0m root:tp.py:35 ********** Logout Successful **********
-[32mINFO    [0m root:tp.py:37 ********** Browser Closed Successfully **********<br/></div></td></tr></tbody></table></body></html>
+            <div class="log"> -------------------------------Captured log call-------------------------------- <br/>[32mINFO    [0m root:oneForAll.py:35 ********** Test_019_SecondFlow ********** 
+[32mINFO    [0m root:oneForAll.py:36 ********** Opening Browser ********** 
+[32mINFO    [0m root:oneForAll.py:39 ********** Browser Opened Successfully **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:41 ********** Logging In **********
+[32mINFO    [0m root:loginPage.py:48 ********** Login Successful **********
+[32mINFO    [0m root:oneForAll.py:45 ********** Login Successful **********
+ 
+
+[32mINFO    [0m root:oneForAll.py:278 ********** Starting TestCase 1: Assign DR Policy To Wave **********
+[32mINFO    [0m root:drPolicyPage.py:276 ********** Wave : First Flow Opened Successfully **********
+[32mINFO    [0m root:drPolicyPage.py:278 ********** Currently The Wave : First Flow, Don&#x27;t Have Any Policy **********
+[32mINFO    [0m root:drPolicyPage.py:285 ********** Policy Assignment Pop-up Banner Is Opened For Wave, First Flow **********
+[32mINFO    [0m root:drPolicyPage.py:302 ********** Assign DR Policy firstFlow To Wave First Flow, Status : 
+[32mINFO    [0m root:drPolicyPage.py:303 Successfully applied DR Policy firstFlow to First Flow
+
+[32mINFO    [0m root:drPolicyPage.py:307 ********** Policy : firstFlow, Added To The Wave : First Flow **********
+[32mINFO    [0m root:drPolicyPage.py:347 ********** Policy : firstFlow, Is In Paused State **********
+[32mINFO    [0m root:oneForAll.py:280 ********** Successfully Executed TestCase: Assign DR Policy To Wave **********
+ 
+
+[32mINFO    [0m root:loginPage.py:59 ********** Logout Successful **********
+[32mINFO    [0m root:oneForAll.py:344 ********** Logout Successful **********
+[32mINFO    [0m root:oneForAll.py:346 ********** Browser Closed Successfully **********
+[32mINFO    [0m root:oneForAll.py:349 
+
+[32mINFO    [0m root:oneForAll.py:350 Timestamp: 2023-05-30 09:23:43
+[32mINFO    [0m root:oneForAll.py:351<br/></div></td></tr></tbody></table></body></html>

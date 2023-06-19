@@ -538,9 +538,7 @@ class DRPolicy:
             if testMode:
                 self.driver.find_element(By.ID, self.ch_testMode_id).click()
             self.driver.find_element(By.ID, self.btn_failoverYes_id).click()
-            WebDriverWait(self.driver, 18000).until(
-                EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Running Failover")
-            )
+            time.sleep(5)
             WebDriverWait(self.driver, 18000).until(
                 EC.text_to_be_present_in_element((By.XPATH, self.txt_waveState_xpath), "Failed Over")
             )

@@ -409,7 +409,6 @@ class WaveEdit:
                         EC.element_to_be_clickable((By.XPATH, self.btn_save_xpath))
                     )
                     ele2.click()
-                    self.driver.find_element(By.XPATH, self.btn_save_xpath).click()
                     time.sleep(5)
                     afterTotalNIcs = len(self.driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[4]/div/p-tabview/div/div/p-tabpanel[2]/div/div/div[5]/div[1]/div/div'))
                     if afterTotalNIcs > beforeTotalNIcs:
@@ -419,18 +418,18 @@ class WaveEdit:
                 else:
                     self.logger.info("********** Bulk Edit Add NIC Option Pop-Up Banner Was Not Opened For Wave : " + waveName + " **********")
                     return
-                ele1 = WebDriverWait(self.driver, 10).until(
+                ele3 = WebDriverWait(self.driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, self.btn_next_xpath))
                 )
-                ele1.click()
-                ele2 = WebDriverWait(self.driver, 10).until(
+                ele3.click()
+                ele4 = WebDriverWait(self.driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, self.btn_modifyAll_xpath))
                 )
-                ele2.click()
-                ele3 = WebDriverWait(self.driver, 10).until(
+                ele4.click()
+                ele5 = WebDriverWait(self.driver, 10).until(
                     EC.element_to_be_clickable((By.ID, self.btn_yes_id))
                 )
-                ele3.click()
+                ele5.click()
             else:
                 self.logger.info("********** Bulk Edit vCenter Option Pop-Up Banner Was Not Opened For Wave : " + waveName + " **********")
                 self.driver.find_element(By.XPATH, self.btn_cancelBulkEdit_xpath).click()
