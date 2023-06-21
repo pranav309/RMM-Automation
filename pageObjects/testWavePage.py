@@ -134,9 +134,7 @@ class WavePage(unittest.TestCase):
         if len(driver.find_elements(By.XPATH, self.pop_createWave_xpath)) != 0:
             self.logger.info("********** Create New Wave Pop-up Banner Was Opened **********")
             driver.find_element(By.XPATH, self.img_uploadCSV_xpath).click()
-            time.sleep(2)
             keyboard.write(path)
-            time.sleep(5)
             keyboard.send('enter')
             WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, self.pop_successful_xpath))

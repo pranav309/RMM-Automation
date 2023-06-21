@@ -79,9 +79,9 @@ class TearDown(unittest.TestCase):
             if operation.find("delete") != -1 and operation.find("sync") != -1 and operation.find("relation") != -1:
                 source = sheet.cell(row=r, column=5).value
                 target = sheet.cell(row=r, column=6).value
-                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete SSH Host Sync Entry **********")
+                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Sync Relation **********")
                 self.deleteSR(source, target)
-                self.logger.info("********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********\n \n")
+                self.logger.info("********** Successfully Executed TestCase: Delete Sync Relation **********\n \n")
                 cnt += 1
 
             elif operation.find("delete") != -1 and operation.find("host") != -1 and operation.find("wave") != -1:
@@ -94,16 +94,16 @@ class TearDown(unittest.TestCase):
 
             elif operation.find("delete") != -1 and operation.find("replication") != -1 and (operation.find("wave") != -1 or operation.find("waves") != -1):
                 waveName = sheet.cell(row=r, column=2).value
-                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Wave **********")
+                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Replication Wave **********")
                 self.deleteRepWaves(driver, waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
+                self.logger.info("********** Successfully Executed TestCase: Delete Replication Wave **********\n \n")
                 cnt += 1
 
             elif operation.find("delete") != -1 and operation.find("DR") != -1 and (operation.find("wave") != -1 or operation.find("waves") != -1):
                 waveName = sheet.cell(row=r, column=2).value
-                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete Wave **********")
+                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete DR Wave **********")
                 self.deleteDrWaves(driver, waveName)
-                self.logger.info("********** Successfully Executed TestCase: Delete Wave **********\n \n")
+                self.logger.info("********** Successfully Executed TestCase: Delete DR Wave **********\n \n")
                 cnt += 1
 
             elif operation.find("delete") != -1 and operation.find("wave") != -1:
@@ -115,9 +115,9 @@ class TearDown(unittest.TestCase):
 
             elif operation.find("delete") != -1 and operation.find("dr") != -1 and (operation.find("policy") != -1 or operation.find("policies") != -1):
                 policyName = sheet.cell(row=r, column=4).value
-                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete SSH Host Sync Entry **********")
+                self.logger.info("********** Starting TestCase "+str(count)+"."+str(cnt)+": Delete DR Policy **********")
                 self.deleteDRPolicy(driver, policyName)
-                self.logger.info("********** Successfully Executed TestCase: Delete SSH Host Sync Entry **********\n \n")
+                self.logger.info("********** Successfully Executed TestCase: Delete DR Policy **********\n \n")
                 cnt += 1
 
             elif operation.find("delete") != -1 and operation.find("source") != -1 and (operation.find("host") != -1 or operation.find("hosts") != -1):

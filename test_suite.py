@@ -298,14 +298,18 @@ def fun1():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Automation Test Flow')
     parser.add_argument('--browser', default='firefox', choices=['chrome', 'firefox', 'edge', 'safari', 'chromium'], help='Specify the browser to use')
+    parser.add_argument('--reportLog', help='Specify the report log filename')
     parser.add_argument('--report', help='Specify the report log filename')
     args = parser.parse_args()
     browser_name = args.browser
+    logFileName = args.reportLog
     fileName = args.report
 
-    report_file = open('./Reports/Report Log Files/'+fileName+'.log', 'w')
+    report_file = open('./Reports/Report Log Files/'+logFileName+'.log', 'w')
     runner = HtmlTestRunner.HTMLTestRunner(
         stream=report_file,
+        report_name=fileName,
+        add_timestamp=False,
         report_title='Automation Flow Report'
     )
 

@@ -1,0 +1,54 @@
+
+Running tests... 
+----------------------------------------------------------------------
+ test_clickOnLogin (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogin) ... OK (9.971201)s
+ test_createWaveWithFile (pageObjects.testAllInOne.Test_AllInOne.test_createWaveWithFile) ... OK (11.817647)s
+ test_addVCenter (pageObjects.testAllInOne.Test_AllInOne.test_addVCenter) ... OK (10.977640)s
+ test_setAutoprovision (pageObjects.testAllInOne.Test_AllInOne.test_setAutoprovision) ... OK (64.981772)s
+ test_bulkEditSyncOption (pageObjects.testAllInOne.Test_AllInOne.test_bulkEditSyncOption) ... OK (48.918313)s
+ test_setSyncOptions (pageObjects.testAllInOne.Test_AllInOne.test_setSyncOptions) ... OK (44.504286)s
+ test_changeVcenterData (pageObjects.testAllInOne.Test_AllInOne.test_changeVcenterData) ... OK (19.610474)s
+ test_bulkEditSyncOption (pageObjects.testAllInOne.Test_AllInOne.test_bulkEditSyncOption) ... OK (28.126609)s
+ test_setParallelCount (pageObjects.testAllInOne.Test_AllInOne.test_setParallelCount) ... OK (8.737087)s
+ test_startWave (pageObjects.testAllInOne.Test_AllInOne.test_startWave) ... OK (929.724249)s
+ test_verifySyncSuccess (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncSuccess) ... OK (5.102289)s
+ test_verifySyncDetails (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncDetails) ... OK (130.646167)s
+ test_bulkEditSyncOption (pageObjects.testAllInOne.Test_AllInOne.test_bulkEditSyncOption) ... OK (25.784808)s
+ test_startWave (pageObjects.testAllInOne.Test_AllInOne.test_startWave) ... OK (3050.548047)s
+ test_verifySyncSuccess (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncSuccess) ... OK (8.665830)s
+ test_deleteSRDetails (pageObjects.testAllInOne.Test_AllInOne.test_deleteSRDetails) ... OK (24.569489)s
+ test_createWaveWithoutHost (pageObjects.testAllInOne.Test_AllInOne.test_createWaveWithoutHost) ... OK (17.668876)s
+ test_moveHosts (pageObjects.testAllInOne.Test_AllInOne.test_moveHosts) ... OK (37.938705)s
+ test_changeTargetType (pageObjects.testAllInOne.Test_AllInOne.test_changeTargetType) ... OK (55.371892)s
+ test_setParallelCount (pageObjects.testAllInOne.Test_AllInOne.test_setParallelCount) ... OK (8.552599)s
+ test_startWave (pageObjects.testAllInOne.Test_AllInOne.test_startWave) ... OK (38.356746)s
+ test_verifySyncSuccess (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncSuccess) ... OK (5.070195)s
+ test_changeTargetType (pageObjects.testAllInOne.Test_AllInOne.test_changeTargetType) ... OK (72.482914)s
+ test_setParallelCount (pageObjects.testAllInOne.Test_AllInOne.test_setParallelCount) ... OK (8.550903)s
+ test_startWave (pageObjects.testAllInOne.Test_AllInOne.test_startWave) ... OK (1820.247332)s
+ test_verifySyncSuccess (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncSuccess) ... OK (5.069859)s
+ test_createDRPolicy (pageObjects.testAllInOne.Test_AllInOne.test_createDRPolicy) ... OK (34.357622)s
+ test_addDRPolicyToWave (pageObjects.testAllInOne.Test_AllInOne.test_addDRPolicyToWave) ... OK (124.412652)s
+ test_checkDrPolicyState (pageObjects.testAllInOne.Test_AllInOne.test_checkDrPolicyState) ... OK (5.268125)s
+ test_checkDrPolicyState (pageObjects.testAllInOne.Test_AllInOne.test_checkDrPolicyState) ... OK (5.282614)s
+ test_pauseDRPolicy (pageObjects.testAllInOne.Test_AllInOne.test_pauseDRPolicy) ... OK (19.259076)s
+ test_pauseDRPolicy (pageObjects.testAllInOne.Test_AllInOne.test_pauseDRPolicy) ... OK (19.273015)s
+ test_failoverHost (pageObjects.testAllInOne.Test_AllInOne.test_failoverHost) ... OK (985.486416)s
+ test_checkDrPolicyState (pageObjects.testAllInOne.Test_AllInOne.test_checkDrPolicyState) ... OK (5.339033)s
+ test_deleteSRDetails (pageObjects.testAllInOne.Test_AllInOne.test_deleteSRDetails) ... OK (27.528292)s
+ test_changeTargetType (pageObjects.testAllInOne.Test_AllInOne.test_changeTargetType) ... OK (56.564748)s
+ test_resumePolicy (pageObjects.testAllInOne.Test_AllInOne.test_resumePolicy) ... OK (15.844342)s
+ test_pauseDRPolicy (pageObjects.testAllInOne.Test_AllInOne.test_pauseDRPolicy) ... OK (19.322862)s
+ test_verifySyncSuccess (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncSuccess) ... OK (19.063148)s
+ test_tearDown (pageObjects.testAllInOne.Test_AllInOne.test_tearDown) ... OK (163.552408)s
+ test_clickOnLogout (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogout) ... OK (5.558326)s
+
+----------------------------------------------------------------------
+Ran 41 tests in 2:13:18
+
+OK
+
+
+
+Generating HTML reports... 
+reports\TestResults_pageObjects.testAllInOne.Test_AllInOne_2023-06-20_10-08-33.html

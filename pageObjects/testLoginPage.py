@@ -31,15 +31,11 @@ class LoginPage(unittest.TestCase):
         pw = driver.find_element(By.ID, self.txt_password_id)
         un.send_keys(username)
         pw.send_keys(password)
-        time.sleep(2)
+        driver.implicitly_wait(5)
         driver.find_element(By.ID, self.btn_login_id).click()
-        WebDriverWait(driver, 30).until(
-            EC.element_to_be_clickable((By.LINK_TEXT, "Waves"))
-        )
+        driver.implicitly_wait(30)
         if len(driver.find_elements(By.LINK_TEXT, "Waves")) == 0:
             self.logger.info("********** Login Failed **********")
-            # note = self.driver.find_element(By.XPATH,'/html/body/app-root/simple-notifications/div/simple-notification/div').text
-            # self.logger.info(note)
             if un.get_attribute("value") == "" and pw.get_attribute("value") == "":
                 self.logger.info("********** Username & Password Both Fields Are Empty **********")
             elif un.get_attribute("value") == "":
@@ -59,7 +55,7 @@ class LoginPage(unittest.TestCase):
             EC.element_to_be_clickable((By.XPATH, self.txt_logout_xpath))
         )
         driver.find_element(By.XPATH, self.btn_yes_xpath).click()
-        time.sleep(5)
+        driver.implicitly_wait(5)
         if len(driver.find_elements(By.XPATH, self.txt_rackWare_xpath)) == 0:
             self.logger.info("********** Logout Failed **********")
             driver.find_element(By.XPATH, self.btn_no_xpath).click()

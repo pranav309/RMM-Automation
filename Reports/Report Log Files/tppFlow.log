@@ -1,0 +1,18 @@
+
+Running tests... 
+----------------------------------------------------------------------
+ test_clickOnLogin (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogin) ... OK (10.236785)s
+ test_createWaveWithHost (pageObjects.testAllInOne.Test_AllInOne.test_createWaveWithHost) ... OK (16.319177)s
+ test_addHostToWave (pageObjects.testAllInOne.Test_AllInOne.test_addHostToWave) ... OK (26.609153)s
+ test_tearDown (pageObjects.testAllInOne.Test_AllInOne.test_tearDown) ... OK (32.931892)s
+ test_clickOnLogout (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogout) ... OK (5.550300)s
+
+----------------------------------------------------------------------
+Ran 5 tests in 0:01:31
+
+OK
+
+
+
+Generating HTML reports... 
+reports\tppFlow.html
