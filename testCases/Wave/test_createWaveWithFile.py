@@ -2,7 +2,7 @@ import time
 import py
 
 from pageObjects.testWavePage import Test_WavePage
-from pageObjects.testLoginPage import loginPage
+from pageObjects.testLogin import loginPage
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
 

@@ -3,14 +3,14 @@ import unittest
 from utilities.customLogger import LogGen
 
 
-from pageObjects.testLoginPage import LoginPage
+from pageObjects.testLogin import LoginPage
 from pageObjects.testWavePage import WavePage
 from pageObjects.testWaveOperations import WaveOperations
 from pageObjects.testWaveEdit import WaveEdit
 from pageObjects.testWaveDetails import WaveDetails
-from pageObjects.testRetentionPolicyPage import RetentionPolicy
-from pageObjects.testDrPolicyPage import DRPolicy
-from pageObjects.testConfigurationPage import Configuration
+from pageObjects.testRetentionPolicy import RetentionPolicy
+from pageObjects.testDrPolicy import DRPolicy
+from pageObjects.testConfiguration import Configuration
 from pageObjects.testTearDown import TearDown
 
 lp = LoginPage()

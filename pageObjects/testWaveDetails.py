@@ -2,6 +2,8 @@ import time
 import unittest
 import paramiko
 
+import Locators.locWaveDetails as LOC
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -11,19 +13,6 @@ from utilities.commonObjects import CommonObjects
 
 
 class WaveDetails(unittest.TestCase):
-
-    txt_systemsDetails_xpath = "/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[2]/td/item-details/div/div/p-tabview/div/ul/li[2]/a/span"
-    txt_waveStatus_xpath = '//*[@id="content"]/article/div/div[2]/div[1]/div[1]/div[2]'
-
-    # Validations
-    val_sourceData_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[2]/td/item-details/div/div/p-tabview/div/div/p-tabpanel[1]/div/div[1]/label'
-    val_systemData_xpath = '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr[2]/td/item-details/div/div/p-tabview/div/div/p-tabpanel[2]/div/div[1]/label'
-
-    # pop-up banners
-    var_waveDetails_xpath = '//*[@id="rmm_lite_header"]/div/div[1]/div[2]'
-
-    txt_waveName_xpath = '//*[@id="content"]/article/div/div[1]/div/h3/strong'
-    txt_totalHosts_id = "wave_policy_wave_policy_wave_detail_elapsed_time_info"
 
     logger = LogGen.loggen()
 
@@ -35,15 +24,15 @@ class WaveDetails(unittest.TestCase):
         if val == 1:
             driver.find_element(By.LINK_TEXT, waveName).click()
             time.sleep(5)
-            if len(driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Opened Successfully **********")
             else:
                 self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
                 return
         if val == 0:
-            if len(driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        totalHosts = len(driver.find_elements(By.ID, self.txt_totalHosts_id))
+        totalHosts = len(driver.find_elements(By.ID, LOC.txt_totalHosts_id))
         self.logger.info("********** Total Available Hosts : " + str(totalHosts) + " ,")
         if totalHosts == 1:
             self.verifySyncDetailsOne(driver)
@@ -188,7 +177,7 @@ class WaveDetails(unittest.TestCase):
         if val == 1:
             status = driver.find_element(By.XPATH, '//*[@id="waves_'+waveName+'_wave_state"]/span').text
         if val == 0:
-            if len(driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
                 status = driver.find_element(By.XPATH, '//*[@id="content"]/article/div/div[2]/div[1]/div[1]/div[2]').text
         self.logger.info("********** The Wave Status For The Wave : " + waveName + ", Is " + status + " **********")
@@ -201,16 +190,16 @@ class WaveDetails(unittest.TestCase):
         if val == 1:
             driver.find_element(By.LINK_TEXT, waveName).click()
             time.sleep(5)
-            if len(driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Opened Successfully **********")
             else:
                 self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
                 return
         if val == 0:
-            if len(driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
         successCount = 0
-        totalHosts = len(driver.find_elements(By.ID, self.txt_totalHosts_id))
+        totalHosts = len(driver.find_elements(By.ID, LOC.txt_totalHosts_id))
         for hostNo in range(1, totalHosts + 1):
             if totalHosts == 1:
                 elem = len(driver.find_elements(By.XPATH, '//*[@id="content"]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr/td[6]/span/span/span'))
@@ -228,13 +217,13 @@ class WaveDetails(unittest.TestCase):
         if val == 1:
             driver.find_element(By.LINK_TEXT, waveName).click()
             time.sleep(5)
-            if len(driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Opened Successfully **********")
             else:
                 self.logger.info("********** Failed To Open Wave : " + waveName + " **********")
                 return
         if val == 0:
-            if len(driver.find_elements(By.XPATH, self.txt_waveName_xpath)) != 0:
+            if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
         totalHosts = len(driver.find_elements(By.ID, "wave_policy_wave_policy_wave_detail_elapsed_time_info"))
         res = tuple(map(str, hostNames.split(', ')))

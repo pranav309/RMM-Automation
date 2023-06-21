@@ -1,11 +1,11 @@
 from pageObjects.testWavePage import Test_WavePage
-from pageObjects.testConfigurationPage import Test_Configuration
+from pageObjects.testConfiguration import Test_Configuration
 from pageObjects.testWaveOperations import Test_WaveOperations
-from pageObjects.testLoginPage import loginPage
+from pageObjects.testLogin import loginPage
 from pageObjects.testWaveEdit import Test_WaveEdit
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.testDrPolicyPage import Test_DRPolicy
+from pageObjects.testDrPolicy import Test_DRPolicy
 from pageObjects.testWaveDetails import Test_WaveDetails
 
 

@@ -1,14 +1,14 @@
 
 Running tests... 
 ----------------------------------------------------------------------
- test_clickOnLogin (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogin) ... OK (10.236785)s
- test_createWaveWithHost (pageObjects.testAllInOne.Test_AllInOne.test_createWaveWithHost) ... OK (16.319177)s
- test_addHostToWave (pageObjects.testAllInOne.Test_AllInOne.test_addHostToWave) ... OK (26.609153)s
- test_tearDown (pageObjects.testAllInOne.Test_AllInOne.test_tearDown) ... OK (32.931892)s
- test_clickOnLogout (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogout) ... OK (5.550300)s
+ test_clickOnLogin (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogin) ... OK (6.653543)s
+ test_createWaveWithHost (pageObjects.testAllInOne.Test_AllInOne.test_createWaveWithHost) ... OK (77.525140)s
+ test_addHostToWave (pageObjects.testAllInOne.Test_AllInOne.test_addHostToWave) ... OK (56.178577)s
+ test_tearDown (pageObjects.testAllInOne.Test_AllInOne.test_tearDown) ... OK (62.233157)s
+ test_clickOnLogout (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogout) ... OK (1.636447)s
 
 ----------------------------------------------------------------------
-Ran 5 tests in 0:01:31
+Ran 5 tests in 0:03:24
 
 OK
 

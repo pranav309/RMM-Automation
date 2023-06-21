@@ -2094,3 +2094,56 @@ firstFlow
 06/19/23 06:/03:/33 PM: INFO: ********** Email Send Successfully To pranav.pawar@rackwareinc.com **********:
 06/19/23 06:/03:/40 PM: INFO: ********** Email Send Successfully To akash.bambal@rackwareinc.com **********:
 06/19/23 06:/03:/47 PM: INFO: ********** Email Send Successfully To priyal.pawar@rackwareinc.com **********:
+06/21/23 03:/52:/01 PM: INFO: ********** Test_000_OneForAll ********** :
+06/21/23 03:/52:/01 PM: INFO: ********** Opening Browser **********:
+06/21/23 03:/52:/02 PM: INFO: ********** Browser Opened Successfully **********
+ 
+:
+06/21/23 03:/52:/02 PM: INFO: Timestamp: 2023-06-21 15:52:02:
+06/21/23 03:/52:/02 PM: INFO: 
+:
+06/21/23 03:/52:/02 PM: INFO: ********** Logging In **********:
+06/21/23 03:/52:/09 PM: INFO: ********** Login Successful **********:
+06/21/23 03:/52:/09 PM: INFO: ********** Starting TestCase 1: Create New Wave With Host **********:
+06/21/23 03:/53:/19 PM: INFO: ********** Create Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/21/23 03:/53:/19 PM: INFO: ********** Creating No. 1 Wave With Target Type Autoprovision **********:
+06/21/23 03:/53:/24 PM: INFO: ********** Create New Wave Status of Wave : First Flow,:
+06/21/23 03:/53:/24 PM: INFO: Added machine 172.29.31.111 to wave
+First Flow
+:
+06/21/23 03:/53:/27 PM: INFO: ********** Successfully Executed TestCase: Create New Wave With Host **********
+ 
+:
+06/21/23 03:/53:/27 PM: INFO: ********** Starting TestCase 2: Add New Hosts To Wave **********:
+06/21/23 03:/54:/10 PM: INFO: ********** Wave : First Flow Was Opened Successfully **********:
+06/21/23 03:/54:/19 PM: INFO: ********** Add New Host Pop-up Banner Was Opened For Wave, First Flow **********:
+06/21/23 03:/54:/21 PM: INFO: ********** Add New Host Status of Wave : First Flow,:
+06/21/23 03:/54:/21 PM: INFO: Added machine 172.29.31.183 to wave
+First Flow
+:
+06/21/23 03:/54:/23 PM: INFO: ********** Successfully Executed TestCase: Add New Hosts To Wave **********
+ 
+:
+06/21/23 03:/54:/23 PM: INFO: ********** Starting TestCase 3: Perform Tear Down **********:
+06/21/23 03:/54:/28 PM: INFO: ********** Starting TestCase 3.1: Delete Wave **********:
+06/21/23 03:/55:/17 PM: INFO: ********** Delete Wave Pop-up Banner Was Opened For Wave, First Flow **********:
+06/21/23 03:/55:/18 PM: INFO: ********** Delete Wave Status of Wave : First Flow,:
+06/21/23 03:/55:/18 PM: INFO: Wave Deleted
+First Flow successfully deleted.
+:
+06/21/23 03:/55:/25 PM: INFO: ********** Successfully Executed TestCase: Delete Wave **********
+ 
+:
+06/21/23 03:/55:/25 PM: INFO: ********** Successfully Executed TestCase: Perform Tear Down **********
+ 
+:
+06/21/23 03:/55:/25 PM: INFO: ********** Logging Out **********:
+06/21/23 03:/55:/27 PM: INFO: ********** Logout Successful **********:
+06/21/23 03:/55:/33 PM: INFO: ********** Browser Closed Successfully **********:
+06/21/23 03:/55:/33 PM: INFO: 
+:
+06/21/23 03:/55:/33 PM: INFO: Timestamp: 2023-06-21 15:55:33:
+06/21/23 03:/55:/33 PM: INFO: 
+ 
+ 
+:

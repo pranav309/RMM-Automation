@@ -1,15 +1,15 @@
 # To Run the automation flow and generate .html report,
-Command: pytest -s -v --html=<directory>\<report_name>.html testCases/Work/oneForAll.py --browser <browser_name>
-eg. pytest -s -v --html=Reports\Work\tp.html testCases/Work/oneForAll.py --browser firefox
+Command: python test_suite.py --browser <browser_name> --report <report_name>
+eg. python test_suite.py --browser firefox --report tppFlow
 
 # To send the generated report via email,
-Command: pytest -s -v --html=<directory>\<report_name>.html testCases/Work/oneForAll.py --browser <browser_name>
-eg. pytest -s -v --html=Reports\Work\tp.html testCases/Work/sendEmail.py --browser firefox
+Command:  python sendEmail.py
 
 
 Here,
-    report_name = You can give any name that you want to give to the generated report file
     browser_name = Either chrome, firefox or edge
+    report_name = You can give any name that you want to give to the generated report file
+
 
 Note -> Here the recommended browser is firefox. Because, other browsers may give privacy errors. With firefox this error
         occurs only once and once validated this won't bother any.

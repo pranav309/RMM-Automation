@@ -3,8 +3,8 @@ import time
 from selenium.webdriver.common.by import By
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.testLoginPage import loginPage
-from pageObjects.testConfigurationPage import Test_Configuration
+from pageObjects.testLogin import loginPage
+from pageObjects.testConfiguration import Test_Configuration
 
 
 class Test_011_AddVCenter:

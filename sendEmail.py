@@ -33,7 +33,7 @@ def sendEmail():
 
             eachPath = tuple(map(str, reportLogPaths.split(', ')))
             for reportPath in eachPath:
-                tmp = tuple(map(str, reportLogPaths.split('/')))
+                tmp = tuple(map(str, reportPath.split('/')))
                 cnt = len(tmp) - 1
                 # Attach the report log to the email
                 with open(reportLogPaths, "rb") as attachment_file:

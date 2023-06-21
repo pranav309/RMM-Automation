@@ -2,8 +2,8 @@ import time
 
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.testLoginPage import loginPage
-from pageObjects.testDrPolicyPage import Test_DRPolicy
+from pageObjects.testLogin import loginPage
+from pageObjects.testDrPolicy import Test_DRPolicy
 from selenium.webdriver.common.by import By
 
 

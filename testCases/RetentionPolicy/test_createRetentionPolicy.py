@@ -3,8 +3,8 @@ import py
 
 from utilities.readProperties import ReadConfig
 from utilities.customLogger import LogGen
-from pageObjects.testLoginPage import loginPage
-from pageObjects.testRetentionPolicyPage import Test_RetentionPolicy
+from pageObjects.testLogin import loginPage
+from pageObjects.testRetentionPolicy import Test_RetentionPolicy
 from selenium.webdriver.common.by import By
 
 
