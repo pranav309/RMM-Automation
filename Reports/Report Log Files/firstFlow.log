@@ -1,0 +1,17 @@
+
+Running tests... 
+----------------------------------------------------------------------
+ test_clickOnLogin (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogin) ... OK (13.025414)s
+ test_createWaveWithHost (pageObjects.testAllInOne.Test_AllInOne.test_createWaveWithHost) ... OK (23.792102)s
+ test_addHostToWave (pageObjects.testAllInOne.Test_AllInOne.test_addHostToWave) ... OK (32.095783)s
+ test_bulkEditSyncOption (pageObjects.testAllInOne.Test_AllInOne.test_bulkEditSyncOption) ... OK (26.128068)s
+ test_addVCenter (pageObjects.testAllInOne.Test_AllInOne.test_addVCenter) ... OK (11.748579)s
+ test_setAutoprovision (pageObjects.testAllInOne.Test_AllInOne.test_setAutoprovision) ... OK (66.334321)s
+ test_setParallelCount (pageObjects.testAllInOne.Test_AllInOne.test_setParallelCount) ... OK (9.233409)s
+ test_startWave (pageObjects.testAllInOne.Test_AllInOne.test_startWave) ... OK (1159.679267)s
+ test_verifySyncSuccess (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncSuccess) ... OK (5.069925)s
+ test_verifySyncDetails (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncDetails) ... OK (67.396460)s
+ test_createDRPolicy (pageObjects.testAllInOne.Test_AllInOne.test_createDRPolicy) ... OK (16.430445)s
+ test_addDRPolicyToWave (pageObjects.testAllInOne.Test_AllInOne.test_addDRPolicyToWave) ... OK (31.264347)s
+ test_resumePolicy (pageObjects.testAllInOne.Test_AllInOne.test_resumePolicy) ... ERROR (14.847922)s
+ test_pauseDRPolicy (pageObjects.testAllInOne.Test_AllInOne.test_pauseDRPolicy) ... 

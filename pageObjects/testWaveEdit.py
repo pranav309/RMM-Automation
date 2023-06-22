@@ -45,10 +45,10 @@ class WaveEdit(unittest.TestCase):
             if cu == environment:
                 self.logger.info("********** Wave : " + waveName + ", Already Have Cloud User " + environment + " Added To It **********")
                 continue
-            ele1 = WebDriverWait(driver, 10).until(
+            ele = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.ID, LOC.txt_autoprovision_id))
             )
-            ele1.click()
+            ele.click()
             time.sleep(5)
             if len(driver.find_elements(By.XPATH, LOC.pop_setAutoprovision_xpath)) != 0:
                 self.logger.info("********** Select An Environment Pop-up Banner Is Opened For Wave, " + str(waveName) + " **********")
@@ -83,10 +83,10 @@ class WaveEdit(unittest.TestCase):
         driver.find_element(By.XPATH, LOC.txt_clusterName_xpath).send_keys(clusterName)
         driver.find_element(By.XPATH, LOC.txt_ESXHost_xpath).send_keys(esxHost)
         driver.find_element(By.XPATH, LOC.txt_Datastore_xpath).send_keys(datastore)
-        ele1 = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, LOC.btn_applyChanges_id))
         )
-        ele1.click()
+        btn.click()
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
         )
@@ -110,10 +110,10 @@ class WaveEdit(unittest.TestCase):
         )
         driver.find_element(By.ID, LOC.txt_AwsVpcId_id).send_keys(vpcID)
         driver.find_element(By.ID, LOC.txt_AWSSubnetID_id).send_keys(subnetID)
-        WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, LOC.btn_applyChanges_id))
         )
-        driver.find_element(By.ID, LOC.btn_applyChanges_id).click()
+        btn.click()
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
         )
@@ -131,10 +131,10 @@ class WaveEdit(unittest.TestCase):
         region = sheet.cell(row=r, column=4).value
         driver.find_element(By.XPATH, LOC.txt_OCIRegion_xpath).clear()
         driver.find_element(By.XPATH, LOC.txt_OCIRegion_xpath).send_keys(region)
-        WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, LOC.btn_applyChanges_id))
         )
-        driver.find_element(By.ID, LOC.btn_applyChanges_id).click()
+        btn.click()
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
         )
@@ -188,10 +188,10 @@ class WaveEdit(unittest.TestCase):
                     driver.find_element(By.ID, LOC.txt_deviceName_id).send_keys(deviceName)
                     driver.find_element(By.ID, LOC.txt_type_id).send_keys(Type)
                     driver.find_element(By.ID, LOC.txt_networkName_id).send_keys(networkName)
-                    WebDriverWait(driver, 10).until(
+                    btn = WebDriverWait(driver, 10).until(
                         EC.element_to_be_clickable((By.ID, LOC.btn_save_id))
                     )
-                    driver.find_element(By.ID, LOC.btn_save_id).click()
+                    btn.click()
                     time.sleep(5)
                     if len(driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/edit-item/div/div/div/form/div[2]/div/p-tabview/div/div/p-tabpanel[3]/div/div/div[4]/div[1]/div/div['+str(totalNICs + 1)+']')) != 0:
                         self.logger.info("********** NIC Added Successfully For Wave : " + waveName + " **********")
@@ -223,14 +223,14 @@ class WaveEdit(unittest.TestCase):
         DNS1 = sheet.cell(row=r, column=13).value
         DNS2 = sheet.cell(row=r, column=14).value
 
-        ele1 = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_selectAll_xpath))
         )
-        ele1.click()
-        ele2 = WebDriverWait(driver, 10).until(
+        btn.click()
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_bulkEdit_xpath))
         )
-        ele2.click()
+        btn.click()
         time.sleep(5)
         if len(driver.find_elements(By.XPATH, LOC.pop_bulkEdit_xpath)) != 0:
             self.logger.info("********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : " + waveName + " **********")
@@ -239,10 +239,10 @@ class WaveEdit(unittest.TestCase):
             if vCenter_class == "ui-state-default ui-corner-top ng-star-inserted ui-tabview-selected ui-state-active":
                 self.logger.info("********** Bulk Edit vCenter Option Pop-Up Banner Was Opened For Wave : " + waveName + " **********")
                 beforeTotalNIcs = len(driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[4]/div/p-tabview/div/div/p-tabpanel[2]/div/div/div[5]/div[1]/div/div'))
-                ele1 = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_NICAddBulkEdit_xpath))
                 )
-                ele1.click()
+                btn.click()
                 time.sleep(3)
                 if len(driver.find_elements(By.XPATH, LOC.pop_bulkNIC_xpath)) != 0:
                     self.logger.info("********** Bulk Edit Add NIC Option Pop-Up Banner Was Opened For Wave : " + waveName + " **********")
@@ -257,10 +257,10 @@ class WaveEdit(unittest.TestCase):
                         driver.find_element(By.XPATH, LOC.txt_gatewayBulkEdit_xpath).send_keys(gateway)
                         driver.find_element(By.XPATH, LOC.txt_DNS1BulkEdit_xpath).send_keys(DNS1)
                         driver.find_element(By.XPATH, LOC.txt_DNS2BulkEdit_xpath).send_keys(DNS2)
-                    ele2 = WebDriverWait(driver, 10).until(
+                    btn = WebDriverWait(driver, 10).until(
                         EC.element_to_be_clickable((By.XPATH, LOC.btn_save_xpath))
                     )
-                    ele2.click()
+                    btn.click()
                     time.sleep(5)
                     afterTotalNIcs = len(driver.find_elements(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/bulk-edit/div[1]/div/div/form/div[4]/div/p-tabview/div/div/p-tabpanel[2]/div/div/div[5]/div[1]/div/div'))
                     if afterTotalNIcs > beforeTotalNIcs:
@@ -270,28 +270,28 @@ class WaveEdit(unittest.TestCase):
                 else:
                     self.logger.info("********** Bulk Edit Add NIC Option Pop-Up Banner Was Not Opened For Wave : " + waveName + " **********")
                     return
-                ele3 = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_next_xpath))
                 )
-                ele3.click()
-                ele4 = WebDriverWait(driver, 10).until(
+                btn.click()
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_modifyAll_xpath))
                 )
-                ele4.click()
-                ele5 = WebDriverWait(driver, 10).until(
+                btn.click()
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_yes_id))
                 )
-                ele5.click()
+                btn.click()
             else:
                 self.logger.info("********** Bulk Edit vCenter Option Pop-Up Banner Was Not Opened For Wave : " + waveName + " **********")
                 driver.find_element(By.XPATH, LOC.btn_cancelBulkEdit_xpath).click()
         else:
             self.logger.info("********** Bulk Edit Wave Pop-Up Banner Was Not Opened For Wave : " + waveName + " **********")
         time.sleep(3)
-        ele = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_selectAll_xpath))
         )
-        ele.click()
+        btn.click()
 
     def setOCISync(self, driver, sheet, r):
         waveName = sheet.cell(row=r, column=1).value
@@ -310,10 +310,10 @@ class WaveEdit(unittest.TestCase):
                 driver.find_element(By.XPATH, LOC.txt_OCIVCNName_xpath).send_keys(VCNName)
                 driver.find_element(By.XPATH, LOC.txt_OCISubnetName_xpath).send_keys(SubnetName)
                 driver.find_element(By.XPATH, LOC.txt_OCIAVDomain_xpath).send_keys(AVDomain)
-                WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_modify_id))
                 )
-                driver.find_element(By.ID, LOC.btn_modify_id).click()
+                btn.click()
             else:
                 self.logger.info("********** OCI Option Pop-Up Banner Was Not Opened For Wave : " + waveName + " **********")
                 driver.find_element(By.XPATH, LOC.btn_cancelEdit_xpath).click()
@@ -325,14 +325,14 @@ class WaveEdit(unittest.TestCase):
         VCNName = sheet.cell(row=r, column=5).value
         SubnetName = sheet.cell(row=r, column=6).value
         AVDomain = sheet.cell(row=r, column=7).value
-        WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_selectAll_xpath))
         )
-        driver.find_element(By.XPATH, LOC.btn_selectAll_xpath).click()
-        WebDriverWait(driver, 10).until(
-            EC.element_to_be_selected((By.XPATH, LOC.btn_selectAll_xpath))
+        btn.click()
+        btn = WebDriverWait(driver, 10).until(
+            EC.element_to_be_selected((By.XPATH, LOC.btn_bulkEdit_xpath))
         )
-        driver.find_element(By.XPATH, LOC.btn_bulkEdit_xpath).click()
+        btn.click()
         time.sleep(5)
         if len(driver.find_elements(By.XPATH, LOC.pop_bulkEdit_xpath)) != 0:
             self.logger.info("********** Bulk Edit Wave Pop-Up Banner Was Opened For Wave : " + waveName + " **********")
@@ -344,28 +344,28 @@ class WaveEdit(unittest.TestCase):
                 driver.find_element(By.ID, "oci_vcn_name").send_keys(VCNName)
                 driver.find_element(By.ID, "oci_subnet_name").send_keys(SubnetName)
                 driver.find_element(By.ID, "oci_av_domain").send_keys(AVDomain)
-                ele1 = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_next_xpath))
                 )
-                ele1.click()
-                ele2 = WebDriverWait(driver, 10).until(
+                btn.click()
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_modifyAll_xpath))
                 )
-                ele2.click()
-                ele3 = WebDriverWait(driver, 10).until(
+                btn.click()
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_yes_id))
                 )
-                ele3.click()
+                btn.click()
             else:
                 self.logger.info("********** Bulk Edit OCI Option Pop-Up Banner Was Not Opened For Wave : " + waveName + " **********")
                 driver.find_element(By.XPATH, LOC.btn_cancelBulkEdit_xpath).click()
         else:
             self.logger.info("********** Bulk Edit Wave Pop-Up Banner Was Not Opened For Wave : " + waveName + " **********")
         time.sleep(3)
-        ele = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_selectAll_xpath))
         )
-        ele.click()
+        btn.click()
 
     def setSyncOptions(self, driver, path, start, end):
         workBook = openpyxl.load_workbook(path)
@@ -525,10 +525,10 @@ class WaveEdit(unittest.TestCase):
                             driver.find_element(By.XPATH, LOC.rd_filePathOnRmm_xpath).click()
                             driver.find_element(By.XPATH, LOC.txt_filePathOnRmm_xpath).send_keys(filterFilePath)
                         self.logger.info("********** Sync Option 'Filter File' is set **********")
-                    ele1 = WebDriverWait(driver, 10).until(
+                    btn = WebDriverWait(driver, 10).until(
                         EC.element_to_be_clickable((By.ID, LOC.btn_modify_id))
                     )
-                    ele1.click()
+                    btn.click()
                     WebDriverWait(driver, 10).until(
                         EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                     )
@@ -609,10 +609,10 @@ class WaveEdit(unittest.TestCase):
                             break
                         if hostNo == totalHosts:
                             self.logger.info("********** The Host " + str(hostName) + " Was Not Found In The Wave : " + waveName + " **********")
-            ele = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_bulkEdit_xpath))
             )
-            ele.click()
+            btn.click()
             time.sleep(5)
             if len(driver.find_elements(By.XPATH, LOC.pop_bulkEdit_xpath)) != 0:
                 self.logger.info("********** Wave Bulk Edit Sync Options Pop-up Banner Is Opened For Wave, " + waveName + " **********")
@@ -745,18 +745,18 @@ class WaveEdit(unittest.TestCase):
                     driver.find_element(By.ID, LOC.txt_blkIncludeFile_id).send_keys(includeFile)
                     self.logger.info("********** Sync Option 'Exclude File System(s)' is set as no **********")
 
-                ele1 = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_next_xpath))
                 )
-                ele1.click()
-                ele2 = WebDriverWait(driver, 10).until(
+                btn.click()
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_modifyAll_xpath))
                 )
-                ele2.click()
-                ele3 = WebDriverWait(driver, 10).until(
+                btn.click()
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_yes_id))
                 )
-                ele3.click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -769,16 +769,16 @@ class WaveEdit(unittest.TestCase):
             else:
                 self.logger.info("********** Wave Bulk Edit Sync Options Pop-up Banner Is Not Opened For Wave, " + waveName + " **********")
             time.sleep(2)
-            ele = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_selectAll_xpath))
             )
-            ele.click()
+            btn.click()
             if type(hostNames) == str:
                 time.sleep(2)
-                ele = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_selectAll_xpath))
                 )
-                ele.click()
+                btn.click()
 
     def changeTargetType(self, driver, path, start, end):
         workBook = openpyxl.load_workbook(path)
@@ -882,10 +882,10 @@ class WaveEdit(unittest.TestCase):
                     driver.find_element(By.ID, LOC.rd_capture_id).click()
                     driver.find_element(By.XPATH, LOC.txt_captureImage_xpath).clear()
                     driver.find_element(By.XPATH, LOC.txt_captureImage_xpath).send_keys(imageName)
-                WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_modify_id))
                 )
-                driver.find_element(By.ID, LOC.btn_modify_id).click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -1065,10 +1065,10 @@ class WaveEdit(unittest.TestCase):
                 if routes != "NA":
                     driver.find_element(By.XPATH, LOC.txt_routes_xpath).clear()
                     driver.find_element(By.XPATH, LOC.txt_routes_xpath).send_keys(routes)
-                ele = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_modify_id))
                 )
-                ele.click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -1116,17 +1116,17 @@ class WaveEdit(unittest.TestCase):
                             break
                         if hostNo == totalHosts:
                             self.logger.info("********** The Host " + str(hostName) + " Was Not Found In The Wave : " + waveName + " **********")
-        ele = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_bulkEdit_xpath))
         )
-        ele.click()
+        btn.click()
         time.sleep(5)
         if len(driver.find_elements(By.XPATH, LOC.pop_bulkEdit_xpath)) != 0:
             self.logger.info("********** Wave Bulk Edit Sync Options Pop-up Banner Was Opened For Wave, " + waveName + " **********")
-            WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_vCenterOption_xpath))
             )
-            driver.find_element(By.XPATH, LOC.btn_vCenterOption_xpath).click()
+            btn.click()
             vCenter_class = driver.find_element(By.XPATH, LOC.txt_bulkEditCU_xpath).get_attribute("class")
             if vCenter_class == "ui-state-default ui-corner-top ng-star-inserted ui-tabview-selected ui-state-active":
                 self.logger.info("********** Wave Edit vCenter Options Pop-up Banner Was Opened For Wave, " + waveName + " **********")
@@ -1145,18 +1145,18 @@ class WaveEdit(unittest.TestCase):
                 if routes != "NA":
                     driver.find_element(By.ID, LOC.txt_routes_id).clear()
                     driver.find_element(By.ID, LOC.txt_routes_id).send_keys(routes)
-                ele1 = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_next_xpath))
                 )
-                ele1.click()
-                ele2 = WebDriverWait(driver, 10).until(
+                btn.click()
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_modifyAll_xpath))
                 )
-                ele2.click()
-                ele3 = WebDriverWait(driver, 10).until(
+                btn.click()
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_yes_id))
                 )
-                ele3.click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -1171,13 +1171,13 @@ class WaveEdit(unittest.TestCase):
         else:
             self.logger.info("********** Wave Bulk Edit Sync Options Pop-up Banner Was Not Opened For Wave, " + waveName + " **********")
         time.sleep(3)
-        ele = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_selectAll_xpath))
         )
-        ele.click()
+        btn.click()
         if type(hostNames) == str:
             time.sleep(2)
-            ele = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_selectAll_xpath))
             )
-            ele.click()
+            btn.click()

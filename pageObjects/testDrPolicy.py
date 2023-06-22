@@ -35,10 +35,10 @@ class DRPolicy(unittest.TestCase):
             time.sleep(3)
         driver.find_element(By.LINK_TEXT, "Policies").click()
         for r in range(st, ed+1):
-            WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_addNew_xpath))
             )
-            driver.find_element(By.XPATH, LOC.btn_addNew_xpath).click()
+            btn.click()
             time.sleep(3)
             if len(driver.find_elements(By.XPATH, LOC.pop_createDrPolicy_xpath)) != 0:
                 self.logger.info("********** Create New DR Policy Pop-up Banner Is Opened **********")
@@ -133,8 +133,10 @@ class DRPolicy(unittest.TestCase):
                     driver.find_element(By.XPATH, LOC.txt_start_xpath).click()
                     driver.find_element(By.XPATH, LOC.btn_clear_xpath).click()
                     driver.find_element(By.XPATH, LOC.txt_start_xpath).send_keys(startTime)
-                    time.sleep(2)
-                    driver.find_element(By.XPATH, LOC.btn_startDate_xpath).click()
+                    btn = WebDriverWait(driver, 10).until(
+                        EC.element_to_be_clickable((By.XPATH, LOC.btn_startDate_xpath))
+                    )
+                    btn.click()
 
                 elif periodicity == "Continuous":
                     driver.find_element(By.XPATH, LOC.rd_continuous_xpath).click()
@@ -144,11 +146,17 @@ class DRPolicy(unittest.TestCase):
                     else:
                         self.logger.info("********** Failed To Select Periodicity Type: Continuous **********")
                         self.logger.info("********** Failed To Create A DR Policy " + name + " **********")
-                        driver.find_element(By.ID, LOC.btn_cancel_xpath).click()
+                        btn = WebDriverWait(driver, 10).until(
+                            EC.element_to_be_clickable((By.XPATH, LOC.btn_cancel_xpath))
+                        )
+                        btn.click()
                         continue
 
                 driver.find_element(By.XPATH, LOC.txt_email_xpath).send_keys(email)
-                driver.find_element(By.XPATH, LOC.btn_add_xpath).click()
+                btn = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, LOC.btn_add_xpath))
+                )
+                btn.click()
 
                 if note1:
                     driver.find_element(By.XPATH, LOC.chBox_failNote_xpath).click()
@@ -162,10 +170,10 @@ class DRPolicy(unittest.TestCase):
                         self.logger.info("********** Email Notification When Complete Was Selected **********")
                     else:
                         self.logger.info("********** Failed To Select Email Notification When Complete **********")
-                WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_create_id))
                 )
-                driver.find_element(By.ID, LOC.btn_create_id).click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -234,10 +242,10 @@ class DRPolicy(unittest.TestCase):
                 currentPolicy = driver.find_element(By.XPATH, LOC.txt_assPolicyName_xpath).text
                 res = tuple(map(str, currentPolicy.split(' ')))
                 self.logger.info("********** Currently The Wave : " + waveName + ", Has Policy : " + res[0] + " Assigned To It **********")
-            ele1 = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.txt_drPolicy_xpath))
             )
-            ele1.click()
+            btn.click()
             time.sleep(5)
             if len(driver.find_elements(By.XPATH, LOC.pop_policyAssignment_xpath)) != 0:
                 self.logger.info("********** Policy Assignment Pop-up Banner Is Opened For Wave, " + str(waveName) + " **********")
@@ -251,10 +259,10 @@ class DRPolicy(unittest.TestCase):
                     time.sleep(5)
                     if startNow:
                         driver.find_element(By.ID, LOC.ch_startPolicyNow_id).click()
-                    WebDriverWait(driver, 10).until(
+                    btn = WebDriverWait(driver, 10).until(
                         EC.element_to_be_clickable((By.ID, LOC.btn_assignPolicy_id))
                     )
-                    driver.find_element(By.ID, LOC.btn_assignPolicy_id).click()
+                    btn.click()
                     WebDriverWait(driver, 10).until(
                         EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                     )
@@ -473,14 +481,14 @@ class DRPolicy(unittest.TestCase):
         if val == 0:
             if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        ele1 = WebDriverWait(driver, 18000).until(
+        btn = WebDriverWait(driver, 18000).until(
             EC.element_to_be_clickable((By.ID, LOC.btn_fallBack_id))
         )
-        ele1.click()
-        ele2 = WebDriverWait(driver, 18000).until(
+        btn.click()
+        btn = WebDriverWait(driver, 18000).until(
             EC.element_to_be_clickable((By.ID, LOC.btn_fallBackYes_id))
         )
-        ele2.click()
+        btn.click()
         time.sleep(5)
         WebDriverWait(driver, 18000).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_failOver_xpath))

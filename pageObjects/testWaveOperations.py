@@ -47,10 +47,10 @@ class WaveOperations(unittest.TestCase):
                     driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[1]/p-tablecheckbox/div/div[2]').click()
                     time.sleep(5)
                     hostName = driver.find_element(By.XPATH, '/html/body/app-root/app-main-layout/div/rw-wave-detail/div[1]/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(hostNo)+']/td[3]/span/span').text
-                ele = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_start_id))
                 )
-                ele.click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -102,10 +102,10 @@ class WaveOperations(unittest.TestCase):
         if val == 0:
             if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        ele3 = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, LOC.btn_start_id))
         )
-        ele3.click()
+        btn.click()
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
         )
@@ -293,10 +293,10 @@ class WaveOperations(unittest.TestCase):
                         if len(driver.find_elements(By.ID, LOC.chBox_startNow_id)) != 0:
                             if startNow:
                                 driver.find_element(By.ID, LOC.chBox_startNow_id).click()
-                        WebDriverWait(driver, 10).until(
+                        btn = WebDriverWait(driver, 10).until(
                             EC.element_to_be_clickable((By.ID, LOC.btn_assignPolicy_id))
                         )
-                        driver.find_element(By.ID, LOC.btn_assignPolicy_id).click()
+                        btn.click()
                         break
                     if p == totalPolicies:
                         self.logger.info("********** There Is No DR Policy With Name : " + policyName + "**********")
@@ -329,10 +329,10 @@ class WaveOperations(unittest.TestCase):
         if val == 0:
             if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        ele1 = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_stop_xpath))
         )
-        ele1.click()
+        btn.click()
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
         )
@@ -358,10 +358,10 @@ class WaveOperations(unittest.TestCase):
         if val == 0:
             if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        ele1 = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_pause_xpath))
         )
-        ele1.click()
+        btn.click()
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
         )
@@ -387,10 +387,10 @@ class WaveOperations(unittest.TestCase):
         if val == 0:
             if len(driver.find_elements(By.XPATH, LOC.txt_waveName_xpath)) != 0:
                 self.logger.info("********** Wave : " + waveName + " Was Already Open **********")
-        ele1 = WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_restart_xpath))
         )
-        ele1.click()
+        btn.click()
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
         )

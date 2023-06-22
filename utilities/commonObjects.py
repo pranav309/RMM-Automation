@@ -28,31 +28,28 @@ class CommonObjects:
         replication_class = self.driver.find_element(By.XPATH, self.txt_replication_xpath).get_attribute("class")
         if replication_class == "ng-star-inserted":
             self.driver.find_element(By.LINK_TEXT, "Replication").click()
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, self.txt_rWave_xpath))
-            )
-        wave_class = self.driver.find_element(By.XPATH, self.txt_rWave_xpath).get_attribute("class")
-        if wave_class == "ng-star-inserted":
+            time.sleep(3)
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
-        WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, self.txt_waveSearch_xpath))
-        )
+            time.sleep(2)
+        wave_class = self.driver.find_element(By.XPATH, self.txt_rWave_xpath).get_attribute("class")
+        if wave_class != "active":
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+        time.sleep(5)
 
     def traverseDRWave(self):
         dr_class = self.driver.find_element(By.XPATH, self.txt_dr_xpath).get_attribute("class")
         if dr_class == "ng-star-inserted":
             self.driver.find_element(By.LINK_TEXT, "DR").click()
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, self.txt_drWave_xpath))
-            )
+            time.sleep(3)
+            self.driver.find_element(By.LINK_TEXT, "Waves").click()
+            time.sleep(2)
         wave_class = self.driver.find_element(By.XPATH, self.txt_drWave_xpath).get_attribute("class")
         if wave_class == "ng-star-inserted":
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
-        WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, self.txt_waveSearch_xpath))
-        )
+        time.sleep(5)
 
     def findWaveCommon(self, waveName, flag):
+        time.sleep(3)
         self.traverseRepWave()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
@@ -63,19 +60,18 @@ class CommonObjects:
             self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
             self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
             self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
-            time.sleep(2)
+            time.sleep(3)
             if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
                 flag += 1
                 self.logger.info("********** Wave : " + waveName + " Is Not Present **********")
         return flag
 
     def findWaveCommonOne(self, waveName, flag):
+        time.sleep(3)
         wave_class = self.driver.find_element(By.XPATH, self.txt_rWave_xpath).get_attribute("class")
         if wave_class != "active":
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, self.txt_waveSearch_xpath))
-            )
+            time.sleep(3)
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
@@ -92,12 +88,11 @@ class CommonObjects:
         return flag
 
     def findWaveCommonTwo(self, waveName, flag):
+        time.sleep(3)
         wave_class = self.driver.find_element(By.XPATH, self.txt_drWave_xpath).get_attribute("class")
         if wave_class == "ng-star-inserted":
             self.driver.find_element(By.LINK_TEXT, "Waves").click()
-            WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.XPATH, self.txt_waveSearch_xpath))
-            )
+            time.sleep(3)
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
@@ -145,7 +140,7 @@ class CommonObjects:
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).click()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).clear()
         self.driver.find_element(By.XPATH, self.txt_waveSearch_xpath).send_keys(waveName)
-        time.sleep(3)
+        time.sleep(5)
         if len(self.driver.find_elements(By.LINK_TEXT, waveName)) == 0:
             self.logger.info("********** Wave : " + waveName + " Is Not Present Or Don't Have Any Policy Assigned To It **********")
             flag += 1

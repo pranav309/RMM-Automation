@@ -98,7 +98,8 @@ class RetentionPolicy(unittest.TestCase):
         elif val == "Weeks":
             driver.find_element(By.XPATH, '//*[@id="main"]/app-retention-policies/create-retention-policy/div/div/div/form/div[2]/div[4]/div[' + str(minMax) + ']/div[2]/p-selectbutton/div/div[2]/span').click()
 
-    def startRetentionPolicy(self, driver, vals, images):
+    @staticmethod
+    def startRetentionPolicy(driver, vals, images):
         for i in vals:
             driver.find_element(By.XPATH, '//*[@id="content"]/div/article/div/div[2]/p-table/div/div[2]/table/tbody/tr['+str(i)+']/td[7]/span/div/i[1]').click()
             time.sleep(2)
@@ -177,10 +178,10 @@ class RetentionPolicy(unittest.TestCase):
                     driver.find_element(By.XPATH, LOC.rd_byCount_xpath).click()
                     driver.find_element(By.XPATH, LOC.txt_retainCount_xpath).send_keys(retainCount)
 
-                WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.XPATH, LOC.btn_modifyRP_xpath))
                 )
-                driver.find_element(By.XPATH, LOC.btn_modifyRP_xpath).click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -225,10 +226,10 @@ class RetentionPolicy(unittest.TestCase):
                 self.logger.info("********** Delete Retention Policy Pop-Up Banner Was Opened For Retention Policy With Name : " + policy + " **********")
                 if len(driver.find_elements(By.XPATH, LOC.ch_forceDelete_xpath)) != 0 and force:
                     driver.find_element(By.XPATH, LOC.pop_delete_xpath).click()
-                WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_deleteRetentionPolicy_id))
                 )
-                driver.find_element(By.ID, LOC.btn_deleteRetentionPolicy_id).click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )

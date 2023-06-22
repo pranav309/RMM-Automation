@@ -5,54 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13ef86d2-f2ce-452e-824f-034c634b997d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Locators/locConfiguration.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/locDrPolicy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/locLogin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/locRetentionPolicy.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/locTearDown.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/locWaveDetails.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/locWaveEdit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/locWaveOperations.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/locWavePage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/automation.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/automation.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/Report Log Files/firstFlow.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/Report Log Files/firstFlow1.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reports/Report Log Files/tppFlow.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/TestResults_pageObjects.testAllInOne.Test_AllInOne_2023-06-19_14-20-29.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reports/TestResults_pageObjects.testAllInOne.Test_AllInOne_2023-06-19_15-28-10.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Reports/tppFlow.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestData/firstFlow/addPolicyToWave.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/firstFlow/addPolicyToWave.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestData/firstFlow/firstFlow.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/firstFlow/firstFlow.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestData/tpp.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/TestData/tpp.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/geckodriver.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/testAllInOne.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testAllInOne.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/testConfigurationPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testConfiguration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/testDrPolicyPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testDrPolicy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/testLoginPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testLogin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/testRetentionPolicyPage.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testRetentionPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageObjects/testConfiguration.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testConfiguration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageObjects/testDrPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testDrPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageObjects/testLogin.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testLogin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pageObjects/testRetentionPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testRetentionPolicy.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pageObjects/testTearDown.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testTearDown.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pageObjects/testWaveDetails.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testWaveDetails.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pageObjects/testWaveEdit.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testWaveEdit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pageObjects/testWaveOperations.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testWaveOperations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pageObjects/testWavePage.py" beforeDir="false" afterPath="$PROJECT_DIR$/pageObjects/testWavePage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run commands.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run commands.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sendEmail.py" beforeDir="false" afterPath="$PROJECT_DIR$/sendEmail.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Configurations/test_addCloudUser.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Configurations/test_addCloudUser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Configurations/test_addVCenter.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Configurations/test_addVCenter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/DRPolicy/test_createDRPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/DRPolicy/test_createDRPolicy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/DRPolicy/test_startPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/DRPolicy/test_startPolicy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/RetentionPolicy/test_createRetentionPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/RetentionPolicy/test_createRetentionPolicy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Wave/test_addNewHost.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Wave/test_addNewHost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Wave/test_createWaveWithFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Wave/test_createWaveWithFile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Wave/test_createWaveWithHost.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Wave/test_createWaveWithHost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Wave/test_createWaveWithoutHost.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Wave/test_createWaveWithoutHost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Wave/test_startWave.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Wave/test_startWave.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Work/test_addAWScu.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Work/test_addAWScu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Work/test_addOCIcu.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Work/test_addOCIcu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Work/test_createAndBulkEditWave.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Work/test_createAndBulkEditWave.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Work/test_createAndStartWave.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Work/test_createAndStartWave.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Work/test_createWaveSetSyncSetAutoStart.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Work/test_createWaveSetSyncSetAutoStart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Work/test_firstFlow.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Work/test_firstFlow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Work/test_secondFlow.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Work/test_secondFlow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testCases/Work/test_trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/testCases/Work/test_trial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_suite.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utilities/commonObjects.py" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/commonObjects.py" afterDir="false" />
     </list>

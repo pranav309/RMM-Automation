@@ -24,8 +24,8 @@ logger = LogGen.loggen()
 def fun1():
     test_suite = unittest.TestSuite()
 
-    path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\tpp.xlsx"
-    # path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\firstFlow\firstFlow.xlsx"
+    # path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\tpp.xlsx"
+    path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\firstFlow\firstFlow.xlsx"
     # path = r"C:\Users\Pranav Pawar\PycharmProjects\RMM_DataDriven\TestData\secondFlow\secondFlow.xlsx"
 
     workBook = openpyxl.load_workbook(path)

@@ -156,10 +156,10 @@ class TearDown(unittest.TestCase):
                     self.logger.info("********** There Was No Host With Name : " + hostName + ", In Wave : " + waveName + " **********")
 
     def hostDeleteState(self, driver, hostName):
-        WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.ID, LOC.btn_deleteWaveHost_id))
         )
-        driver.find_element(By.ID, LOC.btn_deleteWaveHost_id).click()
+        btn.click()
         WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
         )
@@ -183,10 +183,10 @@ class TearDown(unittest.TestCase):
             val = co.findWave(waveName)
             if val == 2:
                 return
-        WebDriverWait(driver, 10).until(
+        btn = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "waves_"+waveName+"_wave_actions"))
         )
-        driver.find_element(By.ID, "waves_"+waveName+"_wave_actions").click()
+        btn.click()
         time.sleep(5)
         if len(driver.find_elements(By.XPATH, LOC.pop_delete_xpath)) != 0:
             self.logger.info("********** Delete Wave Pop-up Banner Was Opened For Wave, " + str(waveName) + " **********")
@@ -201,19 +201,11 @@ class TearDown(unittest.TestCase):
             driver.find_element(By.XPATH, LOC.pop_successful_xpath).click()
         else:
             self.logger.info("********** Delete Wave Pop-up Banner Was Not Opened For Wave, " + str(waveName) + " **********")
-        time.sleep(5)
 
     def deleteRepWaves(self, driver, waveNames):
-        time.sleep(5)
+        co = CommonObjects(driver)
+        co.traverseRepWave()
         res = tuple(map(str, waveNames.split(', ')))
-        replication_class = driver.find_element(By.XPATH, LOC.txt_replication_xpath).get_attribute("class")
-        if replication_class == "ng-star-inserted":
-            driver.find_element(By.LINK_TEXT, "Replication").click()
-            time.sleep(5)
-        wave_class = driver.find_element(By.XPATH, LOC.txt_rWave_xpath).get_attribute("class")
-        if wave_class != "active":
-            driver.find_element(By.LINK_TEXT, "Waves").click()
-            time.sleep(5)
         flag = 0
         for waveName in res:
             driver.find_element(By.XPATH, LOC.txt_waveSearch_xpath).click()
@@ -240,10 +232,10 @@ class TearDown(unittest.TestCase):
                     if i == totalWaves:
                         self.logger.info("********** " + waveName + " Was Not Found In Replication Waves **********")
         if flag > 0:
-            ele1 = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_deleteWaves_xpath))
             )
-            ele1.click()
+            btn.click()
             time.sleep(5)
             if len(driver.find_elements(By.ID, LOC.pop_delMultWaves_id)) != 0:
                 self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Opened **********")
@@ -260,16 +252,9 @@ class TearDown(unittest.TestCase):
                 self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Not Opened **********")
 
     def deleteDrWaves(self, driver, waveNames):
-        time.sleep(5)
+        co = CommonObjects(driver)
+        co.traverseDRWave()
         res = tuple(map(str, waveNames.split(', ')))
-        dr_class = driver.find_element(By.XPATH, LOC.txt_dr_xpath).get_attribute("class")
-        if dr_class == "ng-star-inserted":
-            driver.find_element(By.LINK_TEXT, "DR").click()
-            time.sleep(5)
-        wave_class = driver.find_element(By.XPATH, LOC.txt_drWave_xpath).get_attribute("class")
-        if wave_class == "ng-star-inserted":
-            driver.find_element(By.LINK_TEXT, "Waves").click()
-            time.sleep(5)
         flag = 0
         for waveName in res:
             driver.find_element(By.XPATH, LOC.txt_waveSearch_xpath).click()
@@ -296,10 +281,10 @@ class TearDown(unittest.TestCase):
                     if i == totalWaves:
                         self.logger.info("********** "+waveName+" Was Not Found In DR Waves **********")
         if flag > 0:
-            ele1 = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_deleteWaves_xpath))
             )
-            ele1.click()
+            btn.click()
             time.sleep(5)
             if len(driver.find_elements(By.ID, LOC.pop_delMultWaves_id)) != 0:
                 self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Opened **********")
@@ -316,7 +301,6 @@ class TearDown(unittest.TestCase):
                 self.logger.info("********** Delete Multiple Waves Pop-up Banner Was Not Opened **********")
 
     def deleteDRPolicy(self, driver, policyNames):
-        time.sleep(5)
         dr_class = driver.find_element(By.XPATH, LOC.txt_dr_xpath).get_attribute("class")
         if dr_class == "ng-star-inserted":
             driver.find_element(By.LINK_TEXT, "DR").click()
@@ -415,10 +399,10 @@ class TearDown(unittest.TestCase):
                     if i == totalHosts:
                         self.logger.info("********** Host : " + hostName + ", Was Not Present **********")
         if flag > 0:
-            ele = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_delete_xpath))
             )
-            ele.click()
+            btn.click()
             time.sleep(3)
             if len(driver.find_elements(By.XPATH, LOC.pop_deleteHost_xpath)) != 0:
                 self.logger.info("********** Delete Host Pop Up Banner Was Opened **********")
@@ -479,10 +463,10 @@ class TearDown(unittest.TestCase):
                     if i == totalHosts:
                         self.logger.info("********** Host : " + hostName + ", Was Not Present **********")
         if flag > 0:
-            ele = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.XPATH, LOC.btn_delete_xpath))
             )
-            ele.click()
+            btn.click()
             time.sleep(3)
             if len(driver.find_elements(By.XPATH, LOC.pop_deleteHost_xpath)) != 0:
                 self.logger.info("********** Delete Host Pop Up Banner Was Opened **********")
@@ -498,10 +482,10 @@ class TearDown(unittest.TestCase):
                     time.sleep(3)
                     select = Select(driver.find_element(By.XPATH, LOC.txt_select_xpath))
                     select.select_by_visible_text(str(name))
-                ele2 = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_deleteHost_id))
                 )
-                ele2.click()
+                btn.click()
                 time.sleep(10)
             else:
                 self.logger.info("********** Delete Host Pop Up Banner Was Not Opened **********")

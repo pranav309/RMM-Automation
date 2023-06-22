@@ -40,10 +40,10 @@ class Configuration(unittest.TestCase):
             time.sleep(5)
 
         for r in range(st, ed+1):
-            WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.ID, LOC.btn_add_id))
             )
-            driver.find_element(By.ID, LOC.btn_add_id).click()
+            btn.click()
             WebDriverWait(driver, 10).until(
                 EC.presence_of_element_located((By.XPATH, LOC.pop_addCloudUser_xpath))
             )
@@ -215,10 +215,10 @@ class Configuration(unittest.TestCase):
                     driver.find_element(By.ID, LOC.txt_ZadaraRegion_id).clear()
                     driver.find_element(By.ID, LOC.txt_ZadaraRegion_id).send_keys(region)
 
-                WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_confirm_id))
                 )
-                driver.find_element(By.ID, LOC.btn_confirm_id).click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_deleteSuccessful_xpath))
                 )
@@ -288,10 +288,10 @@ class Configuration(unittest.TestCase):
                 self.logger.info("********** The vCenter With Name: " + name + " Was Already Present **********")
                 continue
 
-            element = WebDriverWait(driver, 30).until(
+            btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_createVC_id))
             )
-            element.click()
+            btn.click()
             time.sleep(5)
             if len(driver.find_elements(By.XPATH, LOC.pop_addVC_xpath)) != 0:
                 self.logger.info("********** Add vCenter Pop-up Banner Is Opened For "+str(name)+" vCenter **********")
@@ -305,10 +305,10 @@ class Configuration(unittest.TestCase):
                 driver.find_element(By.ID, LOC.txt_VCPassword_id).send_keys(password)
                 if portNumber != "NA":
                     driver.find_element(By.ID, LOC.txt_VCPort_id).send_keys(portNumber)
-                WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_addVC_id))
                 )
-                driver.find_element(By.ID, LOC.btn_addVC_id).click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_deleteSuccessful_xpath))
                 )

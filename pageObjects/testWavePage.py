@@ -17,31 +17,28 @@ class WavePage(unittest.TestCase):
     logger = LogGen.loggen()
 
     def createWaveWithoutHost(self, driver, waveName, passthrough):
-        replication_class = driver.find_element(By.XPATH, LOC.txt_replication_xpath).get_attribute("class")
-        if replication_class == "ng-star-inserted":
-            driver.find_element(By.LINK_TEXT, "Replication").click()
-            time.sleep(5)
-        wave_class = driver.find_element(By.XPATH, LOC.txt_rWave_xpath).get_attribute("class")
-        if wave_class != "active":
-            driver.find_element(By.LINK_TEXT, "Waves").click()
-            time.sleep(5)
+        co = CommonObjects(driver)
+        co.traverseRepWave()
+        time.sleep(3)
         if len(driver.find_elements(By.LINK_TEXT, waveName)) == 0:
             if len(driver.find_elements(By.XPATH, LOC.img_createWave_xpath)) != 0:
                 driver.find_element(By.XPATH, LOC.img_createWave_xpath).click()
             else:
                 driver.find_element(By.XPATH, LOC.btn_createWave_xpath).click()
-                time.sleep(3)
-                driver.find_element(By.XPATH, LOC.img_createNewWave_xpath).click()
+                btn = WebDriverWait(driver, 10).until(
+                    EC.element_to_be_clickable((By.XPATH, LOC.img_createNewWave_xpath))
+                )
+                btn.click()
             time.sleep(5)
             if len(driver.find_elements(By.XPATH, LOC.pop_createWave_xpath)) != 0:
                 self.logger.info("********** Create New Wave Pop-up Banner Was Opened For Wave, "+str(waveName)+" **********")
                 driver.find_element(By.ID, LOC.txt_waveName_id).send_keys(waveName)
                 if not passthrough:
                     driver.find_element(By.ID, LOC.chBox_passthrough_id).click()
-                ele1 = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_create_id))
                 )
-                ele1.click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -56,14 +53,8 @@ class WavePage(unittest.TestCase):
             self.logger.info("********** Wave : " + waveName + ", Is Already Present **********")
 
     def createWaveWithFile(self, driver, path):
-        replication_class = driver.find_element(By.XPATH, LOC.txt_replication_xpath).get_attribute("class")
-        if replication_class == "ng-star-inserted":
-            driver.find_element(By.LINK_TEXT, "Replication").click()
-            time.sleep(5)
-        wave_class = driver.find_element(By.XPATH, LOC.txt_rWave_xpath).get_attribute("class")
-        if wave_class != "active":
-            driver.find_element(By.LINK_TEXT, "Waves").click()
-            time.sleep(5)
+        co = CommonObjects(driver)
+        co.traverseRepWave()
         btn = WebDriverWait(driver, 30).until(
             EC.element_to_be_clickable((By.XPATH, LOC.btn_createWave_xpath))
         )
@@ -100,14 +91,8 @@ class WavePage(unittest.TestCase):
         for r in range(st, ed+1):
             waveName = sheet.cell(row=r, column=1).value
             passthrough = sheet.cell(row=r, column=2).value
-            replication_class = driver.find_element(By.XPATH, LOC.txt_replication_xpath).get_attribute("class")
-            if replication_class == "ng-star-inserted":
-                driver.find_element(By.LINK_TEXT, "Replication").click()
-                time.sleep(5)
-            wave_class = driver.find_element(By.XPATH, LOC.txt_rWave_xpath).get_attribute("class")
-            if wave_class != "active":
-                driver.find_element(By.LINK_TEXT, "Waves").click()
-                time.sleep(5)
+            co = CommonObjects(driver)
+            co.traverseRepWave()
             if len(driver.find_elements(By.LINK_TEXT, waveName)) == 0:
                 if len(driver.find_elements(By.XPATH, LOC.img_createWave_xpath)) != 0:
                     driver.find_element(By.XPATH, LOC.img_createWave_xpath).click()
@@ -125,10 +110,10 @@ class WavePage(unittest.TestCase):
                         driver.find_element(By.ID, LOC.chBox_passthrough_id).click()
                     time.sleep(3)
                     self.enterData(driver, sheet, r)
-                    ele1 = WebDriverWait(driver, 10).until(
+                    btn = WebDriverWait(driver, 10).until(
                         EC.element_to_be_clickable((By.ID, LOC.btn_create_id))
                     )
-                    ele1.click()
+                    btn.click()
                     WebDriverWait(driver, 10).until(
                         EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                     )
@@ -178,18 +163,18 @@ class WavePage(unittest.TestCase):
             if host:
                 self.logger.info("********** The Host " + hostName + " Was Already Present In The Wave : " + waveName + " **********")
                 continue
-            ele1 = WebDriverWait(driver, 10).until(
+            btn = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.ID, LOC.btn_addHost_id))
             )
-            ele1.click()
+            btn.click()
             time.sleep(3)
             if len(driver.find_elements(By.XPATH, LOC.pop_addHost_xpath)) != 0:
                 self.logger.info("********** Add New Host Pop-up Banner Was Opened For Wave, " + str(waveName) + " **********")
                 self.enterData(driver, sheet, r)
-                ele1 = WebDriverWait(driver, 10).until(
+                btn = WebDriverWait(driver, 10).until(
                     EC.element_to_be_clickable((By.ID, LOC.btn_createHost_id))
                 )
-                ele1.click()
+                btn.click()
                 WebDriverWait(driver, 10).until(
                     EC.presence_of_element_located((By.XPATH, LOC.pop_successful_xpath))
                 )
@@ -278,7 +263,8 @@ class WavePage(unittest.TestCase):
             driver.find_element(By.ID, LOC.txt_imageName_id).clear()
             driver.find_element(By.ID, LOC.txt_imageName_id).send_keys(targetImageName)
 
-    def selectSyncType(self, driver, DNS_IP, friendlyName, sourceUserPassword, targetUsername):
+    @staticmethod
+    def selectSyncType(driver, DNS_IP, friendlyName, sourceUserPassword, targetUsername):
         time.sleep(5)
         driver.find_element(By.ID, LOC.txt_targetDNSIP_id).send_keys(DNS_IP)
         driver.find_element(By.ID, LOC.txt_targetFriendlyName_id).clear()
@@ -346,7 +332,8 @@ class WavePage(unittest.TestCase):
             elif hostNo == totalHosts:
                 self.logger.info("********** The Host " + hostName + " Was Not Found In The Wave : " + waveName + " **********")
 
-    def searchHostInsideWave(self, driver, hostName):
+    @staticmethod
+    def searchHostInsideWave(driver, hostName):
         time.sleep(5)
         totalHosts = len(driver.find_elements(By.ID, LOC.txt_totalHosts_id))
         for hostNo in range(1, totalHosts + 1):

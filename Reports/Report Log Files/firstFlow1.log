@@ -1,0 +1,35 @@
+
+Running tests... 
+----------------------------------------------------------------------
+ test_clickOnLogin (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogin) ... OK (10.352705)s
+ test_createWaveWithHost (pageObjects.testAllInOne.Test_AllInOne.test_createWaveWithHost) ... OK (20.828875)s
+ test_addHostToWave (pageObjects.testAllInOne.Test_AllInOne.test_addHostToWave) ... OK (29.629837)s
+ test_bulkEditSyncOption (pageObjects.testAllInOne.Test_AllInOne.test_bulkEditSyncOption) ... OK (25.975521)s
+ test_addVCenter (pageObjects.testAllInOne.Test_AllInOne.test_addVCenter) ... OK (10.954609)s
+ test_setAutoprovision (pageObjects.testAllInOne.Test_AllInOne.test_setAutoprovision) ... OK (68.837851)s
+ test_setParallelCount (pageObjects.testAllInOne.Test_AllInOne.test_setParallelCount) ... OK (9.095250)s
+ test_startWave (pageObjects.testAllInOne.Test_AllInOne.test_startWave) ... OK (1159.274085)s
+ test_verifySyncSuccess (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncSuccess) ... OK (5.068342)s
+ test_verifySyncDetails (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncDetails) ... OK (67.292645)s
+ test_createDRPolicy (pageObjects.testAllInOne.Test_AllInOne.test_createDRPolicy) ... OK (15.966610)s
+ test_addDRPolicyToWave (pageObjects.testAllInOne.Test_AllInOne.test_addDRPolicyToWave) ... OK (66.396826)s
+ test_resumePolicy (pageObjects.testAllInOne.Test_AllInOne.test_resumePolicy) ... OK (14.505198)s
+ test_pauseDRPolicy (pageObjects.testAllInOne.Test_AllInOne.test_pauseDRPolicy) ... OK (19.306617)s
+ test_verifyDRHostSyncStatus (pageObjects.testAllInOne.Test_AllInOne.test_verifyDRHostSyncStatus) ... OK (26.054717)s
+ test_changeTargetType (pageObjects.testAllInOne.Test_AllInOne.test_changeTargetType) ... OK (39.578528)s
+ test_tearDown (pageObjects.testAllInOne.Test_AllInOne.test_tearDown) ... OK (13.826461)s
+ test_startWave (pageObjects.testAllInOne.Test_AllInOne.test_startWave) ... OK (38.300080)s
+ test_verifySyncSuccess (pageObjects.testAllInOne.Test_AllInOne.test_verifySyncSuccess) ... OK (5.068648)s
+ test_failoverHost (pageObjects.testAllInOne.Test_AllInOne.test_failoverHost) ... OK (285.185324)s
+ test_tearDown (pageObjects.testAllInOne.Test_AllInOne.test_tearDown) ... OK (137.673506)s
+ test_clickOnLogout (pageObjects.testAllInOne.Test_AllInOne.test_clickOnLogout) ... OK (5.527267)s
+
+----------------------------------------------------------------------
+Ran 22 tests in 0:34:34
+
+OK
+
+
+
+Generating HTML reports... 
+reports\firstFlow1.html
